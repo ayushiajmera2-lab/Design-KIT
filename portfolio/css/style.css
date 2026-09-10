@@ -104,7 +104,7 @@ ul{ margin:0; padding:0; list-style:none; }
    --------------------------------------------------------- */
 .nav{
   position: fixed; top:0; left:0; right:0; z-index:60;
-  padding: 22px clamp(20px, 4vw, 60px) 0;
+  padding: 24px clamp(20px, 4vw, 60px) 0;
 }
 .nav-inner{
   display:flex; align-items:center; justify-content:space-between; gap:16px;
@@ -120,7 +120,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .nav-loc svg{ width:14px; height:14px; flex:none; }
 
 .nav-pill{
-  display:flex; align-items:center; gap:8px;
+  display:flex; align-items:center; gap:16px;
   height:56px; padding:8px;
   border-radius:999px;
   border:1px solid rgba(255,255,255,.5);
@@ -139,26 +139,26 @@ ul{ margin:0; padding:0; list-style:none; }
   background: rgba(20,20,16,.65);
 }
 .nav-link{
-  padding:9px 16px;
+  padding:8px 10px;
   border-radius:999px;
   border:1px solid transparent;
   color: var(--nav-text);
   font-family:'Space Grotesk', sans-serif;
-  font-size:15px;
+  font-size:16px;
   transition: border-color .3s ease, color .5s var(--ease);
 }
 .is-scrolled .nav-link{ color: var(--ink); }
 .nav-link:hover{ border-color: currentColor; }
 .nav-cta{
   display:flex; align-items:center; gap:8px;
-  padding:9px 17px;
+  padding:8px 16px;
   border-radius:999px;
   background: var(--white);
   color: var(--ink);
   font-family:'Space Grotesk', sans-serif;
-  font-size:15px;
+  font-size:16px;
 }
-.nav-cta svg{ width:18px; height:18px; }
+.nav-cta svg{ width:24px; height:24px; }
 .nav-tools{ display:flex; align-items:center; gap:6px; }
 .tool-btn{
   display:flex; align-items:center; justify-content:center;
@@ -238,7 +238,7 @@ ul{ margin:0; padding:0; list-style:none; }
   margin:0;
   font-family:'DM Serif Display', serif;
   font-weight:400;
-  font-size: clamp(46px, 9vw, 128px);
+  font-size: clamp(46px, 11vw, 158px);
   line-height:.98;
   color: var(--nav-text);
   letter-spacing:-.01em;
@@ -407,7 +407,7 @@ ul{ margin:0; padding:0; list-style:none; }
   font-weight:300;
   font-size: clamp(20px,3vw,45px);
   color: var(--ink-2);
-  margin:0 0 clamp(14px,2vw,30px);
+  margin:0 0 clamp(24px,4vw,59px);
 }
 .contact-email{
   display:inline-block;
