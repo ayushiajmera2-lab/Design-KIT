@@ -6,112 +6,130 @@
 <title>Ayushi Ajmera — Designer who Solves</title>
 <meta name="description" content="Ayushi Ajmera — brand &amp; product designer for B2B tech. Five years turning complex, technical ideas into brands people understand." />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23F2C230'/%3E%3C/svg%3E">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-label" id="cursorLabel">View</div>
+<header class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <img class="hero-illustration" src="assets/hero-bg.jpg" alt="">
+    <div class="sun">
+      <div class="sun-glow"></div>
+      <svg class="sun-disc" viewBox="0 0 200 200">
+        <defs>
+          <pattern id="sunHatch" width="18" height="18" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+            <rect width="18" height="18" fill="var(--yellow)"/>
+            <rect width="9" height="18" fill="var(--yellow-soft)"/>
+          </pattern>
+          <clipPath id="sunClip"><circle cx="100" cy="100" r="98"/></clipPath>
+        </defs>
+        <circle cx="100" cy="100" r="98" fill="url(#sunHatch)" clip-path="url(#sunClip)"/>
+      </svg>
+    </div>
+  </div>
 
-<header class="nav" id="siteNav">
-  <div class="nav-inner">
+  <nav class="nav">
     <div class="nav-loc">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
-      <span>India</span>
+      India
     </div>
-
-    <nav class="nav-pill" aria-label="Primary">
-      <a href="#work" class="nav-link">Work</a>
-      <a href="#about" class="nav-link">About</a>
-      <button type="button" class="nav-cta" id="openContact">
+    <div class="nav-center">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a class="pill" href="#contact" id="openContact">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-        <span>Work with me</span>
+        Work with me
+      </a>
+    </div>
+    <div class="nav-right">
+      <button aria-label="Toggle ambient sound" class="circle" id="toggleSound" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 12c2-4 4 4 6 0s4-4 6 0 4 4 6 0 2-4 2-4"/></svg>
       </button>
-    </nav>
-
-    <div class="nav-tools">
-      <button type="button" class="tool-btn" id="toggleSound" aria-pressed="false" aria-label="Toggle ambient sound">
-        <svg class="icon-wave" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 12c2-4 4 4 6 0s4-4 6 0 4 4 6 0 2-4 2-4"/></svg>
-      </button>
-      <button type="button" class="tool-btn" id="toggleTheme" aria-pressed="false" aria-label="Toggle day and night theme">
+      <button aria-label="Toggle day and night theme" class="circle" id="toggleTheme" aria-pressed="false">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
       </button>
     </div>
+  </nav>
+
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Hello, I'm Ayushi Ajmera. A —</p>
+    <h1>Designer who<br /><em>Solves</em></h1>
   </div>
 </header>
 
 <main>
-
-  <section class="hero" id="top">
-    <div class="hero-art" aria-hidden="true">
-      <img class="hero-illustration" src="assets/hero-bg.jpg" alt="">
-
-      <div class="sun">
-        <div class="sun-glow"></div>
-        <svg class="sun-disc" viewBox="0 0 200 200">
-          <defs>
-            <pattern id="sunHatch" width="18" height="18" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-              <rect width="18" height="18" fill="var(--yellow)"/>
-              <rect width="9" height="18" fill="var(--yellow-soft)"/>
-            </pattern>
-            <clipPath id="sunClip"><circle cx="100" cy="100" r="98"/></clipPath>
-          </defs>
-          <circle cx="100" cy="100" r="98" fill="url(#sunHatch)" clip-path="url(#sunClip)"/>
-        </svg>
-      </div>
-    </div>
-
-    <div class="hero-content">
-      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Hello, I'm Ayushi Ajmera. A —</p>
-      <h1 class="hero-title">
-        <span class="title-line" data-split>Designer who</span>
-        <span class="title-line" data-split>Solves</span>
-      </h1>
-    </div>
-  </section>
-
   <section class="intro" id="about">
-    <p class="intro-lede reveal-up">Five years building brands across B2B tech, where design does the thinking and marketing does the acting, sharpening how technical, complex ideas get seen, said, and sold.</p>
-    <p class="intro-bold reveal-up">I believe every brand carries a story bigger than its pitch deck, and I'm here to keep telling it.</p>
+    <p>Five years building brands across B2B tech, where design does the thinking and marketing does the acting, sharpening how technical, complex ideas get seen, said, and sold.</p>
+    <strong>I believe every brand carries a story bigger than its pitch deck, and I'm here to keep telling it.</strong>
   </section>
 
-  <section class="work" id="work" aria-label="Selected work">
+  <section class="work" id="work">
+    <article class="project project-wide reveal">
+      <div class="placeholder">
+        <span>01</span>
+        <h2>Branding<br />Design System</h2>
+        <p>Replace with final project visual</p>
+      </div>
+    </article>
 
-    <div class="work-row" data-speed="0.6" data-dir="1">
-      <div class="work-track" id="track1"></div>
-    </div>
-    <div class="work-row" data-speed="0.9" data-dir="-1">
-      <div class="work-track" id="track2"></div>
-    </div>
-    <div class="work-row" data-speed="0.6" data-dir="1">
-      <div class="work-track" id="track3"></div>
-    </div>
+    <article class="project project-small reveal">
+      <div class="placeholder">
+        <span>02</span>
+        <h2>MCP &amp;<br />Connectors</h2>
+        <p>AI workflow / interface visual</p>
+      </div>
+    </article>
 
+    <article class="project project-small reveal">
+      <div class="placeholder">
+        <span>03</span>
+        <h2>Kaleideo<br />Identity</h2>
+        <p>Replace with identity visual</p>
+      </div>
+    </article>
+
+    <article class="project project-wide reveal">
+      <div class="placeholder">
+        <span>04</span>
+        <h2>Trajex</h2>
+        <p>Product design case study</p>
+      </div>
+    </article>
+
+    <article class="project project-wide reveal">
+      <div class="placeholder">
+        <span>05</span>
+        <h2>SatSure</h2>
+        <p>B2B technology storytelling</p>
+      </div>
+    </article>
+
+    <article class="project project-small reveal">
+      <div class="placeholder">
+        <span>06</span>
+        <h2>Faclon<br />Labs</h2>
+        <p>Brand, product &amp; GTM</p>
+      </div>
+    </article>
   </section>
 
-  <section class="contact" id="contact">
-    <p class="contact-lede reveal-up">Looking forward to new projects and opportunities.</p>
-    <a class="contact-email reveal-up" href="mailto:ayushiajmera2@gmail.com">ayushiajmera2@gmail.com</a>
+  <section class="contact reveal" id="contact">
+    <p>Looking forward to new projects and opportunities.</p>
+    <a href="mailto:ayushiajmera2@gmail.com">ayushiajmera2@gmail.com</a>
   </section>
-
 </main>
 
 <footer class="site-footer">
   <img class="footer-illustration" src="assets/footer-bg.jpg" alt="" aria-hidden="true">
-
-  <div class="footer-bottom">
-    <span class="footer-credit">Designed &amp; built by Ayushi Ajmera · India · © 2026</span>
-    <nav class="footer-social" aria-label="Social links">
-      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="#" target="_blank" rel="noopener">GitHub</a>
-      <a href="#" target="_blank" rel="noopener">Behance</a>
-    </nav>
+  <div class="footer-line"></div>
+  <div class="footer-meta">
+    <span>© 2026 Ayushi Ajmera · India</span>
+    <div>
+      <a href="#top" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#top" target="_blank" rel="noopener">GitHub</a>
+      <a href="#top" target="_blank" rel="noopener">Behance</a>
+    </div>
   </div>
 </footer>
 
@@ -158,9 +176,6 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
