@@ -103,44 +103,6 @@
   fillTrack(document.getElementById('track3'), ['venu', 'roam'], 4);
 
   /* ---------------------------------------------------------
-     Footer flowers
-     --------------------------------------------------------- */
-  const flowerLayer = document.getElementById('flowerLayer');
-  const flowerSpots = [30, 140, 260, 360, 470, 600, 760, 880, 1010, 1140, 1260, 1380];
-  flowerSpots.forEach((x, i) => {
-    const isLavender = i % 3 === 0;
-    const h = 60 + (i % 4) * 12;
-    const y = 195 + (i % 3) * 6;
-    const pos = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    pos.setAttribute('transform', `translate(${x} ${y})`);
-
-    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    g.setAttribute('class', 'flower');
-    g.style.animationDelay = (i * 0.35) + 's';
-
-    if (isLavender) {
-      g.innerHTML = `
-        <rect x="-1.5" y="${-h}" width="3" height="${h}" fill="#3E5B33"/>
-        ${Array.from({ length: 6 }).map((_, k) => `<circle cx="${(k % 2 === 0 ? -4 : 4)}" cy="${-h + k * 6}" r="3.2" fill="#8E7FC7"/>`).join('')}
-        <path d="M-10 4 Q0 -10 10 4 Z" fill="#3E5B33"/>`;
-    } else {
-      const petals = Array.from({ length: 8 }).map((_, k) => {
-        const angle = (k / 8) * Math.PI * 2;
-        const cx = Math.cos(angle) * 10.5;
-        const cy = -h + Math.sin(angle) * 10.5;
-        return `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="3.6" fill="#FFFFFF" stroke="rgba(20,20,15,0.12)" stroke-width="0.6"/>`;
-      }).join('');
-      g.innerHTML = `
-        <rect x="-1.5" y="${-h}" width="3" height="${h}" fill="#C9622B"/>
-        ${petals}
-        <circle cx="0" cy="${-h}" r="5" fill="#F2B33D"/>
-        <path d="M-12 4 Q0 -12 12 4 Z" fill="#3E5B33"/>`;
-    }
-    pos.appendChild(g);
-    flowerLayer.appendChild(pos);
-  });
-
-  /* ---------------------------------------------------------
      Contact drawer
      --------------------------------------------------------- */
   const drawer = document.getElementById('contactDrawer');
