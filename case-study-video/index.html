@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Design System, Wired for AI — Case Study</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="stage">
+
+  <!-- SCENE 1 — Title -->
+  <section class="scene dark" id="scene1">
+    <div class="bg-shapes">
+      <div class="bg-shape shape-a"></div>
+      <div class="bg-shape shape-b active-delay"></div>
+    </div>
+    <div class="content">
+      <div class="eyebrow">CASE STUDY · BY AYUSHI AJMERA</div>
+      <h1 class="headline">Design System, Wired for AI</h1>
+      <p class="subhead">Building a real-time MCP pipeline that keeps design tokens, assets, and documentation in sync between Figma and the AI tools that read them.</p>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item" style="--i:0">
+        <div class="meta-label">Role</div>
+        <div class="meta-value">Design Systems + Infrastructure</div>
+      </div>
+      <div class="meta-item" style="--i:1">
+        <div class="meta-label">Stack</div>
+        <div class="meta-value">Figma · GitHub Actions · Railway · MCP</div>
+      </div>
+      <div class="meta-item" style="--i:2">
+        <div class="meta-label">Status</div>
+        <div class="meta-value">Live — real-time sync</div>
+      </div>
+      <div class="meta-item" style="--i:3">
+        <div class="meta-label">Interfaces</div>
+        <div class="meta-value">8 MCP tools, one server</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 2 — The Challenge -->
+  <section class="scene light" id="scene2">
+    <div class="bg-shapes">
+      <div class="bg-shape shape-a"></div>
+    </div>
+    <div class="content">
+      <div class="section-tag">01 · THE CHALLENGE</div>
+      <h1 class="headline">A design system that only Figma could read</h1>
+      <p class="body-text">Tokens, type, spacing, and imagery all lived inside a Figma file. Every time an AI tool needed to know what the brand actually looked like, it meant screenshotting a frame, copy-pasting a hex code, or manually exporting an image — repeated on every single update.</p>
+      <div class="pair-list">
+        <div class="pair-row reveal row" style="--i:0">
+          <div class="pair-cell before">Manual screenshots and copy-pasted hex codes on every update</div>
+          <div class="pair-arrow">→</div>
+          <div class="pair-cell after">Tools query live tokens directly, no manual step</div>
+        </div>
+        <div class="pair-row reveal row" style="--i:1">
+          <div class="pair-cell before">Images exported by hand and re-uploaded per task</div>
+          <div class="pair-arrow">→</div>
+          <div class="pair-cell after">Every tagged Figma frame syncs automatically</div>
+        </div>
+        <div class="pair-row reveal row" style="--i:2">
+          <div class="pair-cell before">No single, current source of truth for AI-facing docs</div>
+          <div class="pair-arrow">→</div>
+          <div class="pair-cell after">One MCP server, one contract, always current</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 3 — The Solution -->
+  <section class="scene light" id="scene3">
+    <div class="bg-shapes">
+      <div class="bg-shape shape-a"></div>
+    </div>
+    <div class="content">
+      <div class="section-tag">02 · THE SOLUTION</div>
+      <h1 class="headline">One server, three kinds of truth</h1>
+      <p class="body-text">Rather than teaching every AI tool how to open Figma, we built an MCP server that speaks for the design system directly — tokens, images, and a generated summary, always reflecting the current file.</p>
+      <div class="card-row">
+        <div class="card" style="--i:0">
+          <div class="badge on-light">1</div>
+          <div class="card-title">Tokens</div>
+          <div class="card-desc">Color, typography, spacing, radius, and border/elevation values — queried as structured JSON, no screenshots involved.</div>
+        </div>
+        <div class="card emph" style="--i:1">
+          <div class="badge emph">2</div>
+          <div class="card-title">Images</div>
+          <div class="card-desc">Every frame tagged "AI export" in Figma, exported and served as a real reference image on request.</div>
+        </div>
+        <div class="card" style="--i:2">
+          <div class="badge on-light">3</div>
+          <div class="card-title">Context doc</div>
+          <div class="card-desc">An auto-written markdown summary of the whole system — regenerated every time tokens or images change.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 4 — Core Framework -->
+  <section class="scene light" id="scene4">
+    <div class="bg-shapes">
+      <div class="bg-shape shape-a"></div>
+    </div>
+    <div class="content">
+      <div class="section-tag">03 · CORE FRAMEWORK</div>
+      <h1 class="headline">We defined the shell: what stays fixed, what updates itself</h1>
+      <p class="body-text">Every AI tool that connects should find the same contract in place — while the content behind that contract keeps itself current without anyone touching a terminal.</p>
+      <div class="col-grid">
+        <div class="col-panel reveal" style="--i:0">
+          <div class="col-heading">Fixed — every time</div>
+          <div class="col-item">The 8-tool MCP contract clients connect to</div>
+          <div class="col-item">Server routes: /mcp, /health, /webhooks/figma</div>
+          <div class="col-item">Repo structure: tokens/, context/images/</div>
+        </div>
+        <div class="col-panel reveal" style="--i:1">
+          <div class="col-heading">Auto-synced from Figma</div>
+          <div class="col-item">Token values — colors, type, spacing, radius</div>
+          <div class="col-item">Exported reference images ("AI export" frames)</div>
+          <div class="col-item">design-system.md, regenerated on every change</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 5 — The Pipeline -->
+  <section class="scene light" id="scene5">
+    <div class="bg-shapes">
+      <div class="bg-shape shape-a"></div>
+    </div>
+    <div class="content">
+      <div class="section-tag">04 · THE PIPELINE</div>
+      <h1 class="headline">From a Figma save to a merged PR, in under a minute</h1>
+      <p class="body-text">The moment a version is saved in Figma, the whole system moves — no one has to remember to export anything.</p>
+      <div class="step-row">
+        <div class="step-card reveal" style="--i:0">
+          <div class="badge on-light">1</div>
+          <div class="step-title">Save triggers the webhook</div>
+          <div class="step-desc">A Figma version save fires a FILE_VERSION_UPDATE event — real time, no polling delay.</div>
+        </div>
+        <div class="step-arrow-wrap"><div class="step-arrow" style="--i:0">→</div></div>
+        <div class="step-card reveal" style="--i:1">
+          <div class="badge on-light">2</div>
+          <div class="step-title">Server verifies &amp; dispatches</div>
+          <div class="step-desc">The Railway-hosted server checks a shared passcode, then dispatches a GitHub Action.</div>
+        </div>
+        <div class="step-arrow-wrap"><div class="step-arrow" style="--i:1">→</div></div>
+        <div class="step-card reveal" style="--i:2">
+          <div class="badge on-light">3</div>
+          <div class="step-title">Action exports &amp; regenerates</div>
+          <div class="step-desc">Every "AI export" frame is exported; design-system.md is rebuilt from current tokens + images.</div>
+        </div>
+        <div class="step-arrow-wrap"><div class="step-arrow" style="--i:2">→</div></div>
+        <div class="step-card reveal" style="--i:3">
+          <div class="badge on-light">4</div>
+          <div class="step-title">A PR opens automatically</div>
+          <div class="step-desc">Changes land as a reviewable pull request — merge to publish, nothing hand-copied.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 6 — The Tools -->
+  <section class="scene light" id="scene6">
+    <div class="bg-shapes">
+      <div class="bg-shape shape-a"></div>
+    </div>
+    <div class="content">
+      <div class="section-tag">05 · WHAT WE BUILT</div>
+      <h1 class="headline">Eight tools, one MCP server</h1>
+      <p class="body-text">Every tool reads straight off the synced repo — no caching layer to go stale, no separate database to keep in step.</p>
+      <div class="tool-grid">
+        <div class="tool-card reveal" style="--i:0"><div class="badge on-light" style="width:40px;height:40px;font-size:17px;">1</div><div class="tool-name">get_color_tokens</div><div class="tool-desc">Full color palette, brand + status + text</div></div>
+        <div class="tool-card reveal" style="--i:1"><div class="badge on-light" style="width:40px;height:40px;font-size:17px;">2</div><div class="tool-name">get_typography_tokens</div><div class="tool-desc">Type families, scales, and weight rules</div></div>
+        <div class="tool-card reveal" style="--i:2"><div class="badge on-light" style="width:40px;height:40px;font-size:17px;">3</div><div class="tool-name">get_spacing_tokens</div><div class="tool-desc">Spacing scale and role-based usage</div></div>
+        <div class="tool-card reveal" style="--i:3"><div class="badge on-light" style="width:40px;height:40px;font-size:17px;">4</div><div class="tool-name">get_radius_tokens</div><div class="tool-desc">Corner radius scale and shape rules</div></div>
+        <div class="tool-card reveal" style="--i:4"><div class="badge on-light" style="width:40px;height:40px;font-size:17px;">5</div><div class="tool-name">get_border_elevation_tokens</div><div class="tool-desc">Border widths and elevation levels</div></div>
+        <div class="tool-card reveal" style="--i:5"><div class="badge on-light" style="width:40px;height:40px;font-size:17px;">6</div><div class="tool-name">list_context_images</div><div class="tool-desc">Every available reference image, by name</div></div>
+        <div class="tool-card reveal" style="--i:6"><div class="badge on-light" style="width:40px;height:40px;font-size:17px;">7</div><div class="tool-name">get_context_image</div><div class="tool-desc">Fetch one reference image by filename</div></div>
+        <div class="tool-card reveal" style="--i:7"><div class="badge on-light" style="width:40px;height:40px;font-size:17px;">8</div><div class="tool-name">get_design_system_context</div><div class="tool-desc">A written summary of the whole system</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 7 — Designed for Failure -->
+  <section class="scene dark" id="scene7">
+    <div class="bg-shapes">
+      <div class="bg-shape shape-a"></div>
+      <div class="bg-shape shape-b active-delay"></div>
+    </div>
+    <div class="content">
+      <div class="section-tag">06 · DESIGNED FOR FAILURE</div>
+      <h1 class="headline" style="font-size:72px;">Built to catch failure before it ships</h1>
+      <p class="pull-quote">"The failures worth designing for aren't the ones that crash. They're the ones that quietly look like success."</p>
+      <div class="panel-stack">
+        <div class="panel reveal" style="--i:0">
+          <div class="badge on-dark">1</div>
+          <div>
+            <div class="panel-title">Collision-safe naming</div>
+            <div class="panel-desc">Multiple Figma frames can share a name without data loss — every export gets a guaranteed-unique file, so nothing is ever silently overwritten.</div>
+          </div>
+        </div>
+        <div class="panel reveal" style="--i:1">
+          <div class="badge on-dark">2</div>
+          <div>
+            <div class="panel-title">Schema-validated automation</div>
+            <div class="panel-desc">The GitHub Actions workflow is checked at the structural level, so a single formatting slip can't take the pipeline down unnoticed.</div>
+          </div>
+        </div>
+        <div class="panel reveal" style="--i:2">
+          <div class="badge on-dark">3</div>
+          <div>
+            <div class="panel-title">Named-output guarantees</div>
+            <div class="panel-desc">Every exported asset is verified to have a real, descriptive filename before it's written — nothing ships nameless or untraceable.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 8 — Reliability -->
+  <section class="scene light" id="scene8">
+    <div class="bg-shapes">
+      <div class="bg-shape shape-a"></div>
+    </div>
+    <div class="content">
+      <div class="section-tag">07 · RELIABILITY</div>
+      <h1 class="headline">A live pulse on the system</h1>
+      <p class="body-text">A /health endpoint checks the server, tokens, images, and context doc independently — so a failure reports what actually broke, not just that something did. An external monitor pings it continuously and alerts by email the moment it can't.</p>
+      <div class="stat-row">
+        <div class="stat-card" style="--i:0"><div class="stat-number">8</div><div class="stat-label">MCP Tools Live</div></div>
+        <div class="stat-card" style="--i:1"><div class="stat-number">69+</div><div class="stat-label">Reference Images Synced</div></div>
+        <div class="stat-card" style="--i:2"><div class="stat-number">5 min</div><div class="stat-label">Uptime Check Interval</div></div>
+        <div class="stat-card" style="--i:3"><div class="stat-number">100%</div><div class="stat-label">Uptime, Last 24 Hours</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 9 — Outcome / Closing -->
+  <section class="scene dark" id="scene9">
+    <div class="bg-shapes">
+      <div class="bg-shape shape-a"></div>
+      <div class="bg-shape shape-b active-delay"></div>
+    </div>
+    <div class="content">
+      <div class="section-tag">08 · OUTCOME</div>
+      <h1 class="headline" style="font-size:72px;">What shipped</h1>
+      <div class="outcome-cards">
+        <div class="outcome-card" style="--i:0">
+          <div class="outcome-title">Real-time</div>
+          <div class="outcome-desc">Figma save reaches a merged PR automatically, no manual export step</div>
+        </div>
+        <div class="outcome-card" style="--i:1">
+          <div class="outcome-title">8 tools</div>
+          <div class="outcome-desc">Serving tokens, images, and a written summary to any MCP client</div>
+        </div>
+        <div class="outcome-card" style="--i:2">
+          <div class="outcome-title">Zero drift</div>
+          <div class="outcome-desc">Reliability safeguards mean the AI-facing system never silently falls out of sync</div>
+        </div>
+      </div>
+      <p class="closing-quote">"The work wasn't writing more documentation. It was building the pipe that keeps documentation from ever going stale."</p>
+      <p class="closing-credit">Ayushi Ajmera — design systems · infrastructure · AI tooling</p>
+    </div>
+  </section>
+
+</div>
+<script src="timeline.js"></script>
+<script src="render-engine.js"></script>
+</body>
+</html>
