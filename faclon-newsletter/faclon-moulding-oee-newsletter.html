@@ -1,0 +1,572 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Faclon Moulding OEE Newsletter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=TASA+Orbiter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Layout: single 720px letter column on a soft ground; dark navy bands open and close it, light sections between. Faclon Design System tokens. */
+  :root{
+    --brand-050:#F4F8FF; --brand-100:#DCE8FE; --brand-400:#5A8DF7; --brand-500:#165FF2; --brand-600:#124ED0; --brand-1000:#041438;
+    --accent:#68DD68;
+    --good:#00BE5F; --good-bg:#EBFAF3; --bad:#F04438; --bad-bg:#FFF5F5; --warn:#F79009;
+
+    --ground:#F1F5FA;
+    --surface:#FFFFFF;
+    --surface-2:#F4F8FF;
+    --line:#DDE5EF;
+    --heading:#0C1927;
+    --body:#243547;
+    --support:#40566D;
+    --muted:#768EA7;
+    --link:#165FF2;
+    --tint:#DCE8FE;
+    --band:#0C1927;
+    --band-2:#171F2B;
+    --band-line:rgba(255,255,255,.14);
+    --on-band:#F1F5FA;
+    --on-band-2:#CBD5E2;
+    --on-band-hi:#5A8DF7;
+    --shadow:0 2px 16px rgba(25,40,57,.10);
+
+    --f-head:'TASA Orbiter','Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+    --f-body:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0C1927; --surface:#171F2B; --surface-2:#1C2838; --line:#2A3A4E;
+      --heading:#F1F5FA; --body:#CBD5E2; --support:#9FB0C3; --muted:#768EA7;
+      --link:#8AB1FB; --tint:rgba(90,141,247,.18);
+      --band:#041438; --band-2:#07215C;
+      --good-bg:rgba(0,190,95,.14); --bad-bg:rgba(240,68,56,.14);
+      --shadow:0 2px 16px rgba(0,0,0,.35);
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0C1927; --surface:#171F2B; --surface-2:#1C2838; --line:#2A3A4E;
+    --heading:#F1F5FA; --body:#CBD5E2; --support:#9FB0C3; --muted:#768EA7;
+    --link:#8AB1FB; --tint:rgba(90,141,247,.18);
+    --band:#041438; --band-2:#07215C;
+    --good-bg:rgba(0,190,95,.14); --bad-bg:rgba(240,68,56,.14);
+    --shadow:0 2px 16px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground); color:var(--body);
+    font-family:var(--f-body); font-size:16px; line-height:24px;
+    padding-inline:16px; padding-block:32px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .letter{
+    max-width:720px; margin:0 auto;
+    background:var(--surface);
+    border-radius:12px; overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  h1,h2,h3{font-family:var(--f-head); color:var(--heading); margin:0; text-wrap:balance}
+  h2{font-size:32px; line-height:40px; font-weight:600}
+  h3{font-size:18px; line-height:24px; font-weight:600}
+  p{margin:0}
+  .eyebrow{
+    font-family:var(--f-body); font-size:12px; line-height:16px; font-weight:600;
+    letter-spacing:.96px; text-transform:uppercase; color:var(--link);
+  }
+  .sub{font-size:18px; line-height:28px; color:var(--support)}
+  .muted{color:var(--muted)}
+  .tnum{font-variant-numeric:tabular-nums}
+
+  .logo{display:block; width:132px; height:auto}
+  .logo.on-light{color:var(--brand-500)}
+  .logo.on-dark{color:#FFFFFF}
+
+  /* ---------- Sections ---------- */
+  .section{padding:56px 48px; display:grid; gap:24px}
+  .section + .section{border-top:1px solid var(--line)}
+  .section.tinted{background:var(--surface-2)}
+  .head{display:grid; gap:12px}
+  .supporting{
+    font-size:14px; line-height:22px; color:var(--support);
+    padding:12px 16px; background:var(--tint); border-radius:6px;
+  }
+  .supporting strong{color:var(--heading); font-weight:600}
+
+  /* ---------- Hero band ---------- */
+  .hero{background:var(--band); color:var(--on-band); padding:32px 48px 0; display:grid; gap:24px}
+  .masthead{display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+    padding-bottom:20px; border-bottom:1px solid var(--band-line)}
+  .masthead .issue{font-size:12px; line-height:16px; font-weight:500; letter-spacing:.96px; text-transform:uppercase; color:var(--on-band-2)}
+  .hero .eyebrow{color:var(--on-band-hi)}
+  .hero h1{color:var(--on-band); font-size:44px; line-height:52px; font-weight:700; letter-spacing:-.02em}
+  .hero h1 em{font-style:normal; color:var(--on-band-hi)}
+  .hero .lede{font-size:18px; line-height:28px; color:var(--on-band-2); max-width:600px}
+  .hero-copy{display:grid; gap:16px}
+  .chips{display:flex; flex-wrap:wrap; gap:8px}
+  .chip{font-size:13px; line-height:20px; font-weight:500; color:var(--on-band); padding:4px 12px; border:1px solid var(--band-line); border-radius:999px}
+  .hero-visual{margin:0 -48px; display:block}
+  .hero-visual svg{display:block; width:100%; height:auto}
+
+  /* ---------- Tables ---------- */
+  .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:8px}
+  table{width:100%; border-collapse:collapse; font-size:15px; line-height:22px; min-width:520px}
+  th{background:var(--brand-500); color:#FFFFFF; text-align:left; font-weight:600; padding:12px 16px; font-size:14px}
+  td{padding:12px 16px; border-top:1px solid var(--line); vertical-align:top; color:var(--body)}
+  td:first-child{font-weight:600; color:var(--heading); white-space:nowrap}
+  th + th, td + td{border-left:1px solid var(--line)}
+  th + th{border-left-color:rgba(255,255,255,.25)}
+  .pillar{display:inline-flex; align-items:center; gap:8px}
+  .pillar i{width:8px; height:8px; border-radius:2px; background:var(--brand-500); display:inline-block}
+  .pillar.p i{background:var(--warn)}
+  .pillar.q i{background:var(--bad)}
+  .caps td:first-child{white-space:normal; width:38%}
+
+  /* ---------- Process ---------- */
+  .flow{list-style:none; margin:0; padding:0; display:grid; gap:8px; counter-reset:step}
+  .flow li{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:12px 16px;
+    display:grid; grid-template-columns:32px 120px 1fr; gap:12px; align-items:baseline; min-width:0}
+  .flow li::before{counter-increment:step; content:"0" counter(step); font-family:var(--f-head); font-weight:600; font-size:14px; color:var(--link); letter-spacing:.04em}
+  .flow li:not(:last-child)::after{
+    content:""; position:absolute; left:27px; bottom:-9px; width:2px; height:8px; background:var(--brand-400);
+  }
+  .flow b{font-family:var(--f-head); font-weight:600; font-size:16px; line-height:20px; color:var(--heading)}
+  .flow span{font-size:15px; line-height:22px; color:var(--support); min-width:0}
+  .flow li:last-child{background:var(--brand-500); border-color:var(--brand-500)}
+  .flow li:last-child::before,.flow li:last-child b{color:#FFFFFF}
+  .flow li:last-child span{color:var(--brand-100)}
+
+  /* ---------- Dashboards ---------- */
+  .dash-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  .dash{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:16px; display:grid; gap:12px; align-content:start; min-width:0}
+  .dash-top{display:flex; justify-content:space-between; align-items:center; gap:8px}
+  .dash-top b{font-size:13px; line-height:18px; font-weight:600; color:var(--heading)}
+  .live{display:inline-flex; align-items:center; gap:4px; font-size:10px; line-height:16px; font-weight:500; letter-spacing:.96px; text-transform:uppercase; color:var(--good)}
+  .live::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--good)}
+  .big{font-family:var(--f-head); font-weight:700; font-size:40px; line-height:44px; color:var(--heading)}
+  .big small{font-size:14px; line-height:20px; font-weight:500; color:var(--muted); margin-left:4px; font-family:var(--f-body)}
+  .bars{display:grid; gap:8px}
+  .bar-row{display:grid; grid-template-columns:96px 1fr 44px; align-items:center; gap:8px; font-size:12px; line-height:16px; color:var(--support)}
+  .bar-row .v{text-align:right; color:var(--heading); font-weight:600}
+  .track{height:8px; background:var(--surface-2); border-radius:2px; overflow:hidden; border:1px solid var(--line)}
+  .fill{height:100%; background:var(--brand-500)}
+  .fill.warn{background:var(--warn)} .fill.bad{background:var(--bad)} .fill.good{background:var(--good)}
+  .dash svg{width:100%; height:auto; display:block}
+  .legend{display:flex; gap:16px; font-size:11px; line-height:16px; color:var(--support); flex-wrap:wrap}
+  .legend i{display:inline-block; width:12px; height:2px; vertical-align:middle; margin-right:4px; background:var(--brand-500)}
+  .legend i.g{background:var(--good); height:0; border-top:2px dashed var(--good)}
+  .note{font-size:12px; line-height:18px; color:var(--muted)}
+  .svg-text{fill:var(--muted); font-family:var(--f-body); font-size:10px}
+  .svg-grid{stroke:var(--line)}
+
+  /* ---------- Metrics ---------- */
+  .metrics{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  .metric{border:1px solid var(--line); border-radius:8px; padding:20px; display:grid; gap:8px; align-content:start; background:var(--surface)}
+  .metric .num{font-family:var(--f-head); font-weight:700; font-size:48px; line-height:56px; letter-spacing:-.02em; color:var(--link)}
+  .metric h3{font-size:16px; line-height:22px}
+  .metric p{font-size:14px; line-height:22px; color:var(--support)}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; justify-self:start;
+    background:var(--brand-500); color:#FFFFFF; text-decoration:none;
+    font-weight:600; font-size:16px; line-height:24px; padding:12px 24px; border-radius:8px;
+  }
+  .btn:hover{background:var(--brand-600)}
+  .btn:focus-visible{outline:3px solid var(--brand-400); outline-offset:2px}
+  .btn.light{background:#FFFFFF; color:var(--brand-1000)}
+  .btn.light:hover{background:var(--brand-100)}
+
+  /* ---------- Why Faclon ---------- */
+  .why{list-style:none; margin:0; padding:0; display:grid; gap:0}
+  .why li{display:grid; grid-template-columns:40px 1fr; gap:16px; padding:16px 0; border-top:1px solid var(--line)}
+  .why li:last-child{border-bottom:1px solid var(--line)}
+  .why .ic{width:40px; height:40px; border-radius:8px; background:var(--tint); color:var(--link); display:grid; place-items:center}
+  .why .ic svg{width:20px; height:20px}
+  .why b{display:block; font-family:var(--f-head); font-weight:600; font-size:18px; line-height:24px; color:var(--heading); margin-bottom:4px}
+  .why p{font-size:15px; line-height:22px; color:var(--support)}
+
+  /* ---------- Final CTA ---------- */
+  .cta{background:var(--band); padding:56px 48px; display:grid; gap:16px; position:relative; overflow:hidden}
+  .cta h2{color:var(--on-band); font-size:36px; line-height:44px; max-width:520px}
+  .cta p{color:var(--on-band-2); font-size:18px; line-height:28px; max-width:520px}
+  .cta .btn{margin-top:8px}
+  .cta .chev{position:absolute; right:-24px; bottom:-8px; width:220px; opacity:.5; pointer-events:none}
+  .footer{background:var(--band-2); color:var(--on-band-2); padding:20px 48px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; font-size:12px; line-height:18px}
+  .footer a{color:var(--on-band); text-decoration:none}
+
+  @media (max-width:768px){
+    body{padding-block:16px}
+    .section{padding:32px 20px; gap:20px}
+    .hero{padding:24px 20px 0}
+    .hero-visual{margin:0 -20px}
+    .hero h1{font-size:32px; line-height:40px}
+    .hero .lede, .sub{font-size:16px; line-height:24px}
+    h2{font-size:26px; line-height:32px}
+    .flow li{grid-template-columns:28px 1fr; column-gap:12px; row-gap:4px; padding:12px}
+    .flow li::before{grid-row:span 2}
+    .flow li:not(:last-child)::after{left:23px}
+    .table-wrap{overflow:visible}
+    table{min-width:0}
+    thead{display:none}
+    table, tbody, tr, td{display:block}
+    tr + tr{border-top:1px solid var(--line)}
+    td{border:0; padding:12px 16px 0}
+    td + td{border-left:0; padding:4px 16px 12px; font-size:14px; line-height:22px; color:var(--support)}
+    td:first-child, .caps td:first-child{white-space:normal; width:auto}
+    .dash-grid, .metrics{grid-template-columns:1fr}
+    .metric .num{font-size:40px; line-height:48px}
+    .cta{padding:32px 20px}
+    .cta h2{font-size:28px; line-height:36px}
+    .cta .chev{width:140px}
+    .footer{padding:16px 20px}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .needle{transform-origin:0 0; animation:sweep 1.4s cubic-bezier(.2,.8,.2,1) both}
+    @keyframes sweep{from{transform:rotate(-117.9deg)} to{transform:rotate(0)}}
+  }
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="faclon-logo" viewBox="0 0 254 53">
+    <g fill="currentColor">
+      <path d="M21.0896 47.4814L9.07165 13.0136L4.61176 26.8799L11.8509 32.3868L13.1417 38.1526L0 28.5599L9.45639 0L21.0896 34.6505L32.5962 0.507551L41.7691 29.3415L28.6527 38.8631L30.0752 32.6457L37.051 27.3316L32.3988 13.5973L21.0896 47.4814Z"/>
+      <path d="M63.684 8.53735V12.7856H55.0274V17.1708H63.0613V21.4038H55.0274V29.3317H50.0512V8.53735H63.684Z"/>
+      <path d="M86.5859 25.2256L84.9862 21.4038L83.2144 17.1708L81.3818 12.7856L79.6049 8.53735H74.5224L72.7455 12.7856L70.913 17.1708L69.1412 21.4038L67.5415 25.2256L65.8253 29.3317H71.4445L72.8873 25.2256H81.0426L82.4854 29.3317H88.302L86.5859 25.2256ZM74.2237 21.4038L75.712 17.1708L76.9675 13.5926L78.2179 17.1708L79.7062 21.4038H74.2237Z"/>
+      <path d="M126.052 25.2256V29.3317H113.188V8.53735H118.038V25.2256H126.052Z"/>
+      <path d="M175.166 8.53735V19.201L172.969 21.4038L170.337 24.043L169.157 25.2256L167.861 26.525L167.041 25.2256L164.646 21.4038L161.989 17.1708L161.118 15.7801V29.3317H156.294V8.53735H161.893L164.56 12.7856L167.309 17.1708L169.962 21.4038L170.337 21.9976V8.53735H175.166Z"/>
+      <path d="M109.321 26.6663C108.08 27.8794 106.547 28.798 104.836 29.331C103.772 29.6609 102.638 29.8385 101.464 29.8385C100.29 29.8385 99.1556 29.6609 98.0926 29.331C95.7538 28.6052 93.744 27.1485 92.357 25.2249C91.5318 24.093 90.9243 22.7988 90.5902 21.403C90.3928 20.596 90.2915 19.7535 90.2915 18.8856C90.2915 18.3019 90.3371 17.7284 90.4282 17.17C90.6864 15.5662 91.2989 14.0791 92.1848 12.7848C93.5314 10.8257 95.5006 9.31823 97.8192 8.5366C98.9582 8.14579 100.188 7.9377 101.464 7.9377C102.74 7.9377 103.97 8.14579 105.109 8.5366C106.678 9.06446 108.096 9.93238 109.26 11.0388L105.894 14.475C105.225 13.7187 104.395 13.13 103.464 12.7848C102.861 12.5615 102.208 12.4397 101.535 12.4397C100.862 12.4397 100.214 12.5615 99.6112 12.7848C97.7534 13.4649 96.3056 15.1094 95.7639 17.17C95.607 17.7487 95.526 18.3577 95.526 18.9922C95.526 19.8448 95.6728 20.6569 95.9461 21.403C96.6042 23.2099 97.971 24.6209 99.677 25.2249C100.259 25.433 100.887 25.5446 101.535 25.5446C102.183 25.5446 102.811 25.433 103.393 25.2249C104.431 24.8594 105.342 24.1895 106.045 23.3165L109.321 26.6663Z"/>
+      <path d="M151.328 17.17C151.07 15.5662 150.457 14.0791 149.571 12.7848C148.225 10.8257 146.25 9.31823 143.932 8.5366C142.788 8.14579 141.563 7.9377 140.287 7.9377C139.011 7.9377 137.786 8.14579 136.642 8.5366C134.323 9.31823 132.354 10.8257 131.008 12.7848C130.122 14.0791 129.509 15.5662 129.251 17.17C129.16 17.7284 129.114 18.3019 129.114 18.8856C129.114 19.7535 129.216 20.596 129.413 21.403C129.747 22.7988 130.355 24.093 131.18 25.2249C132.567 27.1485 134.577 28.6052 136.92 29.331C137.983 29.6609 139.112 29.8385 140.287 29.8385C141.461 29.8385 142.59 29.6609 143.653 29.331C145.997 28.6052 148.007 27.1485 149.399 25.2249C150.224 24.093 150.832 22.7988 151.166 21.403C151.363 20.596 151.464 19.7535 151.464 18.8856C151.464 18.3019 151.419 17.7284 151.328 17.17ZM145.941 21.403C145.278 23.2099 143.896 24.6209 142.175 25.2249C141.583 25.433 140.95 25.5446 140.297 25.5446C139.644 25.5446 139.011 25.433 138.419 25.2249C136.693 24.6209 135.311 23.2099 134.647 21.403C134.374 20.6569 134.222 19.8448 134.222 18.9922C134.222 18.3577 134.303 17.7487 134.465 17.17C135.012 15.1094 136.475 13.4649 138.353 12.7848C138.966 12.5615 139.619 12.4397 140.297 12.4397C140.98 12.4397 141.633 12.5615 142.246 12.7848C144.114 13.47 145.577 15.1094 146.124 17.17C146.286 17.7487 146.367 18.3577 146.367 18.9922C146.367 19.8448 146.215 20.6569 145.941 21.403Z"/>
+      <path d="M170.934 50.5977V52.1762H158.941V35.5184L161.108 33.3918V50.5977H170.934Z"/>
+      <path d="M200.255 50.5978L198.61 46.7099L197.84 44.898L196.64 42.0658L195.937 40.4062L192.672 32.7168L191.968 31.052H189.675L188.971 32.7168L185.706 40.4062L185.002 42.0658L183.802 44.898L183.033 46.7099L181.383 50.5978L180.714 52.1763H182.901L183.544 50.5978L185.134 46.7099H196.301L197.891 50.5978L198.534 52.1763H200.923L200.255 50.5978ZM185.873 44.898L187.032 42.0658L187.71 40.4062L190.717 33.0568L193.725 40.4062L194.403 42.0658L195.562 44.898H185.873Z"/>
+      <path d="M226.969 44.898C226.599 43.7661 225.845 42.7815 224.837 42.0658C224.25 41.6496 223.572 41.3198 222.838 41.1117C223.283 40.934 223.698 40.6955 224.073 40.4062C225.313 39.4469 226.113 37.9547 226.113 36.2747C226.113 34.8992 225.582 33.6507 224.706 32.7168C223.744 31.6915 222.377 31.052 220.859 31.052H213.037V52.1763H220.95C222.64 52.1763 224.169 51.5774 225.293 50.5978C226.437 49.6131 227.171 48.2377 227.227 46.7099C227.232 46.644 227.232 46.578 227.232 46.512C227.232 45.9537 227.141 45.4106 226.969 44.898ZM215.037 32.7168H220.256C222.372 32.7168 224.088 34.4374 224.088 36.5589C224.088 38.6856 222.372 40.4062 220.256 40.4062H215.037V32.7168ZM215.037 50.5978V42.0658H220.818C222.727 42.0658 224.346 43.2484 224.949 44.898C225.116 45.3446 225.207 45.8319 225.207 46.3343C225.207 46.4612 225.202 46.5881 225.192 46.7099C224.994 48.8873 223.111 50.5978 220.818 50.5978H215.037Z"/>
+      <path d="M253.318 46.7099V46.7403C253.318 48.2021 252.716 49.5471 251.713 50.5977C251.091 51.2525 250.316 51.7905 249.435 52.1762C248.443 52.6178 247.319 52.8665 246.124 52.8665C244.93 52.8665 243.806 52.6178 242.814 52.1762C241.933 51.7905 241.158 51.2525 240.536 50.5977C240.277 50.3287 240.045 50.0394 239.847 49.7349L241.295 48.6081C241.781 49.4507 242.581 50.146 243.568 50.5977C244.363 50.9632 245.274 51.1712 246.251 51.1712C247.228 51.1712 248.144 50.9632 248.939 50.5977C250.6 49.8313 251.728 48.3797 251.754 46.7099V46.6541C251.754 46.0298 251.602 45.441 251.318 44.8979C250.564 43.4311 248.888 42.3602 246.884 42.1724C246.737 42.1572 246.585 42.147 246.433 42.147C246.428 42.1419 246.418 42.1419 246.413 42.147C246.2 42.1267 245.988 42.1013 245.78 42.0658C244.834 41.9084 243.958 41.5887 243.193 41.1471C242.819 40.9289 242.464 40.6802 242.145 40.4061C240.925 39.3555 240.176 37.9242 240.176 36.3457C240.176 34.9702 240.743 33.7115 241.69 32.7167C242.363 32.0112 243.229 31.4377 244.221 31.0519C245.112 30.7068 246.104 30.5139 247.147 30.5139C248.19 30.5139 249.182 30.7068 250.073 31.0519C251.065 31.4377 251.926 32.0112 252.599 32.7167C252.731 32.8487 252.852 32.9908 252.969 33.138L251.303 34.4373C250.822 33.6912 250.078 33.0872 249.187 32.7167C248.559 32.4579 247.856 32.3107 247.112 32.3107C246.367 32.3107 245.664 32.4579 245.036 32.7167C243.411 33.3918 242.292 34.8281 242.292 36.4929C242.292 38.2845 243.588 39.8072 245.411 40.4061C245.699 40.5025 246.008 40.5736 246.322 40.6193C246.58 40.6548 246.843 40.6751 247.112 40.6751C247.117 40.67 247.122 40.6751 247.127 40.6751C248.21 40.802 249.218 41.137 250.088 41.6293C250.326 41.7613 250.559 41.9084 250.777 42.0658C251.799 42.8068 252.574 43.7813 252.984 44.8979C253.196 45.4664 253.313 46.0755 253.318 46.7099Z"/>
+    </g>
+  </symbol>
+</svg>
+
+<main class="letter">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div class="masthead">
+      <svg class="logo on-dark" viewBox="0 0 254 53" role="img" aria-label="Faclon Labs"><use href="#faclon-logo"/></svg>
+      <span class="issue">Newsletter &middot; Injection Moulding</span>
+    </div>
+    <div class="hero-copy">
+      <span class="eyebrow">OEE Intelligence for Plastics Moulding</span>
+      <h1>Your Machines Are Cycling. But Are Your <em>Moulds Performing?</em></h1>
+      <p class="lede">Cycle drift, slow changeovers, worn tooling and short shots rarely trigger an alarm. They can quietly reduce output and affect every shift's performance.</p>
+      <div class="chips">
+        <span class="chip">Cycle drift</span><span class="chip">Slow changeovers</span><span class="chip">Worn tooling</span><span class="chip">Short shots</span>
+      </div>
+    </div>
+
+    <!-- Hero visual: injection moulding press with live OEE gauge overlay -->
+    <div class="hero-visual" aria-label="Illustration of an injection moulding press with a live OEE gauge overlay" role="img">
+      <svg viewBox="0 0 720 330" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#165FF2" stop-opacity=".16"/>
+            <stop offset="1" stop-color="#165FF2" stop-opacity="0"/>
+          </linearGradient>
+          <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1" fill="#5A8DF7" fill-opacity=".18"/>
+          </pattern>
+          <filter id="lift" x="-10%" y="-10%" width="120%" height="130%">
+            <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity=".35"/>
+          </filter>
+        </defs>
+        <rect x="0" y="0" width="720" height="330" fill="url(#dots)"/>
+        <rect x="0" y="262" width="720" height="68" fill="url(#floor)"/>
+        <line x1="0" y1="262" x2="720" y2="262" stroke="#5A8DF7" stroke-opacity=".35"/>
+
+        <!-- Press: base -->
+        <rect x="36" y="206" width="404" height="56" rx="4" fill="#0A3083"/>
+        <rect x="36" y="206" width="404" height="6" rx="2" fill="#124ED0"/>
+        <rect x="60" y="226" width="60" height="18" rx="2" fill="#07215C"/>
+        <rect x="130" y="226" width="24" height="18" rx="2" fill="#07215C"/>
+        <!-- Clamp: rear platen + toggle -->
+        <rect x="52" y="96" width="22" height="110" rx="2" fill="#124ED0"/>
+        <path d="M74 132 L104 118 L134 132 M74 170 L104 184 L134 170" stroke="#8AB1FB" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <!-- Tie bars -->
+        <rect x="74" y="112" width="200" height="6" fill="#B8D0FD" fill-opacity=".75"/>
+        <rect x="74" y="184" width="200" height="6" fill="#B8D0FD" fill-opacity=".75"/>
+        <!-- Moving platen -->
+        <rect x="134" y="100" width="18" height="102" rx="2" fill="#165FF2"/>
+        <!-- Mould halves (closed) -->
+        <rect x="152" y="122" width="42" height="58" rx="2" fill="#5A8DF7"/>
+        <rect x="194" y="122" width="42" height="58" rx="2" fill="#8AB1FB"/>
+        <line x1="194" y1="122" x2="194" y2="180" stroke="#041438" stroke-width="2"/>
+        <circle cx="173" cy="151" r="5" fill="#041438" fill-opacity=".45"/>
+        <circle cx="215" cy="151" r="5" fill="#041438" fill-opacity=".45"/>
+        <!-- Stationary platen -->
+        <rect x="236" y="96" width="22" height="110" rx="2" fill="#124ED0"/>
+        <!-- Injection unit -->
+        <rect x="258" y="144" width="140" height="18" rx="2" fill="#B8D0FD"/>
+        <rect x="276" y="140" width="12" height="26" rx="2" fill="#F79009"/>
+        <rect x="300" y="140" width="12" height="26" rx="2" fill="#F79009"/>
+        <rect x="324" y="140" width="12" height="26" rx="2" fill="#F79009"/>
+        <path d="M340 86 H384 L370 140 H354 Z" fill="#5A8DF7"/>
+        <rect x="336" y="80" width="52" height="8" rx="2" fill="#8AB1FB"/>
+        <rect x="398" y="128" width="42" height="50" rx="4" fill="#124ED0"/>
+        <rect x="398" y="178" width="42" height="28" rx="2" fill="#0A3083"/>
+        <!-- Guard window -->
+        <rect x="140" y="62" width="124" height="20" rx="2" fill="#07215C" stroke="#5A8DF7" stroke-opacity=".5"/>
+        <text x="202" y="76" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#DCE8FE" letter-spacing=".8">PRESS 07 · 250T</text>
+        <!-- Signal line from press to overlay -->
+        <path d="M440 150 C 470 150, 470 110, 492 110" stroke="#68DD68" stroke-width="1.5" stroke-dasharray="3 4" fill="none"/>
+        <circle cx="440" cy="150" r="4" fill="#68DD68"/>
+
+        <!-- OEE overlay card -->
+        <g filter="url(#lift)">
+          <rect x="492" y="28" width="200" height="226" rx="8" fill="#FFFFFF"/>
+        </g>
+        <text x="508" y="52" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="600" fill="#0C1927">Live OEE · Press 07</text>
+        <circle cx="664" cy="48" r="3.5" fill="#00BE5F"/>
+        <text x="508" y="66" font-family="Inter,Arial,sans-serif" font-size="9.5" fill="#768EA7">Mould M-114 · Cap 32 mm · Shift B</text>
+        <g transform="translate(592 146)">
+          <path d="M -64 0 A 64 64 0 0 1 64 0" fill="none" stroke="#DCE8FE" stroke-width="12" stroke-linecap="round"/>
+          <path d="M -64 0 A 64 64 0 0 1 64 0" fill="none" stroke="#165FF2" stroke-width="12" stroke-linecap="round" pathLength="100" stroke-dasharray="65.5 100"/>
+          <!-- needle at 65.5%: angle from left = 117.9deg -->
+          <g class="needle">
+            <line x1="0" y1="0" x2="-48" y2="0" stroke="#0C1927" stroke-width="3" stroke-linecap="round" transform="rotate(117.9)"/>
+          </g>
+          <circle r="6" fill="#0C1927"/>
+          <text x="0" y="-22" text-anchor="middle" font-family="'TASA Orbiter',Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#0C1927">65.5%</text>
+          <text x="-64" y="18" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#768EA7">0</text>
+          <text x="64" y="18" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#768EA7">100</text>
+        </g>
+        <!-- A / P / Q -->
+        <g font-family="Inter,Arial,sans-serif" font-size="9.5">
+          <line x1="508" y1="178" x2="676" y2="178" stroke="#DDE5EF"/>
+          <text x="508" y="198" fill="#40566D">Availability</text>
+          <text x="676" y="198" text-anchor="end" fill="#0C1927" font-weight="600">82%</text>
+          <text x="508" y="216" fill="#40566D">Performance</text>
+          <text x="676" y="216" text-anchor="end" fill="#0C1927" font-weight="600">85%</text>
+          <text x="508" y="234" fill="#40566D">Quality</text>
+          <text x="676" y="234" text-anchor="end" fill="#0C1927" font-weight="600">94%</text>
+        </g>
+        <!-- Cycle drift callout -->
+        <rect x="492" y="268" width="200" height="34" rx="6" fill="#FFF5F5" fill-opacity=".96"/>
+        <circle cx="508" cy="285" r="4" fill="#F04438"/>
+        <text x="518" y="282" font-family="Inter,Arial,sans-serif" font-size="9.5" font-weight="600" fill="#750A0A">Cycle drift +1.7 s vs golden</text>
+        <text x="518" y="295" font-family="Inter,Arial,sans-serif" font-size="9" fill="#40566D">20.1 s live · 18.4 s golden cycle</text>
+      </svg>
+    </div>
+  </header>
+
+  <!-- ================= SECTION 1 ================= -->
+  <section class="section">
+    <div class="head">
+      <span class="eyebrow">The hidden problem</span>
+      <h2>Losses That Never Reach the Shift Report</h2>
+      <p class="sub">Moulding losses don't come from one breakdown. They build cycle after cycle.</p>
+    </div>
+    <p>Machines keep cycling, so everything looks fine. Meanwhile, downtime can be underreported, cycle times drift, moulds wear over time and defects reduce good-part output.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>OEE Pillar</th><th>Where Output Is Lost</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pillar"><i></i>Availability</span></td><td>Unplanned downtime, long mould changeovers, unlogged stoppages</td></tr>
+          <tr><td><span class="pillar p"><i></i>Performance</span></td><td>Microstops, cycle-time drift, blocked or lost cavities</td></tr>
+          <tr><td><span class="pillar q"><i></i>Quality</span></td><td>Short shots, flash, sink marks and warpage from worn tooling</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="supporting">These losses can increase when moulds run on the wrong press, and this is often difficult to trace back to the <strong>mould–press pairing</strong>.</p>
+  </section>
+
+  <!-- ================= SECTION 2 ================= -->
+  <section class="section tinted">
+    <div class="head">
+      <span class="eyebrow">The solution</span>
+      <h2>Faclon Labs OEE for Injection Moulding</h2>
+      <p class="sub">Faclon Labs connects machines, moulds, materials and operators into one live view of production performance across presses, shifts and plants.</p>
+    </div>
+    <p>Every loss is captured, classified and linked to the machine, mould, job or shift where it occurs.</p>
+    <ol class="flow">
+      <li><b>Connect</b><span>Connect presses through PLCs and controllers, or custom digital inputs on older machines.</span></li>
+      <li><b>Capture</b><span>Capture downtime, changeovers, cycles and rejections automatically.</span></li>
+      <li><b>Analyse</b><span>Analyse losses by press, mould, job, operator and shift.</span></li>
+      <li><b>Recommend</b><span>Recommend the right mould–press pairing and maintenance timing.</span></li>
+      <li><b>Improve</b><span>Improve OEE continuously against each mould's golden cycle.</span></li>
+    </ol>
+    <p class="supporting">A single view to understand <strong>where OEE is being lost</strong> and where it can be improved.</p>
+  </section>
+
+  <!-- ================= SECTION 3 ================= -->
+  <section class="section">
+    <div class="head">
+      <span class="eyebrow">Capabilities</span>
+      <h2>Solution Highlights</h2>
+    </div>
+    <div class="table-wrap">
+      <table class="caps">
+        <thead><tr><th>Capability</th><th>Impact</th></tr></thead>
+        <tbody>
+          <tr><td>Intelligent Mould Recommendation</td><td>Every job runs on the best-fit press, matched on historical OEE, tonnage, shot size and platen/tie-bar fit</td></tr>
+          <tr><td>Mould Life Management</td><td>Moulds are serviced and refurbished before wear causes defects, based on shots against rated tool life</td></tr>
+          <tr><td>Golden Cycle Benchmarking</td><td>Cycle drift is identified against the best proven cycle for each mould</td></tr>
+          <tr><td>Downtime &amp; Changeover Optimization</td><td>Shorter changeovers and fewer stoppages through auto-classification, SMED tracking and predictive alerts</td></tr>
+          <tr><td>Cycle &amp; Performance Intelligence</td><td>Microstops, cycle deviations and cavity losses are identified to help recover lost output</td></tr>
+          <tr><td>Quality Optimization</td><td>Short shots, flash, sink and warpage are detected early and traced to their source</td></tr>
+          <tr><td>Operator &amp; Job Intelligence</td><td>Clear visibility into shift, job and operator performance</td></tr>
+          <tr><td>Cost &amp; Loss Visibility</td><td>Material, scrap and cycle-time losses are converted into ₹ value to help prioritize improvements</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="supporting">Older or unconnected presses can also be connected through <strong>custom-engineered digital inputs</strong>, so no machine is left out.</p>
+  </section>
+
+  <!-- ================= SECTION 4 ================= -->
+  <section class="section tinted">
+    <div class="head">
+      <span class="eyebrow">The platform</span>
+      <h2>Dashboards Your Team Will Use Every Shift</h2>
+      <p class="sub">A single view of production performance, mould health and operational losses.</p>
+    </div>
+
+    <div class="dash-grid">
+      <!-- Live OEE -->
+      <div class="dash">
+        <div class="dash-top"><b>Live OEE Dashboard</b><span class="live">Live</span></div>
+        <div class="big tnum">65.5%<small>Plant 2 · Line A</small></div>
+        <div class="bars tnum">
+          <div class="bar-row"><span>Availability</span><div class="track"><div class="fill" style="width:82%"></div></div><span class="v">82%</span></div>
+          <div class="bar-row"><span>Performance</span><div class="track"><div class="fill" style="width:85%"></div></div><span class="v">85%</span></div>
+          <div class="bar-row"><span>Quality</span><div class="track"><div class="fill" style="width:94%"></div></div><span class="v">94%</span></div>
+        </div>
+      </div>
+
+      <!-- Mould Health -->
+      <div class="dash">
+        <div class="dash-top"><b>Mould Health View</b><span class="note">Shots vs rated life</span></div>
+        <div class="bars tnum">
+          <div class="bar-row"><span>M-031 Bucket</span><div class="track"><div class="fill bad" style="width:95%"></div></div><span class="v">95%</span></div>
+          <div class="bar-row"><span>M-114 Cap</span><div class="track"><div class="fill warn" style="width:82%"></div></div><span class="v">82%</span></div>
+          <div class="bar-row"><span>M-207 Crate</span><div class="track"><div class="fill good" style="width:47%"></div></div><span class="v">47%</span></div>
+          <div class="bar-row"><span>M-088 Lid</span><div class="track"><div class="fill good" style="width:31%"></div></div><span class="v">31%</span></div>
+        </div>
+        <p class="note">M-031 due for service in ~25k shots.</p>
+      </div>
+
+      <!-- Downtime pareto -->
+      <div class="dash">
+        <div class="dash-top"><b>Downtime &amp; Changeover</b><span class="note">Minutes, this week</span></div>
+        <div class="bars tnum">
+          <div class="bar-row"><span>Mould change</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="v">142</span></div>
+          <div class="bar-row"><span>Material wait</span><div class="track"><div class="fill" style="width:60.6%"></div></div><span class="v">86</span></div>
+          <div class="bar-row"><span>Heater fault</span><div class="track"><div class="fill" style="width:38%"></div></div><span class="v">54</span></div>
+          <div class="bar-row"><span>Robot jam</span><div class="track"><div class="fill" style="width:26.8%"></div></div><span class="v">38</span></div>
+          <div class="bar-row"><span>Unlogged</span><div class="track"><div class="fill bad" style="width:21.8%"></div></div><span class="v">31</span></div>
+        </div>
+      </div>
+
+      <!-- Golden cycle -->
+      <div class="dash">
+        <div class="dash-top"><b>Golden Cycle Comparison</b><span class="note">M-114 · seconds</span></div>
+        <svg viewBox="0 0 340 130" role="img" aria-label="Live cycle time rising from 18.5 to 20.1 seconds against an 18.4 second golden cycle">
+          <g class="svg-grid" stroke-width="1">
+            <line x1="36" y1="10" x2="336" y2="10"/><line x1="36" y1="35" x2="336" y2="35"/>
+            <line x1="36" y1="60" x2="336" y2="60"/><line x1="36" y1="85" x2="336" y2="85"/>
+            <line x1="36" y1="110" x2="336" y2="110"/>
+          </g>
+          <g class="svg-text" text-anchor="end">
+            <text x="28" y="13">21</text><text x="28" y="38">20</text><text x="28" y="63">19</text>
+            <text x="28" y="88">18</text><text x="28" y="113">17</text>
+          </g>
+          <line x1="36" y1="75" x2="336" y2="75" stroke="#00BE5F" stroke-width="2" stroke-dasharray="5 4"/>
+          <polygon fill="#165FF2" fill-opacity=".12" points="36,72.5 63.3,75 90.5,70 117.8,67.5 145.1,62.5 172.4,60 199.6,55 226.9,50 254.2,45 281.5,40 308.7,37.5 336,32.5 336,75 36,75"/>
+          <polyline fill="none" stroke="#165FF2" stroke-width="2.5" stroke-linejoin="round" points="36,72.5 63.3,75 90.5,70 117.8,67.5 145.1,62.5 172.4,60 199.6,55 226.9,50 254.2,45 281.5,40 308.7,37.5 336,32.5"/>
+          <circle cx="336" cy="32.5" r="4" fill="#165FF2" stroke="#FFFFFF" stroke-width="1.5"/>
+          <text x="330" y="24" text-anchor="end" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#F04438">20.1 s</text>
+        </svg>
+        <div class="legend"><span><i></i>Live cycle</span><span><i class="g"></i>Golden cycle 18.4 s</span></div>
+      </div>
+    </div>
+    <p class="note">Dashboard views shown with illustrative data.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tool</th><th>What Your Team Gets</th></tr></thead>
+        <tbody>
+          <tr><td>Live OEE Dashboard</td><td>Availability, performance and quality by press, mould, line and plant</td></tr>
+          <tr><td>Mould Health View</td><td>Shot count vs rated life, upcoming maintenance and cleaning</td></tr>
+          <tr><td>Downtime &amp; Changeover Analysis</td><td>Top loss reasons and SMED trends at a glance</td></tr>
+          <tr><td>Golden Cycle Comparison</td><td>Live cycle vs best proven cycle for every mould</td></tr>
+          <tr><td>Operator &amp; Job Scorecards</td><td>Shift-wise performance and accountability</td></tr>
+          <tr><td>Digital Logs &amp; Workflows</td><td>Structured shop floor entries replacing paper logs</td></tr>
+          <tr><td>Smart Alerts</td><td>Instant notifications on drift, prolonged downtime and mould-life limits</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 5 ================= -->
+  <section class="section">
+    <div class="head">
+      <span class="eyebrow">Results</span>
+      <h2>Proven Impact</h2>
+      <p class="sub">Measured improvements across moulding operations.</p>
+    </div>
+    <div class="metrics tnum">
+      <div class="metric"><div class="num">22%</div><h3>Reduction in Downtime &amp; Changeover Losses</h3><p>Improved machine availability through better visibility and faster response.</p></div>
+      <div class="metric"><div class="num">18%</div><h3>Recovery in Lost Output</h3><p>Identified cycle-time inefficiencies and performance losses.</p></div>
+      <div class="metric"><div class="num">30%</div><h3>Fewer Defects</h3><p>Early detection of mould wear and process deviations reduced quality losses.</p></div>
+      <div class="metric"><div class="num">60%+</div><h3>Real OEE Visibility</h3><p>Exposed hidden losses previously masked by manual reporting and assumptions.</p></div>
+    </div>
+    <p class="supporting">Improvements that directly support <strong>higher throughput and lower scrap costs</strong>.</p>
+    <a class="btn" href="https://www.faclon.com" target="_blank" rel="noopener">Estimate Your Hidden Output <span aria-hidden="true">→</span></a>
+  </section>
+
+  <!-- ================= SECTION 6 ================= -->
+  <section class="section tinted">
+    <div class="head">
+      <span class="eyebrow">Built for the shop floor</span>
+      <h2>Why Faclon Labs</h2>
+      <p class="sub">Built to work with your existing systems and improve production performance.</p>
+    </div>
+    <ul class="why">
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7V3M15 7V3M7 7h10v5a5 5 0 0 1-10 0V7zM12 17v4"/></svg></span>
+        <div><b>No Disruption to Existing Systems</b><p>Works with your PLCs, controllers, sensors and manual workflows, adding instrumentation only where data doesn't exist.</p></div>
+      </li>
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></span>
+        <div><b>Moulding Context + AI</b><p>Insights grounded in mould, material, machine and job, not generic machine data.</p></div>
+      </li>
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V14M10 20V10M16 20V6M22 20V2"/></svg></span>
+        <div><b>Start Small, Scale Anytime</b><p>Begin with a few presses, then add machines, moulds, plants and new use cases on the same platform.</p></div>
+      </li>
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="10" width="6" height="11" rx="1"/><rect x="9" y="6" width="6" height="15" rx="1"/><rect x="16" y="10" width="6" height="11" rx="1"/><path d="M5 10V7h14v3"/></svg></span>
+        <div><b>Standardized Across Plants</b><p>One OEE and mould-management framework across every unit and facility.</p></div>
+      </li>
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
+        <div><b>Fast Deployment, Faster ROI</b><p>Go live quickly and see measurable improvements within weeks.</p></div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="cta">
+    <svg class="chev" viewBox="0 0 220 120" aria-hidden="true">
+      <path d="M20 10 L70 60 L20 110 H60 L110 60 L60 10 Z" fill="#243547"/>
+      <path d="M100 10 L150 60 L100 110 H140 L190 60 L140 10 Z" fill="#243547"/>
+    </svg>
+    <span class="eyebrow" style="color:var(--on-band-hi)">Next step</span>
+    <h2>Find Out Where Your Moulding Line Is Losing Output.</h2>
+    <p>See how Faclon can help identify hidden losses across your presses, moulds, cycles, changeovers and quality.</p>
+    <a class="btn light" href="https://www.faclon.com" target="_blank" rel="noopener">See Your OEE in Action <span aria-hidden="true">→</span></a>
+  </section>
+
+  <footer class="footer">
+    <svg class="logo on-dark" style="width:96px" viewBox="0 0 254 53" role="img" aria-label="Faclon Labs"><use href="#faclon-logo"/></svg>
+    <span>&copy; Faclon Labs. All Rights Reserved. &middot; <a href="https://www.faclon.com" target="_blank" rel="noopener">www.faclon.com</a></span>
+  </footer>
+
+</main>
+</body></html>
