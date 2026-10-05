@@ -190,8 +190,19 @@
   .cta p{color:var(--on-band-2); font-size:18px; line-height:28px; max-width:520px}
   .cta .btn{margin-top:8px}
   .cta .chev{position:absolute; right:-24px; bottom:-8px; width:220px; opacity:.5; pointer-events:none}
-  .footer{background:var(--band-2); color:var(--on-band-2); padding:20px 48px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; font-size:12px; line-height:18px}
+  .footer{background:var(--band-2); color:var(--on-band-2); padding:40px 48px 0; display:grid; gap:32px; font-size:14px; line-height:22px}
+  .footer-top{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:32px}
+  .footer-brand{display:grid; gap:12px; align-content:start}
+  .footer-brand p{color:var(--on-band-2); font-size:14px; line-height:22px; max-width:240px}
+  .footer-col{display:grid; gap:12px; align-content:start; min-width:0}
+  .footer-col h4{margin:0; font-size:12px; line-height:16px; font-weight:600; letter-spacing:.96px; text-transform:uppercase; color:var(--on-band-hi)}
+  .contact-line{display:grid; grid-template-columns:20px 1fr; gap:8px; align-items:start; color:var(--on-band); overflow-wrap:anywhere}
+  .contact-line svg{width:16px; height:16px; margin-top:3px; color:var(--on-band-hi)}
   .footer a{color:var(--on-band); text-decoration:none}
+  .footer a:hover{text-decoration:underline}
+  .footer address{font-style:normal; color:var(--on-band)}
+  .fill-in{display:inline-block; border:1px dashed var(--on-band-hi); border-radius:4px; padding:0 8px; color:var(--on-band-hi); font-weight:500}
+  .footer-bottom{border-top:1px solid var(--band-line); padding-block:16px 20px; display:flex; justify-content:space-between; gap:8px 16px; flex-wrap:wrap; font-size:12px; line-height:18px}
 
   @media (max-width:768px){
     body{padding-block:16px}
@@ -217,7 +228,8 @@
     .cta{padding:32px 20px}
     .cta h2{font-size:28px; line-height:36px}
     .cta .chev{width:140px}
-    .footer{padding:16px 20px}
+    .footer{padding:32px 20px 0; gap:24px}
+    .footer-top{grid-template-columns:1fr; gap:24px}
   }
   @media (prefers-reduced-motion:no-preference){
     .needle{transform-origin:0 0; animation:sweep 1.4s cubic-bezier(.2,.8,.2,1) both}
@@ -564,8 +576,38 @@
   </section>
 
   <footer class="footer">
-    <svg class="logo on-dark" style="width:96px" viewBox="0 0 254 53" role="img" aria-label="Faclon Labs"><use href="#faclon-logo"/></svg>
-    <span>&copy; Faclon Labs. All Rights Reserved. &middot; <a href="https://www.faclon.com" target="_blank" rel="noopener">www.faclon.com</a></span>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <svg class="logo on-dark" viewBox="0 0 254 53" role="img" aria-label="Faclon Labs"><use href="#faclon-logo"/></svg>
+        <p>Industrial AI and OEE intelligence for injection moulding plants.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <span class="contact-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg>
+          <span class="fill-in">[Email address]</span>
+        </span>
+        <span class="contact-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          <span class="tnum">+91 97249 94773</span>
+        </span>
+        <span class="contact-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+          <a href="https://www.faclon.com" target="_blank" rel="noopener">www.faclon.com</a>
+        </span>
+      </div>
+      <div class="footer-col">
+        <h4>Office</h4>
+        <span class="contact-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <address><strong style="font-weight:600">Faclon Labs Inc. Ltd.</strong><br><span class="fill-in">[Office address]</span></address>
+        </span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Faclon Labs Inc. Ltd. All rights reserved.</span>
+      <span>You are receiving this newsletter as a Faclon Labs contact.</span>
+    </div>
   </footer>
 
 </main>
