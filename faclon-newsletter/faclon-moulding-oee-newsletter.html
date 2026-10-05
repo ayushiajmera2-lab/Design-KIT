@@ -106,8 +106,22 @@
   .hero-copy{display:grid; gap:16px}
   .chips{display:flex; flex-wrap:wrap; gap:8px}
   .chip{font-size:13px; line-height:20px; font-weight:500; color:var(--on-band); padding:4px 12px; border:1px solid var(--band-line); border-radius:999px}
-  .hero-visual{margin:0 -48px; display:block}
-  .hero-visual svg{display:block; width:100%; height:auto}
+  .hero-visual{margin:0 -48px; position:relative}
+  .hero-visual .scene{display:block; width:100%; height:auto}
+  /* Overlay card is a fixed white instrument panel on the dark photo in both themes */
+  .oee-card{position:absolute; top:20px; right:24px; width:220px; background:#FFFFFF; color:#0C1927;
+    border-radius:10px; padding:12px 16px; display:grid; gap:6px; box-shadow:0 8px 24px rgba(0,0,0,.35)}
+  .oee-top{display:flex; justify-content:space-between; align-items:center; gap:8px}
+  .oee-top b{font-size:13px; line-height:18px; font-weight:600; color:#0C1927}
+  .oee-meta{font-size:11px; line-height:16px; color:#768EA7}
+  .gauge{width:100%; max-width:150px; height:auto; display:block; justify-self:center}
+  .apq{margin:0; display:grid; gap:4px; border-top:1px solid #DDE5EF; padding-top:8px}
+  .apq div{display:flex; justify-content:space-between; font-size:12px; line-height:16px}
+  .apq dt{color:#40566D} .apq dd{margin:0; font-weight:600; color:#0C1927}
+  .drift{display:grid; grid-template-columns:8px 1fr; gap:8px; align-items:start; background:#FFF5F5; border-radius:6px; padding:6px 10px}
+  .drift i{width:8px; height:8px; border-radius:50%; background:#F04438; margin-top:5px}
+  .drift b{display:block; font-size:12px; line-height:18px; font-weight:600; color:#750A0A}
+  .drift span{font-size:11px; line-height:16px; color:#40566D}
 
   /* ---------- Tables ---------- */
   .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:8px}
@@ -211,7 +225,8 @@
     body{padding-block:16px}
     .section{padding:32px 20px; gap:20px}
     .hero{padding:24px 20px 0}
-    .hero-visual{margin:0 -20px}
+    .hero-visual{margin:0 -20px; background:var(--band)}
+    .oee-card{position:relative; top:auto; right:auto; width:auto; margin:-32px 20px 24px}
     .hero h1{font-size:32px; line-height:40px}
     .hero .lede, .sub{font-size:16px; line-height:24px}
     h2{font-size:26px; line-height:32px}
@@ -277,98 +292,212 @@
       </div>
     </div>
 
-    <!-- Hero visual: injection moulding press with live OEE gauge overlay -->
-    <div class="hero-visual" aria-label="Illustration of an injection moulding press with a live OEE gauge overlay" role="img">
-      <svg viewBox="0 0 720 330" xmlns="http://www.w3.org/2000/svg">
+    <!-- Hero visual: injection moulding press on the shop floor with live OEE overlay -->
+    <figure class="hero-visual">
+      <svg class="scene" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Injection moulding press on a factory floor under overhead lights">
         <defs>
-          <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#165FF2" stop-opacity=".16"/>
-            <stop offset="1" stop-color="#165FF2" stop-opacity="0"/>
+          <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0A1422"/><stop offset=".75" stop-color="#0E1C30"/><stop offset="1" stop-color="#0B1727"/>
           </linearGradient>
-          <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
-            <circle cx="2" cy="2" r="1" fill="#5A8DF7" fill-opacity=".18"/>
-          </pattern>
-          <filter id="lift" x="-10%" y="-10%" width="120%" height="130%">
-            <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity=".35"/>
+          <linearGradient id="floorG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#16263C"/><stop offset=".35" stop-color="#0C1828"/><stop offset="1" stop-color="#050B14"/>
+          </linearGradient>
+          <radialGradient id="bayLight" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#EAF2FF" stop-opacity=".95"/><stop offset=".25" stop-color="#B8D0FD" stop-opacity=".35"/><stop offset="1" stop-color="#B8D0FD" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="cone" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#B8D0FD" stop-opacity=".16"/><stop offset="1" stop-color="#B8D0FD" stop-opacity="0"/>
+          </linearGradient>
+          <radialGradient id="pool" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#8AB1FB" stop-opacity=".22"/><stop offset="1" stop-color="#8AB1FB" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="paint" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2E6BF0"/><stop offset=".12" stop-color="#1C55D6"/><stop offset=".7" stop-color="#103A9E"/><stop offset="1" stop-color="#0A2A75"/>
+          </linearGradient>
+          <linearGradient id="shell" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F4F7FB"/><stop offset=".45" stop-color="#D9E1EB"/><stop offset="1" stop-color="#A9B6C7"/>
+          </linearGradient>
+          <linearGradient id="shellSide" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#000" stop-opacity=".18"/><stop offset=".08" stop-color="#000" stop-opacity="0"/><stop offset=".92" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".22"/>
+          </linearGradient>
+          <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#8A97A8"/><stop offset=".3" stop-color="#E3E8EF"/><stop offset=".55" stop-color="#9AA6B6"/><stop offset="1" stop-color="#4C5868"/>
+          </linearGradient>
+          <linearGradient id="steelV" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#4C5868"/><stop offset=".35" stop-color="#C9D1DC"/><stop offset=".6" stop-color="#8E9AAB"/><stop offset="1" stop-color="#3E4957"/>
+          </linearGradient>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1D3150"/><stop offset=".5" stop-color="#0B1628"/><stop offset="1" stop-color="#132440"/>
+          </linearGradient>
+          <linearGradient id="streak" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="reflect" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1C55D6" stop-opacity=".28"/><stop offset="1" stop-color="#1C55D6" stop-opacity="0"/>
+          </linearGradient>
+          <radialGradient id="vignette" cx=".45" cy=".45" r=".75">
+            <stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".6"/>
+          </radialGradient>
+          <radialGradient id="glowG" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#3DFF8A" stop-opacity=".9"/><stop offset="1" stop-color="#3DFF8A" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="soft" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
+          <filter id="soft2" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="2"/></filter>
+          <filter id="grain" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/>
+            <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0"/>
           </filter>
         </defs>
-        <rect x="0" y="0" width="720" height="330" fill="url(#dots)"/>
-        <rect x="0" y="262" width="720" height="68" fill="url(#floor)"/>
-        <line x1="0" y1="262" x2="720" y2="262" stroke="#5A8DF7" stroke-opacity=".35"/>
 
-        <!-- Press: base -->
-        <rect x="36" y="206" width="404" height="56" rx="4" fill="#0A3083"/>
-        <rect x="36" y="206" width="404" height="6" rx="2" fill="#124ED0"/>
-        <rect x="60" y="226" width="60" height="18" rx="2" fill="#07215C"/>
-        <rect x="130" y="226" width="24" height="18" rx="2" fill="#07215C"/>
-        <!-- Clamp: rear platen + toggle -->
-        <rect x="52" y="96" width="22" height="110" rx="2" fill="#124ED0"/>
-        <path d="M74 132 L104 118 L134 132 M74 170 L104 184 L134 170" stroke="#8AB1FB" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <!-- Tie bars -->
-        <rect x="74" y="112" width="200" height="6" fill="#B8D0FD" fill-opacity=".75"/>
-        <rect x="74" y="184" width="200" height="6" fill="#B8D0FD" fill-opacity=".75"/>
-        <!-- Moving platen -->
-        <rect x="134" y="100" width="18" height="102" rx="2" fill="#165FF2"/>
-        <!-- Mould halves (closed) -->
-        <rect x="152" y="122" width="42" height="58" rx="2" fill="#5A8DF7"/>
-        <rect x="194" y="122" width="42" height="58" rx="2" fill="#8AB1FB"/>
-        <line x1="194" y1="122" x2="194" y2="180" stroke="#041438" stroke-width="2"/>
-        <circle cx="173" cy="151" r="5" fill="#041438" fill-opacity=".45"/>
-        <circle cx="215" cy="151" r="5" fill="#041438" fill-opacity=".45"/>
-        <!-- Stationary platen -->
-        <rect x="236" y="96" width="22" height="110" rx="2" fill="#124ED0"/>
-        <!-- Injection unit -->
-        <rect x="258" y="144" width="140" height="18" rx="2" fill="#B8D0FD"/>
-        <rect x="276" y="140" width="12" height="26" rx="2" fill="#F79009"/>
-        <rect x="300" y="140" width="12" height="26" rx="2" fill="#F79009"/>
-        <rect x="324" y="140" width="12" height="26" rx="2" fill="#F79009"/>
-        <path d="M340 86 H384 L370 140 H354 Z" fill="#5A8DF7"/>
-        <rect x="336" y="80" width="52" height="8" rx="2" fill="#8AB1FB"/>
-        <rect x="398" y="128" width="42" height="50" rx="4" fill="#124ED0"/>
-        <rect x="398" y="178" width="42" height="28" rx="2" fill="#0A3083"/>
-        <!-- Guard window -->
-        <rect x="140" y="62" width="124" height="20" rx="2" fill="#07215C" stroke="#5A8DF7" stroke-opacity=".5"/>
-        <text x="202" y="76" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#DCE8FE" letter-spacing=".8">PRESS 07 · 250T</text>
-        <!-- Signal line from press to overlay -->
-        <path d="M440 150 C 470 150, 470 110, 492 110" stroke="#68DD68" stroke-width="1.5" stroke-dasharray="3 4" fill="none"/>
-        <circle cx="440" cy="150" r="4" fill="#68DD68"/>
-
-        <!-- OEE overlay card -->
-        <g filter="url(#lift)">
-          <rect x="492" y="28" width="200" height="226" rx="8" fill="#FFFFFF"/>
+        <!-- Bay: wall, columns, lights -->
+        <rect width="1200" height="600" fill="url(#wall)"/>
+        <g stroke="#1A2B42" stroke-width="1">
+          <line x1="0" y1="120" x2="1200" y2="120"/><line x1="0" y1="250" x2="1200" y2="250"/>
+          <line x1="240" y1="0" x2="240" y2="380"/><line x1="480" y1="0" x2="480" y2="380"/><line x1="720" y1="0" x2="720" y2="380"/><line x1="960" y1="0" x2="960" y2="380"/>
         </g>
-        <text x="508" y="52" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="600" fill="#0C1927">Live OEE · Press 07</text>
-        <circle cx="664" cy="48" r="3.5" fill="#00BE5F"/>
-        <text x="508" y="66" font-family="Inter,Arial,sans-serif" font-size="9.5" fill="#768EA7">Mould M-114 · Cap 32 mm · Shift B</text>
-        <g transform="translate(592 146)">
+        <rect x="18" y="0" width="34" height="380" fill="#0E1A2B"/><rect x="18" y="0" width="6" height="380" fill="#1B2C44"/>
+        <rect x="1104" y="0" width="34" height="380" fill="#0E1A2B"/><rect x="1104" y="0" width="6" height="380" fill="#1B2C44"/>
+        <g>
+          <polygon points="210,24 250,24 380,380 80,380" fill="url(#cone)"/>
+          <polygon points="580,24 620,24 760,380 440,380" fill="url(#cone)"/>
+          <polygon points="950,24 990,24 1120,380 820,380" fill="url(#cone)"/>
+          <ellipse cx="230" cy="24" rx="70" ry="22" fill="url(#bayLight)"/>
+          <ellipse cx="600" cy="24" rx="70" ry="22" fill="url(#bayLight)"/>
+          <ellipse cx="970" cy="24" rx="70" ry="22" fill="url(#bayLight)"/>
+          <rect x="206" y="14" width="48" height="8" rx="3" fill="#2B3A50"/><rect x="576" y="14" width="48" height="8" rx="3" fill="#2B3A50"/><rect x="946" y="14" width="48" height="8" rx="3" fill="#2B3A50"/>
+        </g>
+
+        <!-- Floor -->
+        <rect x="0" y="380" width="1200" height="220" fill="url(#floorG)"/>
+        <line x1="0" y1="380" x2="1200" y2="380" stroke="#2A3E5C" stroke-width="1.5"/>
+        <g stroke="#1B2B42" stroke-width="1">
+          <line x1="600" y1="380" x2="-400" y2="600"/><line x1="600" y1="380" x2="100" y2="600"/><line x1="600" y1="380" x2="600" y2="600"/>
+          <line x1="600" y1="380" x2="1100" y2="600"/><line x1="600" y1="380" x2="1600" y2="600"/>
+          <line x1="0" y1="420" x2="1200" y2="420"/><line x1="0" y1="480" x2="1200" y2="480"/><line x1="0" y1="560" x2="1200" y2="560"/>
+        </g>
+        <polygon points="0,520 1200,520 1200,534 0,534" fill="#F2B705" opacity=".5"/>
+        <ellipse cx="420" cy="420" rx="380" ry="44" fill="url(#pool)"/>
+
+        <!-- Press -->
+        <g transform="translate(44 76) scale(.8)">
+          <!-- floor shadow + reflection -->
+          <ellipse cx="420" cy="384" rx="440" ry="14" fill="#000" opacity=".7" filter="url(#soft)"/>
+          <rect x="-10" y="384" width="860" height="70" fill="url(#reflect)"/>
+
+          <!-- base cabinet -->
+          <rect x="-10" y="268" width="860" height="112" rx="6" fill="url(#paint)"/>
+          <rect x="-10" y="268" width="860" height="112" rx="6" fill="url(#shellSide)"/>
+          <rect x="-10" y="268" width="860" height="3" fill="#6E9BFF" opacity=".7"/>
+          <g fill="#0A2466">
+            <rect x="40" y="300" width="4" height="46" rx="1"/><rect x="52" y="300" width="4" height="46" rx="1"/><rect x="64" y="300" width="4" height="46" rx="1"/><rect x="76" y="300" width="4" height="46" rx="1"/><rect x="88" y="300" width="4" height="46" rx="1"/>
+            <rect x="680" y="300" width="4" height="46" rx="1"/><rect x="692" y="300" width="4" height="46" rx="1"/><rect x="704" y="300" width="4" height="46" rx="1"/><rect x="716" y="300" width="4" height="46" rx="1"/>
+          </g>
+          <line x1="300" y1="276" x2="300" y2="374" stroke="#0A2466" stroke-width="2"/>
+          <line x1="560" y1="276" x2="560" y2="374" stroke="#0A2466" stroke-width="2"/>
+          <rect x="400" y="300" width="64" height="18" rx="2" fill="#E3E8EF"/>
+          <text x="432" y="313" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" fill="#0A2A75">FX-250</text>
+          <rect x="-10" y="372" width="860" height="8" fill="#061A4C"/>
+          <rect x="10" y="378" width="40" height="6" rx="1" fill="#2B3A50"/><rect x="790" y="378" width="40" height="6" rx="1" fill="#2B3A50"/><rect x="400" y="378" width="40" height="6" rx="1" fill="#2B3A50"/>
+
+          <!-- clamp cylinder -->
+          <rect x="-4" y="150" width="40" height="118" rx="4" fill="url(#steelV)"/>
+          <rect x="-4" y="150" width="40" height="8" rx="2" fill="#5D6A7C"/>
+
+          <!-- safety guard over clamp -->
+          <rect x="30" y="104" width="420" height="164" rx="8" fill="url(#shell)"/>
+          <rect x="30" y="104" width="420" height="164" rx="8" fill="url(#shellSide)"/>
+          <rect x="30" y="104" width="420" height="4" rx="2" fill="#FFFFFF" opacity=".9"/>
+          <!-- guard window with visible tie bars and mould -->
+          <rect x="74" y="128" width="300" height="112" rx="5" fill="url(#glass)"/>
+          <g opacity=".75">
+            <rect x="74" y="150" width="300" height="7" fill="url(#steel)"/>
+            <rect x="74" y="212" width="300" height="7" fill="url(#steel)"/>
+            <rect x="150" y="134" width="20" height="100" fill="#3A4656"/>
+            <rect x="170" y="160" width="58" height="48" fill="#5A6B80"/>
+            <rect x="228" y="160" width="58" height="48" fill="#6C7E94"/>
+            <line x1="228" y1="160" x2="228" y2="208" stroke="#0B1628" stroke-width="2"/>
+            <rect x="286" y="134" width="20" height="100" fill="#3A4656"/>
+            <circle cx="199" cy="184" r="6" fill="#2B3646"/><circle cx="257" cy="184" r="6" fill="#2B3646"/>
+          </g>
+          <polygon points="120,128 168,128 98,240 50,240" fill="url(#streak)" transform="translate(30 0)"/>
+          <polygon points="230,128 250,128 180,240 160,240" fill="url(#streak)" transform="translate(30 0)"/>
+          <rect x="74" y="128" width="300" height="112" rx="5" fill="none" stroke="#7D8A9B" stroke-width="3"/>
+          <!-- door handle -->
+          <rect x="386" y="160" width="10" height="52" rx="5" fill="url(#steelV)"/>
+          <!-- warning label -->
+          <polygon points="404,124 418,148 390,148" fill="#F2B705"/><text x="404" y="145" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="800" fill="#0C1927">!</text>
+
+          <!-- stack light -->
+          <rect x="430" y="58" width="6" height="46" fill="#5D6A7C"/>
+          <rect x="424" y="28" width="18" height="12" rx="2" fill="#5B1A16"/>
+          <rect x="424" y="40" width="18" height="12" rx="2" fill="#6A5208"/>
+          <rect x="424" y="52" width="18" height="12" rx="2" fill="#3DFF8A"/>
+          <ellipse cx="433" cy="58" rx="34" ry="22" fill="url(#glowG)" opacity=".55"/>
+          <rect x="424" y="24" width="18" height="4" rx="2" fill="#2B3A50"/>
+
+          <!-- HMI on swing arm -->
+          <path d="M450 150 H486 V138" stroke="#5D6A7C" stroke-width="6" fill="none"/>
+          <rect x="474" y="72" width="104" height="72" rx="5" fill="#141C27"/>
+          <rect x="480" y="78" width="92" height="56" rx="2" fill="#0A1A33"/>
+          <g>
+            <rect x="486" y="84" width="40" height="4" rx="1" fill="#5A8DF7"/>
+            <rect x="486" y="94" width="10" height="30" fill="#165FF2" opacity=".9"/><rect x="500" y="102" width="10" height="22" fill="#165FF2" opacity=".9"/><rect x="514" y="98" width="10" height="26" fill="#165FF2" opacity=".9"/>
+            <polyline points="532,118 542,112 552,114 562,104 566,100" stroke="#3DFF8A" stroke-width="2" fill="none"/>
+            <rect x="532" y="84" width="34" height="8" rx="1" fill="#00BE5F" opacity=".8"/>
+          </g>
+          <rect x="474" y="72" width="104" height="72" rx="5" fill="url(#streak)" opacity=".5"/>
+
+          <!-- stationary platen block -->
+          <rect x="450" y="118" width="34" height="150" rx="3" fill="url(#steelV)"/>
+
+          <!-- injection unit -->
+          <rect x="484" y="174" width="300" height="94" rx="8" fill="url(#shell)"/>
+          <rect x="484" y="174" width="300" height="94" rx="8" fill="url(#shellSide)"/>
+          <rect x="484" y="174" width="300" height="3" rx="2" fill="#fff" opacity=".9"/>
+          <rect x="500" y="196" width="150" height="36" rx="4" fill="#C3CDD9"/>
+          <g fill="#A9B6C7"><rect x="510" y="202" width="130" height="3"/><rect x="510" y="210" width="130" height="3"/><rect x="510" y="218" width="130" height="3"/></g>
+          <rect x="664" y="196" width="100" height="46" rx="4" fill="#0F1D33"/>
+          <text x="714" y="216" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" fill="#8AB1FB" letter-spacing="1">BARREL</text>
+          <text x="714" y="231" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#F79009">232 °C</text>
+          <!-- hopper & dryer -->
+          <polygon points="606,108 666,108 648,174 624,174" fill="url(#steelV)"/>
+          <rect x="596" y="100" width="80" height="12" rx="3" fill="url(#steel)"/>
+          <rect x="614" y="42" width="44" height="60" rx="6" fill="url(#steelV)"/>
+          <rect x="610" y="36" width="52" height="10" rx="4" fill="url(#steel)"/>
+          <path d="M658 60 C 700 60, 700 20, 760 20" stroke="#3A4656" stroke-width="7" fill="none"/>
+          <!-- drive / motor end -->
+          <rect x="784" y="150" width="66" height="118" rx="6" fill="url(#paint)"/>
+          <rect x="784" y="150" width="66" height="118" rx="6" fill="url(#shellSide)"/>
+          <g fill="#0A2466"><rect x="796" y="170" width="42" height="3"/><rect x="796" y="178" width="42" height="3"/><rect x="796" y="186" width="42" height="3"/><rect x="796" y="194" width="42" height="3"/></g>
+          <!-- hoses -->
+          <path d="M40 268 C 40 300, 120 296, 140 330" stroke="#1B2433" stroke-width="5" fill="none"/>
+          <path d="M760 268 C 760 296, 700 300, 690 330" stroke="#1B2433" stroke-width="5" fill="none"/>
+        </g>
+
+
+        <!-- Photographic finish -->
+        <rect width="1200" height="600" fill="url(#vignette)"/>
+        <rect width="1200" height="600" filter="url(#grain)" opacity=".07"/>
+      </svg>
+
+      <figcaption class="oee-card" aria-label="Live OEE overlay: 65.5 percent on Press 07">
+        <div class="oee-top"><b>Live OEE · Press 07</b><span class="live">Live</span></div>
+        <p class="oee-meta">Mould M-114 · Shift B</p>
+        <svg class="gauge" viewBox="-80 -76 160 94" aria-hidden="true">
           <path d="M -64 0 A 64 64 0 0 1 64 0" fill="none" stroke="#DCE8FE" stroke-width="12" stroke-linecap="round"/>
           <path d="M -64 0 A 64 64 0 0 1 64 0" fill="none" stroke="#165FF2" stroke-width="12" stroke-linecap="round" pathLength="100" stroke-dasharray="65.5 100"/>
-          <!-- needle at 65.5%: angle from left = 117.9deg -->
-          <g class="needle">
-            <line x1="0" y1="0" x2="-48" y2="0" stroke="#0C1927" stroke-width="3" stroke-linecap="round" transform="rotate(117.9)"/>
-          </g>
-          <circle r="6" fill="#0C1927"/>
-          <text x="0" y="-22" text-anchor="middle" font-family="'TASA Orbiter',Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#0C1927">65.5%</text>
-          <text x="-64" y="18" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#768EA7">0</text>
-          <text x="64" y="18" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#768EA7">100</text>
-        </g>
-        <!-- A / P / Q -->
-        <g font-family="Inter,Arial,sans-serif" font-size="9.5">
-          <line x1="508" y1="178" x2="676" y2="178" stroke="#DDE5EF"/>
-          <text x="508" y="198" fill="#40566D">Availability</text>
-          <text x="676" y="198" text-anchor="end" fill="#0C1927" font-weight="600">82%</text>
-          <text x="508" y="216" fill="#40566D">Performance</text>
-          <text x="676" y="216" text-anchor="end" fill="#0C1927" font-weight="600">85%</text>
-          <text x="508" y="234" fill="#40566D">Quality</text>
-          <text x="676" y="234" text-anchor="end" fill="#0C1927" font-weight="600">94%</text>
-        </g>
-        <!-- Cycle drift callout -->
-        <rect x="492" y="268" width="200" height="34" rx="6" fill="#FFF5F5" fill-opacity=".96"/>
-        <circle cx="508" cy="285" r="4" fill="#F04438"/>
-        <text x="518" y="282" font-family="Inter,Arial,sans-serif" font-size="9.5" font-weight="600" fill="#750A0A">Cycle drift +1.7 s vs golden</text>
-        <text x="518" y="295" font-family="Inter,Arial,sans-serif" font-size="9" fill="#40566D">20.1 s live · 18.4 s golden cycle</text>
-      </svg>
-    </div>
+                    <text x="0" y="-4" text-anchor="middle" font-family="'TASA Orbiter',Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#0C1927">65.5%</text>
+          <text x="-64" y="16" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#768EA7">0</text>
+          <text x="64" y="16" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#768EA7">100</text>
+        </svg>
+        <dl class="apq tnum">
+          <div><dt>Availability</dt><dd>82%</dd></div>
+          <div><dt>Performance</dt><dd>85%</dd></div>
+          <div><dt>Quality</dt><dd>94%</dd></div>
+        </dl>
+        <div class="drift"><i></i><div><b>Cycle drift +1.7 s</b><span>20.1 s live vs 18.4 s golden</span></div></div>
+      </figcaption>
+    </figure>
   </header>
 
   <!-- ================= SECTION 1 ================= -->
