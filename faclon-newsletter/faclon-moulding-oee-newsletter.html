@@ -175,11 +175,21 @@
   .svg-grid{stroke:var(--line)}
 
   /* ---------- Metrics ---------- */
-  .metrics{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-  .metric{border:1px solid var(--line); border-radius:8px; padding:20px; display:grid; gap:8px; align-content:start; background:var(--surface)}
-  .metric .num{font-family:var(--f-head); font-weight:700; font-size:48px; line-height:56px; letter-spacing:-.02em; color:var(--link)}
-  .metric h3{font-size:16px; line-height:22px}
-  .metric p{font-size:14px; line-height:22px; color:var(--support)}
+  /* Impact panel: fixed navy instrument panel in both themes */
+  .impact{list-style:none; margin:0; padding:8px 24px; background:var(--band); border-radius:12px;
+    background-image:radial-gradient(circle at 100% 0, rgba(22,95,242,.28), transparent 55%)}
+  .impact li{display:grid; grid-template-columns:144px 1fr; gap:4px 24px; align-items:center; padding:20px 0}
+  .impact li + li{border-top:1px solid var(--band-line)}
+  .impact .num{font-family:var(--f-head); font-weight:700; font-size:52px; line-height:56px; letter-spacing:-.02em; color:#FFFFFF; grid-row:span 2}
+  .impact .num sup{font-size:24px; line-height:1; vertical-align:top; position:relative; top:6px; margin-left:2px; color:var(--on-band-hi)}
+  .impact .what{display:grid; gap:4px; min-width:0}
+  .impact .tag{display:inline-flex; align-items:center; gap:4px; justify-self:start; font-size:11px; line-height:16px; font-weight:600;
+    letter-spacing:.96px; text-transform:uppercase; color:var(--accent); background:rgba(104,221,104,.12); padding:2px 8px; border-radius:999px}
+  .impact .tag svg{width:12px; height:12px}
+  .impact h3{color:#FFFFFF; font-size:18px; line-height:24px}
+  .impact p{color:var(--on-band-2); font-size:14px; line-height:22px}
+  .impact .meter{height:6px; border-radius:2px; background:rgba(255,255,255,.08); overflow:hidden}
+  .impact .meter span{display:block; height:100%; border-radius:2px; background:linear-gradient(90deg, var(--brand-500), var(--accent))}
 
   .btn{
     display:inline-flex; align-items:center; gap:8px; justify-self:start;
@@ -241,8 +251,10 @@
     td{border:0; padding:12px 16px 0}
     td + td{border-left:0; padding:4px 16px 12px; font-size:14px; line-height:22px; color:var(--support)}
     td:first-child, .caps td:first-child{white-space:normal; width:auto}
-    .dash-grid, .metrics{grid-template-columns:1fr}
-    .metric .num{font-size:40px; line-height:48px}
+    .dash-grid{grid-template-columns:1fr}
+    .impact{padding:4px 20px}
+    .impact li{grid-template-columns:1fr; gap:8px}
+    .impact .num{grid-row:auto; font-size:44px; line-height:48px}
     .cta{padding:32px 20px}
     .cta h2{font-size:28px; line-height:36px}
     .cta .chev{width:140px}
@@ -654,12 +666,28 @@
       <h2>Proven Impact</h2>
       <p class="sub">Measured improvements across moulding operations.</p>
     </div>
-    <div class="metrics tnum">
-      <div class="metric"><div class="num">22%</div><h3>Reduction in Downtime &amp; Changeover Losses</h3><p>Improved machine availability through better visibility and faster response.</p></div>
-      <div class="metric"><div class="num">18%</div><h3>Recovery in Lost Output</h3><p>Identified cycle-time inefficiencies and performance losses.</p></div>
-      <div class="metric"><div class="num">30%</div><h3>Fewer Defects</h3><p>Early detection of mould wear and process deviations reduced quality losses.</p></div>
-      <div class="metric"><div class="num">60%+</div><h3>Real OEE Visibility</h3><p>Exposed hidden losses previously masked by manual reporting and assumptions.</p></div>
-    </div>
+    <ul class="impact tnum">
+      <li>
+        <div class="num">22<sup>%</sup></div>
+        <div class="what"><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>Availability</span><h3>Reduction in Downtime &amp; Changeover Losses</h3><p>Improved machine availability through better visibility and faster response.</p></div>
+        <div class="meter" role="img" aria-label="22% on a 0 to 100 percent scale"><span style="width:22%"></span></div>
+      </li>
+      <li>
+        <div class="num">18<sup>%</sup></div>
+        <div class="what"><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Performance</span><h3>Recovery in Lost Output</h3><p>Identified cycle-time inefficiencies and performance losses.</p></div>
+        <div class="meter" role="img" aria-label="18% on a 0 to 100 percent scale"><span style="width:18%"></span></div>
+      </li>
+      <li>
+        <div class="num">30<sup>%</sup></div>
+        <div class="what"><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>Quality</span><h3>Fewer Defects</h3><p>Early detection of mould wear and process deviations reduced quality losses.</p></div>
+        <div class="meter" role="img" aria-label="30% on a 0 to 100 percent scale"><span style="width:30%"></span></div>
+      </li>
+      <li>
+        <div class="num">60<sup>%+</sup></div>
+        <div class="what"><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>OEE</span><h3>Real OEE Visibility</h3><p>Exposed hidden losses previously masked by manual reporting and assumptions.</p></div>
+        <div class="meter" role="img" aria-label="60%+ on a 0 to 100 percent scale"><span style="width:60%"></span></div>
+      </li>
+    </ul>
     <p class="supporting">Improvements that directly support <strong>higher throughput and lower scrap costs</strong>.</p>
     <a class="btn" href="https://www.faclon.com" target="_blank" rel="noopener">Estimate Your Hidden Output <span aria-hidden="true">→</span></a>
   </section>
