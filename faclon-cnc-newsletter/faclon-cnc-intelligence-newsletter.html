@@ -146,42 +146,61 @@
   /* ---------- Header ---------- */
   .header{
     position:relative;
-    min-height:440px;
-    padding:var(--space-32) var(--gutter) var(--space-48);
-    display:flex; flex-direction:column; justify-content:space-between;
-    background-color:var(--bg-primary-dark);
-    /* Swap the placeholder for the real photo: set --hero-image:url("cnc-shop-floor.jpg") */
-    background-image:
-      linear-gradient(180deg, rgba(12,25,39,0.40) 0%, rgba(12,25,39,0.72) 48%, #0C1927 100%),
-      var(--hero-image, none);
-    background-size:cover;
-    background-position:center;
+    overflow:hidden;
+    background:var(--bg-secondary-dark);
+    padding:var(--space-32) var(--gutter) var(--padding-section);
     color:var(--text-heading-dark);
   }
-  .image-placeholder{
+  /* light sweep behind the hero, built from brand-500, brand-300 and accent */
+  .header .glow{
     position:absolute;
-    inset:var(--space-12);
-    border:var(--border-thick) dashed var(--neutral-dark-400);
-    border-radius:var(--radius-lg);
-    background:var(--neutral-dark-1000);
+    width:1040px; height:560px;
+    left:-360px; top:220px;
+    border-radius:50%;
+    background:
+      radial-gradient(closest-side, rgba(22,95,242,0) 72%, rgba(138,177,251,0.55) 80%, rgba(22,95,242,0.70) 86%, rgba(22,95,242,0) 96%);
+    filter:blur(24px);
+    transform:rotate(-18deg);
     pointer-events:none;
   }
-  .image-placeholder span{
+  .header .glow.accent{
+    left:-400px; top:252px;
+    background:
+      radial-gradient(closest-side, rgba(104,221,104,0) 78%, rgba(104,221,104,0.35) 86%, rgba(104,221,104,0) 94%);
+  }
+  .header > *:not(.glow){ position:relative; }
+  .header::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:var(--space-56); background:linear-gradient(180deg, rgba(12,25,39,0) 0%, #0C1927 100%); pointer-events:none; }
+  .header .logo{ display:block; width:128px; height:auto; }
+  .hero{
+    display:grid;
+    grid-template-columns:7fr 5fr;
+    gap:var(--space-32);
+    align-items:center;
+    margin-top:var(--space-48);
+  }
+  .hero .copy{ display:flex; flex-direction:column; gap:var(--space-16); }
+  .header .h1 span{ color:var(--brand-300); }
+  .header .body-md{ color:var(--text-body-dark); }
+
+  /* layered product screenshots: image placeholders */
+  .visual{ position:relative; height:320px; margin-right:calc(-1 * var(--gutter) - var(--space-56)); }
+  .shot{
     position:absolute;
-    top:var(--space-12);
-    right:var(--space-12);
+    background:var(--bg-primary-dark);
+    border:var(--border-default) dashed var(--neutral-dark-400);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--elevation-low);
+    display:flex; align-items:flex-start; justify-content:flex-start;
+    padding:var(--space-12);
+  }
+  .shot span{
     font-size:10px; line-height:16px; font-weight:500;
     letter-spacing:0.96px; text-transform:uppercase;
     color:var(--text-muted-light);
   }
-  .image-placeholder .short{ display:none; }
-  .header > *{ position:relative; }
-  .header > .image-placeholder{ position:absolute; }
-  .header .logo{ display:block; width:128px; height:auto; }
-  .header .copy{ display:flex; flex-direction:column; gap:var(--space-16); max-width:600px; margin-top:var(--space-56); }
-  .header .h1 span{ color:var(--brand-300); }
-  .header .body-lg{ color:var(--text-body-dark); }
-
+  .shot.main{ top:0; left:0; right:0; height:196px; }
+  .shot.main span{ max-width:200px; }
+  .shot.sub{ top:172px; left:var(--space-24); width:56%; height:140px; background:var(--neutral-dark-1000); }
   /* ---------- Bullet lists ---------- */
   .bullets{ list-style:none; padding:0; display:flex; flex-direction:column; gap:var(--gap-stack); }
   .bullets li{ display:flex; gap:var(--space-12); align-items:flex-start; }
@@ -302,9 +321,13 @@
       --padding-section:var(--space-32);
       --gutter:var(--space-16);
     }
-    .image-placeholder .full{ display:none; }
-    .image-placeholder .short{ display:block; }
-    .header{ min-height:400px; padding:var(--space-24) var(--gutter) var(--space-32); }
+    .header{ padding:var(--space-24) var(--gutter) var(--padding-section); }
+    .hero{ grid-template-columns:1fr; margin-top:var(--space-32); gap:var(--space-32); }
+    .visual{ height:260px; margin-right:calc(-1 * var(--gutter) - var(--space-40)); }
+    .shot.main{ height:160px; }
+    .shot.sub{ top:136px; width:64%; height:116px; }
+    .header .glow{ top:420px; left:-520px; }
+    .header .glow.accent{ top:452px; left:-560px; }
     .h1{ font-size:32px; line-height:40px; }
     .h2{ font-size:24px; line-height:32px; }
     .grid-2{ grid-template-columns:1fr; }
@@ -319,7 +342,8 @@
 
   <!-- ================= HEADER ================= -->
   <header class="header">
-    <div class="image-placeholder" aria-hidden="true"><span class="full">Header image placeholder · CNC shop floor · 1440 × 880</span><span class="short">Image placeholder</span></div>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="glow accent" aria-hidden="true"></div>
     <svg class="logo" viewBox="0 0 254 53" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Faclon Labs">
       <path d="M21.0896 47.4814L9.07165 13.0136L4.61176 26.8799L11.8509 32.3868L13.1417 38.1526L0 28.5599L9.45639 0L21.0896 34.6505L32.5962 0.507551L41.7691 29.3415L28.6527 38.8631L30.0752 32.6457L37.051 27.3316L32.3988 13.5973L21.0896 47.4814Z" fill="white"/>
       <path d="M63.684 8.53735V12.7856H55.0274V17.1708H63.0613V21.4038H55.0274V29.3317H50.0512V8.53735H63.684Z" fill="white"/>
@@ -333,9 +357,15 @@
       <path d="M226.969 44.898C226.599 43.7661 225.845 42.7815 224.837 42.0658C224.25 41.6496 223.572 41.3198 222.838 41.1117C223.283 40.934 223.698 40.6955 224.073 40.4062C225.313 39.4469 226.113 37.9547 226.113 36.2747C226.113 34.8992 225.582 33.6507 224.706 32.7168C223.744 31.6915 222.377 31.052 220.859 31.052H213.037V52.1763H220.95C222.64 52.1763 224.169 51.5774 225.293 50.5978C226.437 49.6131 227.171 48.2377 227.227 46.7099C227.232 46.644 227.232 46.578 227.232 46.512C227.232 45.9537 227.141 45.4106 226.969 44.898ZM215.037 32.7168H220.256C222.372 32.7168 224.088 34.4374 224.088 36.5589C224.088 38.6856 222.372 40.4062 220.256 40.4062H215.037V32.7168ZM215.037 50.5978V42.0658H220.818C222.727 42.0658 224.346 43.2484 224.949 44.898C225.116 45.3446 225.207 45.8319 225.207 46.3343C225.207 46.4612 225.202 46.5881 225.192 46.7099C224.994 48.8873 223.111 50.5978 220.818 50.5978H215.037Z" fill="white"/>
       <path d="M253.318 46.7099V46.7403C253.318 48.2021 252.716 49.5471 251.713 50.5977C251.091 51.2525 250.316 51.7905 249.435 52.1762C248.443 52.6178 247.319 52.8665 246.124 52.8665C244.93 52.8665 243.806 52.6178 242.814 52.1762C241.933 51.7905 241.158 51.2525 240.536 50.5977C240.277 50.3287 240.045 50.0394 239.847 49.7349L241.295 48.6081C241.781 49.4507 242.581 50.146 243.568 50.5977C244.363 50.9632 245.274 51.1712 246.251 51.1712C247.228 51.1712 248.144 50.9632 248.939 50.5977C250.6 49.8313 251.728 48.3797 251.754 46.7099V46.6541C251.754 46.0298 251.602 45.441 251.318 44.8979C250.564 43.4311 248.888 42.3602 246.884 42.1724C246.737 42.1572 246.585 42.147 246.433 42.147C246.428 42.1419 246.418 42.1419 246.413 42.147C246.2 42.1267 245.988 42.1013 245.78 42.0658C244.834 41.9084 243.958 41.5887 243.193 41.1471C242.819 40.9289 242.464 40.6802 242.145 40.4061C240.925 39.3555 240.176 37.9242 240.176 36.3457C240.176 34.9702 240.743 33.7115 241.69 32.7167C242.363 32.0112 243.229 31.4377 244.221 31.0519C245.112 30.7068 246.104 30.5139 247.147 30.5139C248.19 30.5139 249.182 30.7068 250.073 31.0519C251.065 31.4377 251.926 32.0112 252.599 32.7167C252.731 32.8487 252.852 32.9908 252.969 33.138L251.303 34.4373C250.822 33.6912 250.078 33.0872 249.187 32.7167C248.559 32.4579 247.856 32.3107 247.112 32.3107C246.367 32.3107 245.664 32.4579 245.036 32.7167C243.411 33.3918 242.292 34.8281 242.292 36.4929C242.292 38.2845 243.588 39.8072 245.411 40.4061C245.699 40.5025 246.008 40.5736 246.322 40.6193C246.58 40.6548 246.843 40.6751 247.112 40.6751C247.117 40.67 247.122 40.6751 247.127 40.6751C248.21 40.802 249.218 41.137 250.088 41.6293C250.326 41.7613 250.559 41.9084 250.777 42.0658C251.799 42.8068 252.574 43.7813 252.984 44.8979C253.196 45.4664 253.313 46.0755 253.318 46.7099Z" fill="white"/>
     </svg>
-    <div class="copy">
-      <h1 class="h1">Your CNCs Are Running. <span>Do You Know What They're Producing?</span></h1>
-      <p class="body-lg">Spindle hours without a work order, stops without a reason, and OEE built on manual entries quietly drain capacity every shift.</p>
+    <div class="hero">
+      <div class="copy">
+        <h1 class="h1">Your CNCs Are Running. <span>Do You Know What They're Producing?</span></h1>
+        <p class="body-md">Spindle hours without a work order, stops without a reason, and OEE built on manual entries quietly drain capacity every shift.</p>
+      </div>
+      <div class="visual" aria-hidden="true">
+        <div class="shot main"><span>Image placeholder · OEE dashboard · 960 × 600</span></div>
+        <div class="shot sub"><span>Image placeholder · Live floor view · 560 × 360</span></div>
+      </div>
     </div>
   </header>
 
