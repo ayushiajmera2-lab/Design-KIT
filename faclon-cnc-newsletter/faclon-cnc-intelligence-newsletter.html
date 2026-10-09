@@ -289,14 +289,31 @@
   }
 
   /* ---------- Section 5 ---------- */
-  .why-card{
-    background:var(--bg-secondary-light);
-    border-top:var(--border-thicker) solid var(--brand-500);
-    border-radius:var(--radius-lg);
-    padding:var(--space-20) var(--padding-container);
-    display:flex; flex-direction:column; gap:var(--space-8);
+  .why-panel{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:var(--bg-primary-light);
+    border:var(--border-default) solid var(--neutral-light-200);
+    border-radius:var(--radius-xl);
+    overflow:hidden;
   }
-  .why-card .body-sm{ color:var(--text-supporting-light); }
+  .why-item{
+    display:flex; flex-direction:column; gap:var(--space-8);
+    padding:var(--space-24);
+  }
+  .why-item:nth-child(odd){ border-right:var(--border-default) solid var(--neutral-light-200); }
+  .why-item:nth-child(-n+2){ border-bottom:var(--border-default) solid var(--neutral-light-200); }
+  .why-icon{
+    width:40px; height:40px;
+    margin-bottom:var(--space-8);
+    display:flex; align-items:center; justify-content:center;
+    background:var(--brand-050);
+    border:var(--border-default) solid var(--brand-100);
+    border-radius:var(--radius-md);
+    color:var(--brand-500);
+  }
+  .why-icon svg{ width:20px; height:20px; }
+  .why-item .body-sm{ color:var(--text-supporting-light); }
 
   /* ---------- CTA ---------- */
   .cta{ background:var(--bg-brand); }
@@ -315,6 +332,10 @@
 
   /* ---------- Responsive (768px breakpoint) ---------- */
   @media (max-width:768px){
+    .why-panel{ grid-template-columns:1fr; }
+    .why-item{ padding:var(--space-20) var(--padding-container); }
+    .why-item:nth-child(odd){ border-right:none; }
+    .why-item:not(:last-child){ border-bottom:var(--border-default) solid var(--neutral-light-200); }
     :root{
       --gap-grid:var(--space-16);
       --padding-container:var(--space-12);
@@ -549,20 +570,24 @@
       <p class="eyebrow">5. Why Faclon Labs</p>
       <h2 class="h2">Built for Mixed, Legacy and Modern CNC Fleets</h2>
     </div>
-    <div class="grid-2">
-      <article class="why-card">
+    <div class="why-panel">
+      <article class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></div>
         <h3 class="h5">Controller-Agnostic</h3>
         <p class="body-sm">Works alongside Fanuc, Siemens, Mitsubishi and legacy DROs.</p>
       </article>
-      <article class="why-card">
+      <article class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h3 class="h5">Zero Disruption</h3>
         <p class="body-sm">No ladder edits or controller modifications required.</p>
       </article>
-      <article class="why-card">
+      <article class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v3"/></svg></div>
         <h3 class="h5">On-Premise &amp; Secure</h3>
         <p class="body-sm">Software and data stay inside the plant, with no external data egress.</p>
       </article>
-      <article class="why-card">
+      <article class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div>
         <h3 class="h5">Scalable Platform</h3>
         <p class="body-sm">Start with a few machines and expand across cells, lines, energy, utilities and asset health.</p>
       </article>
