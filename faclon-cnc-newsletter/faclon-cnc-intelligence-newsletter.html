@@ -10,23 +10,30 @@
 <style>
   /* ---------- Faclon design tokens ---------- */
   :root{
+    /* colour: brand */
+    --brand-050:#F4F8FF;
     --brand-100:#DCE8FE;
+    --brand-200:#B8D0FD;
     --brand-300:#8AB1FB;
     --brand-500:#165FF2;
     --brand-600:#124ED0;
+    --accent:#68DD68;
 
+    /* colour: neutral */
     --neutral-light-200:#E3EAF3;
     --neutral-light-300:#CBD5E2;
     --neutral-dark-400:#5A6B87;
     --neutral-dark-700:#2D3A4D;
     --neutral-dark-1000:#1D2635;
 
+    /* colour: background */
     --bg-primary-light:#FFFFFF;
     --bg-secondary-light:#F1F5FA;
     --bg-primary-dark:#171F2B;
     --bg-secondary-dark:#0C1927;
     --bg-brand:#165FF2;
 
+    /* colour: text */
     --text-heading-light:#0C1927;
     --text-body-light:#243547;
     --text-supporting-light:#40566D;
@@ -34,15 +41,19 @@
     --text-heading-dark:#F1F5FA;
     --text-body-dark:#CBD5E2;
 
+    /* page canvas around the newsletter */
     --canvas:var(--bg-secondary-light);
 
+    /* type families */
     --font-heading:'TASA Orbiter', sans-serif;
     --font-body:'Inter', sans-serif;
 
+    /* spacing scale (4px steps) */
     --space-4:4px;  --space-8:8px;  --space-12:12px; --space-16:16px;
     --space-20:20px; --space-24:24px; --space-28:28px; --space-32:32px;
     --space-40:40px; --space-48:48px; --space-56:56px;
 
+    /* spacing roles */
     --gap-inline:var(--space-8);
     --gap-stack:var(--space-12);
     --gap-grid:var(--space-24);
@@ -50,10 +61,20 @@
     --padding-section:var(--space-56);
     --gutter:var(--space-40);
 
+    /* radius */
+    --radius-default:2px;
+    --radius-md:4px;
     --radius-lg:6px;
     --radius-xl:8px;
+    --radius-3xl:12px;
+
+    /* borders */
     --border-default:1px;
     --border-thick:2px;
+    --border-thicker:3px;
+
+    /* elevation */
+    --elevation-low:0 2px 16px rgba(25,40,57,0.10);
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){ --canvas:var(--bg-secondary-dark); }
@@ -72,28 +93,55 @@
     -webkit-font-smoothing:antialiased;
   }
   h1,h2,h3,h4,h5,h6,p,ul{ margin:0; }
-  ul{ list-style:none; padding:0; }
 
-  .newsletter{ max-width:720px; margin:0 auto; background:var(--bg-primary-light); }
+  .newsletter{
+    max-width:720px;
+    margin:0 auto;
+    background:var(--bg-primary-light);
+  }
+
   section{ padding:var(--padding-section) var(--gutter); }
 
-  /* ---------- Type ---------- */
+  /* ---------- Type styles ---------- */
   .eyebrow{
-    font-size:12px; line-height:18px; font-weight:600;
-    letter-spacing:0.96px; text-transform:uppercase;
+    font-family:var(--font-body);
+    font-size:12px;
+    line-height:18px;
+    font-weight:600;
+    letter-spacing:0.96px;
+    text-transform:uppercase;
     color:var(--brand-500);
   }
-  .h1{ font-family:var(--font-heading); font-size:40px; line-height:48px; font-weight:600; letter-spacing:-0.01em; }
-  .h2{ font-family:var(--font-heading); font-size:32px; line-height:40px; font-weight:600; letter-spacing:-0.01em; color:var(--text-heading-light); }
-  .h4{ font-family:var(--font-heading); font-size:20px; line-height:28px; font-weight:600; letter-spacing:-0.01em; color:var(--text-heading-light); }
-  .h5{ font-family:var(--font-heading); font-size:18px; line-height:24px; font-weight:500; letter-spacing:-0.01em; color:var(--text-heading-light); }
-  .h6{ font-family:var(--font-heading); font-size:16px; line-height:20px; font-weight:500; letter-spacing:-0.01em; color:var(--text-heading-light); }
+  .h1{
+    font-family:var(--font-heading);
+    font-size:40px; line-height:48px; font-weight:600; letter-spacing:-0.01em;
+  }
+  .h2{
+    font-family:var(--font-heading);
+    font-size:32px; line-height:40px; font-weight:600; letter-spacing:-0.01em;
+    color:var(--text-heading-light);
+  }
+  .h4{
+    font-family:var(--font-heading);
+    font-size:20px; line-height:28px; font-weight:600; letter-spacing:-0.01em;
+    color:var(--text-heading-light);
+  }
+  .h5{
+    font-family:var(--font-heading);
+    font-size:18px; line-height:24px; font-weight:500; letter-spacing:-0.01em;
+    color:var(--text-heading-light);
+  }
+  .h6{
+    font-family:var(--font-heading);
+    font-size:16px; line-height:20px; font-weight:500; letter-spacing:-0.01em;
+    color:var(--text-heading-light);
+  }
   .body-lg{ font-size:18px; line-height:28px; }
   .body-md{ font-size:16px; line-height:24px; }
   .body-sm{ font-size:14px; line-height:22px; }
-  .supporting{ color:var(--text-supporting-light); }
 
-  .section-head{ display:flex; flex-direction:column; gap:var(--gap-stack); margin-bottom:var(--space-40); max-width:560px; }
+  .section-head{ display:flex; flex-direction:column; gap:var(--gap-stack); margin-bottom:var(--space-32); }
+  .section-head .body-md{ color:var(--text-supporting-light); }
 
   /* ---------- Header ---------- */
   .header{
@@ -134,66 +182,102 @@
   .header .h1 span{ color:var(--brand-300); }
   .header .body-lg{ color:var(--text-body-dark); }
 
-  /* ---------- Rule list (section 1) ---------- */
-  .rule-list li{
-    padding:var(--space-16) 0;
-    border-top:var(--border-default) solid var(--neutral-light-200);
-    color:var(--text-body-light);
+  /* ---------- Bullet lists ---------- */
+  .bullets{ list-style:none; padding:0; display:flex; flex-direction:column; gap:var(--gap-stack); }
+  .bullets li{ display:flex; gap:var(--space-12); align-items:flex-start; }
+  .bullets li::before{
+    content:"";
+    flex:0 0 auto;
+    width:8px; height:8px;
+    margin-top:8px;
+    border-radius:var(--radius-default);
+    background:var(--brand-500);
   }
-  .rule-list li:last-child{ border-bottom:var(--border-default) solid var(--neutral-light-200); }
-  .result{
-    margin-top:var(--space-24);
-    font-family:var(--font-heading);
-    font-size:20px; line-height:28px; font-weight:600; letter-spacing:-0.01em;
+  .bullets.sm li::before{ margin-top:7px; }
+
+  /* ---------- Section 1 ---------- */
+  .problem .bullets{ margin:var(--space-24) 0; }
+  .callout{
+    background:var(--brand-050);
+    border-left:var(--border-thicker) solid var(--brand-500);
+    border-radius:var(--radius-md);
+    padding:var(--padding-container) var(--space-20);
     color:var(--text-heading-light);
+    font-weight:600;
   }
 
-  /* ---------- Capability groups (section 2) ---------- */
+  /* ---------- Section 2 ---------- */
   .solution{ background:var(--bg-secondary-light); }
-  .group{
-    display:grid;
-    grid-template-columns:200px 1fr;
-    gap:var(--gap-grid);
-    padding:var(--space-32) 0;
-    border-top:var(--border-default) solid var(--neutral-light-300);
+  .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-grid); }
+  .card{
+    background:var(--bg-primary-light);
+    border-radius:var(--radius-lg);
+    padding:var(--padding-container);
+    box-shadow:var(--elevation-low);
+    display:flex;
+    flex-direction:column;
   }
-  .group:last-child{ padding-bottom:0; }
-  .group-title{ display:flex; flex-direction:column; gap:var(--space-12); }
-  .group-title .outcome{ font-size:14px; line-height:22px; font-weight:600; color:var(--brand-600); }
-  .group-items{ display:flex; flex-direction:column; gap:var(--space-20); }
-  .group-items .item{ display:flex; flex-direction:column; gap:var(--space-4); }
+  .capability .h4{ margin-bottom:var(--space-16); }
+  .capability .items{ display:flex; flex-direction:column; gap:var(--space-16); flex:1 1 auto; }
+  .capability .item{ display:flex; flex-direction:column; gap:var(--space-4); }
+  .capability .item .body-sm{ color:var(--text-supporting-light); }
+  .capability .outcome{
+    margin-top:var(--space-20);
+    padding-top:var(--space-12);
+    border-top:var(--border-default) solid var(--neutral-light-200);
+    font-size:14px; line-height:22px; font-weight:600;
+    color:var(--brand-600);
+  }
 
-  /* ---------- Platform views (section 3) ---------- */
-  .views{ display:grid; grid-template-columns:1fr 1fr; column-gap:var(--space-40); row-gap:var(--space-32); }
-  .view{ display:flex; flex-direction:column; gap:var(--gap-stack); padding-top:var(--space-16); border-top:var(--border-default) solid var(--text-heading-light); }
-  .view ul{ display:flex; flex-direction:column; gap:var(--space-8); }
+  /* ---------- Section 3 ---------- */
+  .tile{
+    background:var(--bg-primary-light);
+    border:var(--border-default) solid var(--neutral-light-200);
+    border-radius:var(--radius-lg);
+    padding:var(--padding-container);
+    display:flex; flex-direction:column; gap:var(--gap-stack);
+  }
+  .tile .bullets{ color:var(--text-body-light); }
 
-  /* ---------- Impact (section 4) ---------- */
+  /* ---------- Section 4 ---------- */
   .impact{ background:var(--bg-secondary-dark); }
   .impact .eyebrow{ color:var(--brand-300); }
   .impact .h2{ color:var(--text-heading-dark); }
-  .figures{ display:grid; grid-template-columns:1fr 1fr; gap:var(--space-40); padding-bottom:var(--space-32); border-bottom:var(--border-default) solid var(--neutral-dark-700); }
-  .figure-block{ display:flex; flex-direction:column; gap:var(--space-8); }
-  .figure{
+  .stats{ display:grid; grid-template-columns:repeat(6, 1fr); gap:var(--gap-grid); }
+  .stat{
+    grid-column:span 2;
+    background:var(--bg-primary-dark);
+    border:var(--border-default) solid var(--neutral-dark-700);
+    border-radius:var(--radius-lg);
+    padding:var(--space-20) var(--padding-container);
+    display:flex; flex-direction:column; gap:var(--space-8);
+  }
+  .stat.wide{ grid-column:span 3; }
+  .stat .figure{
     font-family:var(--font-heading);
     font-size:48px; line-height:56px; font-weight:700; letter-spacing:-0.02em;
+    color:var(--accent);
+  }
+  .stat .h4,.stat .h5{ color:var(--text-heading-dark); }
+  .stat .body-sm{ color:var(--text-body-dark); }
+  .impact .closing{
+    margin-top:var(--space-32);
+    padding-top:var(--space-24);
+    border-top:var(--border-default) solid var(--neutral-dark-700);
+    font-family:var(--font-heading);
+    font-size:20px; line-height:28px; font-weight:600; letter-spacing:-0.01em;
     color:var(--text-heading-dark);
   }
-  .figure-block .h5{ color:var(--text-heading-dark); }
-  .impact .body-sm{ color:var(--text-body-dark); }
-  .outcomes{ display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--space-32); padding:var(--space-32) 0; border-bottom:var(--border-default) solid var(--neutral-dark-700); }
-  .outcomes > div{ display:flex; flex-direction:column; gap:var(--space-8); }
-  .outcomes .h6{ color:var(--text-heading-dark); }
-  .closing{
-    margin-top:var(--space-32);
-    font-family:var(--font-heading);
-    font-size:24px; line-height:32px; font-weight:600; letter-spacing:-0.01em;
-    color:var(--brand-300);
-  }
 
-  /* ---------- Why (section 5) ---------- */
-  .why-grid{ display:grid; grid-template-columns:1fr 1fr; column-gap:var(--space-40); }
-  .why-grid > div{ display:flex; flex-direction:column; gap:var(--space-8); padding:var(--space-20) 0; border-top:var(--border-default) solid var(--neutral-light-200); }
+  /* ---------- Section 5 ---------- */
+  .why-card{
+    background:var(--bg-secondary-light);
+    border-top:var(--border-thicker) solid var(--brand-500);
+    border-radius:var(--radius-lg);
+    padding:var(--space-20) var(--padding-container);
+    display:flex; flex-direction:column; gap:var(--space-8);
+  }
+  .why-card .body-sm{ color:var(--text-supporting-light); }
 
   /* ---------- CTA ---------- */
   .cta{ background:var(--bg-brand); }
@@ -210,10 +294,11 @@
     border-radius:var(--radius-xl);
   }
 
-  /* ---------- Responsive (768px) ---------- */
+  /* ---------- Responsive (768px breakpoint) ---------- */
   @media (max-width:768px){
     :root{
       --gap-grid:var(--space-16);
+      --padding-container:var(--space-12);
       --padding-section:var(--space-32);
       --gutter:var(--space-16);
     }
@@ -222,19 +307,17 @@
     .header{ min-height:400px; padding:var(--space-24) var(--gutter) var(--space-32); }
     .h1{ font-size:32px; line-height:40px; }
     .h2{ font-size:24px; line-height:32px; }
-    .section-head{ margin-bottom:var(--space-32); }
-    .group{ grid-template-columns:1fr; }
-    .views,.why-grid,.figures,.outcomes{ grid-template-columns:1fr; }
-    .views{ row-gap:var(--space-24); }
-    .outcomes{ gap:var(--space-24); }
-    .figures{ gap:var(--space-24); }
-    .figure{ font-size:40px; line-height:48px; }
+    .grid-2{ grid-template-columns:1fr; }
+    .stats{ grid-template-columns:1fr; }
+    .stat,.stat.wide{ grid-column:auto; }
+    .stat .figure{ font-size:40px; line-height:48px; }
   }
 </style>
 </head>
 <body>
 <main class="newsletter">
 
+  <!-- ================= HEADER ================= -->
   <header class="header">
     <div class="image-placeholder" aria-hidden="true"><span class="full">Header image placeholder · CNC shop floor · 1440 × 880</span><span class="short">Image placeholder</span></div>
     <svg class="logo" viewBox="0 0 254 53" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Faclon Labs">
@@ -256,153 +339,207 @@
     </div>
   </header>
 
+  <!-- ================= 1. PROBLEM ================= -->
   <section class="problem">
     <div class="section-head">
       <p class="eyebrow">1. Where CNC Productivity Disappears</p>
       <h2 class="h2">Runtime You Can't Explain Is Capacity You Can't Recover</h2>
-      <p class="body-md supporting">Most shops know when a machine is running. Few know what it's running, for whom, or why it stopped.</p>
+      <p class="body-md">Most shops know when a machine is running. Few know what it's running, for whom, or why it stopped.</p>
     </div>
-    <ul class="rule-list body-md">
+    <ul class="bullets body-md">
       <li>Spindle hours aren't linked to jobs or operators</li>
       <li>Downtime reasons are logged late, inaccurately, or not at all</li>
       <li>OEE is estimated at shift-end from manual inputs</li>
       <li>Losses surface only in reviews, long after they could be fixed</li>
     </ul>
-    <p class="result">The result: reporting you can't trust and losses you can't see.</p>
+    <p class="callout body-md">The result: reporting you can't trust and losses you can't see.</p>
   </section>
 
+  <!-- ================= 2. SOLUTION ================= -->
   <section class="solution">
     <div class="section-head">
       <p class="eyebrow">2. Faclon Labs CNC Intelligence</p>
       <h2 class="h2">Every Spindle Hour. Every Stop. Every Job. Accounted For.</h2>
-      <p class="body-md supporting">Faclon Labs connects with your CNC fleet to capture machine states, control spindle access and calculate OEE from actual machine data.</p>
+      <p class="body-md">Faclon Labs connects with your CNC fleet to capture machine states, control spindle access and calculate OEE from actual machine data.</p>
     </div>
-
-    <div class="group">
-      <div class="group-title">
+    <div class="grid-2">
+      <article class="card capability">
         <h3 class="h4">Spindle &amp; Work-Order Control</h3>
+        <div class="items">
+          <div class="item">
+            <h4 class="h6">Spindle Interlocking</h4>
+            <p class="body-sm">Machines run only against valid, open work orders assigned to them.</p>
+          </div>
+          <div class="item">
+            <h4 class="h6">Work-Order Traceability</h4>
+            <p class="body-sm">Every run-hour and cycle is linked to the job, part and operator.</p>
+          </div>
+          <div class="item">
+            <h4 class="h6">Operator Validation</h4>
+            <p class="body-sm">Work-order and operator checks happen at the machine before production starts.</p>
+          </div>
+        </div>
         <p class="outcome">Every spindle hour tied to a job and operator.</p>
-      </div>
-      <div class="group-items">
-        <div class="item"><h4 class="h6">Spindle Interlocking</h4><p class="body-sm supporting">Machines run only against valid, open work orders assigned to them.</p></div>
-        <div class="item"><h4 class="h6">Work-Order Traceability</h4><p class="body-sm supporting">Every run-hour and cycle is linked to the job, part and operator.</p></div>
-        <div class="item"><h4 class="h6">Operator Validation</h4><p class="body-sm supporting">Work-order and operator checks happen at the machine before production starts.</p></div>
-      </div>
-    </div>
+      </article>
 
-    <div class="group">
-      <div class="group-title">
+      <article class="card capability">
         <h3 class="h4">Downtime Intelligence</h3>
+        <div class="items">
+          <div class="item">
+            <h4 class="h6">Downtime Reason Enforcement</h4>
+            <p class="body-sm">Stops beyond a defined threshold require a reason before production resumes.</p>
+          </div>
+          <div class="item">
+            <h4 class="h6">Automatic Alarm &amp; Stop Capture</h4>
+            <p class="body-sm">Machine alarms and stop events are recorded automatically.</p>
+          </div>
+          <div class="item">
+            <h4 class="h6">Smart Downtime Thresholds</h4>
+            <p class="body-sm">Micro-stops and longer breakdowns are separated to keep reason logging practical.</p>
+          </div>
+        </div>
         <p class="outcome">Every significant stop explained before production resumes.</p>
-      </div>
-      <div class="group-items">
-        <div class="item"><h4 class="h6">Downtime Reason Enforcement</h4><p class="body-sm supporting">Stops beyond a defined threshold require a reason before production resumes.</p></div>
-        <div class="item"><h4 class="h6">Automatic Alarm &amp; Stop Capture</h4><p class="body-sm supporting">Machine alarms and stop events are recorded automatically.</p></div>
-        <div class="item"><h4 class="h6">Smart Downtime Thresholds</h4><p class="body-sm supporting">Micro-stops and longer breakdowns are separated to keep reason logging practical.</p></div>
-      </div>
-    </div>
+      </article>
 
-    <div class="group">
-      <div class="group-title">
+      <article class="card capability">
         <h3 class="h4">Live OEE &amp; Performance</h3>
+        <div class="items">
+          <div class="item">
+            <h4 class="h6">Real-Time OEE Monitoring</h4>
+            <p class="body-sm">Track availability, runtime, cycle time and OEE by machine, cell, shift and job.</p>
+          </div>
+          <div class="item">
+            <h4 class="h6">Automatic Data Capture</h4>
+            <p class="body-sm">Spindle runtime, alarms and part counts are captured directly from the CNC.</p>
+          </div>
+          <div class="item">
+            <h4 class="h6">Cycle Time Monitoring</h4>
+            <p class="body-sm">Compare actual vs. expected cycle time to identify slow-running jobs early.</p>
+          </div>
+        </div>
         <p class="outcome">OEE measured, not estimated.</p>
-      </div>
-      <div class="group-items">
-        <div class="item"><h4 class="h6">Real-Time OEE Monitoring</h4><p class="body-sm supporting">Track availability, runtime, cycle time and OEE by machine, cell, shift and job.</p></div>
-        <div class="item"><h4 class="h6">Automatic Data Capture</h4><p class="body-sm supporting">Spindle runtime, alarms and part counts are captured directly from the CNC.</p></div>
-        <div class="item"><h4 class="h6">Cycle Time Monitoring</h4><p class="body-sm supporting">Compare actual vs. expected cycle time to identify slow-running jobs early.</p></div>
-      </div>
-    </div>
+      </article>
 
-    <div class="group">
-      <div class="group-title">
+      <article class="card capability">
         <h3 class="h4">Loss Visibility</h3>
+        <div class="items">
+          <div class="item">
+            <h4 class="h6">Downtime Pareto Analytics</h4>
+            <p class="body-sm">Rank recurring losses by machine, shift and job to identify the biggest causes.</p>
+          </div>
+          <div class="item">
+            <h4 class="h6">Live Alerts</h4>
+            <p class="body-sm">Flag prolonged stops and performance drops as they happen.</p>
+          </div>
+          <div class="item">
+            <h4 class="h6">Shift-Wise Comparison</h4>
+            <p class="body-sm">Compare performance across shifts to identify recurring patterns.</p>
+          </div>
+        </div>
         <p class="outcome">Losses visible while they can still be fixed.</p>
-      </div>
-      <div class="group-items">
-        <div class="item"><h4 class="h6">Downtime Pareto Analytics</h4><p class="body-sm supporting">Rank recurring losses by machine, shift and job to identify the biggest causes.</p></div>
-        <div class="item"><h4 class="h6">Live Alerts</h4><p class="body-sm supporting">Flag prolonged stops and performance drops as they happen.</p></div>
-        <div class="item"><h4 class="h6">Shift-Wise Comparison</h4><p class="body-sm supporting">Compare performance across shifts to identify recurring patterns.</p></div>
-      </div>
+      </article>
     </div>
   </section>
 
+  <!-- ================= 3. WHAT YOUR TEAM SEES ================= -->
   <section class="platform">
     <div class="section-head">
       <p class="eyebrow">3. What Your Team Sees and Uses</p>
       <h2 class="h2">One Shop-Floor View. From Machine State to OEE.</h2>
-      <p class="body-md supporting">One on-premise platform, accessible from any plant computer or tablet on the LAN.</p>
+      <p class="body-md">One on-premise platform, accessible from any plant computer or tablet on the LAN.</p>
     </div>
-    <div class="views">
-      <div class="view">
+    <div class="grid-2">
+      <article class="tile">
         <h3 class="h5">Operator Console</h3>
-        <ul class="body-sm supporting">
+        <ul class="bullets sm body-sm">
           <li>Enter the work order and release the spindle in seconds</li>
           <li>Log downtime reasons directly at the machine</li>
         </ul>
-      </div>
-      <div class="view">
+      </article>
+      <article class="tile">
         <h3 class="h5">Live Floor View</h3>
-        <ul class="body-sm supporting">
+        <ul class="bullets sm body-sm">
           <li>Every CNC on one screen, with live machine states</li>
           <li>Spot idle and stopped machines as they happen</li>
         </ul>
-      </div>
-      <div class="view">
+      </article>
+      <article class="tile">
         <h3 class="h5">Performance Dashboards</h3>
-        <ul class="body-sm supporting">
+        <ul class="bullets sm body-sm">
           <li>OEE, availability, runtime and cycle time updated live</li>
           <li>Drill down from plant to machine, shift and job</li>
         </ul>
-      </div>
-      <div class="view">
+      </article>
+      <article class="tile">
         <h3 class="h5">Reports &amp; Records</h3>
-        <ul class="body-sm supporting">
+        <ul class="bullets sm body-sm">
           <li>Shift summaries generated automatically</li>
           <li>Complete job history for costing, planning and audits</li>
         </ul>
-      </div>
+      </article>
     </div>
   </section>
 
+  <!-- ================= 4. BUSINESS IMPACT ================= -->
   <section class="impact">
     <div class="section-head">
       <p class="eyebrow">4. Business Impact</p>
       <h2 class="h2">What Changes When Every Spindle Hour Is Accountable</h2>
     </div>
-    <div class="figures">
-      <div class="figure-block">
+    <div class="stats">
+      <div class="stat wide">
         <p class="figure">20–35%</p>
-        <h3 class="h5">OEE Uplift</h3>
+        <h3 class="h4">OEE Uplift</h3>
         <p class="body-sm">On legacy CNC fleets</p>
       </div>
-      <div class="figure-block">
+      <div class="stat wide">
         <p class="figure">100%</p>
-        <h3 class="h5">Order-Traceable Spindle Hours</h3>
+        <h3 class="h4">Order-Traceable Spindle Hours</h3>
         <p class="body-sm">With zero ghost runtime</p>
       </div>
-    </div>
-    <div class="outcomes">
-      <div><h3 class="h6">Faster Loss Recovery</h3><p class="body-sm">Recurring stops become visible within the shift</p></div>
-      <div><h3 class="h6">Trusted Production Data</h3><p class="body-sm">Capacity, costing and scheduling based on actual machine behaviour</p></div>
-      <div><h3 class="h6">Less Manual Reporting</h3><p class="body-sm">Supervisors spend less time compiling data and more time acting on it</p></div>
+      <div class="stat">
+        <h3 class="h5">Faster Loss Recovery</h3>
+        <p class="body-sm">Recurring stops become visible within the shift</p>
+      </div>
+      <div class="stat">
+        <h3 class="h5">Trusted Production Data</h3>
+        <p class="body-sm">Capacity, costing and scheduling based on actual machine behaviour</p>
+      </div>
+      <div class="stat">
+        <h3 class="h5">Less Manual Reporting</h3>
+        <p class="body-sm">Supervisors spend less time compiling data and more time acting on it</p>
+      </div>
     </div>
     <p class="closing">From machine activity to measurable productivity.</p>
   </section>
 
+  <!-- ================= 5. WHY FACLON LABS ================= -->
   <section class="why">
     <div class="section-head">
       <p class="eyebrow">5. Why Faclon Labs</p>
       <h2 class="h2">Built for Mixed, Legacy and Modern CNC Fleets</h2>
     </div>
-    <div class="why-grid">
-      <div><h3 class="h5">Controller-Agnostic</h3><p class="body-sm supporting">Works alongside Fanuc, Siemens, Mitsubishi and legacy DROs.</p></div>
-      <div><h3 class="h5">Zero Disruption</h3><p class="body-sm supporting">No ladder edits or controller modifications required.</p></div>
-      <div><h3 class="h5">On-Premise &amp; Secure</h3><p class="body-sm supporting">Software and data stay inside the plant, with no external data egress.</p></div>
-      <div><h3 class="h5">Scalable Platform</h3><p class="body-sm supporting">Start with a few machines and expand across cells, lines, energy, utilities and asset health.</p></div>
+    <div class="grid-2">
+      <article class="why-card">
+        <h3 class="h5">Controller-Agnostic</h3>
+        <p class="body-sm">Works alongside Fanuc, Siemens, Mitsubishi and legacy DROs.</p>
+      </article>
+      <article class="why-card">
+        <h3 class="h5">Zero Disruption</h3>
+        <p class="body-sm">No ladder edits or controller modifications required.</p>
+      </article>
+      <article class="why-card">
+        <h3 class="h5">On-Premise &amp; Secure</h3>
+        <p class="body-sm">Software and data stay inside the plant, with no external data egress.</p>
+      </article>
+      <article class="why-card">
+        <h3 class="h5">Scalable Platform</h3>
+        <p class="body-sm">Start with a few machines and expand across cells, lines, energy, utilities and asset health.</p>
+      </article>
     </div>
   </section>
 
+  <!-- ================= CTA ================= -->
   <section class="cta">
     <h2 class="h2">How Much of Your CNC Runtime Is Truly Accounted For?</h2>
     <p class="body-lg">See live OEE, spindle control and downtime analytics in a 20-minute walkthrough.</p>
