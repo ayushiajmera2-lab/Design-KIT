@@ -44,10 +44,12 @@
     font-size:12px;line-height:18px;font-weight:600;letter-spacing:.96px;
     text-transform:uppercase;color:var(--brand-300);
   }
+.eyebrow{display:flex;align-items:center;gap:12px;}
+  .eyebrow .sec{width:32px;height:32px;border-radius:999px;background:var(--brand-500);color:#fff;display:grid;place-items:center;letter-spacing:0;}
   .logo svg{height:36px;width:auto;display:block;}
 
   /* ---------- Headline ---------- */
-  .head{margin-top:28px;display:grid;grid-template-columns:1fr 520px;gap:48px;align-items:end;}
+  .head{margin-top:28px;display:grid;grid-template-columns:1fr 600px;gap:48px;align-items:end;}
   h1{
     font-family:var(--heading);font-weight:700;font-size:72px;line-height:80px;
     letter-spacing:-.02em;color:var(--text-heading-dark);margin:0;
@@ -82,10 +84,12 @@
 
   /* ---------- Foundation layer ---------- */
   .foundation{
-    margin-top:16px;display:grid;grid-template-columns:240px auto 1fr;gap:56px;align-items:center;
+    margin-top:16px;
     background:linear-gradient(90deg, rgba(22,95,242,.22), rgba(22,95,242,.08));
     border:1px solid rgba(90,141,247,.35);border-radius:var(--r-3xl);padding:20px 32px;
   }
+.foundation p{margin:0;font-size:20px;line-height:32px;color:var(--text-body-dark);}
+  .foundation p strong{color:var(--text-heading-dark);font-weight:600;}
   .foundation .label{display:flex;align-items:center;font-size:12px;line-height:18px;font-weight:600;letter-spacing:.96px;text-transform:uppercase;color:var(--brand-200);}
   .pillar{display:flex;align-items:baseline;gap:12px;font-size:18px;line-height:28px;color:var(--text-body-dark);}
   .pillar strong{font-family:var(--heading);font-weight:600;font-size:20px;color:var(--text-heading-dark);white-space:nowrap;}
@@ -98,11 +102,11 @@
   }
   .quote q{font-size:22px;line-height:34px;color:var(--text-heading-dark);quotes:"\201C" "\201D";}
   .quote q em{font-style:normal;color:var(--brand-300);font-weight:600;}
-  .attr{margin-top:12px;display:flex;align-items:center;gap:12px;font-size:16px;line-height:24px;color:var(--text-muted);}
+  .attr{margin-top:12px;display:flex;align-items:center;gap:8px;font-size:16px;line-height:24px;color:var(--text-muted);}
   .attr b{color:var(--text-body-dark);font-weight:500;}
   .chip{
     font-size:10px;line-height:16px;font-weight:500;letter-spacing:.96px;text-transform:uppercase;
-    padding:2px 10px;border-radius:999px;background:rgba(104,221,104,.12);color:var(--accent);
+    color:var(--text-muted);
   }
   .takeaway{
     background:var(--bg-secondary-dark);border:1px solid var(--line);border-radius:var(--r-3xl);
@@ -123,7 +127,7 @@
 <section class="slide">
 
   <div class="topbar">
-    <div class="eyebrow">03 · Why we win</div>
+    <div class="eyebrow"><span class="sec">03</span>Why we win</div>
     <div class="logo" aria-label="Faclon Labs">
       <svg width="254" height="53" viewBox="0 0 254 53" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><title>Faclon Labs</title>
 <path d="M21.0896 47.4814L9.07165 13.0136L4.61176 26.8799L11.8509 32.3868L13.1417 38.1526L0 28.5599L9.45639 0L21.0896 34.6505L32.5962 0.507551L41.7691 29.3415L28.6527 38.8631L30.0752 32.6457L37.051 27.3316L32.3988 13.5973L21.0896 47.4814Z" fill="white"/>
@@ -143,7 +147,7 @@
 
   <div class="head">
     <h1>We made the three hardest jobs in industrial AI <span class="hl">agentic.</span></h1>
-    <p class="lede"><strong>Agentic:</strong> AI agents do the work. Our engineers approve it.</p>
+    <p class="lede">Agentic: AI agents do the work. Our engineers approve it.</p>
   </div>
 
   <div class="stages">
@@ -151,7 +155,7 @@
       <div class="stage-top"><span class="num">01</span><h3>Presales</h3></div>
       <p>Research the account, design the solution.</p>
       <div class="metric">
-        <div class="metric-val">2<small>hours</small></div>
+        <div class="metric-val">2 hours</div>
         <div class="metric-cap">to a plant-specific design</div>
       </div>
       <span class="arrow" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -160,8 +164,8 @@
       <div class="stage-top"><span class="num">02</span><h3>Implementation</h3></div>
       <p>Configure it. Engineers approve each release.</p>
       <div class="metric">
-        <div class="metric-val">~5<small>weeks</small></div>
-        <div class="metric-cap">down from <b>about 40</b></div>
+        <div class="metric-val">About 5 weeks</div>
+        <div class="metric-cap">from about 40</div>
       </div>
       <span class="arrow" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </article>
@@ -176,24 +180,21 @@
   </div>
 
   <div class="foundation">
-    <div class="label">All three run on</div>
-    <div class="pillar"><span class="dot"></span><span><strong>The Harness</strong>&ensp;the tools our agents use</span></div>
-    <div class="pillar"><span class="dot"></span><span><strong>The Context</strong>&ensp;what 400+ factories taught us</span></div>
+    <p>All three run on <strong>the Harness</strong>, the tools our agents use, and <strong>the Context</strong>, what 400+ factories taught us.</p>
   </div>
 
   <div class="proof">
     <div class="quote">
       <q>…what we want is like <em>an end to end agentic framework</em>.</q>
-      <div class="attr"><span><b>Gurvinder Kahlon</b>, Stratasys</span><span class="chip">Qualified prospect</span></div>
+      <div class="attr"><span><b>Gurvinder Kahlon</b>, Stratasys</span><span class="chip">· Qualified prospect</span></div>
     </div>
     <div class="takeaway">
-      <div class="eyebrow">The takeaway</div>
       <p><strong>Industrial AI fails in three places: the sale, the implementation and the scale-up.</strong> Faclon’s agents do all three, with engineers approving the work, which is how <span class="big">about 40 weeks becomes about 5.</span></p>
     </div>
   </div>
 
   <div class="footer">
-    <div class="source">Source: Faclon presales benchmarks and deployment records, September 2026. About 5 weeks: deployment and configuration measured (a median of three weeks over the last six months), other stages from project plans. Revenue from existing customers: FY26.</div>
+    <div class="source">Faclon presales benchmarks and deployment records, September 2026. About 5 weeks: deployment and configuration measured (a median of three weeks over the last six months), other stages from project plans. Revenue from existing customers: FY26.</div>
     <div class="page">12</div>
   </div>
 
