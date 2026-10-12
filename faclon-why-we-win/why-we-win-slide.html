@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Why We Win</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=TASA+Orbiter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Faclon design system tokens */
+  :root{
+    --brand-100:#DCE8FE; --brand-200:#B8D0FD; --brand-300:#8AB1FB; --brand-400:#5A8DF7;
+    --brand-500:#165FF2; --brand-600:#124ED0; --brand-700:#0E3FAA; --brand-800:#0A3083;
+    --brand-900:#07215C; --brand-1000:#041438;
+    --accent:#68DD68;
+    --bg-primary-dark:#171F2B; --bg-secondary-dark:#0C1927;
+    --text-heading-dark:#F1F5FA; --text-body-dark:#CBD5E2; --text-muted:#768EA7;
+    --line:rgba(203,213,226,.14);
+    --r-lg:6px; --r-xl:8px; --r-3xl:12px;
+    --heading:'TASA Orbiter', 'Inter', sans-serif;
+    --body:'Inter', Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg-secondary-dark);}
+  body{font-family:var(--body);color:var(--text-body-dark);}
+  @page{size:1920px 1080px;margin:0;}
+
+  .slide{
+    width:1920px;height:1080px;position:relative;overflow:hidden;
+    background:var(--bg-primary-dark);
+    padding:56px 96px 40px;
+    display:flex;flex-direction:column;
+  }
+  .slide::before{ /* soft brand glow, flat elsewhere */
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(900px 520px at 88% 0%, rgba(22,95,242,.16), transparent 70%);
+  }
+  .slide > *{position:relative;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{display:flex;justify-content:space-between;align-items:center;}
+  .eyebrow{
+    font-size:12px;line-height:18px;font-weight:600;letter-spacing:.96px;
+    text-transform:uppercase;color:var(--brand-300);
+  }
+  .logo svg{height:36px;width:auto;display:block;}
+
+  /* ---------- Headline ---------- */
+  .head{margin-top:28px;display:grid;grid-template-columns:1fr 520px;gap:48px;align-items:end;}
+  h1{
+    font-family:var(--heading);font-weight:700;font-size:72px;line-height:80px;
+    letter-spacing:-.02em;color:var(--text-heading-dark);margin:0;
+  }
+  h1 .hl{color:var(--brand-300);}
+  .lede{font-size:20px;line-height:32px;color:var(--text-body-dark);margin:0 0 8px;}
+  .lede strong{color:var(--text-heading-dark);font-weight:600;}
+
+  /* ---------- Three stages ---------- */
+  .stages{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative;}
+  .stage{
+    background:var(--bg-secondary-dark);border:1px solid var(--line);border-radius:var(--r-3xl);
+    padding:28px 32px 32px;display:flex;flex-direction:column;position:relative;
+  }
+  .stage-top{display:flex;align-items:center;gap:12px;}
+  .num{
+    width:40px;height:40px;border-radius:var(--r-xl);display:grid;place-items:center;
+    background:var(--brand-500);color:#fff;font-family:var(--heading);font-weight:600;font-size:18px;
+  }
+  .stage h3{font-family:var(--heading);font-weight:600;font-size:24px;line-height:32px;color:var(--text-heading-dark);margin:0;}
+  .stage p{font-size:18px;line-height:28px;margin:16px 0 0;color:var(--text-body-dark);min-height:56px;}
+  .metric{margin-top:28px;padding-top:24px;border-top:1px solid var(--line);}
+  .metric-val{font-family:var(--heading);font-weight:700;font-size:60px;line-height:68px;letter-spacing:-.02em;color:var(--brand-300);}
+  .metric-val small{font-size:32px;line-height:40px;letter-spacing:0;font-weight:600;margin-left:8px;}
+  .metric-cap{font-size:16px;line-height:24px;color:var(--text-muted);margin-top:4px;}
+  .metric-cap b{color:var(--text-body-dark);font-weight:500;}
+  .arrow{
+    position:absolute;top:44px;right:-24px;width:24px;height:24px;z-index:2;
+    display:grid;place-items:center;color:var(--brand-400);
+  }
+  .arrow svg{width:20px;height:20px;}
+
+  /* ---------- Foundation layer ---------- */
+  .foundation{
+    margin-top:16px;display:grid;grid-template-columns:240px auto 1fr;gap:56px;align-items:center;
+    background:linear-gradient(90deg, rgba(22,95,242,.22), rgba(22,95,242,.08));
+    border:1px solid rgba(90,141,247,.35);border-radius:var(--r-3xl);padding:20px 32px;
+  }
+  .foundation .label{display:flex;align-items:center;font-size:12px;line-height:18px;font-weight:600;letter-spacing:.96px;text-transform:uppercase;color:var(--brand-200);}
+  .pillar{display:flex;align-items:baseline;gap:12px;font-size:18px;line-height:28px;color:var(--text-body-dark);}
+  .pillar strong{font-family:var(--heading);font-weight:600;font-size:20px;color:var(--text-heading-dark);white-space:nowrap;}
+  .pillar .dot{width:8px;height:8px;border-radius:2px;background:var(--accent);flex:none;transform:translateY(-2px);}
+
+  /* ---------- Proof row ---------- */
+  .proof{margin-top:24px;display:grid;grid-template-columns:1fr 1.15fr;gap:24px;}
+  .quote{
+    border-left:3px solid var(--brand-400);padding:8px 0 8px 28px;display:flex;flex-direction:column;justify-content:center;
+  }
+  .quote q{font-size:22px;line-height:34px;color:var(--text-heading-dark);quotes:"\201C" "\201D";}
+  .quote q em{font-style:normal;color:var(--brand-300);font-weight:600;}
+  .attr{margin-top:12px;display:flex;align-items:center;gap:12px;font-size:16px;line-height:24px;color:var(--text-muted);}
+  .attr b{color:var(--text-body-dark);font-weight:500;}
+  .chip{
+    font-size:10px;line-height:16px;font-weight:500;letter-spacing:.96px;text-transform:uppercase;
+    padding:2px 10px;border-radius:999px;background:rgba(104,221,104,.12);color:var(--accent);
+  }
+  .takeaway{
+    background:var(--bg-secondary-dark);border:1px solid var(--line);border-radius:var(--r-3xl);
+    padding:24px 32px;display:flex;flex-direction:column;justify-content:center;
+  }
+  .takeaway .eyebrow{color:var(--text-muted);margin-bottom:8px;}
+  .takeaway p{margin:0;font-size:20px;line-height:32px;color:var(--text-body-dark);}
+  .takeaway p strong{color:var(--text-heading-dark);font-weight:600;}
+  .takeaway .big{color:var(--accent);font-weight:600;}
+
+  /* ---------- Footer ---------- */
+  .footer{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:48px;padding-top:20px;border-top:1px solid var(--line);}
+  .source{font-size:12px;line-height:18px;color:var(--text-muted);max-width:1500px;}
+  .page{font-size:12px;line-height:18px;color:var(--text-muted);font-weight:500;}
+</style>
+</head>
+<body>
+<section class="slide">
+
+  <div class="topbar">
+    <div class="eyebrow">03 · Why we win</div>
+    <div class="logo" aria-label="Faclon Labs">
+      <svg width="254" height="53" viewBox="0 0 254 53" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><title>Faclon Labs</title>
+<path d="M21.0896 47.4814L9.07165 13.0136L4.61176 26.8799L11.8509 32.3868L13.1417 38.1526L0 28.5599L9.45639 0L21.0896 34.6505L32.5962 0.507551L41.7691 29.3415L28.6527 38.8631L30.0752 32.6457L37.051 27.3316L32.3988 13.5973L21.0896 47.4814Z" fill="white"/>
+<path d="M63.684 8.53735V12.7856H55.0274V17.1708H63.0613V21.4038H55.0274V29.3317H50.0512V8.53735H63.684Z" fill="white"/>
+<path d="M86.5859 25.2256L84.9862 21.4038L83.2144 17.1708L81.3818 12.7856L79.6049 8.53735H74.5224L72.7455 12.7856L70.913 17.1708L69.1412 21.4038L67.5415 25.2256L65.8253 29.3317H71.4445L72.8873 25.2256H81.0426L82.4854 29.3317H88.302L86.5859 25.2256ZM74.2237 21.4038L75.712 17.1708L76.9675 13.5926L78.2179 17.1708L79.7062 21.4038H74.2237Z" fill="white"/>
+<path d="M126.052 25.2256V29.3317H113.188V8.53735H118.038V25.2256H126.052Z" fill="white"/>
+<path d="M175.166 8.53735V19.201L172.969 21.4038L170.337 24.043L169.157 25.2256L167.861 26.525L167.041 25.2256L164.646 21.4038L161.989 17.1708L161.118 15.7801V29.3317H156.294V8.53735H161.893L164.56 12.7856L167.309 17.1708L169.962 21.4038L170.337 21.9976V8.53735H175.166Z" fill="white"/>
+<path d="M109.321 26.6663C108.08 27.8794 106.547 28.798 104.836 29.331C103.772 29.6609 102.638 29.8385 101.464 29.8385C100.29 29.8385 99.1556 29.6609 98.0926 29.331C95.7538 28.6052 93.744 27.1485 92.357 25.2249C91.5318 24.093 90.9243 22.7988 90.5902 21.403C90.3928 20.596 90.2915 19.7535 90.2915 18.8856C90.2915 18.3019 90.3371 17.7284 90.4282 17.17C90.6864 15.5662 91.2989 14.0791 92.1848 12.7848C93.5314 10.8257 95.5006 9.31823 97.8192 8.5366C98.9582 8.14579 100.188 7.9377 101.464 7.9377C102.74 7.9377 103.97 8.14579 105.109 8.5366C106.678 9.06446 108.096 9.93238 109.26 11.0388L105.894 14.475C105.225 13.7187 104.395 13.13 103.464 12.7848C102.861 12.5615 102.208 12.4397 101.535 12.4397C100.862 12.4397 100.214 12.5615 99.6112 12.7848C97.7534 13.4649 96.3056 15.1094 95.7639 17.17C95.607 17.7487 95.526 18.3577 95.526 18.9922C95.526 19.8448 95.6728 20.6569 95.9461 21.403C96.6042 23.2099 97.971 24.6209 99.677 25.2249C100.259 25.433 100.887 25.5446 101.535 25.5446C102.183 25.5446 102.811 25.433 103.393 25.2249C104.431 24.8594 105.342 24.1895 106.045 23.3165L109.321 26.6663Z" fill="white"/>
+<path d="M151.328 17.17C151.07 15.5662 150.457 14.0791 149.571 12.7848C148.225 10.8257 146.25 9.31823 143.932 8.5366C142.788 8.14579 141.563 7.9377 140.287 7.9377C139.011 7.9377 137.786 8.14579 136.642 8.5366C134.323 9.31823 132.354 10.8257 131.008 12.7848C130.122 14.0791 129.509 15.5662 129.251 17.17C129.16 17.7284 129.114 18.3019 129.114 18.8856C129.114 19.7535 129.216 20.596 129.413 21.403C129.747 22.7988 130.355 24.093 131.18 25.2249C132.567 27.1485 134.577 28.6052 136.92 29.331C137.983 29.6609 139.112 29.8385 140.287 29.8385C141.461 29.8385 142.59 29.6609 143.653 29.331C145.997 28.6052 148.007 27.1485 149.399 25.2249C150.224 24.093 150.832 22.7988 151.166 21.403C151.363 20.596 151.464 19.7535 151.464 18.8856C151.464 18.3019 151.419 17.7284 151.328 17.17ZM145.941 21.403C145.278 23.2099 143.896 24.6209 142.175 25.2249C141.583 25.433 140.95 25.5446 140.297 25.5446C139.644 25.5446 139.011 25.433 138.419 25.2249C136.693 24.6209 135.311 23.2099 134.647 21.403C134.374 20.6569 134.222 19.8448 134.222 18.9922C134.222 18.3577 134.303 17.7487 134.465 17.17C135.012 15.1094 136.475 13.4649 138.353 12.7848C138.966 12.5615 139.619 12.4397 140.297 12.4397C140.98 12.4397 141.633 12.5615 142.246 12.7848C144.114 13.47 145.577 15.1094 146.124 17.17C146.286 17.7487 146.367 18.3577 146.367 18.9922C146.367 19.8448 146.215 20.6569 145.941 21.403Z" fill="white"/>
+<path d="M170.934 50.5977V52.1762H158.941V35.5184L161.108 33.3918V50.5977H170.934Z" fill="white"/>
+<path d="M200.255 50.5978L198.61 46.7099L197.84 44.898L196.64 42.0658L195.937 40.4062L192.672 32.7168L191.968 31.052H189.675L188.971 32.7168L185.706 40.4062L185.002 42.0658L183.802 44.898L183.033 46.7099L181.383 50.5978L180.714 52.1763H182.901L183.544 50.5978L185.134 46.7099H196.301L197.891 50.5978L198.534 52.1763H200.923L200.255 50.5978ZM185.873 44.898L187.032 42.0658L187.71 40.4062L190.717 33.0568L193.725 40.4062L194.403 42.0658L195.562 44.898H185.873Z" fill="white"/>
+<path d="M226.969 44.898C226.599 43.7661 225.845 42.7815 224.837 42.0658C224.25 41.6496 223.572 41.3198 222.838 41.1117C223.283 40.934 223.698 40.6955 224.073 40.4062C225.313 39.4469 226.113 37.9547 226.113 36.2747C226.113 34.8992 225.582 33.6507 224.706 32.7168C223.744 31.6915 222.377 31.052 220.859 31.052H213.037V52.1763H220.95C222.64 52.1763 224.169 51.5774 225.293 50.5978C226.437 49.6131 227.171 48.2377 227.227 46.7099C227.232 46.644 227.232 46.578 227.232 46.512C227.232 45.9537 227.141 45.4106 226.969 44.898ZM215.037 32.7168H220.256C222.372 32.7168 224.088 34.4374 224.088 36.5589C224.088 38.6856 222.372 40.4062 220.256 40.4062H215.037V32.7168ZM215.037 50.5978V42.0658H220.818C222.727 42.0658 224.346 43.2484 224.949 44.898C225.116 45.3446 225.207 45.8319 225.207 46.3343C225.207 46.4612 225.202 46.5881 225.192 46.7099C224.994 48.8873 223.111 50.5978 220.818 50.5978H215.037Z" fill="white"/>
+<path d="M253.318 46.7099V46.7403C253.318 48.2021 252.716 49.5471 251.713 50.5977C251.091 51.2525 250.316 51.7905 249.435 52.1762C248.443 52.6178 247.319 52.8665 246.124 52.8665C244.93 52.8665 243.806 52.6178 242.814 52.1762C241.933 51.7905 241.158 51.2525 240.536 50.5977C240.277 50.3287 240.045 50.0394 239.847 49.7349L241.295 48.6081C241.781 49.4507 242.581 50.146 243.568 50.5977C244.363 50.9632 245.274 51.1712 246.251 51.1712C247.228 51.1712 248.144 50.9632 248.939 50.5977C250.6 49.8313 251.728 48.3797 251.754 46.7099V46.6541C251.754 46.0298 251.602 45.441 251.318 44.8979C250.564 43.4311 248.888 42.3602 246.884 42.1724C246.737 42.1572 246.585 42.147 246.433 42.147C246.428 42.1419 246.418 42.1419 246.413 42.147C246.2 42.1267 245.988 42.1013 245.78 42.0658C244.834 41.9084 243.958 41.5887 243.193 41.1471C242.819 40.9289 242.464 40.6802 242.145 40.4061C240.925 39.3555 240.176 37.9242 240.176 36.3457C240.176 34.9702 240.743 33.7115 241.69 32.7167C242.363 32.0112 243.229 31.4377 244.221 31.0519C245.112 30.7068 246.104 30.5139 247.147 30.5139C248.19 30.5139 249.182 30.7068 250.073 31.0519C251.065 31.4377 251.926 32.0112 252.599 32.7167C252.731 32.8487 252.852 32.9908 252.969 33.138L251.303 34.4373C250.822 33.6912 250.078 33.0872 249.187 32.7167C248.559 32.4579 247.856 32.3107 247.112 32.3107C246.367 32.3107 245.664 32.4579 245.036 32.7167C243.411 33.3918 242.292 34.8281 242.292 36.4929C242.292 38.2845 243.588 39.8072 245.411 40.4061C245.699 40.5025 246.008 40.5736 246.322 40.6193C246.58 40.6548 246.843 40.6751 247.112 40.6751C247.117 40.67 247.122 40.6751 247.127 40.6751C248.21 40.802 249.218 41.137 250.088 41.6293C250.326 41.7613 250.559 41.9084 250.777 42.0658C251.799 42.8068 252.574 43.7813 252.984 44.8979C253.196 45.4664 253.313 46.0755 253.318 46.7099Z" fill="white"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="head">
+    <h1>We made the three hardest jobs in industrial AI <span class="hl">agentic.</span></h1>
+    <p class="lede"><strong>Agentic:</strong> AI agents do the work. Our engineers approve it.</p>
+  </div>
+
+  <div class="stages">
+    <article class="stage">
+      <div class="stage-top"><span class="num">01</span><h3>Presales</h3></div>
+      <p>Research the account, design the solution.</p>
+      <div class="metric">
+        <div class="metric-val">2<small>hours</small></div>
+        <div class="metric-cap">to a plant-specific design</div>
+      </div>
+      <span class="arrow" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </article>
+    <article class="stage">
+      <div class="stage-top"><span class="num">02</span><h3>Implementation</h3></div>
+      <p>Configure it. Engineers approve each release.</p>
+      <div class="metric">
+        <div class="metric-val">~5<small>weeks</small></div>
+        <div class="metric-cap">down from <b>about 40</b></div>
+      </div>
+      <span class="arrow" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </article>
+    <article class="stage">
+      <div class="stage-top"><span class="num">03</span><h3>Adoption and scale-up</h3></div>
+      <p>Stay on call, report the value.</p>
+      <div class="metric">
+        <div class="metric-val">81%</div>
+        <div class="metric-cap">of revenue from existing customers</div>
+      </div>
+    </article>
+  </div>
+
+  <div class="foundation">
+    <div class="label">All three run on</div>
+    <div class="pillar"><span class="dot"></span><span><strong>The Harness</strong>&ensp;the tools our agents use</span></div>
+    <div class="pillar"><span class="dot"></span><span><strong>The Context</strong>&ensp;what 400+ factories taught us</span></div>
+  </div>
+
+  <div class="proof">
+    <div class="quote">
+      <q>…what we want is like <em>an end to end agentic framework</em>.</q>
+      <div class="attr"><span><b>Gurvinder Kahlon</b>, Stratasys</span><span class="chip">Qualified prospect</span></div>
+    </div>
+    <div class="takeaway">
+      <div class="eyebrow">The takeaway</div>
+      <p><strong>Industrial AI fails in three places: the sale, the implementation and the scale-up.</strong> Faclon’s agents do all three, with engineers approving the work, which is how <span class="big">about 40 weeks becomes about 5.</span></p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="source">Source: Faclon presales benchmarks and deployment records, September 2026. About 5 weeks: deployment and configuration measured (a median of three weeks over the last six months), other stages from project plans. Revenue from existing customers: FY26.</div>
+    <div class="page">12</div>
+  </div>
+
+</section>
+</body>
+</html>
