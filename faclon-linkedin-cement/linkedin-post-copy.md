@@ -1,6 +1,8 @@
 # LinkedIn post: Cement plant case study (carousel)
 
-**Format:** Document / carousel post. Upload `faclon-cement-linkedin-carousel.pdf` (7 slides, 1080×1350, 4:5).
+**Format:** Document / carousel post, 1080×1350 (4:5).
+- **v2 (recommended):** `faclon-cement-carousel-v2.pdf`, 8 slides, styled after the Faclon design system reference banners, dashboards, infographics and CTA.
+- v1: `faclon-cement-linkedin-carousel.pdf`, 7 slides.
 Document title shown on LinkedIn: **One cement plant, 15 systems: what changed with Faclon**
 
 ---
@@ -21,6 +23,7 @@ The scorecard: ↓15% energy (SEC) · ↓10% CO₂ · ↓8% quality deviations
 
 👉 Swipe through the carousel, then answer the poll on slide 2 in the comments:
 **How many systems hold your plant's data today? A, B, C or D?**
+(v2: and on slide 7, which result matters most to you, 01–04?)
 
 💬 Comment **"CEMENT"** and we'll send you the full case study.
 
