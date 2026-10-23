@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Faclon Cement Carousel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Faclon design system tokens (via Design MCP) */
+  :root{
+    --brand-050:#F4F8FF; --brand-100:#DCE8FE; --brand-200:#B8D0FD; --brand-300:#8AB1FB;
+    --brand-400:#5A8DF7; --brand-500:#165FF2; --brand-600:#124ED0; --brand-700:#0E3FAA;
+    --brand-800:#0A3083; --brand-900:#07215C; --brand-1000:#041438;
+    --accent:#68DD68;
+    --green-050:#EBFAF3; --green-500:#00BE5F; --green-1000:#00361B;
+    --red-050:#FFF5F5; --red-500:#F04438;
+    --bg-primary-light:#FFFFFF; --bg-secondary-light:#F1F5FA;
+    --bg-primary-dark:#171F2B; --bg-secondary-dark:#0C1927;
+    --text-heading-light:#0C1927; --text-body-light:#243547;
+    --text-supporting-light:#40566D; --text-muted-light:#768EA7;
+    --text-heading-dark:#F1F5FA; --text-body-dark:#CBD5E2;
+    --r-md:4px; --r-lg:6px; --r-xl:8px; --r-3xl:12px;
+    --shadow-low:0 2px 16px rgba(25,40,57,.10);
+    --font-head:'TASA Orbiter', 'Inter', sans-serif;
+    --font-body:'Inter', Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg-secondary-light);font-family:var(--font-body);color:var(--text-body-light)}
+
+  /* ---------- Slide frame: 540x675 logical = 1080x1350 export @2x (LinkedIn 4:5) ---------- */
+  .slide{
+    width:540px;height:675px;position:relative;overflow:hidden;flex:none;
+    padding:40px;display:flex;flex-direction:column;
+  }
+  .dark{background:var(--brand-1000);color:var(--text-body-dark)}
+  .light{background:var(--bg-primary-light)}
+  .tint{background:var(--bg-secondary-light)}
+  .brand{background:var(--brand-500);color:#fff}
+
+  .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .logo{width:104px;height:22px;display:block}
+  .dark .logo,.brand .logo{color:#fff}
+  .light .logo,.tint .logo{color:var(--brand-500)}
+  .count{font:500 10px/16px var(--font-body);letter-spacing:.96px;text-transform:uppercase}
+  .dark .count,.brand .count{color:var(--brand-200)}
+  .light .count,.tint .count{color:var(--text-supporting-light)}
+
+  .progress{display:flex;gap:4px;margin-top:16px}
+  .progress i{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.16)}
+  .light .progress i,.tint .progress i{background:var(--brand-100)}
+  .progress i.on{background:var(--accent)}
+  .light .progress i.on,.tint .progress i.on{background:var(--brand-500)}
+
+  .eyebrow{font:600 12px/18px var(--font-body);letter-spacing:.96px;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+  .dark .eyebrow{color:var(--accent)}
+  .light .eyebrow,.tint .eyebrow{color:var(--brand-500)}
+  .brand .eyebrow{color:var(--brand-100)}
+  .eyebrow .rule{display:inline-block;width:24px;height:2px;background:currentColor}
+
+  h1,h2,h3{font-family:var(--font-head);}
+  .display{font:700 72px/80px var(--font-head);letter-spacing:-.02em}
+  .h1{font:600 40px/48px var(--font-head)}
+  .h2{font:600 32px/40px var(--font-head)}
+  .h3{font:600 24px/32px var(--font-head)}
+  .h4{font:600 20px/28px var(--font-head)}
+  .dark .display,.dark .h1,.dark .h2,.dark .h3,.dark .h4{color:var(--text-heading-dark)}
+  .light .display,.light .h1,.light .h2,.light .h3,.light .h4,
+  .tint .display,.tint .h1,.tint .h2,.tint .h3,.tint .h4{color:var(--text-heading-light)}
+  .brand .display,.brand .h1,.brand .h2,.brand .h3{color:#fff}
+  .hl,.dark .hl{color:var(--accent)}
+  .light .hl,.tint .hl,.light .display.hl,.tint .h2 .hl{color:var(--brand-500)}
+
+  .body-lg{font:400 18px/28px var(--font-body)}
+  .body-md{font:400 16px/24px var(--font-body)}
+  .body-sm{font:400 14px/22px var(--font-body)}
+  .body-xs{font:400 12px/18px var(--font-body)}
+  .muted{color:var(--text-muted-light)}
+  .dark .muted{color:var(--brand-300)}
+
+  .grow{flex:1}
+  .stack-12>*+*{margin-top:12px}
+  .stack-24>*+*{margin-top:24px}
+
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .swipe{display:inline-flex;align-items:center;gap:8px;font:600 12px/18px var(--font-body);letter-spacing:.96px;text-transform:uppercase}
+  .dark .swipe{color:var(--accent)}
+  .light .swipe,.tint .swipe{color:var(--brand-500)}
+  .swipe .arrow{width:32px;height:32px;border-radius:999px;display:grid;place-items:center}
+  .dark .swipe .arrow{background:var(--accent);color:var(--brand-1000)}
+  .light .swipe .arrow,.tint .swipe .arrow{background:var(--brand-500);color:#fff}
+  .next{font:500 12px/18px var(--font-body)}
+  .dark .next{color:var(--brand-200)}
+  .light .next,.tint .next{color:var(--text-supporting-light)}
+
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border-radius:999px;font:500 12px/18px var(--font-body)}
+  .dark .chip{background:rgba(104,221,104,.12);color:var(--accent)}
+  .light .chip,.tint .chip{background:var(--brand-100);color:var(--brand-700)}
+
+  .card{background:var(--bg-primary-light);border-radius:var(--r-lg);padding:16px}
+  .dark .card{background:var(--brand-900)}
+
+  /* ---------- Slide 1: hook ---------- */
+  .s1 .hero{margin-top:auto}
+  .s1 .strip{margin:0 -40px -40px;padding:24px 40px;background:var(--brand-500);display:flex;align-items:center;justify-content:space-between;gap:24px;color:#fff}
+  .s1 .strip p{font:400 16px/24px var(--font-body);max-width:340px}
+  .s1 .strip .arrow{width:48px;height:48px;border-radius:999px;background:#fff;color:var(--brand-500);display:grid;place-items:center;flex:none}
+  .s1 .grid-bg{position:absolute;inset:0;pointer-events:none;opacity:.5}
+  .silos{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:32px}
+  .silos span{height:28px;border-radius:var(--r-md);border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04)}
+  .silos span.lit{border-color:var(--accent);background:rgba(104,221,104,.12)}
+
+  /* ---------- Slide 2: poll ---------- */
+  .poll{display:flex;flex-direction:column;gap:12px}
+  .opt{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:var(--r-lg);background:var(--bg-primary-light);border:1px solid var(--brand-100)}
+  .opt b{width:32px;height:32px;border-radius:var(--r-md);display:grid;place-items:center;font:600 16px/20px var(--font-head);background:var(--brand-050);color:var(--brand-500);flex:none}
+  .opt span{font:500 16px/24px var(--font-body);color:var(--text-heading-light);flex:1}
+  .opt .radio{width:20px;height:20px;border-radius:999px;border:2px solid var(--brand-200);flex:none}
+  .opt.pick .radio{border:6px solid var(--brand-500)}
+  .opt{cursor:pointer}
+  .opt.pick{border-color:var(--brand-500);box-shadow:var(--shadow-low)}
+  .opt.pick b{background:var(--brand-500);color:#fff}
+  .comment{display:flex;align-items:center;gap:12px;padding:16px;border-radius:var(--r-lg);background:var(--brand-1000);color:#fff}
+  .comment .ic{width:40px;height:40px;border-radius:var(--r-xl);background:var(--accent);color:var(--brand-1000);display:grid;place-items:center;flex:none}
+  .comment p{font:500 16px/24px var(--font-body)}
+  .comment p em{font-style:normal;color:var(--accent)}
+
+  /* ---------- Slide 3: connect ---------- */
+  .connect{display:grid;grid-template-columns:184px 1fr;gap:0;align-items:center;position:relative}
+  .sources{display:flex;flex-direction:column;gap:8px;position:relative;z-index:1}
+  .src{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:var(--r-lg);background:var(--brand-900);border:1px solid rgba(255,255,255,.08);font:500 12px/18px var(--font-body);color:var(--text-heading-dark)}
+  .src i{width:8px;height:8px;border-radius:2px;background:var(--brand-400);flex:none}
+  .src.paper i{background:var(--accent)}
+  .hub{position:relative;z-index:1;margin-left:auto;width:176px;padding:16px;border-radius:var(--r-xl);background:var(--brand-500);color:#fff}
+  .hub .eyebrow{color:var(--brand-100)}
+  .hub .mini{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:12px}
+  .hub .mini span{height:28px;border-radius:var(--r-md);background:rgba(255,255,255,.16)}
+  .hub .mini span.wide{grid-column:span 2;height:36px;background:rgba(255,255,255,.24)}
+  .wires{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+
+  /* ---------- Slide 4: decide ---------- */
+  .race{display:flex;flex-direction:column;gap:16px}
+  .lane .lbl{display:flex;justify-content:space-between;font:500 12px/18px var(--font-body);color:var(--text-supporting-light);margin-bottom:8px;letter-spacing:.96px;text-transform:uppercase}
+  .lane .track{height:48px;border-radius:var(--r-lg);background:var(--bg-secondary-light);position:relative;overflow:hidden}
+  .lane .fill{position:absolute;inset:0 auto 0 0;border-radius:var(--r-lg);display:flex;align-items:center;padding:0 16px;font:600 18px/24px var(--font-head)}
+  .lane.before .fill{width:100%;background:var(--red-050);color:var(--red-500);border:1px solid #FBD0CC}
+  .lane.now .fill{width:22%;background:var(--brand-500);color:#fff}
+  .dash-row{display:flex;gap:12px}
+  .dash-row .card{flex:1;border:1px solid var(--brand-100);padding:12px 16px}
+  .dash-row .num{font:600 32px/40px var(--font-head);color:var(--brand-500)}
+
+  /* ---------- Slide 5: optimise ---------- */
+  .chart{border-radius:var(--r-xl);background:var(--brand-900);padding:16px;position:relative}
+  .chart svg{display:block;width:100%;height:auto}
+  .legend{display:flex;justify-content:space-between;font:500 10px/16px var(--font-body);letter-spacing:.96px;text-transform:uppercase;color:var(--brand-200);margin-bottom:8px}
+  .legend .ai{color:var(--accent)}
+  .footnote{font:400 10px/16px var(--font-body);color:var(--brand-300)}
+
+  /* ---------- Slide 6: results ---------- */
+  .results{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .res{border-radius:var(--r-xl);padding:20px;background:var(--bg-primary-light);box-shadow:var(--shadow-low);display:flex;flex-direction:column;gap:8px}
+  .res .val{font:700 48px/56px var(--font-head);letter-spacing:-.02em;color:var(--text-heading-light);display:flex;align-items:baseline;gap:4px}
+  .res .val .dn{color:var(--green-500);font-size:32px}
+  .res .val .up{color:var(--brand-500);font-size:32px}
+  .res p{font:500 14px/22px var(--font-body);color:var(--text-supporting-light)}
+  .res .tag{align-self:flex-start;font:500 10px/16px var(--font-body);letter-spacing:.96px;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:var(--green-050);color:var(--green-1000)}
+  .res .tag.b{background:var(--brand-100);color:var(--brand-800)}
+
+  /* ---------- Slide 7: CTA ---------- */
+  .actions{display:flex;flex-direction:column;gap:12px}
+  .act{display:flex;align-items:center;gap:16px;padding:16px;border-radius:var(--r-lg);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.20)}
+  .act .ic{width:40px;height:40px;border-radius:var(--r-xl);background:#fff;color:var(--brand-500);display:grid;place-items:center;flex:none}
+  .act b{display:block;font:600 16px/24px var(--font-body);color:#fff}
+  .act span{display:block;font:400 14px/22px var(--font-body);color:var(--brand-100)}
+  .url{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:var(--r-lg);background:#fff;color:var(--brand-500);font:600 16px/24px var(--font-body);text-decoration:none}
+  .brand .count{color:var(--brand-100)}
+  .brand .progress i{background:rgba(255,255,255,.24)}
+  .brand .progress i.on{background:#fff}
+
+  /* ---------- Preview shell (interactive LinkedIn-style viewer) ---------- */
+  .shell{max-width:600px;margin:0 auto;padding:32px 16px}
+  .post{background:#fff;border-radius:var(--r-xl);box-shadow:var(--shadow-low);overflow:hidden}
+  .post-head{display:flex;gap:12px;align-items:center;padding:16px}
+  .avatar{width:48px;height:48px;border-radius:999px;background:var(--brand-1000);display:grid;place-items:center;flex:none}
+  .avatar svg{width:28px;height:32px;color:#fff}
+  .post-head b{font:600 14px/20px var(--font-body);color:var(--text-heading-light);display:block}
+  .post-head span{font:400 12px/18px var(--font-body);color:var(--text-muted-light)}
+  .caption{padding:0 16px 12px;font:400 14px/22px var(--font-body);color:var(--text-body-light);white-space:pre-line}
+  .viewer{position:relative;background:var(--bg-primary-dark);overflow:hidden}
+  .track{display:flex;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+  .viewport{width:100%;aspect-ratio:4/5;position:relative;overflow:hidden}
+  .scaler{transform-origin:0 0;position:absolute;top:0;left:0}
+  .nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:999px;border:0;background:rgba(255,255,255,.92);color:var(--brand-1000);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow-low);z-index:2}
+  .nav:disabled{opacity:0;pointer-events:none}
+  .nav.prev{left:12px}.nav.nextb{right:12px}
+  .pager{position:absolute;top:12px;right:12px;padding:4px 8px;border-radius:999px;background:rgba(4,20,56,.72);color:#fff;font:500 12px/18px var(--font-body);z-index:2}
+  .reactions{display:flex;justify-content:space-around;border-top:1px solid var(--bg-secondary-light);padding:4px 8px}
+  .reactions button{flex:1;border:0;background:none;padding:12px 8px;font:600 14px/20px var(--font-body);color:var(--text-supporting-light);border-radius:var(--r-md);cursor:pointer;display:flex;gap:8px;align-items:center;justify-content:center}
+  .reactions button:hover{background:var(--bg-secondary-light)}
+  .reactions button.on{color:var(--brand-500)}
+  .hint{text-align:center;font:400 12px/18px var(--font-body);color:var(--text-muted-light);margin-top:12px}
+
+  /* Export mode: slides stacked, no shell */
+  body.export{background:#fff}
+  body.export .shell-ui{display:none}
+  body.export #slides{display:block !important}
+  body.export .slide{page-break-after:always}
+  @page{size:540px 675px;margin:0}
+  @media (prefers-reduced-motion:reduce){.track{transition:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="faclon-logo" viewBox="0 0 254 53" fill="currentColor">
+      <path d="M21.0896 47.4814L9.07165 13.0136L4.61176 26.8799L11.8509 32.3868L13.1417 38.1526L0 28.5599L9.45639 0L21.0896 34.6505L32.5962 0.507551L41.7691 29.3415L28.6527 38.8631L30.0752 32.6457L37.051 27.3316L32.3988 13.5973L21.0896 47.4814Z"/>
+      <path d="M63.684 8.53735V12.7856H55.0274V17.1708H63.0613V21.4038H55.0274V29.3317H50.0512V8.53735H63.684Z"/>
+      <path d="M86.5859 25.2256L84.9862 21.4038L83.2144 17.1708L81.3818 12.7856L79.6049 8.53735H74.5224L72.7455 12.7856L70.913 17.1708L69.1412 21.4038L67.5415 25.2256L65.8253 29.3317H71.4445L72.8873 25.2256H81.0426L82.4854 29.3317H88.302L86.5859 25.2256ZM74.2237 21.4038L75.712 17.1708L76.9675 13.5926L78.2179 17.1708L79.7062 21.4038H74.2237Z"/>
+      <path d="M126.052 25.2256V29.3317H113.188V8.53735H118.038V25.2256H126.052Z"/>
+      <path d="M175.166 8.53735V19.201L172.969 21.4038L170.337 24.043L169.157 25.2256L167.861 26.525L167.041 25.2256L164.646 21.4038L161.989 17.1708L161.118 15.7801V29.3317H156.294V8.53735H161.893L164.56 12.7856L167.309 17.1708L169.962 21.4038L170.337 21.9976V8.53735H175.166Z"/>
+      <path d="M109.321 26.6663C108.08 27.8794 106.547 28.798 104.836 29.331C103.772 29.6609 102.638 29.8385 101.464 29.8385C100.29 29.8385 99.1556 29.6609 98.0926 29.331C95.7538 28.6052 93.744 27.1485 92.357 25.2249C91.5318 24.093 90.9243 22.7988 90.5902 21.403C90.3928 20.596 90.2915 19.7535 90.2915 18.8856C90.2915 18.3019 90.3371 17.7284 90.4282 17.17C90.6864 15.5662 91.2989 14.0791 92.1848 12.7848C93.5314 10.8257 95.5006 9.31823 97.8192 8.5366C98.9582 8.14579 100.188 7.9377 101.464 7.9377C102.74 7.9377 103.97 8.14579 105.109 8.5366C106.678 9.06446 108.096 9.93238 109.26 11.0388L105.894 14.475C105.225 13.7187 104.395 13.13 103.464 12.7848C102.861 12.5615 102.208 12.4397 101.535 12.4397C100.862 12.4397 100.214 12.5615 99.6112 12.7848C97.7534 13.4649 96.3056 15.1094 95.7639 17.17C95.607 17.7487 95.526 18.3577 95.526 18.9922C95.526 19.8448 95.6728 20.6569 95.9461 21.403C96.6042 23.2099 97.971 24.6209 99.677 25.2249C100.259 25.433 100.887 25.5446 101.535 25.5446C102.183 25.5446 102.811 25.433 103.393 25.2249C104.431 24.8594 105.342 24.1895 106.045 23.3165L109.321 26.6663Z"/>
+      <path d="M151.328 17.17C151.07 15.5662 150.457 14.0791 149.571 12.7848C148.225 10.8257 146.25 9.31823 143.932 8.5366C142.788 8.14579 141.563 7.9377 140.287 7.9377C139.011 7.9377 137.786 8.14579 136.642 8.5366C134.323 9.31823 132.354 10.8257 131.008 12.7848C130.122 14.0791 129.509 15.5662 129.251 17.17C129.16 17.7284 129.114 18.3019 129.114 18.8856C129.114 19.7535 129.216 20.596 129.413 21.403C129.747 22.7988 130.355 24.093 131.18 25.2249C132.567 27.1485 134.577 28.6052 136.92 29.331C137.983 29.6609 139.112 29.8385 140.287 29.8385C141.461 29.8385 142.59 29.6609 143.653 29.331C145.997 28.6052 148.007 27.1485 149.399 25.2249C150.224 24.093 150.832 22.7988 151.166 21.403C151.363 20.596 151.464 19.7535 151.464 18.8856C151.464 18.3019 151.419 17.7284 151.328 17.17ZM145.941 21.403C145.278 23.2099 143.896 24.6209 142.175 25.2249C141.583 25.433 140.95 25.5446 140.297 25.5446C139.644 25.5446 139.011 25.433 138.419 25.2249C136.693 24.6209 135.311 23.2099 134.647 21.403C134.374 20.6569 134.222 19.8448 134.222 18.9922C134.222 18.3577 134.303 17.7487 134.465 17.17C135.012 15.1094 136.475 13.4649 138.353 12.7848C138.966 12.5615 139.619 12.4397 140.297 12.4397C140.98 12.4397 141.633 12.5615 142.246 12.7848C144.114 13.47 145.577 15.1094 146.124 17.17C146.286 17.7487 146.367 18.3577 146.367 18.9922C146.367 19.8448 146.215 20.6569 145.941 21.403Z"/>
+      <path d="M170.934 50.5977V52.1762H158.941V35.5184L161.108 33.3918V50.5977H170.934Z"/>
+      <path d="M200.255 50.5978L198.61 46.7099L197.84 44.898L196.64 42.0658L195.937 40.4062L192.672 32.7168L191.968 31.052H189.675L188.971 32.7168L185.706 40.4062L185.002 42.0658L183.802 44.898L183.033 46.7099L181.383 50.5978L180.714 52.1763H182.901L183.544 50.5978L185.134 46.7099H196.301L197.891 50.5978L198.534 52.1763H200.923L200.255 50.5978ZM185.873 44.898L187.032 42.0658L187.71 40.4062L190.717 33.0568L193.725 40.4062L194.403 42.0658L195.562 44.898H185.873Z"/>
+      <path d="M226.969 44.898C226.599 43.7661 225.845 42.7815 224.837 42.0658C224.25 41.6496 223.572 41.3198 222.838 41.1117C223.283 40.934 223.698 40.6955 224.073 40.4062C225.313 39.4469 226.113 37.9547 226.113 36.2747C226.113 34.8992 225.582 33.6507 224.706 32.7168C223.744 31.6915 222.377 31.052 220.859 31.052H213.037V52.1763H220.95C222.64 52.1763 224.169 51.5774 225.293 50.5978C226.437 49.6131 227.171 48.2377 227.227 46.7099C227.232 46.644 227.232 46.578 227.232 46.512C227.232 45.9537 227.141 45.4106 226.969 44.898ZM215.037 32.7168H220.256C222.372 32.7168 224.088 34.4374 224.088 36.5589C224.088 38.6856 222.372 40.4062 220.256 40.4062H215.037V32.7168ZM215.037 50.5978V42.0658H220.818C222.727 42.0658 224.346 43.2484 224.949 44.898C225.116 45.3446 225.207 45.8319 225.207 46.3343C225.207 46.4612 225.202 46.5881 225.192 46.7099C224.994 48.8873 223.111 50.5978 220.818 50.5978H215.037Z"/>
+      <path d="M253.318 46.7099V46.7403C253.318 48.2021 252.716 49.5471 251.713 50.5977C251.091 51.2525 250.316 51.7905 249.435 52.1762C248.443 52.6178 247.319 52.8665 246.124 52.8665C244.93 52.8665 243.806 52.6178 242.814 52.1762C241.933 51.7905 241.158 51.2525 240.536 50.5977C240.277 50.3287 240.045 50.0394 239.847 49.7349L241.295 48.6081C241.781 49.4507 242.581 50.146 243.568 50.5977C244.363 50.9632 245.274 51.1712 246.251 51.1712C247.228 51.1712 248.144 50.9632 248.939 50.5977C250.6 49.8313 251.728 48.3797 251.754 46.7099V46.6541C251.754 46.0298 251.602 45.441 251.318 44.8979C250.564 43.4311 248.888 42.3602 246.884 42.1724C246.737 42.1572 246.585 42.147 246.433 42.147C246.428 42.1419 246.418 42.1419 246.413 42.147C246.2 42.1267 245.988 42.1013 245.78 42.0658C244.834 41.9084 243.958 41.5887 243.193 41.1471C242.819 40.9289 242.464 40.6802 242.145 40.4061C240.925 39.3555 240.176 37.9242 240.176 36.3457C240.176 34.9702 240.743 33.7115 241.69 32.7167C242.363 32.0112 243.229 31.4377 244.221 31.0519C245.112 30.7068 246.104 30.5139 247.147 30.5139C248.19 30.5139 249.182 30.7068 250.073 31.0519C251.065 31.4377 251.926 32.0112 252.599 32.7167C252.731 32.8487 252.852 32.9908 252.969 33.138L251.303 34.4373C250.822 33.6912 250.078 33.0872 249.187 32.7167C248.559 32.4579 247.856 32.3107 247.112 32.3107C246.367 32.3107 245.664 32.4579 245.036 32.7167C243.411 33.3918 242.292 34.8281 242.292 36.4929C242.292 38.2845 243.588 39.8072 245.411 40.4061C245.699 40.5025 246.008 40.5736 246.322 40.6193C246.58 40.6548 246.843 40.6751 247.112 40.6751C247.117 40.67 247.122 40.6751 247.127 40.6751C248.21 40.802 249.218 41.137 250.088 41.6293C250.326 41.7613 250.559 41.9084 250.777 42.0658C251.799 42.8068 252.574 43.7813 252.984 44.8979C253.196 45.4664 253.313 46.0755 253.318 46.7099Z"/>
+    </symbol>
+    <symbol id="arrow-r" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
+  </defs>
+</svg>
+
+<!-- ===== Interactive preview shell (hidden in export mode) ===== -->
+<div class="shell shell-ui">
+  <article class="post">
+    <header class="post-head">
+      <div class="avatar"><svg viewBox="0 0 42 48"><use href="#faclon-logo"/></svg></div>
+      <div><b>Faclon Labs</b><span>Industrial AI for all · Promoted case study</span></div>
+    </header>
+    <p class="caption" id="caption"></p>
+    <div class="viewer">
+      <span class="pager" id="pager">1 / 7</span>
+      <button class="nav prev" id="prev" aria-label="Previous slide"><svg width="16" height="16" style="transform:scaleX(-1)"><use href="#arrow-r"/></svg></button>
+      <button class="nav nextb" id="next" aria-label="Next slide"><svg width="16" height="16"><use href="#arrow-r"/></svg></button>
+      <div class="viewport" id="viewport"><div class="scaler" id="scaler"><div class="track" id="track"></div></div></div>
+    </div>
+    <div class="reactions">
+      <button data-r>Like</button><button data-r>Comment</button><button data-r>Repost</button><button data-r>Send</button>
+    </div>
+  </article>
+  <p class="hint">Swipe, drag or use ← → to move through the carousel. Tap a poll option on slide 2.</p>
+</div>
+
+<!-- ===== Slides (source of truth for export) ===== -->
+<div id="slides" style="display:none">
+
+  <!-- 1 · Hook -->
+  <section class="slide dark s1">
+    <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="count">Case study · 01 / 07</span></div>
+    <div class="progress"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="silos" aria-hidden="true">
+      <span></span><span></span><span class="lit"></span><span></span><span></span>
+      <span></span><span class="lit"></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span class="lit"></span><span></span>
+    </div>
+    <div class="hero stack-12" style="margin-bottom:32px">
+      <span class="eyebrow"><span class="rule"></span>Cement · 17 MTPA producer</span>
+      <h1 class="h1">One cement plant.<br>15 systems, each<br>holding its own data.</h1>
+      <h2 class="h2 hl">What changed when Faclon connected them?</h2>
+    </div>
+    <div class="strip">
+      <p>Three moves. Three numbers. One plant that now runs on AI. Swipe to see how.</p>
+      <span class="arrow"><svg width="20" height="20"><use href="#arrow-r"/></svg></span>
+    </div>
+  </section>
+
+  <!-- 2 · Poll / engagement -->
+  <section class="slide tint">
+    <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="count">02 / 07</span></div>
+    <div class="progress"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="stack-12" style="margin-top:40px">
+      <span class="eyebrow"><span class="rule"></span>Quick poll before you swipe</span>
+      <h2 class="h2">How many systems hold <span class="hl">your</span> plant's data today?</h2>
+    </div>
+    <div class="poll" style="margin-top:24px" id="poll">
+      <div class="opt"><b>A</b><span>1 to 5</span><span class="radio"></span></div>
+      <div class="opt"><b>B</b><span>6 to 10</span><span class="radio"></span></div>
+      <div class="opt pick"><b>C</b><span>More than 10</span><span class="radio"></span></div>
+      <div class="opt"><b>D</b><span>Honestly, we've lost count</span><span class="radio"></span></div>
+    </div>
+    <div class="grow"></div>
+    <div class="comment">
+      <span class="ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 4h14v9H8l-4 3v-3H3z"/></svg></span>
+      <p>Drop your letter in the comments. <em>This plant was a C.</em></p>
+    </div>
+  </section>
+
+  <!-- 3 · Move 1 Connect -->
+  <section class="slide dark">
+    <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="count">03 / 07</span></div>
+    <div class="progress"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    <div style="margin-top:32px">
+      <span class="eyebrow"><span class="rule"></span>Move 1 · Connect</span>
+      <div style="display:flex;align-items:baseline;gap:12px;margin-top:8px">
+        <span class="display hl">15+</span><span class="h3">systems.<br>One live view.</span>
+      </div>
+    </div>
+    <div class="connect" style="margin-top:24px">
+      <svg class="wires" viewBox="0 0 460 236" preserveAspectRatio="none" aria-hidden="true">
+        <g fill="none" stroke="#68DD68" stroke-width="1.5" stroke-opacity=".7">
+          <path d="M184 19 C 240 19, 240 118, 284 118"/>
+          <path d="M184 62 C 240 62, 240 118, 284 118"/>
+          <path d="M184 105 C 240 105, 240 118, 284 118"/>
+          <path d="M184 148 C 240 148, 240 118, 284 118"/>
+          <path d="M184 191 C 240 191, 240 118, 284 118"/>
+          <path d="M184 226 C 240 226, 240 118, 284 118" stroke-dasharray="4 4"/>
+        </g>
+      </svg>
+      <div class="sources">
+        <span class="src"><i></i>Business software (ERP)</span>
+        <span class="src"><i></i>Machine controls</span>
+        <span class="src"><i></i>Lab test results</span>
+        <span class="src"><i></i>Energy meters</span>
+        <span class="src"><i></i>Waste-heat recovery</span>
+        <span class="src paper"><i></i>Paper logbooks, now digital</span>
+      </div>
+      <div class="hub">
+        <span class="eyebrow">All on one screen</span>
+        <div class="mini"><span class="wide"></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+    <p class="body-md grow" style="margin-top:24px">Different vendors, different formats, one screen. Even the paper logbooks went digital.</p>
+    <div class="foot"><span class="next">Next: decisions, 5× faster</span><span class="swipe">Swipe <span class="arrow"><svg width="16" height="16"><use href="#arrow-r"/></svg></span></span></div>
+  </section>
+
+  <!-- 4 · Move 2 Decide -->
+  <section class="slide light">
+    <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="count">04 / 07</span></div>
+    <div class="progress"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
+    <div style="margin-top:32px">
+      <span class="eyebrow"><span class="rule"></span>Move 2 · Decide</span>
+      <div style="display:flex;align-items:baseline;gap:12px;margin-top:8px">
+        <span class="display hl">5×</span><span class="h3">faster<br>decisions.</span>
+      </div>
+    </div>
+    <div class="race" style="margin-top:24px">
+      <div class="lane before"><div class="lbl"><span>Before</span><span>Time to get the numbers</span></div><div class="track"><div class="fill">Hours</div></div></div>
+      <div class="lane now"><div class="lbl"><span>With Faclon</span></div><div class="track"><div class="fill">Minutes</div></div></div>
+    </div>
+    <div class="dash-row" style="margin-top:24px">
+      <div class="card"><div class="num">14</div><p class="body-sm">dashboards on the same live data</p></div>
+      <div class="card"><div class="num">1</div><p class="body-sm">version of the truth, control room to plant head</p></div>
+    </div>
+    <div class="grow"></div>
+    <div class="foot"><span class="next">Next: letting AI tune the kiln and mill</span><span class="swipe">Swipe <span class="arrow"><svg width="16" height="16"><use href="#arrow-r"/></svg></span></span></div>
+  </section>
+
+  <!-- 5 · Move 3 Optimise -->
+  <section class="slide dark">
+    <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="count">05 / 07</span></div>
+    <div class="progress"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+    <div style="margin-top:32px">
+      <span class="eyebrow"><span class="rule"></span>Move 3 · Optimise</span>
+      <div style="display:flex;align-items:baseline;gap:12px;margin-top:8px">
+        <span class="display hl">15%</span><span class="h3">less energy<br>per tonne.*</span>
+      </div>
+    </div>
+    <div class="chart" style="margin-top:24px">
+      <div class="legend"><span>Before AI: big swings</span><span class="ai">AI on · the sweet spot</span></div>
+      <svg id="wave" viewBox="0 0 428 140" aria-label="Kiln energy signal swinging widely before AI, then settling into a tight band"></svg>
+    </div>
+    <p class="body-md grow" style="margin-top:24px">AI found the most efficient operating range for the kiln and the grinding mill, then held the plant there.</p>
+    <p class="footnote" style="margin-bottom:12px">*Specific energy consumption (SEC): energy used per tonne of cement.</p>
+    <div class="foot"><span class="next">Next: the full scorecard</span><span class="swipe">Swipe <span class="arrow"><svg width="16" height="16"><use href="#arrow-r"/></svg></span></span></div>
+  </section>
+
+  <!-- 6 · Results -->
+  <section class="slide tint">
+    <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="count">06 / 07</span></div>
+    <div class="progress"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+    <div class="stack-12" style="margin-top:32px">
+      <span class="eyebrow"><span class="rule"></span>The result</span>
+      <h2 class="h2">One plant. Four numbers that moved.</h2>
+    </div>
+    <div class="results" style="margin-top:24px">
+      <div class="res"><span class="tag b">Visibility</span><div class="val">15<span class="up">+</span></div><p>systems on one screen</p></div>
+      <div class="res"><span class="tag">Quality</span><div class="val"><span class="dn">↓</span>8%</div><p>quality deviations</p></div>
+      <div class="res"><span class="tag">Energy</span><div class="val"><span class="dn">↓</span>15%</div><p>energy use (SEC)</p></div>
+      <div class="res"><span class="tag">Emissions</span><div class="val"><span class="dn">↓</span>10%</div><p>CO₂ emissions</p></div>
+    </div>
+    <div class="grow"></div>
+    <div class="foot"><span class="next">Which number matters most to you? Tell us below.</span><span class="swipe"><span class="arrow"><svg width="16" height="16"><use href="#arrow-r"/></svg></span></span></div>
+  </section>
+
+  <!-- 7 · CTA -->
+  <section class="slide brand">
+    <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="count">07 / 07</span></div>
+    <div class="progress"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+    <h2 class="h2" style="margin-top:40px">Every factory will run on AI.<br><span style="color:var(--brand-1000)">The only question is whose.</span></h2>
+    <div class="actions" style="margin-top:28px">
+      <div class="act"><span class="ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 4h14v9H8l-4 3v-3H3z"/></svg></span><div><b>Comment "CEMENT"</b><span>We'll send you the full case study.</span></div></div>
+      <div class="act"><span class="ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10v15l-5-4-5 4z"/></svg></span><div><b>Save this post</b><span>For your next plant review.</span></div></div>
+      <div class="act"><span class="ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 0 1 2-2h10l-3-3M16 12v2a2 2 0 0 1-2 2H4l3 3"/></svg></span><div><b>Repost</b><span>Tag a plant head still chasing numbers.</span></div></div>
+    </div>
+    <div class="grow"></div>
+    <div class="foot">
+      <span class="url">faclon.com <svg width="16" height="16"><use href="#arrow-r"/></svg></span>
+      <span class="count" style="color:#fff">Industrial AI for all.</span>
+    </div>
+  </section>
+</div>
+
+<script>
+/* Kiln energy waveform: wide swings, then a tight AI-held band */
+(function(){
+  const svg=document.getElementById('wave');
+  const W=428,H=140,mid=70,split=176;
+  let d='',seed=7;
+  const rnd=()=>((seed=(seed*9301+49297)%233280)/233280);
+  for(let x=0;x<=W;x+=2){
+    const amp=x<split?44+rnd()*14:(x<split+24?44-(x-split)*1.6:6+rnd()*3);
+    const y=mid+Math.sin(x*0.28+rnd()*0.6)*Math.max(amp,6)*(0.7+rnd()*0.3);
+    d+=(x?'L':'M')+x+' '+y.toFixed(1);
+  }
+  svg.innerHTML=
+    '<rect x="'+split+'" y="'+(mid-14)+'" width="'+(W-split)+'" height="28" rx="4" fill="#68DD68" fill-opacity=".12"/>'+
+    '<line x1="'+split+'" y1="8" x2="'+split+'" y2="'+(H-8)+'" stroke="#8AB1FB" stroke-dasharray="3 4" stroke-width="1"/>'+
+    '<path d="'+d+'" fill="none" stroke="#68DD68" stroke-width="2" stroke-linejoin="round"/>';
+})();
+
+const exportMode=/[?&]export/.test(location.search);
+if(exportMode){document.body.classList.add('export');}
+else{
+  const slides=[...document.querySelectorAll('#slides .slide')];
+  const track=document.getElementById('track');
+  slides.forEach(s=>track.appendChild(s));
+  const scaler=document.getElementById('scaler'),viewport=document.getElementById('viewport');
+  const pager=document.getElementById('pager'),prev=document.getElementById('prev'),next=document.getElementById('next');
+  let i=0;
+  const fit=()=>{scaler.style.transform='scale('+(viewport.clientWidth/540)+')';};
+  const go=n=>{i=Math.max(0,Math.min(slides.length-1,n));track.style.transform='translateX('+(-540*i)+'px)';pager.textContent=(i+1)+' / '+slides.length;prev.disabled=i===0;next.disabled=i===slides.length-1;};
+  prev.onclick=()=>go(i-1);next.onclick=()=>go(i+1);
+  addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(i+1);if(e.key==='ArrowLeft')go(i-1);});
+  let x0=null;
+  viewport.addEventListener('pointerdown',e=>{x0=e.clientX;});
+  viewport.addEventListener('pointerup',e=>{if(x0===null)return;const dx=e.clientX-x0;if(Math.abs(dx)>40)go(i+(dx<0?1:-1));x0=null;});
+  addEventListener('resize',fit);fit();go(0);
+
+  /* Poll: tap to vote, bars animate */
+  const opts=[...document.querySelectorAll('#poll .opt')];
+  opts.forEach(o=>o.addEventListener('click',()=>{opts.forEach(p=>p.classList.remove('pick'));o.classList.add('pick');}));
+
+  document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>b.classList.toggle('on'));
+
+  document.getElementById('caption').textContent=
+`One cement plant. 15 systems. None of them talking to each other.
+
+Here's what happened when a 17 MTPA cement producer connected its plant data and put AI to work:
+→ 15+ systems on one live screen
+→ 5× faster decisions
+→ 15% less energy per tonne
+→ 10% lower CO₂
+
+Swipe through the three moves 👉 and vote in slide 2: how many systems hold your plant's data?`;
+}
+</script>
+</body>
+</html>
