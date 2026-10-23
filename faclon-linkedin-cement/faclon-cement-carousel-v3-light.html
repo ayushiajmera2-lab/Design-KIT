@@ -169,6 +169,17 @@
   .photo>*:not(.bg){position:relative;z-index:2}
   #closing.photo::before{background:linear-gradient(180deg,rgba(12,25,39,.86) 0%,rgba(12,25,39,.80) 45%,rgba(12,25,39,.94) 75%,#0C1927 100%)}
   .pic{position:relative;border-radius:var(--r-xl);overflow:hidden;background:var(--bg-sd)}
+  /* image slots: empty until an image is added */
+  img[data-slot].empty{visibility:hidden}
+  .pic.noimg{background:var(--brand-050);outline:2px dashed var(--brand-200);outline-offset:-2px}
+  .add{display:none;position:absolute;z-index:3;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:0;cursor:pointer;font:600 12px/18px var(--body);background:var(--brand-500);color:#fff;box-shadow:var(--shadow-low)}
+  .add span{font-weight:400;opacity:.8}
+  .add{white-space:nowrap}
+  .noimg>.add{display:inline-flex}
+  .pic>.add{top:50%;left:50%;transform:translate(-50%,-50%)}
+  .photo>.add{top:96px;left:50%;transform:translateX(-50%)}
+  .photo.noimg>.add{position:absolute}
+  body.export .add{display:none !important}
   .pic img{width:100%;height:100%;object-fit:cover;display:block}
   .pic .tag{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border-radius:999px;background:rgba(12,25,39,.78);color:#fff;font:600 10px/16px var(--body);letter-spacing:.96px;text-transform:uppercase}
   .srcgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -214,7 +225,8 @@
 
 <!-- 01 Cover: dark, photo -->
 <section class="slide d photo">
-  <img class="bg" src="images/cover-plant-night.jpg" alt="">
+  <img class="bg" data-slot src="images/cover-plant-night.jpg" alt="">
+  <button class="add" type="button" data-for="cover-plant-night.jpg"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>Add background image<span>cover-plant-night.jpg</span></button>
   <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="pg">01 / 08</span></div>
   <div class="grow"></div>
   <p class="eb">Case study · Cement · 17 MTPA</p>
@@ -254,7 +266,7 @@
   <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="pg">03 / 08</span></div>
   <p class="eb" style="margin-top:32px">Move 01 · Connect</p>
   <div class="row" style="align-items:baseline;gap:12px;margin-top:4px"><span class="display hl">15+</span><span class="h3 one">systems. One live view.</span></div>
-  <figure class="pic" style="margin-top:16px;height:208px"><img src="images/control-room.jpg" alt="Operator in a cement plant control room in front of a wall of live screens"><span class="tag"><span class="live"></span>Plant view · Live</span></figure>
+  <figure class="pic" style="margin-top:16px;height:208px"><img data-slot src="images/control-room.jpg" alt="Operator in a cement plant control room in front of a wall of live screens"><button class="add" type="button" data-for="control-room.jpg"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>Add image<span>control-room.jpg</span></button><span class="tag"><span class="live"></span>Plant view · Live</span></figure>
   <div class="srcgrid" style="margin-top:12px">
     <div class="tile"><span class="dot"></span><span>Business software (ERP)</span></div>
     <div class="tile"><span class="dot"></span><span>Machine controls</span></div>
@@ -296,7 +308,7 @@
   <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="pg">05 / 08</span></div>
   <p class="eb" style="margin-top:32px">Move 03 · Optimise</p>
   <div class="row" style="align-items:baseline;gap:12px;margin-top:4px"><span class="display hl">15%</span><span class="h3 one">less energy used.*</span></div>
-  <figure class="pic" style="margin-top:16px;height:104px"><img src="images/rotary-kiln.jpg" alt="Cement rotary kiln" style="object-position:50% 55%"><span class="tag">Kiln &amp; grinding mill</span></figure>
+  <figure class="pic" style="margin-top:16px;height:104px"><img data-slot src="images/rotary-kiln.jpg" alt="Cement rotary kiln" style="object-position:50% 55%"><button class="add" type="button" data-for="rotary-kiln.jpg"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>Add image<span>rotary-kiln.jpg</span></button><span class="tag">Kiln &amp; grinding mill</span></figure>
   <div class="panel chart" style="margin-top:12px">
     <div class="row" style="justify-content:space-between;margin-bottom:8px"><span class="lab">Before AI: big swings</span><span class="row"><span class="live"></span><span class="lab" style="color:var(--green-500)">AI on · the sweet spot</span></span></div>
     <svg id="wave" viewBox="0 0 426 104" role="img" aria-label="Energy signal swings widely before AI, then holds inside a narrow sweet-spot band"></svg>
@@ -339,7 +351,8 @@
 
 <!-- 08 CTA (after cta-2.png) -->
 <section class="slide d photo" id="closing">
-  <img class="bg" src="images/engineer-tablet.jpg" alt="">
+  <img class="bg" data-slot src="images/engineer-tablet.jpg" alt="">
+  <button class="add" type="button" data-for="engineer-tablet.jpg"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>Add background image<span>engineer-tablet.jpg</span></button>
   <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="pg">08 / 08</span></div>
   <div class="grow"></div>
   <h2 class="h1">Every factory will<br>run on AI. <span class="hl">The only question is whose.</span></h2>
@@ -355,6 +368,20 @@
 </div>
 
 <script>
+/* Image slots: hide missing files, click "Add image" to load one from your computer */
+const picker=document.createElement('input');picker.type='file';picker.accept='image/*';picker.hidden=true;document.body.appendChild(picker);
+let target=null;
+document.querySelectorAll('img[data-slot]').forEach(img=>{
+  const box=img.parentElement;
+  const empty=()=>{img.classList.add('empty');box.classList.add('noimg');};
+  img.addEventListener('error',empty);
+  if(img.complete&&!img.naturalWidth)empty();
+  img.addEventListener('load',()=>{if(img.naturalWidth){img.classList.remove('empty');box.classList.remove('noimg');}});
+});
+document.querySelectorAll('.add').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();target=b.parentElement.querySelector('img[data-slot]');picker.value='';picker.click();}));
+document.querySelectorAll('.add').forEach(b=>b.addEventListener('pointerdown',e=>e.stopPropagation()));
+picker.addEventListener('change',()=>{const f=picker.files[0];if(f&&target)target.src=URL.createObjectURL(f);});
+
 (function(){
   const svg=document.getElementById('wave'),W=426,H=104,mid=52,split=180;
   let d='',seed=11;const r=()=>((seed=(seed*9301+49297)%233280)/233280);

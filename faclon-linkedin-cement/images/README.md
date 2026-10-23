@@ -1,13 +1,15 @@
 # Carousel images (v3 light)
 
-AI-generated with Canva. The files here are low-res previews (about 200px).
-Download the full-size versions from Canva and save them over these files, keeping the same names:
+The light carousel ships without images. Add them either way:
 
-| File | Used on | Canva |
-|---|---|---|
-| cover-plant-night.jpg | Slide 1 (cover) | https://www.canva.com/M/MAHYznLdgPo |
-| control-room.jpg | Slide 3 (Connect) | https://www.canva.com/M/MAHYzl_-Nfg |
-| rotary-kiln.jpg | Slide 5 (Optimise) | https://www.canva.com/M/MAHYzrKhKAE |
-| engineer-tablet.jpg | Slide 8 (closing) | https://www.canva.com/M/MAHYzrdiQl4 |
+- **In the browser:** open `faclon-cement-carousel-v3-light.html` and click **Add image** on a slot. This shows the image in the preview only and isn't saved.
+- **Permanently:** put the files in this `images/` folder, next to the HTML, with these names:
 
-Then re-export the PDF/PNGs so they pick up the sharp images.
+| File | Used on |
+|---|---|
+| cover-plant-night.jpg | Slide 1, cover background |
+| control-room.jpg | Slide 3, Connect |
+| rotary-kiln.jpg | Slide 5, Optimise |
+| engineer-tablet.jpg | Slide 8, closing background |
+
+AI-generated options from Canva: cover https://www.canva.com/M/MAHYznLdgPo · control room https://www.canva.com/M/MAHYzl_-Nfg · kiln https://www.canva.com/M/MAHYzrKhKAE · engineer https://www.canva.com/M/MAHYzrdiQl4
