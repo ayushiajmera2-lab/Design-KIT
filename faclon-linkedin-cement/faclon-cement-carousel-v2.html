@@ -140,15 +140,8 @@
   .act .ic{width:36px;height:36px;border-radius:999px;background:var(--brand-050);color:var(--brand-500);display:grid;place-items:center;flex:none}
 
   /* ---- interactive preview shell ---- */
-  .shell{max-width:600px;margin:0 auto;padding:32px 16px}
-  .post{background:#fff;border-radius:var(--r-xl);box-shadow:var(--shadow-low);overflow:hidden}
-  .ph{display:flex;gap:12px;align-items:center;padding:16px}
-  .av{width:48px;height:48px;border-radius:999px;background:var(--bg-sd);display:grid;place-items:center;flex:none}
-  .av svg{width:24px;height:28px;color:#fff}
-  .ph b{font:600 14px/20px var(--body);color:var(--t-head-l);display:block}
-  .ph span{font:400 12px/18px var(--body);color:var(--t-mute-l)}
-  .cap{padding:0 16px 12px;font:400 14px/22px var(--body);color:var(--t-body-l);white-space:pre-line}
-  .viewer{position:relative;background:var(--bg-sd);overflow:hidden}
+  .shell{max-width:540px;margin:0 auto;padding:32px 16px}
+  .viewer{position:relative;background:var(--bg-sd);overflow:hidden;border-radius:var(--r-xl);box-shadow:var(--shadow-low)}
   .vp{width:100%;aspect-ratio:4/5;position:relative;overflow:hidden;touch-action:pan-y}
   .sc{transform-origin:0 0;position:absolute;top:0;left:0}
   .track{display:flex;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
@@ -158,10 +151,6 @@
   .dots{display:flex;justify-content:center;gap:4px;padding:12px}
   .dots i{width:8px;height:8px;border-radius:999px;background:var(--line-l);cursor:pointer}
   .dots i.on{background:var(--brand-500);width:20px}
-  .rx{display:flex;border-top:1px solid var(--bg-sl);padding:4px 8px}
-  .rx button{flex:1;border:0;background:none;padding:12px 8px;font:600 14px/20px var(--body);color:var(--t-sup-l);border-radius:var(--r-md);cursor:pointer}
-  .rx button:hover{background:var(--bg-sl)} .rx button.on{color:var(--brand-500)}
-  .hint{text-align:center;font:400 12px/18px var(--body);color:var(--t-mute-l);margin-top:12px}
 
   body.export{background:#fff} body.export .shell{display:none} body.export #slides{display:block !important}
   @page{size:540px 675px;margin:0}
@@ -188,23 +177,14 @@
   </defs>
 </svg>
 
-<div class="shell">
-  <article class="post">
-    <header class="ph">
-      <div class="av"><svg viewBox="0 0 42 48" fill="currentColor"><path d="M21.0896 47.4814L9.07165 13.0136L4.61176 26.8799L11.8509 32.3868L13.1417 38.1526L0 28.5599L9.45639 0L21.0896 34.6505L32.5962 0.507551L41.7691 29.3415L28.6527 38.8631L30.0752 32.6457L37.051 27.3316L32.3988 13.5973L21.0896 47.4814Z"/></svg></div>
-      <div><b>Faclon Labs</b><span>Industrial AI for all · Case study</span></div>
-    </header>
-    <p class="cap" id="cap"></p>
-    <div class="viewer">
-      <button class="nav p" id="prev" aria-label="Previous slide"><svg width="16" height="16" style="transform:scaleX(-1)"><use href="#arrow-r"/></svg></button>
-      <button class="nav n" id="next" aria-label="Next slide"><svg width="16" height="16"><use href="#arrow-r"/></svg></button>
-      <div class="vp" id="vp"><div class="sc" id="sc"><div class="track" id="track"></div></div></div>
-    </div>
-    <div class="dots" id="dots"></div>
-    <div class="rx"><button data-r>Like</button><button data-r>Comment</button><button data-r>Repost</button><button data-r>Send</button></div>
-  </article>
-  <p class="hint">Swipe, drag, use ← → or tap the dots. Tap a poll answer on slide 2.</p>
-</div>
+<main class="shell">
+  <div class="viewer">
+    <button class="nav p" id="prev" aria-label="Previous slide"><svg width="16" height="16" style="transform:scaleX(-1)"><use href="#arrow-r"/></svg></button>
+    <button class="nav n" id="next" aria-label="Next slide"><svg width="16" height="16"><use href="#arrow-r"/></svg></button>
+    <div class="vp" id="vp"><div class="sc" id="sc"><div class="track" id="track"></div></div></div>
+  </div>
+  <div class="dots" id="dots"></div>
+</main>
 
 <div id="slides" style="display:none">
 
@@ -381,16 +361,6 @@ else{
   addEventListener('resize',fit);fit();go(0);
   const opts=[...document.querySelectorAll('#poll .opt')];
   opts.forEach(o=>o.addEventListener('click',()=>{opts.forEach(p=>p.classList.remove('pick'));o.classList.add('pick');}));
-  document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>b.classList.toggle('on'));
-  document.getElementById('cap').textContent=
-`One cement plant. 15 systems. None of them talking to each other.
-
-A 17 MTPA cement producer connected its plant data and put AI to work, in three moves:
-01 Connect → 15+ systems on one live screen
-02 Decide → 5× faster decisions
-03 Optimise → 15% less energy per tonne
-
-Swipe through 👉 and tell us on slide 2: how many systems hold your plant's data?`;
 }
 </script>
 </body>
