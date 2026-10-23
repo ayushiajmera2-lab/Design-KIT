@@ -138,6 +138,12 @@
   .acts{display:flex;flex-direction:column;gap:12px}
   .act{display:flex;gap:12px;align-items:flex-start}
   .act .ic{width:36px;height:36px;border-radius:999px;background:var(--brand-050);color:var(--brand-500);display:grid;place-items:center;flex:none}
+  .d .act .ic{background:rgba(90,141,247,.16);color:var(--brand-400)}
+  .h3.one{white-space:nowrap}
+  .theme{display:flex;justify-content:center;align-items:center;gap:12px;font:500 12px/18px var(--body);color:var(--t-sup-l)}
+  .seg{display:inline-flex;padding:4px;gap:4px;border-radius:999px;background:var(--bg-pl);border:1px solid var(--line-l)}
+  .seg button{border:0;background:none;padding:4px 12px;border-radius:999px;font:600 12px/18px var(--body);color:var(--t-sup-l);cursor:pointer}
+  .seg button[aria-pressed="true"]{background:var(--brand-500);color:#fff}
 
   /* ---- interactive preview shell ---- */
   .shell{max-width:540px;margin:0 auto;padding:32px 16px}
@@ -184,6 +190,7 @@
     <div class="vp" id="vp"><div class="sc" id="sc"><div class="track" id="track"></div></div></div>
   </div>
   <div class="dots" id="dots"></div>
+  <div class="theme">Closing slide <span class="seg" role="group" aria-label="Closing slide theme"><button data-close="light" aria-pressed="true">Light</button><button data-close="dark" aria-pressed="false">Dark</button></span></div>
 </main>
 
 <div id="slides" style="display:none">
@@ -229,7 +236,7 @@
 <section class="slide d">
   <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="pg">03 / 08</span></div>
   <p class="eb" style="margin-top:32px">Move 01 · Connect</p>
-  <div class="row" style="align-items:baseline;gap:12px;margin-top:4px"><span class="display hl">15+</span><span class="h3">systems.<br>One live view.</span></div>
+  <div class="row" style="align-items:baseline;gap:12px;margin-top:4px"><span class="display hl">15+</span><span class="h3 one">systems. One live view.</span></div>
   <div class="panel" style="margin-top:20px">
     <div class="row" style="justify-content:space-between;margin-bottom:12px"><span class="row"><span class="live"></span><span class="lab" style="color:#fff">Plant view · Live</span></span><span class="lab">All on one screen</span></div>
     <div class="feed">
@@ -249,7 +256,7 @@
 <section class="slide l">
   <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="pg">04 / 08</span></div>
   <p class="eb" style="margin-top:32px">Move 02 · Decide</p>
-  <div class="row" style="align-items:baseline;gap:12px;margin-top:4px"><span class="display hl">5×</span><span class="h3">faster<br>decisions.</span></div>
+  <div class="row" style="align-items:baseline;gap:12px;margin-top:4px"><span class="display hl">5×</span><span class="h3 one">faster decisions.</span></div>
   <div class="panel" style="margin-top:20px">
     <p class="lab" style="margin-bottom:12px">Time to get the numbers you need</p>
     <div class="bars">
@@ -273,7 +280,7 @@
 <section class="slide d">
   <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="pg">05 / 08</span></div>
   <p class="eb" style="margin-top:32px">Move 03 · Optimise</p>
-  <div class="row" style="align-items:baseline;gap:12px;margin-top:4px"><span class="display hl">15%</span><span class="h3">less energy<br>used.*</span></div>
+  <div class="row" style="align-items:baseline;gap:12px;margin-top:4px"><span class="display hl">15%</span><span class="h3 one">less energy used.*</span></div>
   <div class="panel chart" style="margin-top:20px">
     <div class="row" style="justify-content:space-between;margin-bottom:12px"><span class="lab">Kiln & grinding mill · SEC</span><span class="row"><span class="live"></span><span class="lab" style="color:var(--green-500)">AI on</span></span></div>
     <svg id="wave" viewBox="0 0 426 132" role="img" aria-label="Energy signal swings widely before AI, then holds inside a narrow sweet-spot band"></svg>
@@ -316,7 +323,7 @@
 </section>
 
 <!-- 08 CTA (after cta-2.png) -->
-<section class="slide l">
+<section class="slide l" id="closing">
   <div class="top"><svg class="logo"><use href="#faclon-logo"/></svg><span class="pg">08 / 08</span></div>
   <div class="grow"></div>
   <h2 class="h1">Every factory will<br>run on AI. <span class="hl">The only question is whose.</span></h2>
@@ -345,7 +352,16 @@
    '<line x1="'+split+'" y1="4" x2="'+split+'" y2="'+(H-4)+'" stroke="#8AB1FB" stroke-dasharray="3 4"/>'+
    '<path d="'+d+'" fill="none" stroke="#5A8DF7" stroke-width="2" stroke-linejoin="round"/>';
 })();
-if(/[?&]export/.test(location.search)) document.body.classList.add('export');
+const closing=document.getElementById('closing');
+function setClosing(m){closing.classList.toggle('d',m==='dark');closing.classList.toggle('l',m!=='dark');
+  document.querySelectorAll('[data-close]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.close===m));
+  try{localStorage.setItem('faclon-closing',m)}catch(e){}}
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>{setClosing(b.dataset.close);go(7);});
+const qs=new URLSearchParams(location.search);
+let saved=null;try{saved=localStorage.getItem('faclon-closing')}catch(e){}
+setClosing(qs.get('close')||(qs.has('export')?'light':saved)||'light');
+var go=function(){};
+if(qs.has('export')) document.body.classList.add('export');
 else{
   const slides=[...document.querySelectorAll('#slides .slide')],track=document.getElementById('track');
   slides.forEach(s=>track.appendChild(s));
@@ -353,7 +369,7 @@ else{
   slides.forEach((_,k)=>{const i=document.createElement('i');i.onclick=()=>go(k);dots.appendChild(i);});
   let i=0;
   const fit=()=>{sc.style.transform='scale('+(vp.clientWidth/540)+')';};
-  function go(n){i=Math.max(0,Math.min(slides.length-1,n));track.style.transform='translateX('+(-540*i)+'px)';prev.disabled=i===0;next.disabled=i===slides.length-1;[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));}
+  go=function(n){i=Math.max(0,Math.min(slides.length-1,n));track.style.transform='translateX('+(-540*i)+'px)';prev.disabled=i===0;next.disabled=i===slides.length-1;[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));}
   prev.onclick=()=>go(i-1);next.onclick=()=>go(i+1);
   addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(i+1);if(e.key==='ArrowLeft')go(i-1);});
   let x0=null;vp.addEventListener('pointerdown',e=>{x0=e.clientX;});
