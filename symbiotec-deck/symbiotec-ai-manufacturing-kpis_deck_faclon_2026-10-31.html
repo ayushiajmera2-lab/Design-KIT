@@ -476,6 +476,8 @@ body { background: var(--color-background-tertiary); }
 .stat-inv { display: flex; flex-direction: column; gap: var(--space-16); padding: var(--space-48); }
 .stat-inv .t-dxl { color: var(--color-text-inverse); }
 .stat-inv .t-b40 { color: var(--color-text-inverse); margin-bottom: var(--space-16); }
+/* Source under each stat: plain label text in text/accent (allowed on container/inverse in the light theme) */
+.stat-src { font-family: var(--font-body); font-size: 24px; line-height: 32px; font-weight: 500; color: var(--color-text-accent); }
 .neg-band { display: flex; align-items: center; gap: var(--space-32); padding: var(--space-48); }
 .neg-band .txt { display: flex; flex-direction: column; gap: var(--space-8); }
 
@@ -647,9 +649,9 @@ body { background: var(--color-background-tertiary); }
   <header class="hd"><h2 class="title">Why now</h2></header>
   <div class="bd">
     <div class="stats3">
-      <div class="card-inv stat-inv"><p class="t-dxl">300 KL</p><p class="t-b40">Fermentation capacity at Pithampur SEZ</p><span class="chip chip-neutral">Company filings</span></div>
-      <div class="card-inv stat-inv"><p class="t-dxl">400 KL</p><p class="t-b40">New biomanufacturing capacity at Ujjain</p><span class="chip chip-neutral">Company filings</span></div>
-      <div class="card-inv stat-inv"><p class="t-dxl">20–25%</p><p class="t-b40">FY27 revenue and EBITDA growth target</p><span class="chip chip-neutral">Press reports</span></div>
+      <div class="card-inv stat-inv"><p class="t-dxl">300 KL</p><p class="t-b40">Fermentation capacity at Pithampur SEZ</p><span class="stat-src">Company filings</span></div>
+      <div class="card-inv stat-inv"><p class="t-dxl">400 KL</p><p class="t-b40">New biomanufacturing capacity at Ujjain</p><span class="stat-src">Company filings</span></div>
+      <div class="card-inv stat-inv"><p class="t-dxl">20–25%</p><p class="t-b40">FY27 revenue and EBITDA growth target</p><span class="stat-src">Press reports</span></div>
     </div>
     <div class="card-neg neg-band">
       <svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" /> <polyline points="16 17 22 17 22 11" /> </svg>
