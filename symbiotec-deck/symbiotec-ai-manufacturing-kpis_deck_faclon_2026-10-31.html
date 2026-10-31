@@ -545,21 +545,17 @@ body { background: var(--color-background-tertiary); }
 
 /* 11 Golden batch loop */
 .loopwrap { display: grid; grid-template-columns: 1041px 1fr; gap: var(--gap-grid); align-items: center; }
-.loop { position: relative; height: 760px; }
-.loop svg.ring { position: absolute; left: 0; top: 0; width: 1041px; height: 760px; }
-.ring circle { fill: none; stroke: var(--color-border-brand); stroke-width: 2px; stroke-dasharray: 8 10; }
-.loop .node { position: absolute; width: 420px; display: flex; flex-direction: column; gap: var(--space-12); padding: var(--space-28); background: var(--color-container-primary); }
-.loop .n1 { left: 310px; top: 16px; }
-.loop .n2 { left: 552px; top: 432px; }
-.loop .n3 { left: 68px; top: 432px; }
-.loop .turn { position: absolute; }
-.loop .a1 { left: 746px; top: 224px; }
-.loop .a2 { left: 500px; top: 640px; }
-.loop .a3 { left: 254px; top: 224px; }
-.rot60 { transform: rotate(60deg); }
-.rot180 { transform: rotate(180deg); }
-.rotm60 { transform: rotate(-60deg); }
-.loop .core { position: absolute; left: 496px; top: 356px; color: var(--color-text-brand); }
+.loop { position: relative; height: 800px; }
+.loop svg.ring { position: absolute; left: 0; top: 0; width: 1041px; height: 800px; }
+.ring .arc { fill: none; stroke: var(--color-border-brand); stroke-width: 2px; stroke-dasharray: 8 10; }
+.ring .arc-head { fill: none; stroke: var(--color-border-brand); stroke-width: 2px; stroke-linecap: round; stroke-linejoin: round; }
+/* Loop geometry: circle centre (520, 460), radius 320. Cards centred on the circle 120 degrees apart (top, lower right, lower left);
+   each arc runs clockwise from one card to the next and ends in an arrowhead. */
+.loop .node { position: absolute; width: 420px; height: 224px; transform: translate(-50%, -50%); display: flex; flex-direction: column; gap: var(--space-12); padding: var(--space-28); background: var(--color-container-primary); }
+.loop .n1 { left: 520px; top: 140px; }
+.loop .n2 { left: 797px; top: 620px; }
+.loop .n3 { left: 243px; top: 620px; }
+.loop .core { position: absolute; left: 520px; top: 460px; transform: translate(-50%, -50%); color: var(--color-text-brand); }
 .tracked { display: flex; flex-direction: column; gap: var(--space-24); padding: var(--space-40); }
 .tgrid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: var(--space-24); }
 .tgrid p { padding: var(--space-16) 0; border-top: var(--border-width-default) solid var(--color-border-primary); }
@@ -568,14 +564,13 @@ body { background: var(--color-background-tertiary); }
 .num { flex: none; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-xl);
   background: var(--color-container-brand); color: var(--color-text-on-brand); font-family: var(--font-heading); font-size: 32px; line-height: 40px; font-weight: 600; }
 /* Timeline: the line runs behind the nodes at node centre (padding 32 + marker 56 + stem 24 + half node 28 = 140px) */
-.tl { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap-grid); }
+.tl { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap-grid); align-items: stretch; }
 .tl-line { position: absolute; left: 0; right: 0; top: 139px; height: 2px; background: var(--color-border-brand); }
-.tl-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: var(--space-32) var(--space-24) var(--space-40); border-radius: var(--radius-3xl); }
-.tl-step.is-hl { background: var(--color-container-selected); }
+.tl-step { display: flex; flex-direction: column; align-items: center; padding-top: var(--space-32); }
 .tl-stem { width: 2px; height: 24px; background: var(--color-border-brand); }
-.tl-node { position: relative; z-index: 1; margin-bottom: var(--space-32); }
-.tl-step h3 { margin-bottom: var(--space-16); }
-.i48 { width: 48px; height: 48px; }
+.tl-node { position: relative; z-index: 1; }
+.nowrap { white-space: nowrap; }
+.tl-card { align-self: stretch; flex: 1; display: flex; flex-direction: column; gap: var(--space-16); padding: var(--space-40) var(--space-32); }
 .sq-neg { background: var(--color-container-error-strong); color: var(--color-text-on-strong); }
 .sq-pos { background: var(--color-container-success-strong); color: var(--color-text-on-strong); }
 .sq-brandfill { background: var(--color-container-brand); color: var(--color-text-on-brand); }
@@ -885,10 +880,7 @@ body { background: var(--color-background-tertiary); }
   <div class="bd">
     <div class="loopwrap">
       <div class="loop">
-        <svg class="ring" viewBox="0 0 1041 760" aria-hidden="true"><circle cx="520" cy="400" r="280"/></svg>
-        <span class="turn a1 sq sq-40"><svg class="ic i24 rot60" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span>
-        <span class="turn a2 sq sq-40"><svg class="ic i24 rot180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span>
-        <span class="turn a3 sq sq-40"><svg class="ic i24 rotm60" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span>
+        <svg class="ring" viewBox="0 0 1041 800" aria-hidden="true"><defs><marker id="loop-head" viewBox="0 0 24 24" refX="18" refY="12" markerWidth="24" markerHeight="24" markerUnits="userSpaceOnUse" orient="auto"><path class="arc-head" d="M6 4 L18 12 L6 20"/></marker></defs><path class="arc" d="M750.2 237.7 A320 320 0 0 1 838.8 487.9" marker-end="url(#loop-head)"/><path class="arc" d="M650.2 752.3 A320 320 0 0 1 389.8 752.3" marker-end="url(#loop-head)"/><path class="arc" d="M201.2 487.9 A320 320 0 0 1 289.8 237.7" marker-end="url(#loop-head)"/></svg>
         <span class="core"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m17 2 4 4-4 4" /> <path d="M3 11v-1a4 4 0 0 1 4-4h14" /> <path d="m7 22-4-4 4-4" /> <path d="M21 13v1a4 4 0 0 1-4 4H3" /> </svg></span>
         <article class="card node n1"><div class="ilabel"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" /> <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" /> <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" /> </svg></span><h3 class="t-h2 c-head">1&nbsp;&nbsp;Build</h3></div><p class="t-b24 c-body">Align best past batches. Set a multivariate envelope for each phase.</p></article>
         <article class="card node n2"><div class="ilabel"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /> <circle cx="12" cy="12" r="3" /> </svg></span><h3 class="t-h2 c-head">2&nbsp;&nbsp;Watch</h3></div><p class="t-b24 c-body">Compare every live variable to the envelope every few minutes.</p></article>
@@ -908,7 +900,7 @@ body { background: var(--color-background-tertiary); }
 </section>
 
 <!-- 12 Example: Day 4 of a batch: light theme, sequence drawn as a timeline (after the traction-timeline reference):
-     numbered markers above a brand line, an icon node per step on the line, text below; Prescribe highlighted on container/selected.
+     numbered markers above a brand line, an icon node per step on the line, text below; each step's text in a card hanging from its node, Prescribe on container/brand as the highlight.
      Colour follows meaning: Detect and Predict Negative, Prescribe brand, Verify Positive. -->
 <section class="slide" aria-label="Slide 12: Example, Day 4 of a batch">
   <img class="logo" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjU0IiBoZWlnaHQ9IjUzIiB2aWV3Qm94PSIwIDAgMjU0IDUzIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMjEuMDg5NiA0Ny40ODE0TDkuMDcxNjUgMTMuMDEzNkw0LjYxMTc2IDI2Ljg3OTlMMTEuODUwOSAzMi4zODY4TDEzLjE0MTcgMzguMTUyNkwwIDI4LjU1OTlMOS40NTYzOSAwTDIxLjA4OTYgMzQuNjUwNUwzMi41OTYyIDAuNTA3NTUxTDQxLjc2OTEgMjkuMzQxNUwyOC42NTI3IDM4Ljg2MzFMMzAuMDc1MiAzMi42NDU3TDM3LjA1MSAyNy4zMzE2TDMyLjM5ODggMTMuNTk3M0wyMS4wODk2IDQ3LjQ4MTRaIiBmaWxsPSIjMTY1RkYyIi8+CjxwYXRoIGQ9Ik02My42ODQgOC41MzczNVYxMi43ODU2SDU1LjAyNzRWMTcuMTcwOEg2My4wNjEzVjIxLjQwMzhINTUuMDI3NFYyOS4zMzE3SDUwLjA1MTJWOC41MzczNUg2My42ODRaIiBmaWxsPSIjMTY1RkYyIi8+CjxwYXRoIGQ9Ik04Ni41ODU5IDI1LjIyNTZMODQuOTg2MiAyMS40MDM4TDgzLjIxNDQgMTcuMTcwOEw4MS4zODE4IDEyLjc4NTZMNzkuNjA0OSA4LjUzNzM1SDc0LjUyMjRMNzIuNzQ1NSAxMi43ODU2TDcwLjkxMyAxNy4xNzA4TDY5LjE0MTIgMjEuNDAzOEw2Ny41NDE1IDI1LjIyNTZMNjUuODI1MyAyOS4zMzE3SDcxLjQ0NDVMNzIuODg3MyAyNS4yMjU2SDgxLjA0MjZMODIuNDg1NCAyOS4zMzE3SDg4LjMwMkw4Ni41ODU5IDI1LjIyNTZaTTc0LjIyMzcgMjEuNDAzOEw3NS43MTIgMTcuMTcwOEw3Ni45Njc1IDEzLjU5MjZMNzguMjE3OSAxNy4xNzA4TDc5LjcwNjIgMjEuNDAzOEg3NC4yMjM3WiIgZmlsbD0iIzE2NUZGMiIvPgo8cGF0aCBkPSJNMTI2LjA1MiAyNS4yMjU2VjI5LjMzMTdIMTEzLjE4OFY4LjUzNzM1SDExOC4wMzhWMjUuMjI1NkgxMjYuMDUyWiIgZmlsbD0iIzE2NUZGMiIvPgo8cGF0aCBkPSJNMTc1LjE2NiA4LjUzNzM1VjE5LjIwMUwxNzIuOTY5IDIxLjQwMzhMMTcwLjMzNyAyNC4wNDNMMTY5LjE1NyAyNS4yMjU2TDE2Ny44NjEgMjYuNTI1TDE2Ny4wNDEgMjUuMjI1NkwxNjQuNjQ2IDIxLjQwMzhMMTYxLjk4OSAxNy4xNzA4TDE2MS4xMTggMTUuNzgwMVYyOS4zMzE3SDE1Ni4yOTRWOC41MzczNUgxNjEuODkzTDE2NC41NiAxMi43ODU2TDE2Ny4zMDkgMTcuMTcwOEwxNjkuOTYyIDIxLjQwMzhMMTcwLjMzNyAyMS45OTc2VjguNTM3MzVIMTc1LjE2NloiIGZpbGw9IiMxNjVGRjIiLz4KPHBhdGggZD0iTTEwOS4zMjEgMjYuNjY2M0MxMDguMDggMjcuODc5NCAxMDYuNTQ3IDI4Ljc5OCAxMDQuODM2IDI5LjMzMUMxMDMuNzcyIDI5LjY2MDkgMTAyLjYzOCAyOS44Mzg1IDEwMS40NjQgMjkuODM4NUMxMDAuMjkgMjkuODM4NSA5OS4xNTU2IDI5LjY2MDkgOTguMDkyNiAyOS4zMzFDOTUuNzUzOCAyOC42MDUyIDkzLjc0NCAyNy4xNDg1IDkyLjM1NyAyNS4yMjQ5QzkxLjUzMTggMjQuMDkzIDkwLjkyNDMgMjIuNzk4OCA5MC41OTAyIDIxLjQwM0M5MC4zOTI4IDIwLjU5NiA5MC4yOTE1IDE5Ljc1MzUgOTAuMjkxNSAxOC44ODU2QzkwLjI5MTUgMTguMzAxOSA5MC4zMzcxIDE3LjcyODQgOTAuNDI4MiAxNy4xN0M5MC42ODY0IDE1LjU2NjIgOTEuMjk4OSAxNC4wNzkxIDkyLjE4NDggMTIuNzg0OEM5My41MzE0IDEwLjgyNTcgOTUuNTAwNiA5LjMxODIzIDk3LjgxOTIgOC41MzY2Qzk4Ljk1ODIgOC4xNDU3OSAxMDAuMTg4IDcuOTM3NyAxMDEuNDY0IDcuOTM3N0MxMDIuNzQgNy45Mzc3IDEwMy45NyA4LjE0NTc5IDEwNS4xMDkgOC41MzY2QzEwNi42NzggOS4wNjQ0NiAxMDguMDk2IDkuOTMyMzggMTA5LjI2IDExLjAzODhMMTA1Ljg5NCAxNC40NzVDMTA1LjIyNSAxMy43MTg3IDEwNC4zOTUgMTMuMTMgMTAzLjQ2NCAxMi43ODQ4QzEwMi44NjEgMTIuNTYxNSAxMDIuMjA4IDEyLjQzOTcgMTAxLjUzNSAxMi40Mzk3QzEwMC44NjIgMTIuNDM5NyAxMDAuMjE0IDEyLjU2MTUgOTkuNjExMiAxMi43ODQ4Qzk3Ljc1MzQgMTMuNDY0OSA5Ni4zMDU2IDE1LjEwOTQgOTUuNzYzOSAxNy4xN0M5NS42MDcgMTcuNzQ4NyA5NS41MjYgMTguMzU3NyA5NS41MjYgMTguOTkyMkM5NS41MjYgMTkuODQ0OCA5NS42NzI4IDIwLjY1NjkgOTUuOTQ2MSAyMS40MDNDOTYuNjA0MiAyMy4yMDk5IDk3Ljk3MSAyNC42MjA5IDk5LjY3NyAyNS4yMjQ5QzEwMC4yNTkgMjUuNDMzIDEwMC44ODcgMjUuNTQ0NiAxMDEuNTM1IDI1LjU0NDZDMTAyLjE4MyAyNS41NDQ2IDEwMi44MTEgMjUuNDMzIDEwMy4zOTMgMjUuMjI0OUMxMDQuNDMxIDI0Ljg1OTQgMTA1LjM0MiAyNC4xODk1IDEwNi4wNDUgMjMuMzE2NUwxMDkuMzIxIDI2LjY2NjNaIiBmaWxsPSIjMTY1RkYyIi8+CjxwYXRoIGQ9Ik0xNTEuMzI4IDE3LjE3QzE1MS4wNyAxNS41NjYyIDE1MC40NTcgMTQuMDc5MSAxNDkuNTcxIDEyLjc4NDhDMTQ4LjIyNSAxMC44MjU3IDE0Ni4yNSA5LjMxODIzIDE0My45MzIgOC41MzY2QzE0Mi43ODggOC4xNDU3OSAxNDEuNTYzIDcuOTM3NyAxNDAuMjg3IDcuOTM3N0MxMzkuMDExIDcuOTM3NyAxMzcuNzg2IDguMTQ1NzkgMTM2LjY0MiA4LjUzNjZDMTM0LjMyMyA5LjMxODIzIDEzMi4zNTQgMTAuODI1NyAxMzEuMDA4IDEyLjc4NDhDMTMwLjEyMiAxNC4wNzkxIDEyOS41MDkgMTUuNTY2MiAxMjkuMjUxIDE3LjE3QzEyOS4xNiAxNy43Mjg0IDEyOS4xMTQgMTguMzAxOSAxMjkuMTE0IDE4Ljg4NTZDMTI5LjExNCAxOS43NTM1IDEyOS4yMTYgMjAuNTk2IDEyOS40MTMgMjEuNDAzQzEyOS43NDcgMjIuNzk4OCAxMzAuMzU1IDI0LjA5MyAxMzEuMTggMjUuMjI0OUMxMzIuNTY3IDI3LjE0ODUgMTM0LjU3NyAyOC42MDUyIDEzNi45MiAyOS4zMzFDMTM3Ljk4MyAyOS42NjA5IDEzOS4xMTIgMjkuODM4NSAxNDAuMjg3IDI5LjgzODVDMTQxLjQ2MSAyOS44Mzg1IDE0Mi41OSAyOS42NjA5IDE0My42NTMgMjkuMzMxQzE0NS45OTcgMjguNjA1MiAxNDguMDA3IDI3LjE0ODUgMTQ5LjM5OSAyNS4yMjQ5QzE1MC4yMjQgMjQuMDkzIDE1MC44MzIgMjIuNzk4OCAxNTEuMTY2IDIxLjQwM0MxNTEuMzYzIDIwLjU5NiAxNTEuNDY0IDE5Ljc1MzUgMTUxLjQ2NCAxOC44ODU2QzE1MS40NjQgMTguMzAxOSAxNTEuNDE5IDE3LjcyODQgMTUxLjMyOCAxNy4xN1pNMTQ1Ljk0MSAyMS40MDNDMTQ1LjI3OCAyMy4yMDk5IDE0My44OTYgMjQuNjIwOSAxNDIuMTc1IDI1LjIyNDlDMTQxLjU4MyAyNS40MzMgMTQwLjk1IDI1LjU0NDYgMTQwLjI5NyAyNS41NDQ2QzEzOS42NDQgMjUuNTQ0NiAxMzkuMDExIDI1LjQzMyAxMzguNDE5IDI1LjIyNDlDMTM2LjY5MyAyNC42MjA5IDEzNS4zMTEgMjMuMjA5OSAxMzQuNjQ3IDIxLjQwM0MxMzQuMzc0IDIwLjY1NjkgMTM0LjIyMiAxOS44NDQ4IDEzNC4yMjIgMTguOTkyMkMxMzQuMjIyIDE4LjM1NzcgMTM0LjMwMyAxNy43NDg3IDEzNC40NjUgMTcuMTdDMTM1LjAxMiAxNS4xMDk0IDEzNi40NzUgMTMuNDY0OSAxMzguMzUzIDEyLjc4NDhDMTM4Ljk2NiAxMi41NjE1IDEzOS42MTkgMTIuNDM5NyAxNDAuMjk3IDEyLjQzOTdDMTQwLjk4IDEyLjQzOTcgMTQxLjYzMyAxMi41NjE1IDE0Mi4yNDYgMTIuNzg0OEMxNDQuMTE0IDEzLjQ3IDE0NS41NzcgMTUuMTA5NCAxNDYuMTI0IDE3LjE3QzE0Ni4yODYgMTcuNzQ4NyAxNDYuMzY3IDE4LjM1NzcgMTQ2LjM2NyAxOC45OTIyQzE0Ni4zNjcgMTkuODQ0OCAxNDYuMjE1IDIwLjY1NjkgMTQ1Ljk0MSAyMS40MDNaIiBmaWxsPSIjMTY1RkYyIi8+CjxwYXRoIGQ9Ik0xNzAuOTM0IDUwLjU5NzdWNTIuMTc2MkgxNTguOTQxVjM1LjUxODRMMTYxLjEwOCAzMy4zOTE4VjUwLjU5NzdIMTcwLjkzNFoiIGZpbGw9IiMxNjVGRjIiLz4KPHBhdGggZD0iTTIwMC4yNTUgNTAuNTk3OEwxOTguNjEgNDYuNzA5OUwxOTcuODQgNDQuODk4TDE5Ni42NCA0Mi4wNjU4TDE5NS45MzcgNDAuNDA2MkwxOTIuNjcyIDMyLjcxNjhMMTkxLjk2OCAzMS4wNTJIMTg5LjY3NUwxODguOTcxIDMyLjcxNjhMMTg1LjcwNiA0MC40MDYyTDE4NS4wMDIgNDIuMDY1OEwxODMuODAyIDQ0Ljg5OEwxODMuMDMzIDQ2LjcwOTlMMTgxLjM4MyA1MC41OTc4TDE4MC43MTQgNTIuMTc2M0gxODIuOTAxTDE4My41NDQgNTAuNTk3OEwxODUuMTM0IDQ2LjcwOTlIMTk2LjMwMUwxOTcuODkxIDUwLjU5NzhMMTk4LjUzNCA1Mi4xNzYzSDIwMC45MjNMMjAwLjI1NSA1MC41OTc4Wk0xODUuODczIDQ0Ljg5OEwxODcuMDMyIDQyLjA2NThMMTg3LjcxIDQwLjQwNjJMMTkwLjcxNyAzMy4wNTY4TDE5My43MjUgNDAuNDA2MkwxOTQuNDAzIDQyLjA2NThMMTk1LjU2MiA0NC44OThIMTg1Ljg3M1oiIGZpbGw9IiMxNjVGRjIiLz4KPHBhdGggZD0iTTIyNi45NjkgNDQuODk4QzIyNi41OTkgNDMuNzY2MSAyMjUuODQ1IDQyLjc4MTUgMjI0LjgzNyA0Mi4wNjU4QzIyNC4yNSA0MS42NDk2IDIyMy41NzIgNDEuMzE5OCAyMjIuODM4IDQxLjExMTdDMjIzLjI4MyA0MC45MzQgMjIzLjY5OCA0MC42OTU1IDIyNC4wNzMgNDAuNDA2MkMyMjUuMzEzIDM5LjQ0NjkgMjI2LjExMyAzNy45NTQ3IDIyNi4xMTMgMzYuMjc0N0MyMjYuMTEzIDM0Ljg5OTIgMjI1LjU4MiAzMy42NTA3IDIyNC43MDYgMzIuNzE2OEMyMjMuNzQ0IDMxLjY5MTUgMjIyLjM3NyAzMS4wNTIgMjIwLjg1OSAzMS4wNTJIMjEzLjAzN1Y1Mi4xNzYzSDIyMC45NUMyMjIuNjQgNTIuMTc2MyAyMjQuMTY5IDUxLjU3NzQgMjI1LjI5MyA1MC41OTc4QzIyNi40MzcgNDkuNjEzMSAyMjcuMTcxIDQ4LjIzNzcgMjI3LjIyNyA0Ni43MDk5QzIyNy4yMzIgNDYuNjQ0IDIyNy4yMzIgNDYuNTc4IDIyNy4yMzIgNDYuNTEyQzIyNy4yMzIgNDUuOTUzNyAyMjcuMTQxIDQ1LjQxMDYgMjI2Ljk2OSA0NC44OThaTTIxNS4wMzcgMzIuNzE2OEgyMjAuMjU2QzIyMi4zNzIgMzIuNzE2OCAyMjQuMDg4IDM0LjQzNzQgMjI0LjA4OCAzNi41NTg5QzIyNC4wODggMzguNjg1NiAyMjIuMzcyIDQwLjQwNjIgMjIwLjI1NiA0MC40MDYySDIxNS4wMzdWMzIuNzE2OFpNMjE1LjAzNyA1MC41OTc4VjQyLjA2NThIMjIwLjgxOEMyMjIuNzI3IDQyLjA2NTggMjI0LjM0NiA0My4yNDg0IDIyNC45NDkgNDQuODk4QzIyNS4xMTYgNDUuMzQ0NiAyMjUuMjA3IDQ1LjgzMTkgMjI1LjIwNyA0Ni4zMzQzQzIyNS4yMDcgNDYuNDYxMiAyMjUuMjAyIDQ2LjU4ODEgMjI1LjE5MiA0Ni43MDk5QzIyNC45OTQgNDguODg3MyAyMjMuMTExIDUwLjU5NzggMjIwLjgxOCA1MC41OTc4SDIxNS4wMzdaIiBmaWxsPSIjMTY1RkYyIi8+CjxwYXRoIGQ9Ik0yNTMuMzE4IDQ2LjcwOTlWNDYuNzQwM0MyNTMuMzE4IDQ4LjIwMjEgMjUyLjcxNiA0OS41NDcxIDI1MS43MTMgNTAuNTk3N0MyNTEuMDkxIDUxLjI1MjUgMjUwLjMxNiA1MS43OTA1IDI0OS40MzUgNTIuMTc2MkMyNDguNDQzIDUyLjYxNzggMjQ3LjMxOSA1Mi44NjY1IDI0Ni4xMjQgNTIuODY2NUMyNDQuOTMgNTIuODY2NSAyNDMuODA2IDUyLjYxNzggMjQyLjgxNCA1Mi4xNzYyQzI0MS45MzMgNTEuNzkwNSAyNDEuMTU4IDUxLjI1MjUgMjQwLjUzNiA1MC41OTc3QzI0MC4yNzcgNTAuMzI4NyAyNDAuMDQ1IDUwLjAzOTQgMjM5Ljg0NyA0OS43MzQ5TDI0MS4yOTUgNDguNjA4MUMyNDEuNzgxIDQ5LjQ1MDcgMjQyLjU4MSA1MC4xNDYgMjQzLjU2OCA1MC41OTc3QzI0NC4zNjMgNTAuOTYzMiAyNDUuMjc0IDUxLjE3MTIgMjQ2LjI1MSA1MS4xNzEyQzI0Ny4yMjggNTEuMTcxMiAyNDguMTQ0IDUwLjk2MzIgMjQ4LjkzOSA1MC41OTc3QzI1MC42IDQ5LjgzMTMgMjUxLjcyOCA0OC4zNzk3IDI1MS43NTQgNDYuNzA5OVY0Ni42NTQxQzI1MS43NTQgNDYuMDI5OCAyNTEuNjAyIDQ1LjQ0MSAyNTEuMzE4IDQ0Ljg5NzlDMjUwLjU2NCA0My40MzExIDI0OC44ODggNDIuMzYwMiAyNDYuODg0IDQyLjE3MjRDMjQ2LjczNyA0Mi4xNTcyIDI0Ni41ODUgNDIuMTQ3IDI0Ni40MzMgNDIuMTQ3QzI0Ni40MjggNDIuMTQxOSAyNDYuNDE4IDQyLjE0MTkgMjQ2LjQxMyA0Mi4xNDdDMjQ2LjIgNDIuMTI2NyAyNDUuOTg4IDQyLjEwMTMgMjQ1Ljc4IDQyLjA2NThDMjQ0LjgzNCA0MS45MDg0IDI0My45NTggNDEuNTg4NyAyNDMuMTkzIDQxLjE0NzFDMjQyLjgxOSA0MC45Mjg5IDI0Mi40NjQgNDAuNjgwMiAyNDIuMTQ1IDQwLjQwNjFDMjQwLjkyNSAzOS4zNTU1IDI0MC4xNzYgMzcuOTI0MiAyNDAuMTc2IDM2LjM0NTdDMjQwLjE3NiAzNC45NzAyIDI0MC43NDMgMzMuNzExNSAyNDEuNjkgMzIuNzE2N0MyNDIuMzYzIDMyLjAxMTIgMjQzLjIyOSAzMS40Mzc3IDI0NC4yMjEgMzEuMDUxOUMyNDUuMTEyIDMwLjcwNjggMjQ2LjEwNCAzMC41MTM5IDI0Ny4xNDcgMzAuNTEzOUMyNDguMTkgMzAuNTEzOSAyNDkuMTgyIDMwLjcwNjggMjUwLjA3MyAzMS4wNTE5QzI1MS4wNjUgMzEuNDM3NyAyNTEuOTI2IDMyLjAxMTIgMjUyLjU5OSAzMi43MTY3QzI1Mi43MzEgMzIuODQ4NyAyNTIuODUyIDMyLjk5MDggMjUyLjk2OSAzMy4xMzhMMjUxLjMwMyAzNC40MzczQzI1MC44MjIgMzMuNjkxMiAyNTAuMDc4IDMzLjA4NzIgMjQ5LjE4NyAzMi43MTY3QzI0OC41NTkgMzIuNDU3OSAyNDcuODU2IDMyLjMxMDcgMjQ3LjExMiAzMi4zMTA3QzI0Ni4zNjcgMzIuMzEwNyAyNDUuNjY0IDMyLjQ1NzkgMjQ1LjAzNiAzMi43MTY3QzI0My40MTEgMzMuMzkxOCAyNDIuMjkyIDM0LjgyODEgMjQyLjI5MiAzNi40OTI5QzI0Mi4yOTIgMzguMjg0NSAyNDMuNTg4IDM5LjgwNzIgMjQ1LjQxMSA0MC40MDYxQzI0NS42OTkgNDAuNTAyNSAyNDYuMDA4IDQwLjU3MzYgMjQ2LjMyMiA0MC42MTkzQzI0Ni41OCA0MC42NTQ4IDI0Ni44NDMgNDAuNjc1MSAyNDcuMTEyIDQwLjY3NTFDMjQ3LjExNyA0MC42NyAyNDcuMTIyIDQwLjY3NTEgMjQ3LjEyNyA0MC42NzUxQzI0OC4yMSA0MC44MDIgMjQ5LjIxOCA0MS4xMzcgMjUwLjA4OCA0MS42MjkzQzI1MC4zMjYgNDEuNzYxMyAyNTAuNTU5IDQxLjkwODQgMjUwLjc3NyA0Mi4wNjU4QzI1MS43OTkgNDIuODA2OCAyNTIuNTc0IDQzLjc4MTMgMjUyLjk4NCA0NC44OTc5QzI1My4xOTYgNDUuNDY2NCAyNTMuMzEzIDQ2LjA3NTUgMjUzLjMxOCA0Ni43MDk5WiIgZmlsbD0iIzE2NUZGMiIvPgo8L3N2Zz4K" alt="Faclon Labs">
@@ -919,26 +911,26 @@ body { background: var(--color-background-tertiary); }
       <div class="tl-step">
         <span class="num">1</span><span class="tl-stem"></span>
         <span class="sq sq-56 sq-neg tl-node"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 7V5a2 2 0 0 1 2-2h2" /> <path d="M17 3h2a2 2 0 0 1 2 2v2" /> <path d="M21 17v2a2 2 0 0 1-2 2h-2" /> <path d="M7 21H5a2 2 0 0 1-2-2v-2" /> <circle cx="12" cy="12" r="3" /> <path d="m16 16-1.9-1.9" /> </svg></span>
-        <h3 class="t-dmd c-err">Detect</h3>
-        <p class="t-b40 c-body">Oxygen uptake falls and pH drifts earlier than in golden batches.</p>
+        <span class="tl-stem"></span>
+        <article class="card-neg tl-card"><h3 class="t-b40 b6">Detect</h3><p class="t-b32">Oxygen uptake falls and pH drifts earlier than in golden batches.</p></article>
       </div>
       <div class="tl-step">
         <span class="num">2</span><span class="tl-stem"></span>
         <span class="sq sq-56 sq-neg tl-node"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" /> <polyline points="16 17 22 17 22 11" /> </svg></span>
-        <h3 class="t-dmd c-err">Predict</h3>
-        <p class="t-b40 c-body">Forecast: 8% titer shortfall and an early by-product rise.</p>
+        <span class="tl-stem"></span>
+        <article class="card-neg tl-card"><h3 class="t-b40 b6">Predict</h3><p class="t-b32">Forecast: 8% titer shortfall and an early <span class="nowrap">by-product</span> rise.</p></article>
       </div>
-      <div class="tl-step is-hl">
+      <div class="tl-step">
         <span class="num">3</span><span class="tl-stem"></span>
         <span class="sq sq-56 sq-brandfill tl-node"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <line x1="21" x2="14" y1="4" y2="4" /> <line x1="10" x2="3" y1="4" y2="4" /> <line x1="21" x2="12" y1="12" y2="12" /> <line x1="8" x2="3" y1="12" y2="12" /> <line x1="21" x2="16" y1="20" y2="20" /> <line x1="12" x2="3" y1="20" y2="20" /> <line x1="14" x2="14" y1="2" y2="6" /> <line x1="8" x2="8" y1="10" y2="14" /> <line x1="16" x2="16" y1="18" y2="22" /> </svg></span>
-        <h3 class="t-dmd c-brand">Prescribe</h3>
-        <p class="t-b40 c-body">Oxygen limitation ranked first. Bounded aeration change, simulated first.</p>
+        <span class="tl-stem"></span>
+        <article class="card-brand tl-card"><h3 class="t-b40 b6">Prescribe</h3><p class="t-b32">Oxygen limitation ranked first. Bounded aeration change, simulated first.</p></article>
       </div>
       <div class="tl-step">
         <span class="num">4</span><span class="tl-stem"></span>
         <span class="sq sq-56 sq-pos tl-node"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="m9 12 2 2 4-4" /> </svg></span>
-        <h3 class="t-dmd c-ok">Verify</h3>
-        <p class="t-b40 c-body">Operator approves. Agent checks the response and sets the harvest window.</p>
+        <span class="tl-stem"></span>
+        <article class="card-pos tl-card"><h3 class="t-b40 b6">Verify</h3><p class="t-b32">Operator approves. Agent checks the response and sets the harvest window.</p></article>
       </div>
     </div>
   </div>
