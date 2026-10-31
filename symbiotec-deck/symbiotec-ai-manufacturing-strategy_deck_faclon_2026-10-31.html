@@ -683,6 +683,12 @@ b { font-weight: 700; }
 .isq.brandfill { color: var(--color-text-brand); }  /* brand/600 on brand/050 6.5:1 */
 .isq.on-dark { color: var(--color-text-heading); }
 
+/* ---------- Body text and labels in Inter (user request); TASA Orbiter only for headings and big numbers ---------- */
+.b-big, .t-l2, .silo, .silo2, .isl, .num, .ln-n, .loop-n { font-family: var(--font-body); letter-spacing: 0; }
+.b-big { font-weight: 600; font-size: 32px; line-height: 40px; letter-spacing: -0.32px; }
+.t-l2, .silo, .silo2, .isl { font-weight: 600; }
+.lcard.hi .lc-d { color: var(--color-text-on-brand); gap: var(--space-4); }
+
 </style>
 </head>
 <body>
@@ -829,7 +835,7 @@ b { font-weight: 700; }
       <div class="lcard hi">
         <div class="lc-top"><span class="isq onbrand"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-layers"/></svg></span><span class="lc-n">03</span></div>
         <h3>Faclon AI Platform</h3>
-        <div class="lc-div"></div><div class="lc-d"><span class="ai-c">KPI AI</span><span class="ai-c">Predictive AI</span><span class="ai-c">Optimization AI</span></div>
+        <div class="lc-div"></div><div class="lc-d"><p>KPI AI</p><p>Predictive AI</p><p>Optimization AI</p></div>
       </div>
       <span class="lr-arrow"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-chevron-right"/></svg></span>
       
