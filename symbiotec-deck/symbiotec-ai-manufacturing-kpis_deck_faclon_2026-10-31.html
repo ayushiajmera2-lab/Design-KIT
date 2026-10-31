@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI and Agentic AI for Manufacturing KPIs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=TASA+Orbiter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Faclon brand tokens — generated from Figma "Design MCP" */
+:root {
+  --color-brand-100: #DCE8FE;
+  --color-brand-200: #B8D0FD;
+  --color-brand-300: #8AB1FB;
+  --color-brand-400: #5A8DF7;
+  --color-brand-500: #1655F2;
+  --color-brand-600: #124ED0;
+  --color-brand-700: #0E3FAA;
+  --color-brand-800: #0A3083;
+  --color-brand-900: #07215C;
+  --color-brand-1000: #041438;
+  --color-brand-050: #F4F8FF;
+  --color-green-100: #DAF5E8;
+  --color-green-200: #B6ECD1;
+  --color-green-300: #91E3BA;
+  --color-green-400: #48D08C;
+  --color-green-500: #00BE5F;
+  --color-green-600: #00A251;
+  --color-green-700: #008743;
+  --color-green-800: #006C36;
+  --color-green-900: #005128;
+  --color-green-1000: #00361B;
+  --color-green-050: #EBFAF3;
+  --color-red-100: #FEE4E2;
+  --color-red-200: #FEC6C3;
+  --color-red-300: #FD9D96;
+  --color-red-400: #F96C62;
+  --color-red-500: #F04438;
+  --color-red-600: #D92D20;
+  --color-red-700: #B42318;
+  --color-red-800: #9A0E0E;
+  --color-red-900: #880C0C;
+  --color-red-1000: #750A0A;
+  --color-red-050: #FFF5F5;
+  --color-neutral-light-100: #F1F5FA;
+  --color-neutral-light-200: #E3EAF3;
+  --color-neutral-light-300: #CBD5E2;
+  --color-neutral-light-400: #B1C1D2;
+  --color-neutral-light-500: #90A5BB;
+  --color-neutral-light-600: #768EA7;
+  --color-neutral-light-700: #6C849D;
+  --color-neutral-light-800: #58728D;
+  --color-neutral-light-900: #40566D;
+  --color-neutral-light-1000: #2F4256;
+  --color-neutral-light-1100: #243547;
+  --color-neutral-light-1200: #192839;
+  --color-neutral-light-1300: #0C1927;
+  --color-base-black: #0A111A;
+  --color-base-white: #FFFFFF;
+  --color-accent: #68DD68;
+  --color-accent-2: #B4FF6B;
+  --color-background-primary: var(--color-base-white);
+  --color-background-secondary: var(--color-neutral-light-100);
+  --color-background-tertiary: var(--color-neutral-light-200);
+  --color-background-inverse: var(--color-neutral-light-1200);
+  --color-background-brand: var(--color-brand-500);
+  --color-background-brand-subtle: var(--color-brand-050);
+  --color-background-success-subtle: var(--color-green-050);
+  --color-background-error-subtle: var(--color-red-050);
+  --color-background-accent: var(--color-accent);
+  --color-container-primary: var(--color-neutral-light-100);
+  --color-container-secondary: var(--color-neutral-light-200);
+  --color-container-tertiary: var(--color-neutral-light-300);
+  --color-container-selected: var(--color-brand-050);
+  --color-container-brand: var(--color-brand-500);
+  --color-container-success: var(--color-green-100);
+  --color-container-error: var(--color-red-100);
+  --color-container-inverse: var(--color-neutral-light-1200);
+  --color-container-elevated: var(--color-base-white);
+  --color-container-accent: var(--color-accent);
+  --color-container-info: var(--color-brand-100);
+  --color-container-info-strong: var(--color-brand-800);
+  --color-container-success-strong: var(--color-green-700);
+  --color-container-error-strong: var(--color-red-600);
+  --color-text-primary: var(--color-neutral-light-1100);
+  --color-text-secondary: var(--color-neutral-light-900);
+  --color-text-tertiary: var(--color-neutral-light-600);
+  --color-text-placeholder: var(--color-neutral-light-800);
+  --color-text-inverse: var(--color-base-white);
+  --color-text-brand: var(--color-brand-600);
+  --color-text-link: var(--color-brand-500);
+  --color-text-success: var(--color-green-800);
+  --color-text-error: var(--color-red-700);
+  --color-text-on-brand: var(--color-base-white);
+  --color-text-heading: var(--color-neutral-light-1300);
+  --color-text-body: var(--color-neutral-light-1100);
+  --color-text-eyebrow: var(--color-brand-500);
+  --color-text-on-accent: var(--color-base-black);
+  --color-text-accent: var(--color-accent);
+  --color-text-info: var(--color-brand-800);
+  --color-text-on-strong: var(--color-base-white);
+  --color-text-accent-on-brand: var(--color-accent-2);
+  --color-border-primary: var(--color-neutral-light-300);
+  --color-border-secondary: var(--color-neutral-light-200);
+  --color-border-strong: var(--color-neutral-light-500);
+  --color-border-brand: var(--color-brand-500);
+  --color-border-focus: var(--color-brand-500);
+  --color-border-success: var(--color-green-500);
+  --color-border-error: var(--color-red-500);
+  --color-border-inverse: var(--color-base-white);
+  --color-border-container: var(--color-neutral-light-200);
+  --color-border-accent: var(--color-accent);
+  --font-heading: "TASA Orbiter", "Inter";
+  --font-body: "Inter";
+  --text-eyebrow-font: var(--font-body);
+  --text-eyebrow-weight: 500;
+  --text-eyebrow-size: 10px;
+  --text-eyebrow-line-height: 16px;
+  --text-eyebrow-letter-spacing: 0.96px;
+  --text-display-xl-font: var(--font-heading);
+  --text-display-xl-weight: 700;
+  --text-display-xl-size: 72px;
+  --text-display-xl-line-height: 80px;
+  --text-display-xl-letter-spacing: -1.44px;
+  --text-display-lg-font: var(--font-heading);
+  --text-display-lg-weight: 700;
+  --text-display-lg-size: 60px;
+  --text-display-lg-line-height: 68px;
+  --text-display-lg-letter-spacing: -1.2px;
+  --text-display-md-font: var(--font-heading);
+  --text-display-md-weight: 700;
+  --text-display-md-size: 48px;
+  --text-display-md-line-height: 56px;
+  --text-display-md-letter-spacing: -0.96px;
+  --text-heading-h1-font: var(--font-heading);
+  --text-heading-h1-weight: 600;
+  --text-heading-h1-size: 40px;
+  --text-heading-h1-line-height: 48px;
+  --text-heading-h1-letter-spacing: -0.4px;
+  --text-heading-h2-font: var(--font-heading);
+  --text-heading-h2-weight: 600;
+  --text-heading-h2-size: 32px;
+  --text-heading-h2-line-height: 40px;
+  --text-heading-h2-letter-spacing: -0.32px;
+  --text-heading-h3-font: var(--font-heading);
+  --text-heading-h3-weight: 600;
+  --text-heading-h3-size: 24px;
+  --text-heading-h3-line-height: 32px;
+  --text-heading-h3-letter-spacing: -0.24px;
+  --text-heading-h4-font: var(--font-heading);
+  --text-heading-h4-weight: 600;
+  --text-heading-h4-size: 20px;
+  --text-heading-h4-line-height: 28px;
+  --text-heading-h4-letter-spacing: -0.2px;
+  --text-heading-h5-font: var(--font-heading);
+  --text-heading-h5-weight: 500;
+  --text-heading-h5-size: 18px;
+  --text-heading-h5-line-height: 24px;
+  --text-heading-h5-letter-spacing: -0.18px;
+  --text-heading-h6-font: var(--font-heading);
+  --text-heading-h6-weight: 500;
+  --text-heading-h6-size: 16px;
+  --text-heading-h6-line-height: 20px;
+  --text-heading-h6-letter-spacing: -0.16px;
+  --text-body-72-font: var(--font-body);
+  --text-body-72-weight: 400;
+  --text-body-72-size: 72px;
+  --text-body-72-line-height: 80px;
+  --text-body-72-letter-spacing: -0.72px;
+  --text-body-60-font: var(--font-body);
+  --text-body-60-weight: 400;
+  --text-body-60-size: 60px;
+  --text-body-60-line-height: 68px;
+  --text-body-60-letter-spacing: -0.6px;
+  --text-body-48-font: var(--font-body);
+  --text-body-48-weight: 400;
+  --text-body-48-size: 48px;
+  --text-body-48-line-height: 56px;
+  --text-body-48-letter-spacing: -0.48px;
+  --text-body-40-font: var(--font-body);
+  --text-body-40-weight: 400;
+  --text-body-40-size: 40px;
+  --text-body-40-line-height: 48px;
+  --text-body-40-letter-spacing: -0.4px;
+  --text-body-32-font: var(--font-body);
+  --text-body-32-weight: 400;
+  --text-body-32-size: 32px;
+  --text-body-32-line-height: 40px;
+  --text-body-32-letter-spacing: -0.32px;
+  --text-body-24-font: var(--font-body);
+  --text-body-24-weight: 400;
+  --text-body-24-size: 24px;
+  --text-body-24-line-height: 32px;
+  --text-body-24-letter-spacing: -0.24px;
+  --text-body-xl-font: var(--font-body);
+  --text-body-xl-weight: 400;
+  --text-body-xl-size: 20px;
+  --text-body-xl-line-height: 32px;
+  --text-body-xl-letter-spacing: 0;
+  --text-body-lg-font: var(--font-body);
+  --text-body-lg-weight: 400;
+  --text-body-lg-size: 18px;
+  --text-body-lg-line-height: 28px;
+  --text-body-lg-letter-spacing: 0;
+  --text-body-md-font: var(--font-body);
+  --text-body-md-weight: 400;
+  --text-body-md-size: 16px;
+  --text-body-md-line-height: 24px;
+  --text-body-md-letter-spacing: 0;
+  --text-body-sm-font: var(--font-body);
+  --text-body-sm-weight: 400;
+  --text-body-sm-size: 14px;
+  --text-body-sm-line-height: 22px;
+  --text-body-sm-letter-spacing: 0;
+  --text-body-xs-font: var(--font-body);
+  --text-body-xs-weight: 400;
+  --text-body-xs-size: 12px;
+  --text-body-xs-line-height: 18px;
+  --text-body-xs-letter-spacing: 0;
+  --text-body-2xs-font: var(--font-body);
+  --text-body-2xs-weight: 400;
+  --text-body-2xs-size: 10px;
+  --text-body-2xs-line-height: 16px;
+  --text-body-2xs-letter-spacing: 0;
+  --role-eyebrow-font: var(--font-body);
+  --role-eyebrow-weight: 500;
+  --role-eyebrow-text-transform: none;
+  --role-title-font: var(--font-heading);
+  --role-title-weight: 500;
+  --role-title-text-transform: none;
+  --role-subtitle-font: var(--font-body);
+  --role-subtitle-weight: 400;
+  --role-subtitle-text-transform: none;
+  --role-body-font: var(--font-body);
+  --role-body-weight: 400;
+  --role-body-text-transform: none;
+  --role-caption-font: var(--font-body);
+  --role-caption-weight: 400;
+  --role-caption-text-transform: none;
+  --role-label-font: var(--font-body);
+  --role-label-weight: 500;
+  --role-label-text-transform: none;
+  --role-label-md-font: var(--font-body);
+  --role-label-md-weight: 500;
+  --role-label-md-text-transform: none;
+  --role-label-lg-font: var(--font-body);
+  --role-label-lg-weight: 500;
+  --role-label-lg-text-transform: none;
+  --role-button-font: var(--font-body);
+  --role-button-weight: 500;
+  --role-button-text-transform: none;
+  --role-metric-font: var(--font-heading);
+  --role-metric-weight: 600;
+  --role-metric-text-transform: none;
+  --role-tag-font: var(--font-body);
+  --role-tag-weight: 500;
+  --role-tag-text-transform: none;
+  --role-eyebrow-size: 24px;
+  --role-eyebrow-line-height: 32px;
+  --role-eyebrow-letter-spacing: 0.96px;
+  --role-title-size: 32px;
+  --role-title-line-height: 40px;
+  --role-title-letter-spacing: -0.32px;
+  --role-subtitle-size: 24px;
+  --role-subtitle-line-height: 32px;
+  --role-subtitle-letter-spacing: 0;
+  --role-body-size: 24px;
+  --role-body-line-height: 32px;
+  --role-body-letter-spacing: 0;
+  --role-caption-size: 24px;
+  --role-caption-line-height: 32px;
+  --role-caption-letter-spacing: 0;
+  --role-label-size: 24px;
+  --role-label-line-height: 32px;
+  --role-label-letter-spacing: 0;
+  --role-label-md-size: 24px;
+  --role-label-md-line-height: 32px;
+  --role-label-md-letter-spacing: 0;
+  --role-label-lg-size: 32px;
+  --role-label-lg-line-height: 40px;
+  --role-label-lg-letter-spacing: 0;
+  --role-button-size: 24px;
+  --role-button-line-height: 32px;
+  --role-button-letter-spacing: -0.24px;
+  --role-metric-size: 48px;
+  --role-metric-line-height: 56px;
+  --role-metric-letter-spacing: -0.96px;
+  --role-tag-size: 24px;
+  --role-tag-line-height: 32px;
+  --role-tag-letter-spacing: -0.24px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-36: 36px;
+  --space-40: 40px;
+  --space-44: 44px;
+  --space-48: 48px;
+  --space-52: 52px;
+  --space-56: 56px;
+  --gap-inline: 8px;
+  --gap-stack: 12px;
+  --gap-grid: 24px;
+  --padding-container: 16px;
+  --padding-section: 56px;
+  --radius-default: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-pill: 9999px;
+  --radius-2xl: 10px;
+  --radius-3xl: 12px;
+  --radius-4xl: 14px;
+  --radius-5xl: 16px;
+  --radius-6xl: 18px;
+  --radius-7xl: 20px;
+  --radius-8xl: 22px;
+  --radius-9xl: 24px;
+  --border-width-default: 1px;
+  --border-width-md: 2px;
+  --border-width-lg: 3px;
+  --border-width-xl: 4px;
+  --border-width-2xl: 5px;
+  --border-width-3xl: 6px;
+  --shadow-none: none;
+  --shadow-low-raised: 0px 2px 16px 0px rgba(25, 40, 57, 0.1);
+  --shadow-mid-raised: 0px 8px 24px 0px rgba(25, 40, 57, 0.14);
+  --opacity-subtle: 0.32;
+  --opacity-overlay: 0.48;
+  --opacity-muted: 0.72;
+  --opacity-full: 1;
+  --gradient-brand: linear-gradient(144deg, #007541 0%, #3AA346 23.05%, #6FCB3E 56.12%, #78D23D 59.01%, #C1FF1C 100%);
+  --gradient-bruce-ai: linear-gradient(90deg, #2436FB 0%, #F377F7 100%);
+}
+:root[data-theme="dark"], [data-theme="dark"] {
+  --color-background-primary: var(--color-neutral-light-1200);
+  --color-background-secondary: var(--color-neutral-light-1300);
+  --color-background-tertiary: var(--color-neutral-light-1000);
+  --color-background-inverse: var(--color-base-white);
+  --color-background-brand: var(--color-brand-500);
+  --color-background-brand-subtle: var(--color-brand-900);
+  --color-background-success-subtle: var(--color-green-900);
+  --color-background-error-subtle: var(--color-red-900);
+  --color-background-accent: var(--color-accent);
+  --color-container-primary: var(--color-neutral-light-1100);
+  --color-container-secondary: var(--color-neutral-light-1000);
+  --color-container-tertiary: var(--color-neutral-light-900);
+  --color-container-selected: var(--color-brand-900);
+  --color-container-brand: var(--color-brand-500);
+  --color-container-success: var(--color-green-800);
+  --color-container-error: var(--color-red-800);
+  --color-container-inverse: var(--color-base-white);
+  --color-container-elevated: var(--color-neutral-light-1000);
+  --color-container-accent: var(--color-accent);
+  --color-container-info: var(--color-brand-800);
+  --color-container-info-strong: var(--color-brand-600);
+  --color-container-success-strong: var(--color-green-700);
+  --color-container-error-strong: var(--color-red-600);
+  --color-text-primary: var(--color-neutral-light-300);
+  --color-text-secondary: var(--color-neutral-light-300);
+  --color-text-tertiary: var(--color-neutral-light-400);
+  --color-text-placeholder: var(--color-neutral-light-500);
+  --color-text-inverse: var(--color-neutral-light-1200);
+  --color-text-brand: var(--color-brand-300);
+  --color-text-link: var(--color-brand-300);
+  --color-text-success: var(--color-green-100);
+  --color-text-error: var(--color-red-200);
+  --color-text-on-brand: var(--color-base-white);
+  --color-text-heading: var(--color-neutral-light-100);
+  --color-text-body: var(--color-neutral-light-300);
+  --color-text-eyebrow: var(--color-brand-300);
+  --color-text-on-accent: var(--color-base-black);
+  --color-text-accent: var(--color-accent);
+  --color-text-info: var(--color-brand-100);
+  --color-text-on-strong: var(--color-base-white);
+  --color-text-accent-on-brand: var(--color-accent-2);
+  --color-border-primary: var(--color-neutral-light-900);
+  --color-border-secondary: var(--color-neutral-light-1000);
+  --color-border-strong: var(--color-neutral-light-800);
+  --color-border-brand: var(--color-brand-400);
+  --color-border-focus: var(--color-brand-300);
+  --color-border-success: var(--color-green-400);
+  --color-border-error: var(--color-red-400);
+  --color-border-inverse: var(--color-neutral-light-1200);
+  --color-border-container: var(--color-neutral-light-1000);
+  --color-border-accent: var(--color-accent);
+}
+
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--color-background-tertiary); }
+.deck { display: flex; flex-direction: column; align-items: center; gap: var(--space-40); padding: var(--space-40) 0; }
+
+/* Slide frame: 1920 x 1080, 52px safe area, 12 columns with 24px gutters */
+.slide { position: relative; flex: none; width: 1920px; height: 1080px; padding: var(--space-52); overflow: hidden; display: flex; flex-direction: column;
+  background: var(--color-background-primary); color: var(--color-text-body); font-family: var(--font-body); }
+.s-brand { background: var(--color-background-brand); color: var(--color-text-on-brand); }
+.logo { position: absolute; top: 52px; right: 52px; width: 196px; height: auto; }
+.hd { padding-right: 280px; }
+.title { font-family: var(--font-heading); font-size: 60px; line-height: 68px; letter-spacing: -1.2px; font-weight: 700; color: var(--color-text-heading); }
+.bd { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--space-48); padding: var(--space-40) 0 var(--space-32); }
+.ft { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--space-24); }
+.src, .pg { font-size: 18px; line-height: 28px; font-weight: 400; color: var(--color-text-secondary); }
+.pg { margin-left: auto; }
+
+/* Text styles (Deck, desktop) */
+.t-dxl { font-family: var(--font-heading); font-size: 72px; line-height: 80px; letter-spacing: -1.44px; font-weight: 700; }
+.t-dmd { font-family: var(--font-heading); font-size: 48px; line-height: 56px; letter-spacing: -0.96px; font-weight: 700; }
+.t-h1 { font-family: var(--font-heading); font-size: 40px; line-height: 48px; letter-spacing: -0.4px; font-weight: 600; }
+.t-h2 { font-family: var(--font-heading); font-size: 32px; line-height: 40px; letter-spacing: -0.32px; font-weight: 600; }
+.t-b40 { font-family: var(--font-body); font-size: 40px; line-height: 48px; letter-spacing: -0.4px; font-weight: 400; }
+.t-b32 { font-family: var(--font-body); font-size: 32px; line-height: 40px; letter-spacing: -0.32px; font-weight: 400; }
+.t-b24 { font-family: var(--font-body); font-size: 24px; line-height: 32px; letter-spacing: -0.24px; font-weight: 400; }
+.t-bxl { font-family: var(--font-body); font-size: 20px; line-height: 32px; font-weight: 400; }
+.c-head { color: var(--color-text-heading); }
+.c-body { color: var(--color-text-body); }
+.c-sec { color: var(--color-text-secondary); }
+.c-brand { color: var(--color-text-brand); }
+.c-onbrand { color: var(--color-text-on-brand); }
+.c-inv { color: var(--color-text-inverse); }
+.c-err { color: var(--color-text-error); }
+.c-ok { color: var(--color-text-success); }
+.c-info { color: var(--color-text-info); }
+.b6 { font-weight: 600; }
+/* Highlights: text/link on light, text/accent on dark and on inverse, text/accent-on-brand on brand */
+.hl-link { color: var(--color-text-link); }
+.hl-accent { color: var(--color-text-accent); }
+.hl-onbrand { color: var(--color-text-accent-on-brand); }
+
+/* Card base (Large: radius/3xl) */
+.card { background: var(--color-container-primary); border: var(--border-width-default) solid var(--color-border-container); border-radius: var(--radius-3xl); }
+.card-sel { background: var(--color-container-selected); border: var(--border-width-default) solid var(--color-border-brand); border-radius: var(--radius-3xl); }
+.card-neg { background: var(--color-container-error); border: var(--border-width-default) solid var(--color-border-error); border-radius: var(--radius-3xl); color: var(--color-text-error); }
+.card-pos { background: var(--color-container-success); border: var(--border-width-default) solid var(--color-border-success); border-radius: var(--radius-3xl); color: var(--color-text-success); }
+.card-brand { background: var(--color-container-brand); border-radius: var(--radius-3xl); color: var(--color-text-on-brand); }
+.card-inv { background: var(--color-container-inverse); border-radius: var(--radius-3xl); color: var(--color-text-inverse); }
+.card-info { background: var(--color-container-info); border-radius: var(--radius-3xl); color: var(--color-text-info); }
+
+/* Lucide icons: 2px stroke; 32 beside text, 48 on its own; in a card an icon square sized by the card's width */
+.ic { flex: none; fill: none; stroke: currentColor; stroke-width: 2px; }
+.i24 { width: 24px; height: 24px; }
+.i32 { width: 32px; height: 32px; }
+.i40 { width: 40px; height: 40px; }
+.i48 { width: 48px; height: 48px; }
+.sq { flex: none; display: inline-flex; align-items: center; justify-content: center; padding: var(--gap-inline); border-radius: var(--radius-xl);
+  background: var(--color-container-secondary); color: var(--color-text-brand); }
+.sq-40 { width: 40px; height: 40px; }
+.sq-48 { width: 48px; height: 48px; }
+.sq-56 { width: 56px; height: 56px; }
+/* On a brand card the square is container/primary (light) with text/brand */
+.sq-onbrand { background: var(--color-container-primary); color: var(--color-text-brand); }
+.ilabel { display: flex; align-items: center; gap: var(--gap-inline); }
+
+/* Chip (Primary tone) */
+.chip { display: inline-flex; align-self: flex-start; padding: 0 var(--space-4); border-radius: var(--radius-default); background: var(--color-container-selected); color: var(--color-text-brand);
+  font-family: var(--font-body); font-size: 24px; line-height: 32px; font-weight: 500; white-space: nowrap; }
+.chip-neutral { background: var(--color-container-primary); color: var(--color-text-secondary); }
+
+/* 01 Cover */
+.cover-form { position: absolute; right: 0; top: 214px; width: 920px; height: auto; }
+.cover-text { position: absolute; left: 52px; top: 540px; transform: translateY(-50%); width: 1100px; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-24); }
+.cover-sub { max-width: 960px; }
+.tag { display: inline-flex; padding: var(--space-8) var(--space-12); border-radius: var(--radius-md); background: var(--color-container-inverse); color: var(--color-text-inverse);
+  font-family: var(--font-body); font-size: 24px; line-height: 32px; letter-spacing: -0.24px; font-weight: 500; white-space: nowrap; margin-top: var(--space-16); }
+
+/* 02 Why now: Stat tiles (Inverse, Large) and a Negative band */
+.stats3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-grid); }
+.stat-inv { display: flex; flex-direction: column; gap: var(--space-16); padding: var(--space-48); }
+.stat-inv .t-dxl { color: var(--color-text-inverse); }
+.stat-inv .t-b40 { color: var(--color-text-inverse); margin-bottom: var(--space-16); }
+.neg-band { display: flex; align-items: center; gap: var(--space-32); padding: var(--space-48); }
+.neg-band .txt { display: flex; flex-direction: column; gap: var(--space-8); }
+
+/* 03 Sites */
+.sites { display: flex; flex-direction: column; gap: var(--gap-grid); }
+.site { display: grid; grid-template-columns: 565px 1fr; gap: var(--space-24); align-items: center; padding: var(--space-48) var(--space-40); }
+.site-name { display: flex; align-items: center; gap: var(--space-16); }
+
+/* 04 Value chain flow */
+.flow5 { display: grid; grid-template-columns: 1fr 48px 1fr 48px 1fr 48px 1fr 48px 1fr; }
+.stage { display: flex; flex-direction: column; gap: var(--space-20); padding: var(--space-40) var(--space-24); }
+.stage.card-brand .t-h2 { color: var(--color-text-on-brand); }
+.arrow { display: flex; align-items: center; justify-content: center; color: var(--color-text-secondary); }
+.drop { display: flex; justify-content: center; }
+.drop span { width: 2px; height: 56px; background: var(--color-border-strong); }
+.drop.is-brand span { background: var(--color-border-brand); }
+.lever { padding: var(--space-40) var(--space-24); }
+.statement { display: flex; align-items: center; gap: var(--space-16); padding: var(--space-40); }
+
+/* 05 Problem and AI lever split */
+.split { display: grid; grid-template-columns: 1fr 96px 1fr; }
+.split .panel { padding: var(--space-16) var(--space-40); }
+.split .row { height: 104px; display: flex; align-items: center; }
+.split .row + .row { border-top: var(--border-width-default) solid var(--color-border-error); }
+.split .card-brand .row + .row { position: relative; border-top: var(--border-width-default) solid transparent; }
+.split .card-brand .row + .row::before, .vs .card-brand .row::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: var(--color-border-inverse); opacity: var(--opacity-subtle); }
+.split .mid { display: flex; flex-direction: column; padding: var(--space-16) 0; }
+.split .mid .row { justify-content: center; color: var(--color-text-secondary); }
+.split .mid .row + .row { border-top: var(--border-width-default) solid transparent; }
+
+/* 06 What AI adds */
+.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap-grid); }
+.cap { display: flex; flex-direction: column; gap: var(--space-16); padding: var(--space-48); }
+.cap .t-h1 { margin-top: var(--space-8); }
+
+/* 07 Evidence: Stat tiles (Default, Large) */
+.stats4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap-grid); }
+.stat { display: flex; flex-direction: column; gap: var(--space-16); padding: var(--space-48) var(--space-40); }
+.stat .t-dxl { color: var(--color-text-brand); margin-top: var(--space-12); }
+.note { display: flex; align-items: center; gap: var(--space-16); padding: var(--space-40); }
+
+/* 08 Comparison table */
+.table { display: grid; grid-template-columns: 560px 700px 1fr; overflow: hidden; }
+.table > div { padding: var(--space-40); display: flex; align-items: center; border-top: var(--border-width-default) solid var(--color-border-primary); }
+.table > .th { border-top: none; padding-top: var(--space-24); padding-bottom: var(--space-24); }
+.table > .res { background: var(--color-container-selected); }
+
+/* 09 AI vs agentic */
+.vs { display: grid; grid-template-columns: 1fr 96px 1fr; }
+.vs .panel { padding: var(--space-32) var(--space-40); }
+.vs .head { height: 88px; display: flex; align-items: center; gap: var(--space-16); }
+.vs .row { height: 104px; display: flex; align-items: center; }
+.vs .card .row { border-top: var(--border-width-default) solid var(--color-border-container); }
+.vs .card-brand .row { position: relative; border-top: var(--border-width-default) solid transparent; }
+.vs .mid { display: flex; flex-direction: column; padding: var(--space-32) 0; }
+.vs .mid .head { height: 88px; }
+.vs .mid .row { justify-content: center; color: var(--color-text-brand); border-top: var(--border-width-default) solid transparent; }
+.vs .card-brand .head .t-h1 { color: var(--color-text-on-brand); }
+
+/* 10 Agent hub */
+.agents { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-grid); }
+.agent { display: flex; flex-direction: column; gap: var(--space-16); padding: var(--space-40); }
+.wires { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-grid); height: 48px; }
+.wires span { justify-self: center; width: 2px; height: 48px; background: var(--color-border-brand); }
+.sup { display: flex; align-items: center; gap: var(--space-16); padding: var(--space-32) var(--space-40); }
+.hub { display: flex; flex-direction: column; }
+
+/* 11 Golden batch loop */
+.loopwrap { display: grid; grid-template-columns: 1041px 1fr; gap: var(--gap-grid); align-items: center; }
+.loop { position: relative; height: 760px; }
+.loop svg.ring { position: absolute; left: 0; top: 0; width: 1041px; height: 760px; }
+.ring circle { fill: none; stroke: var(--color-border-brand); stroke-width: 2px; stroke-dasharray: 8 10; }
+.loop .node { position: absolute; width: 420px; display: flex; flex-direction: column; gap: var(--space-12); padding: var(--space-28); background: var(--color-container-primary); }
+.loop .n1 { left: 310px; top: 16px; }
+.loop .n2 { left: 552px; top: 432px; }
+.loop .n3 { left: 68px; top: 432px; }
+.loop .turn { position: absolute; }
+.loop .a1 { left: 746px; top: 224px; }
+.loop .a2 { left: 500px; top: 640px; }
+.loop .a3 { left: 254px; top: 224px; }
+.rot60 { transform: rotate(60deg); }
+.rot180 { transform: rotate(180deg); }
+.rotm60 { transform: rotate(-60deg); }
+.loop .core { position: absolute; left: 496px; top: 356px; color: var(--color-text-brand); }
+.tracked { display: flex; flex-direction: column; gap: var(--space-24); padding: var(--space-40); }
+.tgrid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: var(--space-24); }
+.tgrid p { padding: var(--space-16) 0; border-top: var(--border-width-default) solid var(--color-border-primary); }
+
+/* 12 Day 4 flow (light): numbered nodes on a connector, a drop into each step card; cards hug their content */
+.num { flex: none; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-xl);
+  background: var(--color-container-brand); color: var(--color-text-on-brand); font-family: var(--font-heading); font-size: 32px; line-height: 40px; font-weight: 600; }
+.flow4 { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: var(--gap-grid); align-items: start; }
+.fstep { display: flex; flex-direction: column; }
+.fhead { display: flex; align-items: center; }
+.fline { flex: 1; height: 2px; margin-left: var(--space-16); background: var(--color-border-brand); }
+.fchev { margin-left: calc(-1 * var(--space-12)); margin-right: calc(-1 * var(--space-16)); color: var(--color-text-brand); }
+.fdrop { width: 56px; display: flex; justify-content: center; }
+.fdrop span { width: 2px; height: 40px; background: var(--color-border-brand); }
+.fcard { display: flex; flex-direction: column; gap: var(--space-24); padding: var(--space-40); }
+.fcard .ilabel { gap: var(--space-16); }
+/* Icon squares on intent cards: the strong intent fills with text/on-strong */
+.sq-neg { background: var(--color-container-error-strong); color: var(--color-text-on-strong); }
+.sq-pos { background: var(--color-container-success-strong); color: var(--color-text-on-strong); }
+
+/* 13 Autonomy ladder (light): axis chart with rising levels, governance as icon cards */
+.ladwrap { display: grid; grid-template-columns: 8fr 4fr; gap: var(--gap-grid); align-items: center; }
+.ladder { display: grid; grid-template-columns: 32px 1fr; gap: var(--space-24); padding: var(--space-32) var(--space-40); }
+.axis-y { display: flex; flex-direction: column; align-items: center; }
+.axis-line { flex: 1; width: 2px; margin-top: calc(-1 * var(--space-12)); background: var(--color-border-strong); }
+.bands { display: flex; flex-direction: column; }
+.band { display: flex; align-items: center; gap: var(--space-24); padding: var(--space-40) var(--space-24); }
+.band + .band { border-top: var(--border-width-default) dashed var(--color-border-strong); }
+.band-hl { background: var(--color-container-info); border-radius: var(--radius-default); }
+.band-hl p, .band-hl .b6 { color: var(--color-text-info); }
+.band p { flex: 1; }
+/* Level meter: filled segments rise with the level */
+.meter { flex: none; display: grid; grid-template-columns: repeat(4, 16px); gap: var(--space-4); align-items: end; }
+.meter i { display: block; width: 16px; border-radius: var(--radius-default); background: var(--color-container-tertiary); }
+.meter i:nth-child(1) { height: 16px; } .meter i:nth-child(2) { height: 24px; } .meter i:nth-child(3) { height: 32px; } .meter i:nth-child(4) { height: 40px; }
+.meter i.on { background: var(--color-container-brand); }
+.gov { display: flex; flex-direction: column; gap: var(--gap-stack); }
+.gov .eyebrow { font-family: var(--font-body); font-size: 24px; line-height: 32px; letter-spacing: 0.96px; font-weight: 500; color: var(--color-text-eyebrow); margin-bottom: var(--space-4); }
+.gcard { display: flex; align-items: center; gap: var(--space-16); padding: var(--space-32); }
+.sq-brand { background: var(--color-container-brand); color: var(--color-text-on-brand); }
+
+/* 14 Roadmap */
+.road { display: flex; flex-direction: column; gap: var(--space-32); }
+.axis, .phases { display: grid; grid-template-columns: 6fr 12fr 6fr; gap: var(--gap-grid); }
+.axis span { height: 8px; border-radius: var(--radius-md); }
+.axis .x1 { background: var(--color-container-tertiary); }
+.axis .x2 { background: var(--color-container-info); }
+.axis .x3 { background: var(--color-container-brand); }
+.phase { display: flex; flex-direction: column; gap: var(--space-16); padding: var(--space-48) var(--space-40); }
+.kpis { display: grid; grid-template-columns: 160px 1fr; gap: var(--space-24); align-items: center; padding: var(--space-40); }
+.kgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-28) var(--space-24); }
+.kgrid p { color: var(--color-text-heading); }
+.kgrid .ic { color: var(--color-text-brand); }
+
+/* 15 Next steps: closing reference slide (ready HTML from the brand MCP, styles as shipped) */
+.ref-closing { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--color-background-brand); padding: 0; }
+.ref-closing__backdrop { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; }
+.ref-closing__logo { position: absolute; top: 52px; right: 52px; width: 253px; height: auto; }
+.ref-closing__text { position: absolute; left: 134px; top: 540px; transform: translateY(-50%); width: 1080px; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-32); }
+.ref-closing__tag { background: var(--color-container-inverse); color: var(--color-text-inverse); border-radius: var(--radius-md); padding: var(--space-8) var(--space-12); font-family: var(--font-body); font-size: 20px; line-height: 32px; font-weight: 600; }
+.ref-closing__statement { margin: 0; color: var(--color-text-on-brand); font-family: var(--font-heading); font-size: 72px; line-height: 80px; letter-spacing: -1.44px; font-weight: 700; }
+.ref-closing__accent { color: var(--color-text-accent-on-brand); }
+/* Steps inside the closing text group */
+.nsteps { list-style: none; display: flex; flex-direction: column; align-self: stretch; color: var(--color-text-on-brand); }
+.nsteps li { display: flex; align-items: center; gap: var(--space-24); padding: var(--space-20) 0; }
+.nsteps li.rule { padding: 0; height: 1px; background: var(--color-border-inverse); opacity: var(--opacity-subtle); }
+.nsteps .no { width: 48px; color: var(--color-text-accent-on-brand); }
+
+@page { size: 1920px 1080px; margin: 0; }
+@media print { body { background: none; } .deck { gap: 0; padding: 0; } .deck { zoom: 1 !important; } }
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 01 Cover: dark, cover template (headline, subline, details as one group; dot-particle form on the right) -->
+<section class="slide" data-theme="dark" aria-label="Slide 1: Cover">
+  <img class="cover-form" src="https://faclon-brand-mcp.vercel.app/assets/design-elements/dot-particle-form.png" alt="Faclon dot-particle form">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
+  <div class="cover-text">
+    <h1 class="t-dxl c-head">AI &amp; <span class="hl-accent">Agentic AI</span> for<br>Manufacturing KPIs</h1>
+    <p class="t-b40 c-body cover-sub">Proposal for Symbiotec Pharmalab: Pithampur, Rau and Ujjain</p>
+    <span class="tag">Faclon Labs&nbsp;&nbsp;|&nbsp;&nbsp;October 2026</span>
+  </div>
+</section>
+
+<!-- 02 Why now: numbers (stat tiles) and the margin pressure in the Negative intent -->
+<section class="slide" aria-label="Slide 2: Why now">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+  <header class="hd"><h2 class="title">Why now</h2></header>
+  <div class="bd">
+    <div class="stats3">
+      <div class="card-inv stat-inv"><p class="t-dxl">300 KL</p><p class="t-b40">Fermentation capacity at Pithampur SEZ</p><span class="chip chip-neutral">Company filings</span></div>
+      <div class="card-inv stat-inv"><p class="t-dxl">400 KL</p><p class="t-b40">New biomanufacturing capacity at Ujjain</p><span class="chip chip-neutral">Company filings</span></div>
+      <div class="card-inv stat-inv"><p class="t-dxl">20–25%</p><p class="t-b40">FY27 revenue and EBITDA growth target</p><span class="chip chip-neutral">Press reports</span></div>
+    </div>
+    <div class="card-neg neg-band">
+      <svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" /> <polyline points="16 17 22 17 22 11" /> </svg>
+      <div class="txt">
+        <p class="t-h1">Q1 FY27: revenue +7%, net profit −52.8%.</p>
+        <p class="t-b32">Yield and cycle time now matter for margins.</p>
+      </div>
+    </div>
+  </div>
+  <footer class="ft"><p class="src">Sources: IPO filings via IPO Central; Business Standard, 22 Sep 2026</p><p class="pg">02</p></footer>
+</section>
+
+<!-- 03 Symbiotec at a glance: like items (three sites), icon per site -->
+<section class="slide" aria-label="Slide 3: Symbiotec at a glance">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+  <header class="hd"><h2 class="title">Symbiotec at a glance</h2></header>
+  <div class="bd">
+    <div class="sites">
+      <article class="card site">
+        <div class="site-name"><span class="sq sq-56"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /> <path d="M17 18h1" /> <path d="M12 18h1" /> <path d="M7 18h1" /> </svg></span><h3 class="t-dmd c-head">Rau (Unit I)</h3></div>
+        <p class="t-b40 c-body">Since 2004. Corticosteroid APIs. <span class="hl-link b6">92 MT</span> synthesis capacity. USFDA, EU-GMP, WHO-GMP approved.</p>
+      </article>
+      <article class="card site">
+        <div class="site-name"><span class="sq sq-56"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /> <path d="M17 18h1" /> <path d="M12 18h1" /> <path d="M7 18h1" /> </svg></span><h3 class="t-dmd c-head">Pithampur SEZ</h3></div>
+        <p class="t-b40 c-body">Fermentation and biotransformation, plus synthesis. <span class="hl-link b6">300 KL</span> fermentation, <span class="hl-link b6">492.67 MT</span> synthesis.</p>
+      </article>
+      <article class="card site">
+        <div class="site-name"><span class="sq sq-56"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /> <path d="M17 18h1" /> <path d="M12 18h1" /> <path d="M7 18h1" /> </svg></span><h3 class="t-dmd c-head">Ujjain</h3></div>
+        <p class="t-b40 c-body"><span class="hl-link b6">400 KL</span> biomanufacturing hub. Expanding toward biologics such as GLP-1 and insulins.</p>
+      </article>
+    </div>
+  </div>
+  <footer class="ft"><p class="src">Sources: IPO Central DRHP summary; Symbiotec company profile</p><p class="pg">03</p></footer>
+</section>
+
+<!-- 04 Where KPIs are won or lost: sequence (process flow), fermentation highlighted -->
+<section class="slide" aria-label="Slide 4: Where KPIs are won or lost">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+  <header class="hd"><h2 class="title">Where KPIs are won or lost</h2></header>
+  <div class="bd">
+    <div class="flow5">
+      <div class="card stage"><span class="sq sq-40"><svg class="ic i24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 22v-9" /> <path d="M15.17 2.21a1.67 1.67 0 0 1 1.63 0L21 4.57a1.93 1.93 0 0 1 0 3.36L8.82 14.79a1.655 1.655 0 0 1-1.64 0L3 12.43a1.93 1.93 0 0 1 0-3.36z" /> <path d="M20 13v3.87a2.06 2.06 0 0 1-1.11 1.83l-6 3.08a1.93 1.93 0 0 1-1.78 0l-6-3.08A2.06 2.06 0 0 1 4 16.87V13" /> <path d="M21 12.43a1.93 1.93 0 0 0 0-3.36L8.83 2.2a1.64 1.64 0 0 0-1.63 0L3 4.57a1.93 1.93 0 0 0 0 3.36l12.18 6.86a1.636 1.636 0 0 0 1.63 0z" /> </svg></span><p class="t-h2 c-head">Sterol feed</p></div>
+      <div class="arrow"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m9 18 6-6-6-6" /> </svg></div>
+      <div class="card-brand stage"><span class="sq sq-40 sq-onbrand"><svg class="ic i24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2" /> <path d="M8.5 2h7" /> <path d="M7 16h10" /> </svg></span><p class="t-h2">Fermentation</p></div>
+      <div class="arrow"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m9 18 6-6-6-6" /> </svg></div>
+      <div class="card stage"><span class="sq sq-40"><svg class="ic i24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /> </svg></span><p class="t-h2 c-head">Extraction</p></div>
+      <div class="arrow"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m9 18 6-6-6-6" /> </svg></div>
+      <div class="card stage"><span class="sq sq-40"><svg class="ic i24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 2v17.5A2.5 2.5 0 0 1 6.5 22A2.5 2.5 0 0 1 4 19.5V2" /> <path d="M20 2v17.5a2.5 2.5 0 0 1-2.5 2.5a2.5 2.5 0 0 1-2.5-2.5V2" /> <path d="M3 2h7" /> <path d="M14 2h7" /> <path d="M9 16H4" /> <path d="M20 16h-5" /> </svg></span><p class="t-h2 c-head">Synthesis</p></div>
+      <div class="arrow"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m9 18 6-6-6-6" /> </svg></div>
+      <div class="card stage"><span class="sq sq-40"><svg class="ic i24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 3h12l4 6-10 13L2 9Z" /> <path d="M11 3 8 9l4 13 4-13-3-6" /> <path d="M2 9h20" /> </svg></span><p class="t-h2 c-head">Crystallize &amp; dry</p></div>
+
+      <div class="drop"><span></span></div><div></div>
+      <div class="drop is-brand"><span></span></div><div></div>
+      <div class="drop"><span></span></div><div></div>
+      <div class="drop"><span></span></div><div></div>
+      <div class="drop"><span></span></div>
+
+      <div class="card lever"><p class="t-b32 c-body">Lot quality scoring</p></div><div></div>
+      <div class="card-sel lever"><p class="t-b32 c-brand b6">Golden batch and harvest window</p></div><div></div>
+      <div class="card lever"><p class="t-b32 c-body">Recovery yield models</p></div><div></div>
+      <div class="card lever"><p class="t-b32 c-body">Reaction end-point analytics</p></div><div></div>
+      <div class="card lever"><p class="t-b32 c-body">Consistency monitoring</p></div>
+    </div>
+    <div class="card-inv statement">
+      <p class="t-h1">AI levers sit at every stage; <span class="hl-accent">the biggest is in fermentation.</span></p>
+    </div>
+  </div>
+  <footer class="ft"><p class="pg">04</p></footer>
+</section>
+
+<!-- 05 Fermentation pain points: problem and solution split (Negative intent, then brand) -->
+<section class="slide" aria-label="Slide 5: Fermentation pain points">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+  <header class="hd"><h2 class="title">Fermentation pain points</h2></header>
+  <div class="bd">
+    <div class="split">
+      <div class="card-neg panel">
+        <div class="row ilabel"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path d="M12 9v4" /> <path d="M12 17h.01" /> </svg><p class="t-h2">Typical challenge</p></div>
+        <div class="row"><p class="t-b32">Low sterol solubility</p></div>
+        <div class="row"><p class="t-b32">Oxygen transfer, temperature sensitivity</p></div>
+        <div class="row"><p class="t-b32">Product degrades into by-products</p></div>
+        <div class="row"><p class="t-b32">Long cycles (days to weeks)</p></div>
+        <div class="row"><p class="t-b32">Batch-to-batch variability</p></div>
+      </div>
+      <div class="mid">
+        <div class="row"></div>
+        <div class="row"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></div>
+        <div class="row"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></div>
+        <div class="row"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></div>
+        <div class="row"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></div>
+        <div class="row"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></div>
+      </div>
+      <div class="card-brand panel">
+        <div class="row ilabel"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <line x1="21" x2="14" y1="4" y2="4" /> <line x1="10" x2="3" y1="4" y2="4" /> <line x1="21" x2="12" y1="12" y2="12" /> <line x1="8" x2="3" y1="12" y2="12" /> <line x1="21" x2="16" y1="20" y2="20" /> <line x1="12" x2="3" y1="20" y2="20" /> <line x1="14" x2="14" y1="2" y2="6" /> <line x1="8" x2="8" y1="10" y2="14" /> <line x1="16" x2="16" y1="18" y2="22" /> </svg><p class="t-h2">AI lever</p></div>
+        <div class="row"><p class="t-b32">Predict conversion from loading and agitation</p></div>
+        <div class="row"><p class="t-b32">Soft sensors and setpoint advice</p></div>
+        <div class="row"><p class="t-b32">Predict peak, advise harvest time</p></div>
+        <div class="row"><p class="t-b32">Optimized temperature and feed profiles</p></div>
+        <div class="row"><p class="t-b32">Golden-batch benchmarking</p></div>
+      </div>
+    </div>
+  </div>
+  <footer class="ft"><p class="src">Process challenges per published phytosterol biotransformation literature; validate with Symbiotec teams</p><p class="pg">05</p></footer>
+</section>
+
+<!-- 06 What AI adds: AI slide (dark), like items with an icon each -->
+<section class="slide" data-theme="dark" aria-label="Slide 6: What AI adds">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
+  <header class="hd"><h2 class="title">What AI adds</h2></header>
+  <div class="bd">
+    <div class="grid2">
+      <article class="card cap"><span class="sq sq-56"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m12 14 4-4" /> <path d="M3.34 19a10 10 0 1 1 17.32 0" /> </svg></span><h3 class="t-h1 c-head">Soft sensors</h3><p class="t-b32 c-body">Estimate biomass, substrate and product from signals already logged.</p></article>
+      <article class="card cap"><span class="sq sq-56"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /> </svg></span><h3 class="t-h1 c-head">Predictive monitoring</h3><p class="t-b32 c-body">Flag stalls and drift hours before conventional alarms.</p></article>
+      <article class="card cap"><span class="sq sq-56"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <line x1="21" x2="14" y1="4" y2="4" /> <line x1="10" x2="3" y1="4" y2="4" /> <line x1="21" x2="12" y1="12" y2="12" /> <line x1="8" x2="3" y1="12" y2="12" /> <line x1="21" x2="16" y1="20" y2="20" /> <line x1="12" x2="3" y1="20" y2="20" /> <line x1="14" x2="14" y1="2" y2="6" /> <line x1="8" x2="8" y1="10" y2="14" /> <line x1="16" x2="16" y1="18" y2="22" /> </svg></span><h3 class="t-h1 c-head">Setpoint optimization</h3><p class="t-b32 c-body">Find temperature, feed and aeration profiles people would not test.</p></article>
+      <article class="card cap"><span class="sq sq-56"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="14" height="14" x="8" y="8" rx="2" ry="2" /> <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /> </svg></span><h3 class="t-h1 c-head">Digital twin</h3><p class="t-b32 c-body">Simulate batches virtually for scale-up and tech transfer.</p></article>
+    </div>
+  </div>
+  <footer class="ft"><p class="pg">06</p></footer>
+</section>
+
+<!-- 07 What the evidence shows: numbers (stat tiles), caveat in the Information intent -->
+<section class="slide" aria-label="Slide 7: What the evidence shows">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+  <header class="hd"><h2 class="title">What the evidence shows</h2></header>
+  <div class="bd">
+    <div class="stats4">
+      <div class="card stat"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <line x1="10" x2="14" y1="2" y2="2" /> <line x1="12" x2="15" y1="14" y2="11" /> <circle cx="12" cy="14" r="8" /> </svg></span><p class="t-dxl">28%</p><p class="t-b32 c-body">shorter fermentation (brewing PoC)</p><p class="t-bxl c-sec">Yokogawa, 2025</p></div>
+      <div class="card stat"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="m15 9-6 6" /> <path d="m9 9 6 6" /> </svg></span><p class="t-dxl">30%</p><p class="t-b32 c-body">fewer batch failures, up to (vendor claim)</p><p class="t-bxl c-sec">Katalyze AI</p></div>
+      <div class="card stat"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 2v7.31" /> <path d="M14 9.3V1.99" /> <path d="M8.5 2h7" /> <path d="M14 9.3a6.5 6.5 0 1 1-4 0" /> <path d="M5.52 16h12.96" /> </svg></span><p class="t-dxl">75.7%</p><p class="t-b32 c-body">higher titer vs fed-batch (research)</p><p class="t-bxl c-sec">Green Chem., 2025</p></div>
+      <div class="card stat"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 2v17.5A2.5 2.5 0 0 1 6.5 22A2.5 2.5 0 0 1 4 19.5V2" /> <path d="M20 2v17.5a2.5 2.5 0 0 1-2.5 2.5a2.5 2.5 0 0 1-2.5-2.5V2" /> <path d="M3 2h7" /> <path d="M14 2h7" /> <path d="M9 16H4" /> <path d="M20 16h-5" /> </svg></span><p class="t-dxl">30–50%</p><p class="t-b32 c-body">fewer experimental runs (reported)</p><p class="t-bxl c-sec">PharmaNow, 2025</p></div>
+    </div>
+    <div class="card-info note"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M12 16v-4" /> <path d="M12 8h.01" /> </svg><p class="t-b32">Planning ranges only. Symbiotec targets to be set after a baseline on its own data.</p></div>
+  </div>
+  <footer class="ft"><p class="pg">07</p></footer>
+</section>
+
+<!-- 08 Comparable success stories: comparison table, result column highlighted -->
+<section class="slide" aria-label="Slide 8: Comparable success stories">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+  <header class="hd"><h2 class="title">Comparable success stories</h2></header>
+  <div class="bd">
+    <div class="card table">
+      <div class="th"><p class="t-b24 c-sec b6">Case</p></div>
+      <div class="th"><p class="t-b24 c-sec b6">What was done</p></div>
+      <div class="th res"><p class="t-b24 c-brand b6">Result</p></div>
+
+      <div><p class="t-h2 c-head">Craft Bank + Yokogawa</p></div>
+      <div><p class="t-b32 c-body">RL temperature schedule</p></div>
+      <div class="res"><p class="t-h2 c-brand">336 → 240 h (−28%)</p></div>
+
+      <div><p class="t-h2 c-head">Novo Nordisk</p></div>
+      <div><p class="t-b32 c-body">Digital twins, insulin</p></div>
+      <div class="res"><p class="t-h2 c-brand">Fewer batch failures</p></div>
+
+      <div><p class="t-h2 c-head">Gentamicin (research)</p></div>
+      <div><p class="t-b32 c-body">AI closed loop, NIR + Raman</p></div>
+      <div class="res"><p class="t-h2 c-brand">Titer +75.7%</p></div>
+
+      <div><p class="t-h2 c-head">Sun Pharma (non-AI flow)</p></div>
+      <div><p class="t-b32 c-body">API step intensification</p></div>
+      <div class="res"><p class="t-h2 c-brand">Yield 70 → 85%</p></div>
+    </div>
+    <div class="card-info note"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M12 16v-4" /> <path d="M12 8h.01" /> </svg><p class="t-b32">No public AI case found for phytosterol-to-AD fermentation; these are the closest analogs.</p></div>
+  </div>
+  <footer class="ft"><p class="pg">08</p></footer>
+</section>
+
+<!-- 09 From AI to agentic AI: AI slide (dark), before and after split -->
+<section class="slide" data-theme="dark" aria-label="Slide 9: From AI to agentic AI">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
+  <header class="hd"><h2 class="title">From AI to <span class="hl-accent">agentic AI</span></h2></header>
+  <div class="bd">
+    <div class="vs">
+      <div class="card panel">
+        <div class="head"><span class="c-brand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 3v16a2 2 0 0 0 2 2h16" /> <path d="M18 17V9" /> <path d="M13 17V5" /> <path d="M8 17v-3" /> </svg></span><h3 class="t-h1 c-head">AI / ML models</h3></div>
+        <div class="row"><p class="t-b32 c-body">Score, predict, alert.</p></div>
+        <div class="row"><p class="t-b32 c-body">A person interprets the output.</p></div>
+        <div class="row"><p class="t-b32 c-body">One model, one question.</p></div>
+        <div class="row"><p class="t-b32 c-body">Insight arrives as a dashboard.</p></div>
+      </div>
+      <div class="mid">
+        <div class="head"></div>
+        <div class="row"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></div>
+        <div class="row"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></div>
+        <div class="row"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></div>
+        <div class="row"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></div>
+      </div>
+      <div class="card-brand panel">
+        <div class="head"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="8" height="8" x="3" y="3" rx="2" /> <path d="M7 11v4a2 2 0 0 0 2 2h4" /> <rect width="8" height="8" x="13" y="13" rx="2" /> </svg><h3 class="t-h1">Agentic AI</h3></div>
+        <div class="row"><p class="t-b32">Senses, reasons, plans, acts.</p></div>
+        <div class="row"><p class="t-b32">Ranks causes and prescribes actions.</p></div>
+        <div class="row"><p class="t-b32">Specialist agents work together.</p></div>
+        <div class="row"><p class="t-b32">Every step logged and governed.</p></div>
+      </div>
+    </div>
+  </div>
+  <footer class="ft"><p class="pg">09</p></footer>
+</section>
+
+<!-- 10 A team of agents: AI slide (dark), hub diagram with the supervisor at the centre -->
+<section class="slide" data-theme="dark" aria-label="Slide 10: A team of agents on every batch">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
+  <header class="hd"><h2 class="title">A team of agents on every batch</h2></header>
+  <div class="bd">
+    <div class="hub">
+      <div class="agents">
+        <article class="card agent"><div class="ilabel"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /> </svg></span><h3 class="t-h1 c-head">Data agent</h3></div><p class="t-b32 c-body">Pulls DCS, historian, LIMS. Flags bad sensors.</p></article>
+        <article class="card agent"><div class="ilabel"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /> </svg></span><h3 class="t-h1 c-head">Monitoring agent</h3></div><p class="t-b32 c-body">Compares live run to the golden envelope.</p></article>
+        <article class="card agent"><div class="ilabel"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /> <polyline points="16 7 22 7 22 13" /> </svg></span><h3 class="t-h1 c-head">Prediction agent</h3></div><p class="t-b32 c-body">Forecasts titer, by-products, harvest time.</p></article>
+      </div>
+      <div class="wires"><span></span><span></span><span></span></div>
+      <div class="card-brand sup"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect x="16" y="16" width="6" height="6" rx="1" /> <rect x="2" y="16" width="6" height="6" rx="1" /> <rect x="9" y="2" width="6" height="6" rx="1" /> <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" /> <path d="M12 12V8" /> </svg><p class="t-h2">Coordinated by a supervisor agent that decides: <span class="hl-onbrand">alert, recommend or escalate.</span></p></div>
+      <div class="wires"><span></span><span></span><span></span></div>
+      <div class="agents">
+        <article class="card agent"><div class="ilabel"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="11" cy="11" r="8" /> <path d="m21 21-4.3-4.3" /> </svg></span><h3 class="t-h1 c-head">Diagnosis agent</h3></div><p class="t-b32 c-body">Ranks likely root causes.</p></article>
+        <article class="card agent"><div class="ilabel"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m3 17 2 2 4-4" /> <path d="m3 7 2 2 4-4" /> <path d="M13 6h8" /> <path d="M13 12h8" /> <path d="M13 18h8" /> </svg></span><h3 class="t-h1 c-head">Prescription agent</h3></div><p class="t-b32 c-body">Proposes bounded actions, tested on the twin.</p></article>
+        <article class="card agent"><div class="ilabel"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path d="m9 12 2 2 4-4" /> </svg></span><h3 class="t-h1 c-head">Compliance agent</h3></div><p class="t-b32 c-body">Audit trail, SOP checks, deviation drafts.</p></article>
+      </div>
+    </div>
+  </div>
+  <footer class="ft"><p class="pg">10</p></footer>
+</section>
+
+<!-- 11 The golden batch loop: AI slide (dark), lifecycle drawn as a loop -->
+<section class="slide" data-theme="dark" aria-label="Slide 11: The golden batch loop">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
+  <header class="hd"><h2 class="title">The golden batch loop</h2></header>
+  <div class="bd">
+    <div class="loopwrap">
+      <div class="loop">
+        <svg class="ring" viewBox="0 0 1041 760" aria-hidden="true"><circle cx="520" cy="400" r="280"/></svg>
+        <span class="turn a1 sq sq-40"><svg class="ic i24 rot60" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span>
+        <span class="turn a2 sq sq-40"><svg class="ic i24 rot180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span>
+        <span class="turn a3 sq sq-40"><svg class="ic i24 rotm60" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span>
+        <span class="core"><svg class="ic i48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m17 2 4 4-4 4" /> <path d="M3 11v-1a4 4 0 0 1 4-4h14" /> <path d="m7 22-4-4 4-4" /> <path d="M21 13v1a4 4 0 0 1-4 4H3" /> </svg></span>
+        <article class="card node n1"><div class="ilabel"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" /> <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" /> <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" /> </svg></span><h3 class="t-h2 c-head">1&nbsp;&nbsp;Build</h3></div><p class="t-b24 c-body">Align best past batches. Set a multivariate envelope for each phase.</p></article>
+        <article class="card node n2"><div class="ilabel"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /> <circle cx="12" cy="12" r="3" /> </svg></span><h3 class="t-h2 c-head">2&nbsp;&nbsp;Watch</h3></div><p class="t-b24 c-body">Compare every live variable to the envelope every few minutes.</p></article>
+        <article class="card node n3"><div class="ilabel"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m3 17 2 2 4-4" /> <path d="m3 7 2 2 4-4" /> <path d="M13 6h8" /> <path d="M13 12h8" /> <path d="M13 18h8" /> </svg></span><h3 class="t-h2 c-head">3&nbsp;&nbsp;Prescribe</h3></div><p class="t-b24 c-body">Predict the shortfall, rank causes, recommend bounded fixes.</p></article>
+      </div>
+      <div class="card tracked">
+        <h3 class="t-h2 c-head">Tracked:</h3>
+        <div class="tgrid">
+          <p class="t-b24 c-body">temperature</p><p class="t-b24 c-body">pH</p><p class="t-b24 c-body">dissolved oxygen</p>
+          <p class="t-b24 c-body">off-gas</p><p class="t-b24 c-body">agitation</p><p class="t-b24 c-body">aeration</p>
+          <p class="t-b24 c-body">foam</p><p class="t-b24 c-body">feed</p><p class="t-b24 c-body">offline HPLC</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="ft"><p class="pg">11</p></footer>
+</section>
+
+<!-- 12 Example: Day 4 of a batch: light theme, sequence drawn as a flow (numbered nodes, connectors, a card per step sized to its content); colour follows meaning: Detect and Predict Negative, Prescribe brand, Verify Positive -->
+<section class="slide" aria-label="Slide 12: Example, Day 4 of a batch">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+  <header class="hd"><h2 class="title">Example: Day 4 of a batch</h2></header>
+  <div class="bd">
+    <div class="flow4">
+      <div class="fstep">
+        <div class="fhead"><span class="num">1</span><span class="fline"></span><svg class="ic i32 fchev" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m9 18 6-6-6-6" /> </svg></div>
+        <div class="fdrop"><span></span></div>
+        <article class="card-neg fcard"><div class="ilabel"><span class="sq sq-48 sq-neg"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 7V5a2 2 0 0 1 2-2h2" /> <path d="M17 3h2a2 2 0 0 1 2 2v2" /> <path d="M21 17v2a2 2 0 0 1-2 2h-2" /> <path d="M7 21H5a2 2 0 0 1-2-2v-2" /> <circle cx="12" cy="12" r="3" /> <path d="m16 16-1.9-1.9" /> </svg></span><h3 class="t-dmd">Detect</h3></div><p class="t-b40">Oxygen uptake falls and pH drifts earlier than in golden batches.</p></article>
+      </div>
+      <div class="fstep">
+        <div class="fhead"><span class="num">2</span><span class="fline"></span><svg class="ic i32 fchev" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m9 18 6-6-6-6" /> </svg></div>
+        <div class="fdrop"><span></span></div>
+        <article class="card-neg fcard"><div class="ilabel"><span class="sq sq-48 sq-neg"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" /> <polyline points="16 17 22 17 22 11" /> </svg></span><h3 class="t-dmd">Predict</h3></div><p class="t-b40">Forecast: 8% titer shortfall and an early by-product rise.</p></article>
+      </div>
+      <div class="fstep">
+        <div class="fhead"><span class="num">3</span><span class="fline"></span><svg class="ic i32 fchev" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m9 18 6-6-6-6" /> </svg></div>
+        <div class="fdrop"><span></span></div>
+        <article class="card-brand fcard"><div class="ilabel"><span class="sq sq-48 sq-onbrand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <line x1="21" x2="14" y1="4" y2="4" /> <line x1="10" x2="3" y1="4" y2="4" /> <line x1="21" x2="12" y1="12" y2="12" /> <line x1="8" x2="3" y1="12" y2="12" /> <line x1="21" x2="16" y1="20" y2="20" /> <line x1="12" x2="3" y1="20" y2="20" /> <line x1="14" x2="14" y1="2" y2="6" /> <line x1="8" x2="8" y1="10" y2="14" /> <line x1="16" x2="16" y1="18" y2="22" /> </svg></span><h3 class="t-dmd">Prescribe</h3></div><p class="t-b40">Oxygen limitation ranked first. Bounded aeration change, simulated first.</p></article>
+      </div>
+      <div class="fstep">
+        <div class="fhead"><span class="num">4</span></div>
+        <div class="fdrop"><span></span></div>
+        <article class="card-pos fcard"><div class="ilabel"><span class="sq sq-48 sq-pos"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="m9 12 2 2 4-4" /> </svg></span><h3 class="t-dmd">Verify</h3></div><p class="t-b40">Operator approves. Agent checks the response and sets the harvest window.</p></article>
+      </div>
+    </div>
+  </div>
+  <footer class="ft"><p class="src">Illustrative scenario; values are placeholders, not Symbiotec data.</p><p class="pg">12</p></footer>
+</section>
+
+<!-- 13 Autonomy ladder and governance: light theme. Ladder as a rising axis chart (level 1 at the base, 4 at the top, dashed thresholds; Advise highlighted as the starting level); governance as a stack of icon cards -->
+<section class="slide" aria-label="Slide 13: Autonomy ladder and governance">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+  <header class="hd"><h2 class="title">Autonomy ladder and governance</h2></header>
+  <div class="bd">
+    <div class="ladwrap">
+      <div class="card ladder">
+        <div class="axis-y"><span class="c-sec"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m18 15-6-6-6 6" /> </svg></span><span class="axis-line"></span></div>
+        <div class="bands">
+        <div class="band"><span class="num">4</span><p class="t-b32 c-body"><span class="c-head b6">Closed loop:</span> Autonomous within validated ranges, with fallback.</p><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+        <div class="band"><span class="num">3</span><p class="t-b32 c-body"><span class="c-head b6">Approve and execute:</span> Agent writes setpoints after operator approval.</p><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <div class="band band-hl"><span class="num">2</span><p class="t-b32 c-body"><span class="b6">Advise:</span> Ranked, explained recommendations; humans act.</p><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+        <div class="band"><span class="num">1</span><p class="t-b32 c-body"><span class="c-head b6">Monitor:</span> Dashboards and alerts only.</p><span class="meter" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span></div>
+        </div>
+      </div>
+      <div class="gov">
+      <h3 class="eyebrow">Governance</h3>
+      <div class="card gcard"><span class="sq sq-48 sq-brand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <circle cx="9" cy="7" r="4" /> <polyline points="16 11 18 13 22 9" /> </svg></span><p class="t-b32 c-head">Role-based approvals</p></div>
+      <div class="card gcard"><span class="sq sq-48 sq-brand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" /> </svg></span><p class="t-b32 c-head">Immutable audit trail</p></div>
+      <div class="card gcard"><span class="sq sq-48 sq-brand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 12.5 8 15l2 2.5" /> <path d="m14 12.5 2 2.5-2 2.5" /> <path d="M14 2v4a2 2 0 0 0 2 2h4" /> <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" /> </svg></span><p class="t-b32 c-head">Versioned, explainable models</p></div>
+      <div class="card gcard"><span class="sq sq-48 sq-brand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <line x1="6" x2="6" y1="3" y2="15" /> <circle cx="18" cy="6" r="3" /> <circle cx="6" cy="18" r="3" /> <path d="M18 9a9 9 0 0 1-9 9" /> </svg></span><p class="t-b32 c-head">Model changes under change control</p></div>
+      </div>
+    </div>
+  </div>
+  <footer class="ft"><p class="pg">13</p></footer>
+</section>
+
+<!-- 14 Pilot roadmap and KPIs: phases on a time axis (widths follow the weeks), KPIs with an icon each -->
+<section class="slide" aria-label="Slide 14: Pilot roadmap and KPIs">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+  <header class="hd"><h2 class="title">Pilot roadmap and KPIs</h2></header>
+  <div class="bd">
+    <div class="road">
+      <div class="axis"><span class="x1"></span><span class="x2"></span><span class="x3"></span></div>
+      <div class="phases">
+        <article class="card phase p1"><span class="sq sq-48"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /> <path d="M3 3v5h5" /> <path d="M12 7v5l4 2" /> </svg></span><h3 class="t-h2 c-brand">Weeks 1–6</h3><p class="t-b32 c-body">Data-readiness audit and backtest on past batches.</p></article>
+        <article class="card-sel phase p2"><span class="sq sq-56"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /> </svg></span><h3 class="t-h2 c-brand">Weeks 7–18</h3><p class="t-b32 c-body">Live advisory mode: golden-batch dashboard, harvest window.</p></article>
+        <article class="card-brand phase p3"><span class="sq sq-48 sq-onbrand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /> <polyline points="16 7 22 7 22 13" /> </svg></span><h3 class="t-h2">After week 18</h3><p class="t-b32">Review KPIs; extend to Ujjain and Rau synthesis.</p></article>
+      </div>
+    </div>
+    <div class="card kpis">
+      <p class="t-h2 c-head">KPIs:</p>
+      <div class="kgrid">
+        <p class="t-b32 ilabel"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <line x1="10" x2="14" y1="2" y2="2" /> <line x1="12" x2="15" y1="14" y2="11" /> <circle cx="12" cy="14" r="8" /> </svg>cycle time</p>
+        <p class="t-b32 ilabel"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 2v7.31" /> <path d="M14 9.3V1.99" /> <path d="M8.5 2h7" /> <path d="M14 9.3a6.5 6.5 0 1 1-4 0" /> <path d="M5.52 16h12.96" /> </svg>titer</p>
+        <p class="t-b32 ilabel"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /> <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /> <path d="M7 21h10" /> <path d="M12 3v18" /> <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" /> </svg>product-to-by-product ratio</p>
+        <p class="t-b32 ilabel"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="m15 9-6 6" /> <path d="m9 9 6 6" /> </svg>batch failures</p>
+        <p class="t-b32 ilabel"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path d="M12 9v4" /> <path d="M12 17h.01" /> </svg>deviations</p>
+        <p class="t-b32 ilabel"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <line x1="19" x2="5" y1="5" y2="19" /> <circle cx="6.5" cy="6.5" r="2.5" /> <circle cx="17.5" cy="17.5" r="2.5" /> </svg>Rau yield</p>
+      </div>
+    </div>
+  </div>
+  <footer class="ft"><p class="pg">14</p></footer>
+</section>
+
+<!-- 15 Next steps on the closing reference slide (Figma Design MCP › Layouts › "29 · Close", node 3058:22750), placed as shipped:
+     backdrop, white logo top-right on the 52px edge, text group at the reference's 134px edge. Tag slot: "Next steps";
+     statement slot: the closing line. The three steps sit in the text group between them, in the user's order. -->
+<section class="slide ref-closing" aria-label="Slide 15: Next steps">
+  <img class="ref-closing__backdrop" src="https://faclon-brand-mcp.vercel.app/templates/decks/reference/closing-backdrop.jpg" alt="Faclon dot-particle form and light streaks on brand blue">
+  <img class="ref-closing__logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
+  <div class="ref-closing__text">
+    <h2 class="ref-closing__tag" data-slot="tag">Next steps</h2>
+    <ol class="nsteps">
+        <li><span class="t-dmd no">1</span><span class="sq sq-48 sq-onbrand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="8" r="5" /> <path d="M20 21a8 8 0 0 0-16 0" /> </svg></span><p class="t-h1">Name a plant sponsor at Pithampur and Rau</p></li>
+        <li class="rule" aria-hidden="true"></li>
+        <li><span class="t-dmd no">2</span><span class="sq sq-48 sq-onbrand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /> </svg></span><p class="t-h1">Share 20–30 historical batches for a backtest</p></li>
+        <li class="rule" aria-hidden="true"></li>
+        <li><span class="t-dmd no">3</span><span class="sq sq-48 sq-onbrand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /> </svg></span><p class="t-h1">Agree one KPI per site before the pilot starts</p></li>
+    </ol>
+    <p class="ref-closing__statement" data-slot="statement">Start <span class="ref-closing__accent">advisory-only.</span> Your validated setpoints stay untouched.</p>
+  </div>
+</section>
+
+</main>
+<script>
+  // Fit the 1920px slides to the window for on-screen viewing
+  function fit() { document.getElementById('deck').style.zoom = Math.min(1, (window.innerWidth - 48) / 1920); }
+  window.addEventListener('resize', fit); fit();
+</script>
+</body>
+</html>
