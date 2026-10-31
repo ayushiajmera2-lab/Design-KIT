@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Port OT Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Faclon tokens (get_tokens, brand 2026.10.31-5) */
+  --color-brand-050: #F4F8FF;
+  --color-brand-100: #DCE8FE;
+  --color-brand-300: #8AB1FB;
+  --color-brand-400: #5A8DF7;
+  --color-neutral-light-100: #F1F5FA;
+  --color-neutral-light-200: #E3EAF3;
+  --color-neutral-light-300: #CBD5E2;
+  --color-neutral-light-500: #90A5BB;
+  --color-neutral-light-900: #40566D;
+  --color-neutral-light-1100: #243547;
+  --color-neutral-light-1300: #0C1927;
+  --color-base-white: #FFFFFF;
+
+  --color-background-primary: var(--color-base-white);
+  --color-container-primary: var(--color-neutral-light-100);
+  --color-container-selected: var(--color-brand-050);
+  --color-container-info: var(--color-brand-100);
+  --color-border-strong: var(--color-neutral-light-500);
+  --color-border-container: var(--color-neutral-light-200);
+  --color-text-heading: var(--color-neutral-light-1300);
+  --color-text-body: var(--color-neutral-light-1100);
+  --color-text-secondary: var(--color-neutral-light-900);
+
+  --font-heading: "TASA Orbiter", "Inter";
+  --font-body: "Inter";
+
+  --space-4: 4px; --space-8: 8px; --space-12: 12px; --space-16: 16px;
+  --space-24: 24px; --space-32: 32px; --space-48: 48px;
+  --gap-inline: 8px; --gap-stack: 12px; --gap-grid: 24px;
+  --radius-default: 2px; --radius-md: 4px;
+  --border-width-default: 1px; --border-width-md: 2px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--color-background-primary); }
+body { font-family: var(--font-body); color: var(--color-text-body); overflow: hidden; }
+.stage { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; }
+.canvas {
+  position: relative; width: 1920px; height: 1080px; flex: none;
+  background: var(--color-background-primary); transform-origin: center center;
+}
+/* one diagram text size (Dense: Body/XS 12/18) */
+.canvas .name, .canvas .cap, .canvas .chip, .canvas .sub, .canvas .badge, .canvas .leg-item {
+  font-size: 12px; line-height: 18px; letter-spacing: 0;
+}
+.name { font-weight: 600; color: var(--color-text-heading); }
+.cap  { font-weight: 500; color: var(--color-text-body); }
+
+/* header */
+.title {
+  position: absolute; left: 48px; top: 48px;
+  font-family: var(--font-heading); font-weight: 600; font-size: 32px; line-height: 40px;
+  letter-spacing: -0.32px; color: var(--color-text-heading);
+}
+.sub { position: absolute; left: 48px; top: 92px; font-weight: 500; color: var(--color-text-secondary); }
+.logo { position: absolute; right: 48px; top: 48px; height: 40px; width: auto; }
+.badge {
+  position: absolute; right: 48px; top: 92px; font-weight: 500; color: var(--color-text-heading);
+  background: var(--color-container-primary); border: var(--border-width-default) solid var(--color-border-container);
+  border-radius: var(--radius-default); padding: 0 var(--space-8);
+}
+
+/* nodes */
+.node {
+  position: absolute; display: flex; align-items: center; gap: var(--space-12);
+  padding: 0 var(--space-12); border-radius: var(--radius-md);
+}
+.station { background: var(--color-background-primary); border: var(--border-width-default) solid var(--color-border-strong); }
+.station .name { flex: 1 1 auto; white-space: nowrap; }
+.chips { display: flex; gap: var(--gap-inline); }
+.chip { font-weight: 600; color: var(--color-text-heading); border-radius: var(--radius-md); padding: var(--space-4) var(--space-8); white-space: nowrap; }
+.chip.crane { background: var(--color-container-info); border: var(--border-width-default) solid var(--color-container-info); }
+.chip.conv  { background: var(--color-background-primary); border: var(--border-width-default) solid var(--color-brand-400); }
+.jetty { background: var(--color-container-info); }
+.jetty .name { min-width: 56px; }
+
+.hub {
+  position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--space-4); text-align: center; padding: var(--space-12);
+  background: var(--color-container-selected); border: var(--border-width-md) solid var(--color-brand-400);
+  border-radius: var(--radius-default);
+}
+.hub-title {
+  font-family: var(--font-heading); font-weight: 500; font-size: 18px; line-height: 24px;
+  letter-spacing: -0.18px; color: var(--color-text-secondary); margin-bottom: var(--space-4);
+}
+.fw {
+  position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--space-4); text-align: center; padding: var(--space-12) var(--space-16);
+  background: var(--color-background-primary);
+  border: var(--border-width-default) dashed var(--color-border-strong); border-radius: var(--radius-md);
+}
+.fw img { display: block; margin-bottom: var(--space-4); }
+.srv {
+  position: absolute; display: flex; flex-direction: column; justify-content: center; gap: var(--space-4);
+  padding: var(--space-12); background: var(--color-container-primary);
+  border: var(--border-width-default) solid var(--color-border-strong); border-radius: var(--radius-md);
+}
+
+/* connectors */
+svg.wires { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+.flow { fill: none; stroke: var(--color-brand-400); stroke-width: 2; }
+.link { fill: none; stroke: var(--color-text-secondary); stroke-width: 2; stroke-dasharray: 6 4; }
+.dot  { fill: var(--color-brand-400); }
+
+/* legend */
+.legend { position: absolute; right: 48px; bottom: 48px; display: flex; gap: var(--space-32); align-items: center; }
+.leg-item { display: flex; align-items: center; gap: var(--gap-inline); font-weight: 500; color: var(--color-text-secondary); }
+.sw { display: inline-block; width: 24px; height: 16px; border-radius: var(--radius-md); }
+.sw-station { background: var(--color-background-primary); border: var(--border-width-default) solid var(--color-border-strong); }
+.sw-crane   { background: var(--color-container-info); }
+.sw-conv    { background: var(--color-background-primary); border: var(--border-width-default) solid var(--color-brand-400); }
+.sw-hub     { background: var(--color-container-selected); border: var(--border-width-md) solid var(--color-brand-400); border-radius: var(--radius-default); }
+.sw-fw      { background: var(--color-background-primary); border: var(--border-width-default) dashed var(--color-border-strong); }
+.sw-srv     { background: var(--color-container-primary); border: var(--border-width-default) solid var(--color-border-strong); }
+</style>
+</head>
+<body>
+<div class="stage">
+<div class="canvas" id="canvas">
+  <h1 class="title">Port OT Network – Management Overview</h1>
+  <p class="sub">Left to right: each station → central network hub (SS 6) → security firewalls → plant servers</p>
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+  <span class="badge">18 stations · 24 machines · 2 firewalls · 6 servers</span>
+  <svg class="wires" viewBox="0 0 1920 1080" aria-hidden="true">
+    <defs>
+      <marker id="ah-flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--color-brand-400)"/></marker>
+      <marker id="ah-link" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--color-text-secondary)"/></marker>
+    </defs>
+    <line class="flow" x1="388" y1="188" x2="408" y2="188"/><line class="flow" x1="768" y1="188" x2="788" y2="188"/><line class="flow" x1="388" y1="264" x2="408" y2="264"/><line class="flow" x1="768" y1="264" x2="788" y2="264"/><line class="flow" x1="388" y1="340" x2="408" y2="340"/><line class="flow" x1="768" y1="340" x2="788" y2="340"/><line class="flow" x1="388" y1="416" x2="408" y2="416"/><line class="flow" x1="768" y1="416" x2="788" y2="416"/><line class="flow" x1="388" y1="492" x2="408" y2="492"/><line class="flow" x1="768" y1="492" x2="788" y2="492"/><line class="flow" x1="388" y1="568" x2="408" y2="568"/><line class="flow" x1="768" y1="568" x2="788" y2="568"/><line class="flow" x1="388" y1="644" x2="408" y2="644"/><line class="flow" x1="768" y1="644" x2="788" y2="644"/><line class="flow" x1="388" y1="720" x2="408" y2="720"/><line class="flow" x1="768" y1="720" x2="788" y2="720"/><line class="flow" x1="388" y1="796" x2="408" y2="796"/><line class="flow" x1="768" y1="796" x2="788" y2="796"/><line class="flow" x1="388" y1="872" x2="408" y2="872"/><line class="flow" x1="768" y1="872" x2="788" y2="872"/><line class="flow" x1="388" y1="948" x2="408" y2="948"/><line class="flow" x1="768" y1="948" x2="788" y2="948"/><polyline class="flow" points="408,948 408,144 788,144 788,948"/><line class="flow" marker-end="url(#ah-flow)" x1="788" y1="568" x2="826" y2="568"/><line class="flow" marker-end="url(#ah-flow)" x1="996" y1="568" x2="1034" y2="568"/><line class="flow" marker-end="url(#ah-flow)" x1="1212" y1="568" x2="1466" y2="568"/><line class="link" marker-end="url(#ah-link)" x1="1340" y1="568" x2="1340" y2="522"/><line class="link" marker-end="url(#ah-link)" x1="1340" y1="568" x2="1340" y2="614"/><circle class="dot" cx="1340" cy="568" r="4"/><line class="flow" x1="1644" y1="568" x2="1668" y2="568"/><line class="flow" x1="1668" y1="388" x2="1668" y2="748"/><line class="flow" marker-end="url(#ah-flow)" x1="1668" y1="388" x2="1690" y2="388"/><line class="flow" marker-end="url(#ah-flow)" x1="1668" y1="508" x2="1690" y2="508"/><line class="flow" marker-end="url(#ah-flow)" x1="1668" y1="628" x2="1690" y2="628"/><line class="flow" marker-end="url(#ah-flow)" x1="1668" y1="748" x2="1690" y2="748"/>
+  </svg>
+  <div class="node station" style="left:48px;top:160px;width:340px;height:56px"><span class="name">SS 1</span><span class="chips"></span></div><div class="node station" style="left:48px;top:236px;width:340px;height:56px"><span class="name">SS 2</span><span class="chips"></span></div><div class="node station" style="left:48px;top:312px;width:340px;height:56px"><span class="name">SS 3/4</span><span class="chips"></span></div><div class="node station" style="left:48px;top:388px;width:340px;height:56px"><span class="name">SS 5</span><span class="chips"></span></div><div class="node station" style="left:48px;top:464px;width:340px;height:56px"><span class="name">SS 7</span><span class="chips"></span></div><div class="node station" style="left:48px;top:540px;width:340px;height:56px"><span class="name">SS 8</span><span class="chips"><span class="chip crane">CSR-1</span><span class="chip crane">CSR-2</span></span></div><div class="node station" style="left:48px;top:616px;width:340px;height:56px"><span class="name">ER-1A</span><span class="chips"><span class="chip crane">SUL-1</span><span class="chip crane">SUL-2</span><span class="chip conv">BL-1</span><span class="chip conv">BL-2</span></span></div><div class="node station" style="left:48px;top:692px;width:340px;height:56px"><span class="name">ER-1B</span><span class="chips"><span class="chip conv">BL-3</span><span class="chip conv">BL-4</span></span></div><div class="node station" style="left:48px;top:768px;width:340px;height:56px"><span class="name">ER-1C</span><span class="chips"><span class="chip conv">BL-5</span><span class="chip conv">BL-6</span></span></div><div class="node station" style="left:48px;top:844px;width:340px;height:56px"><span class="name">ER-2</span><span class="chips"><span class="chip crane">SUL-3</span><span class="chip crane">SUL-4</span><span class="chip crane">SUL-5</span></span></div><div class="node station" style="left:48px;top:920px;width:340px;height:56px"><span class="name">TT 4</span><span class="chips"></span></div><div class="node station" style="left:428px;top:160px;width:340px;height:56px"><span class="name">TT 7</span><span class="chips"><span class="chip crane">SR-1</span><span class="chip crane">SR-2</span></span></div><div class="node station" style="left:428px;top:236px;width:340px;height:56px"><span class="name">TT 9</span><span class="chips"><span class="chip crane">SR-3</span></span></div><div class="node station" style="left:428px;top:312px;width:340px;height:56px"><span class="name">JTT 18</span><span class="chips"><span class="chip crane">MHC-3</span><span class="chip crane">MHC-4</span></span></div><div class="node station" style="left:428px;top:388px;width:340px;height:56px"><span class="name">Berth 4 / HM.3</span><span class="chips"><span class="chip crane">MHC-1</span><span class="chip crane">MHC-2</span></span></div><div class="node station" style="left:428px;top:464px;width:340px;height:56px"><span class="name">LPG Jetty</span><span class="chips"></span></div><div class="node station" style="left:428px;top:540px;width:340px;height:56px"><span class="name">LPG T.</span><span class="chips"></span></div><div class="node station" style="left:428px;top:616px;width:340px;height:56px"><span class="name">Tank Farm</span><span class="chips"></span></div><div class="node jetty" style="left:428px;top:692px;width:340px;height:56px"><span class="name">JSR-1A</span><span class="cap">Jetty machine · direct to SS 6</span></div><div class="node jetty" style="left:428px;top:768px;width:340px;height:56px"><span class="name">JSR-1B</span><span class="cap">Jetty machine · direct to SS 6</span></div><div class="node jetty" style="left:428px;top:844px;width:340px;height:56px"><span class="name">JRE-1A</span><span class="cap">Jetty machine · direct to SS 6</span></div><div class="node jetty" style="left:428px;top:920px;width:340px;height:56px"><span class="name">JRE-1B</span><span class="cap">Jetty machine · direct to SS 6</span></div><div class="hub" style="left:828px;top:496px;width:168px;height:144px"><div class="hub-title">SS 6</div><div class="name">Central<br>Network Hub</div><div class="cap">Collects data<br>from every<br>station</div></div><div class="fw" style="left:1036px;top:504px;width:176px;height:128px"><img src="https://faclon-brand-mcp.vercel.app/assets/icons/architecture/main-icons/firewall.png" alt="Firewall icon" width="32" height="32"><div class="name">OT Firewall</div><div class="cap">Protects the plant network</div></div><div class="fw" style="left:1468px;top:504px;width:176px;height:128px"><img src="https://faclon-brand-mcp.vercel.app/assets/icons/architecture/main-icons/firewall.png" alt="Firewall icon" width="32" height="32"><div class="name">IT Firewall</div><div class="cap">Protects the office side</div></div><div class="srv" style="left:1252px;top:456px;width:176px;height:64px"><div class="name">HP Server 1</div><div class="cap">Secure data exchange</div></div><div class="srv" style="left:1252px;top:616px;width:176px;height:64px"><div class="name">HP Server 2</div><div class="cap">Secure data exchange</div></div><div class="srv" style="left:1692px;top:356px;width:180px;height:64px"><div class="name">Historian Server</div><div class="cap">Stores operating history</div></div><div class="srv" style="left:1692px;top:476px;width:180px;height:64px"><div class="name">Application Server</div><div class="cap">Runs monitoring apps</div></div><div class="srv" style="left:1692px;top:596px;width:180px;height:64px"><div class="name">Integration Server</div><div class="cap">Links other systems</div></div><div class="srv" style="left:1692px;top:716px;width:180px;height:64px"><div class="name">Backup Server</div><div class="cap">Keeps safe copies</div></div>
+  <div class="legend"><span class="leg-item"><span class="sw sw-station"></span>Station</span><span class="leg-item"><span class="sw sw-crane"></span>Crane / machine</span><span class="leg-item"><span class="sw sw-conv"></span>Conveyor</span><span class="leg-item"><span class="sw sw-hub"></span>Central hub</span><span class="leg-item"><span class="sw sw-fw"></span>Firewall</span><span class="leg-item"><span class="sw sw-srv"></span>Server</span></div>
+</div>
+</div>
+<script>
+(function () {
+  var c = document.getElementById('canvas');
+  function fit() {
+    var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    c.style.transform = 'scale(' + s + ')';
+  }
+  window.addEventListener('resize', fit); fit();
+})();
+</script>
+</body>
+</html>
