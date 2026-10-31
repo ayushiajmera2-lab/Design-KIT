@@ -1,0 +1,1054 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Symbiotec 4.0 · Faclon Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Faclon brand tokens, from get_tokens(as: "css", format: "deck"), brand_version 2026.10.31-5. Desktop mode (slides are fixed 1920 x 1080). */
+:root {
+  --color-brand-100: #DCE8FE;
+  --color-brand-200: #B8D0FD;
+  --color-brand-300: #8AB1FB;
+  --color-brand-400: #5A8DF7;
+  --color-brand-500: #1655F2;
+  --color-brand-600: #124ED0;
+  --color-brand-700: #0E3FAA;
+  --color-brand-800: #0A3083;
+  --color-brand-900: #07215C;
+  --color-brand-1000: #041438;
+  --color-brand-050: #F4F8FF;
+  --color-green-100: #DAF5E8;
+  --color-green-200: #B6ECD1;
+  --color-green-300: #91E3BA;
+  --color-green-400: #48D08C;
+  --color-green-500: #00BE5F;
+  --color-green-600: #00A251;
+  --color-green-700: #008743;
+  --color-green-800: #006C36;
+  --color-green-900: #005128;
+  --color-green-1000: #00361B;
+  --color-green-050: #EBFAF3;
+  --color-red-100: #FEE4E2;
+  --color-red-200: #FEC6C3;
+  --color-red-300: #FD9D96;
+  --color-red-400: #F96C62;
+  --color-red-500: #F04438;
+  --color-red-600: #D92D20;
+  --color-red-700: #B42318;
+  --color-red-800: #9A0E0E;
+  --color-red-900: #880C0C;
+  --color-red-1000: #750A0A;
+  --color-red-050: #FFF5F5;
+  --color-neutral-light-100: #F1F5FA;
+  --color-neutral-light-200: #E3EAF3;
+  --color-neutral-light-300: #CBD5E2;
+  --color-neutral-light-400: #B1C1D2;
+  --color-neutral-light-500: #90A5BB;
+  --color-neutral-light-600: #768EA7;
+  --color-neutral-light-700: #6C849D;
+  --color-neutral-light-800: #58728D;
+  --color-neutral-light-900: #40566D;
+  --color-neutral-light-1000: #2F4256;
+  --color-neutral-light-1100: #243547;
+  --color-neutral-light-1200: #192839;
+  --color-neutral-light-1300: #0C1927;
+  --color-base-black: #0A111A;
+  --color-base-white: #FFFFFF;
+  --color-accent: #68DD68;
+  --color-accent-2: #B4FF6B;
+  --color-background-primary: var(--color-base-white);
+  --color-background-secondary: var(--color-neutral-light-100);
+  --color-background-tertiary: var(--color-neutral-light-200);
+  --color-background-inverse: var(--color-neutral-light-1200);
+  --color-background-brand: var(--color-brand-500);
+  --color-background-brand-subtle: var(--color-brand-050);
+  --color-background-success-subtle: var(--color-green-050);
+  --color-background-error-subtle: var(--color-red-050);
+  --color-background-accent: var(--color-accent);
+  --color-container-primary: var(--color-neutral-light-100);
+  --color-container-secondary: var(--color-neutral-light-200);
+  --color-container-tertiary: var(--color-neutral-light-300);
+  --color-container-selected: var(--color-brand-050);
+  --color-container-brand: var(--color-brand-500);
+  --color-container-success: var(--color-green-100);
+  --color-container-error: var(--color-red-100);
+  --color-container-inverse: var(--color-neutral-light-1200);
+  --color-container-elevated: var(--color-base-white);
+  --color-container-accent: var(--color-accent);
+  --color-container-info: var(--color-brand-100);
+  --color-container-info-strong: var(--color-brand-800);
+  --color-container-success-strong: var(--color-green-700);
+  --color-container-error-strong: var(--color-red-600);
+  --color-text-primary: var(--color-neutral-light-1100);
+  --color-text-secondary: var(--color-neutral-light-900);
+  --color-text-tertiary: var(--color-neutral-light-600);
+  --color-text-placeholder: var(--color-neutral-light-800);
+  --color-text-inverse: var(--color-base-white);
+  --color-text-brand: var(--color-brand-600);
+  --color-text-link: var(--color-brand-500);
+  --color-text-success: var(--color-green-800);
+  --color-text-error: var(--color-red-700);
+  --color-text-on-brand: var(--color-base-white);
+  --color-text-heading: var(--color-neutral-light-1300);
+  --color-text-body: var(--color-neutral-light-1100);
+  --color-text-eyebrow: var(--color-brand-500);
+  --color-text-on-accent: var(--color-base-black);
+  --color-text-accent: var(--color-accent);
+  --color-text-info: var(--color-brand-800);
+  --color-text-on-strong: var(--color-base-white);
+  --color-text-accent-on-brand: var(--color-accent-2);
+  --color-border-primary: var(--color-neutral-light-300);
+  --color-border-secondary: var(--color-neutral-light-200);
+  --color-border-strong: var(--color-neutral-light-500);
+  --color-border-brand: var(--color-brand-500);
+  --color-border-focus: var(--color-brand-500);
+  --color-border-success: var(--color-green-500);
+  --color-border-error: var(--color-red-500);
+  --color-border-inverse: var(--color-base-white);
+  --color-border-container: var(--color-neutral-light-200);
+  --color-border-accent: var(--color-accent);
+  --font-heading: "TASA Orbiter", "Inter";
+  --font-body: "Inter";
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-36: 36px;
+  --space-40: 40px;
+  --space-44: 44px;
+  --space-48: 48px;
+  --space-52: 52px;
+  --space-56: 56px;
+  --gap-inline: 8px;
+  --gap-stack: 12px;
+  --gap-grid: 24px;
+  --padding-container: 16px;
+  --padding-section: 56px;
+  --radius-default: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-pill: 9999px;
+  --radius-2xl: 10px;
+  --radius-3xl: 12px;
+  --radius-9xl: 24px;
+  --border-width-default: 1px;
+  --border-width-md: 2px;
+  --border-width-lg: 3px;
+  --shadow-none: none;
+  --shadow-low-raised: 0px 2px 16px 0px rgba(25, 40, 57, 0.1);
+  --opacity-subtle: 0.32;
+  --opacity-overlay: 0.48;
+  --opacity-muted: 0.72;
+  --opacity-full: 1;
+}
+[data-theme="dark"] {
+  --color-background-primary: var(--color-neutral-light-1200);
+  --color-background-secondary: var(--color-neutral-light-1300);
+  --color-background-tertiary: var(--color-neutral-light-1000);
+  --color-background-inverse: var(--color-base-white);
+  --color-background-brand: var(--color-brand-500);
+  --color-background-brand-subtle: var(--color-brand-900);
+  --color-background-success-subtle: var(--color-green-900);
+  --color-background-error-subtle: var(--color-red-900);
+  --color-background-accent: var(--color-accent);
+  --color-container-primary: var(--color-neutral-light-1100);
+  --color-container-secondary: var(--color-neutral-light-1000);
+  --color-container-tertiary: var(--color-neutral-light-900);
+  --color-container-selected: var(--color-brand-900);
+  --color-container-brand: var(--color-brand-500);
+  --color-container-success: var(--color-green-800);
+  --color-container-error: var(--color-red-800);
+  --color-container-inverse: var(--color-base-white);
+  --color-container-elevated: var(--color-neutral-light-1000);
+  --color-container-accent: var(--color-accent);
+  --color-container-info: var(--color-brand-800);
+  --color-container-info-strong: var(--color-brand-600);
+  --color-container-success-strong: var(--color-green-700);
+  --color-container-error-strong: var(--color-red-600);
+  --color-text-primary: var(--color-neutral-light-300);
+  --color-text-secondary: var(--color-neutral-light-300);
+  --color-text-tertiary: var(--color-neutral-light-400);
+  --color-text-placeholder: var(--color-neutral-light-500);
+  --color-text-inverse: var(--color-neutral-light-1200);
+  --color-text-brand: var(--color-brand-300);
+  --color-text-link: var(--color-brand-300);
+  --color-text-success: var(--color-green-100);
+  --color-text-error: var(--color-red-200);
+  --color-text-on-brand: var(--color-base-white);
+  --color-text-heading: var(--color-neutral-light-100);
+  --color-text-body: var(--color-neutral-light-300);
+  --color-text-eyebrow: var(--color-brand-300);
+  --color-text-on-accent: var(--color-base-black);
+  --color-text-accent: var(--color-accent);
+  --color-text-info: var(--color-brand-100);
+  --color-text-on-strong: var(--color-base-white);
+  --color-text-accent-on-brand: var(--color-accent-2);
+  --color-border-primary: var(--color-neutral-light-900);
+  --color-border-secondary: var(--color-neutral-light-1000);
+  --color-border-strong: var(--color-neutral-light-800);
+  --color-border-brand: var(--color-brand-400);
+  --color-border-focus: var(--color-brand-300);
+  --color-border-success: var(--color-green-400);
+  --color-border-error: var(--color-red-400);
+  --color-border-inverse: var(--color-neutral-light-1200);
+  --color-border-container: var(--color-neutral-light-1000);
+  --color-border-accent: var(--color-accent);
+}
+/* ---------- Deck frame: 1920 x 1080, 52px safe area, Deck text roles ---------- */
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--color-neutral-light-200); }
+body { font-family: var(--font-body); color: var(--color-text-body); -webkit-font-smoothing: antialiased; }
+.deck { --fit: 1; display: flex; flex-direction: column; align-items: center; gap: var(--space-24); padding: var(--space-16) 0; }
+.slide {
+  position: relative; width: 1920px; height: 1080px; flex: none; overflow: hidden;
+  padding: var(--space-52); display: flex; flex-direction: column; gap: var(--space-40);
+  background: var(--color-background-primary); color: var(--color-text-body);
+  zoom: var(--fit);
+}
+p, h1, h2, h3, h4, ul, ol { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+b { font-weight: 700; }
+.logo { position: absolute; top: var(--space-52); right: var(--space-52); width: 160px; height: auto; }
+.title {
+  font-family: var(--font-heading); font-weight: 700; font-size: 60px; line-height: 68px; letter-spacing: -1.2px;
+  color: var(--color-text-heading); max-width: 1560px;
+}
+.body { position: relative; flex: 1; min-height: 0; }
+.ic { flex: none; display: block; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+.ic.brand { color: var(--color-text-brand); }
+.ic.pos { color: var(--color-text-success); }
+
+/* Icon square: icon + gap/inline each side, solid fill, no border, radius/xl */
+.isq { flex: none; display: inline-flex; padding: var(--gap-inline); border-radius: var(--radius-xl); background: var(--color-container-secondary); color: var(--color-text-brand); }
+.isq.neg { background: var(--color-container-error-strong); color: var(--color-text-on-strong); }
+.isq.pos { background: var(--color-container-success-strong); color: var(--color-text-on-strong); }
+.isq.onbrand { background: var(--color-container-inverse); color: var(--color-text-inverse); }
+.isq.brandfill { background: var(--color-container-brand); color: var(--color-text-on-brand); }
+.isq.on-dark { background: var(--color-container-secondary); color: var(--color-text-heading); }
+
+/* Cards: container/primary, 1px border/container, radius/3xl */
+.card { background: var(--color-container-primary); border: var(--border-width-default) solid var(--color-border-container); border-radius: var(--radius-3xl); padding: var(--space-32); }
+.card.brandcard { background: var(--color-container-brand); border: none; color: var(--color-text-on-brand); }
+.card.positive { background: var(--color-container-success); border-color: var(--color-border-success); color: var(--color-text-success); }
+.hl { color: var(--color-text-accent); }
+.hl-inv { color: var(--color-accent); }
+.hl-brand { color: var(--color-text-accent-on-brand); }
+.hl-acc { color: var(--color-text-accent); font-weight: 600; }
+
+/* Statement bars */
+.bar { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: var(--space-24); border-radius: var(--radius-3xl); padding: var(--space-24) var(--space-32); font-size: 24px; line-height: 32px; }
+.bar.inverse { background: var(--color-container-inverse); color: var(--color-text-inverse); }
+.bar.brand { background: var(--color-container-brand); color: var(--color-text-on-brand); font-size: 32px; line-height: 40px; font-weight: 600; }
+.bar.negative { background: var(--color-container-error); border: var(--border-width-default) solid var(--color-border-error); color: var(--color-text-error); }
+.bar.positive { background: var(--color-container-success); border: var(--border-width-default) solid var(--color-border-success); color: var(--color-text-success); }
+.bar.info { background: var(--color-container-info); color: var(--color-text-info); }
+.bar.card-bar { background: var(--color-container-primary); border: var(--border-width-default) solid var(--color-border-container); color: var(--color-text-body); }
+.bar.card-bar b { color: var(--color-text-heading); }
+.bar.col { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+.b-strong { font-weight: 700; font-size: 32px; line-height: 40px; }
+.b-big { font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 48px; letter-spacing: -0.4px; }
+
+.badge { display: inline-flex; align-items: center; white-space: nowrap; border-radius: var(--radius-pill); padding: var(--space-4) var(--space-12); font-size: 20px; line-height: 32px; font-weight: 600; }
+.b-pos { background: var(--color-container-success); color: var(--color-text-success); }
+.b-neu { background: var(--color-container-secondary); color: var(--color-text-secondary); }
+.b-pri { background: var(--color-container-selected); color: var(--color-text-brand); }
+.b-neg { background: var(--color-container-error); color: var(--color-text-error); }
+.tag { display: inline-flex; white-space: nowrap; border-radius: var(--radius-md); padding: var(--space-8) var(--space-12); font-size: 24px; line-height: 32px; font-weight: 500; letter-spacing: -0.24px; }
+.brandtag { background: var(--color-container-brand); color: var(--color-text-on-brand); }
+.col-h { font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 48px; letter-spacing: -0.4px; color: var(--color-text-heading); }
+
+/* ---------- 1 · Cover ---------- */
+.cover { justify-content: center; }
+.cover-dots { position: absolute; right: 0; top: 50%; width: 1040px; height: auto; transform: translateY(-50%); }
+.cover-group { position: relative; display: flex; flex-direction: column; gap: var(--space-32); max-width: 1100px; }
+.cover-title { font-family: var(--font-heading); font-weight: 700; font-size: 72px; line-height: 80px; letter-spacing: -1.44px; color: var(--color-text-heading); }
+.cover-sub { font-size: 48px; line-height: 56px; letter-spacing: -0.48px; color: var(--color-text-heading); }
+.cover-card { display: flex; flex-direction: column; gap: var(--space-8); font-size: 32px; line-height: 40px; letter-spacing: -0.32px; max-width: 1000px; }
+
+/* ---------- 2 · Context ---------- */
+.s2 { display: flex; flex-direction: column; gap: var(--space-40); }
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-grid); }
+.stat { min-height: 0; background: var(--color-container-primary); border: var(--border-width-default) solid var(--color-border-container); border-radius: var(--radius-3xl); padding: var(--space-40); display: flex; flex-direction: column; gap: var(--space-12); }
+.stat-head { display: flex; align-items: center; gap: var(--space-16); }
+.stat-label { font-size: 24px; line-height: 32px; font-weight: 700; color: var(--color-text-heading); }
+.stat-value { font-family: var(--font-heading); font-weight: 700; font-size: 72px; line-height: 80px; letter-spacing: -1.44px; color: var(--color-text-heading); margin-top: var(--space-8); }
+.stat-unit { display: block; margin-top: var(--space-4); font-family: var(--font-body); font-weight: 400; font-size: 32px; line-height: 40px; letter-spacing: -0.32px; color: var(--color-text-body); }
+.stat-note { font-size: 24px; line-height: 32px; color: var(--color-text-secondary); }
+.shifts { display: flex; flex-direction: column; gap: var(--space-20); }
+.panel-h { font-size: 24px; line-height: 32px; font-weight: 700; color: var(--color-text-heading); }
+.shift-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap-grid); }
+.shift { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-20); padding: var(--space-32); border-radius: var(--radius-3xl); background: var(--color-background-primary); border: var(--border-width-default) solid var(--color-border-primary); font-size: 32px; line-height: 40px; letter-spacing: -0.32px; color: var(--color-text-heading); font-weight: 500; }
+
+/* ---------- 3 · Comparison table ---------- */
+.ctable { border: var(--border-width-default) solid var(--color-border-primary); border-radius: var(--radius-3xl); overflow: hidden; background: var(--color-background-primary); }
+.crow { display: grid; grid-template-columns: 400px 1fr 1fr; border-top: var(--border-width-default) solid var(--color-border-primary); }
+.crow:first-child { border-top: none; }
+.ccell { padding: var(--space-36) var(--space-32); font-size: 32px; line-height: 40px; letter-spacing: -0.32px; border-left: var(--border-width-default) solid var(--color-border-primary); }
+.ccell:first-child { border-left: none; }
+.clabel { background: var(--color-container-primary); font-weight: 700; color: var(--color-text-heading); }
+.chead .ccell { background: var(--color-container-selected); }
+.chead .clabel { background: var(--color-container-selected); }
+.plant { display: inline-flex; align-items: center; gap: var(--space-12); font-family: var(--font-heading); font-weight: 600; font-size: 32px; line-height: 40px; letter-spacing: -0.32px; color: var(--color-text-heading); }
+.vlist { display: flex; flex-direction: column; gap: var(--space-16); }
+.vlist li { display: flex; align-items: center; gap: var(--space-12); }
+
+/* ---------- 4 · Core problem ---------- */
+.s4-split { display: grid; grid-template-columns: 720px 1fr 760px; gap: var(--gap-grid); align-items: start; }
+.lead { font-size: 32px; line-height: 40px; letter-spacing: -0.32px; color: var(--color-text-body); }
+.lead b { color: var(--color-text-heading); }
+.s4-left { display: flex; flex-direction: column; gap: var(--space-32); }
+.ot-stack { display: flex; flex-direction: column; gap: var(--space-8); }
+.ot { display: flex; align-items: center; gap: var(--space-16); padding: var(--space-40) var(--space-32); border-radius: var(--radius-3xl); font-size: 32px; line-height: 40px; letter-spacing: -0.32px; color: var(--color-text-inverse); }
+.ot.l1 { background: var(--color-neutral-light-800); }
+.ot.l2 { background: var(--color-neutral-light-900); }
+.ot.l3 { background: var(--color-neutral-light-1000); }
+.ot.l4 { background: var(--color-neutral-light-1100); }
+.s4-gap { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-8); align-self: stretch; padding-top: 240px; padding-bottom: 160px; color: var(--color-text-error); }
+.bridge { width: 100%; height: auto; }
+.br-line { stroke: var(--color-border-error); stroke-width: 2; stroke-dasharray: 10 8; }
+.br-head { fill: none; stroke: var(--color-border-error); stroke-width: 2; }
+.bridge-icon { margin-top: -88px; }
+.bridge-label { font-size: 24px; line-height: 32px; font-weight: 700; color: var(--color-text-error); white-space: nowrap; margin-top: var(--space-24); }
+.s4-right { background: var(--color-container-error); border: var(--border-width-default) solid var(--color-border-error); border-radius: var(--radius-3xl); padding: var(--space-32); display: flex; flex-direction: column; gap: var(--space-24); }
+.s4-right .lead, .s4-right .lead b { color: var(--color-text-error); }
+.silos { position: relative; height: 424px; }
+.silo { position: absolute; width: 300px; display: flex; align-items: center; gap: var(--space-16); padding: var(--space-20) var(--space-24); background: var(--color-background-primary); border: var(--border-width-default) solid var(--color-border-error); border-radius: var(--radius-3xl); font-family: var(--font-heading); font-weight: 600; font-size: 32px; line-height: 40px; color: var(--color-text-error); }
+.silo.sA { left: 0; top: 0; }
+.silo.sB { left: 400px; top: 156px; }
+.silo.sC { left: 72px; top: 312px; }
+.s4 .bar.negative .isq { margin: 0; }
+
+/* ---------- 5 · Solution stack ---------- */
+.s5 { display: grid; grid-template-columns: 640px 640px 1fr; gap: var(--space-40); }
+.stack { width: 640px; height: 860px; margin-top: -24px; }
+.pl-dash { fill: none; stroke: var(--color-brand-300); stroke-width: 2; stroke-dasharray: 10 8; }
+.pl-guide { stroke: var(--color-neutral-light-800); stroke-width: 1; stroke-dasharray: 6 6; }
+.chips rect { fill: var(--color-base-white); }
+.chips text { font-family: var(--font-body); font-size: 18px; font-weight: 600; fill: var(--color-neutral-light-1300); text-anchor: middle; }
+.up path { fill: var(--color-brand-300); }
+.layers { position: relative; }
+.layer { position: absolute; left: 0; right: 0; display: flex; align-items: center; gap: var(--space-20); transform: translateY(-50%); }
+.layer h3 { font-family: var(--font-heading); font-weight: 600; font-size: 32px; line-height: 40px; letter-spacing: -0.32px; color: var(--color-text-heading); }
+.layer p { font-size: 24px; line-height: 32px; color: var(--color-text-body); margin-top: var(--space-4); }
+.ly0 { top: 66px; } .ly1 { top: 276px; } .ly2 { top: 486px; } .ly3 { top: 696px; }
+.s5-card { align-self: center; display: flex; flex-direction: column; gap: var(--space-16); }
+.s5-card h3 { font-family: var(--font-heading); font-weight: 600; font-size: 32px; line-height: 40px; letter-spacing: -0.32px; }
+.s5-card p { font-size: 24px; line-height: 32px; }
+.s5-card .isq { align-self: flex-start; }
+
+/* ---------- 6 · KPI tree ---------- */
+.s6 > * { position: absolute; }
+.tree-lines { left: 0; top: 0; width: 1816px; height: 860px; }
+.tree-lines path { fill: none; stroke: var(--color-border-strong); stroke-width: 2; }
+.tree-lines .act { stroke: var(--color-border-brand); }
+.tree-lines .acth { fill: none; stroke: var(--color-border-brand); stroke-width: 2; }
+.t-ceo { left: 628px; top: 0; width: 560px; height: 144px; border-radius: var(--radius-3xl); background: var(--color-container-brand); color: var(--color-text-on-brand); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-4); }
+.t-ceo h3 { font-family: var(--font-heading); font-weight: 700; font-size: 40px; line-height: 48px; letter-spacing: -0.4px; }
+.t-ceo p { font-size: 32px; line-height: 40px; letter-spacing: -0.32px; }
+.t-act { left: 1336px; top: 0; width: 480px; height: 144px; border-radius: var(--radius-3xl); background: var(--color-container-selected); border: var(--border-width-default) solid var(--color-border-brand); padding: var(--space-24); display: flex; gap: var(--space-16); align-items: flex-start; font-size: 24px; line-height: 32px; color: var(--color-text-body); }
+.t-act b { color: var(--color-text-heading); }
+.t-q { left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: var(--space-12); white-space: nowrap; padding: var(--space-12) var(--space-24); border-radius: var(--radius-3xl); background: var(--color-container-info); color: var(--color-text-info); font-size: 24px; line-height: 32px; }
+.t-q.q1 { top: 196px; }
+.t-q.q2 { top: 516px; }
+.t-l2 { top: 304px; width: 560px; height: 136px; display: flex; align-items: center; justify-content: center; text-align: center; border-radius: var(--radius-3xl); background: var(--color-container-inverse); color: var(--color-text-inverse); font-family: var(--font-heading); font-weight: 600; font-size: 32px; line-height: 40px; letter-spacing: -0.32px; padding: 0 var(--space-32); }
+.t-l2.a { left: 0; } .t-l2.b { left: 628px; } .t-l2.c { left: 1256px; }
+.t-l3 { top: 644px; width: 336px; height: 112px; display: flex; align-items: center; justify-content: center; gap: var(--space-12); border-radius: var(--radius-3xl); background: var(--color-container-primary); border: var(--border-width-default) solid var(--color-border-primary); font-size: 32px; line-height: 40px; letter-spacing: -0.32px; color: var(--color-text-heading); }
+
+/* ---------- 7 · Staircase ---------- */
+.stairs { position: absolute; left: 0; right: 0; top: 0; bottom: 152px; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-grid); align-items: end; }
+.st { display: flex; flex-direction: column; align-items: stretch; }
+.st-card { display: flex; flex-direction: column; gap: var(--space-8); background: var(--color-background-primary); border-color: var(--color-border-primary); }
+.st-card h3 { font-family: var(--font-heading); font-weight: 600; font-size: 32px; line-height: 40px; letter-spacing: -0.32px; color: var(--color-text-heading); }
+.st-card p { font-size: 24px; line-height: 32px; }
+.st-sub { color: var(--color-text-brand); font-weight: 600; }
+.st-conn { width: 2px; height: 32px; margin-left: 48px; background: var(--color-border-strong); }
+.st-bar { border-radius: var(--radius-3xl) var(--radius-3xl) 0 0; display: flex; align-items: flex-start; padding: var(--space-28) 28px; color: var(--color-text-heading); }
+.st1 .st-bar { height: 120px; background: var(--color-brand-100); }
+.st2 .st-bar { height: 240px; background: var(--color-brand-200); }
+.st3 .st-bar { height: 360px; background: var(--color-brand-300); }
+
+/* ---------- 8 · Step 1 ---------- */
+.s8 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-56); }
+.s8-col { display: flex; flex-direction: column; gap: var(--space-24); }
+.chart-card { display: flex; flex-direction: column; gap: var(--space-40); background: var(--color-background-primary); border-color: var(--color-border-primary); }
+.chart-eyebrow { font-size: 24px; line-height: 32px; font-weight: 500; letter-spacing: 0.96px; color: var(--color-text-eyebrow); }
+.hb-row { display: grid; grid-template-columns: 200px 1fr 150px; align-items: center; gap: var(--space-16); }
+.hb-l { font-size: 24px; line-height: 32px; color: var(--color-text-heading); white-space: nowrap; }
+.hb-track { height: 64px; background: var(--color-brand-050); border-radius: var(--radius-xl); }
+.hb-fill { height: 100%; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: flex-end; padding-right: var(--space-16); }
+.hb-fill span { font-size: 24px; line-height: 32px; font-weight: 700; color: var(--color-text-on-brand); }
+.hb-fill.pos { background: var(--color-green-700); }
+.hb-fill.neu { background: var(--color-neutral-light-800); }
+.hb-fill.pri { background: var(--color-brand-500); }
+.hb-row .badge { justify-self: start; }
+.rd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-16); }
+.rd { display: flex; align-items: center; gap: var(--space-16); padding: var(--space-28) var(--space-24); border-radius: var(--radius-3xl); background: var(--color-container-primary); border: var(--border-width-default) solid var(--color-border-container); }
+.rd > div { display: flex; flex-direction: column; }
+.rd-l { display: flex; align-items: center; gap: var(--space-8); font-size: 20px; line-height: 32px; color: var(--color-text-secondary); white-space: nowrap; }
+.rd-l .badge { font-size: 16px; line-height: 24px; padding: 0 var(--space-8); }
+.rd-v { font-family: var(--font-heading); font-weight: 600; font-size: 48px; line-height: 56px; letter-spacing: -0.96px; color: var(--color-text-heading); }
+.rd-v small { font-size: 24px; line-height: 32px; font-family: var(--font-body); font-weight: 500; letter-spacing: 0; }
+.outcome { display: flex; flex-direction: column; gap: var(--space-16); font-size: 24px; line-height: 32px; margin-top: auto; }
+.outcome b { color: var(--color-text-heading); }
+.outcome .div { height: 1px; background: var(--color-border-primary); }
+.tgt { display: flex; gap: var(--space-12); align-items: flex-start; }
+.tgt b { color: var(--color-text-success); }
+
+/* ---------- 9 · Line chart ---------- */
+.s9 .lc { position: absolute; left: 0; top: 0; width: 1104px; height: 640px; }
+.lc .grid { stroke: var(--color-border-primary); stroke-width: 1; stroke-dasharray: 4 6; }
+.lc .axis { stroke: var(--color-border-strong); stroke-width: 2; }
+.lc .tick { font-family: var(--font-body); font-size: 20px; fill: var(--color-text-tertiary); }
+.lc .axis-t { font-family: var(--font-body); font-size: 20px; font-weight: 600; fill: var(--color-text-secondary); }
+.ln-ideal { fill: none; stroke: var(--color-neutral-light-300); stroke-width: 3; stroke-dasharray: 3 9; stroke-linecap: round; }
+.ln-cur { fill: none; stroke: var(--color-brand-400); stroke-width: 3; }
+.legend text { font-family: var(--font-body); font-size: 20px; fill: var(--color-text-body); }
+.hot-ring { fill: none; stroke: var(--color-accent); stroke-width: 2; }
+.hot-dot { fill: var(--color-accent); }
+.hot-line { fill: none; stroke: var(--color-accent); stroke-width: 2; }
+.s9-card { position: absolute; right: 0; top: 96px; width: 712px; display: flex; flex-direction: column; gap: var(--space-16); }
+.s9-card h3 { font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 48px; letter-spacing: -0.4px; }
+.s9-card p { font-size: 24px; line-height: 32px; }
+.s9-card .isq { align-self: flex-start; }
+
+/* ---------- 10 · From / to ---------- */
+.s10 { display: flex; flex-direction: column; gap: var(--space-32); }
+.ft-row { display: grid; grid-template-columns: 288px 1fr 72px 1fr; gap: var(--space-24); align-items: stretch; }
+.ft-h { white-space: nowrap; align-self: center; font-family: var(--font-heading); font-weight: 600; font-size: 32px; line-height: 40px; letter-spacing: -0.32px; color: var(--color-text-heading); }
+.ft { border-radius: var(--radius-3xl); padding: var(--space-40); display: flex; flex-direction: column; gap: var(--space-12); font-size: 24px; line-height: 32px; }
+.ft.from { background: var(--color-container-error); border: var(--border-width-default) solid var(--color-border-error); color: var(--color-text-error); }
+.ft.to { background: var(--color-container-brand); color: var(--color-text-on-brand); }
+.ft-top { display: flex; align-items: center; gap: var(--space-16); }
+.ft-k { font-size: 24px; line-height: 32px; }
+.ft h4 { font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 48px; letter-spacing: -0.4px; }
+.ft.from h4 { color: var(--color-text-error); }
+.chain { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-8); }
+.ch { padding: var(--space-4) var(--space-12); border-radius: var(--radius-md); }
+.from .ch { background: var(--color-red-900); }
+.to .ch { background: var(--color-brand-600); }
+.ft-arrow { display: flex; align-items: center; justify-content: center; color: var(--color-text-brand); }
+.s10 .bar.positive { position: static; margin-top: auto; }
+
+/* ---------- 11 · Twin ---------- */
+.twin { position: absolute; left: 0; top: 0; width: 1224px; height: 724px; display: grid; grid-template-columns: 512px 1fr 512px; align-items: stretch; }
+.tw-sync { align-self: center; }
+.tw-panel { height: 100%; border-radius: var(--radius-3xl); background: var(--color-container-primary); border: var(--border-width-default) solid var(--color-border-container); display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: var(--space-32); }
+.tw-panel.replica { background: var(--color-background-secondary); border-color: var(--color-border-brand); }
+.rx { width: 420px; height: auto; }
+.rx-solid * { fill: none; stroke: var(--color-neutral-light-300); stroke-width: 3; stroke-linejoin: round; }
+.rx-dash * { fill: none; stroke: var(--color-brand-300); stroke-width: 2; stroke-dasharray: 8 6; stroke-linejoin: round; }
+.hs-ring { fill: none; stroke: var(--color-red-400); stroke-width: 3; }
+.hs-dot { fill: var(--color-red-400); }
+.tw-cap { font-size: 24px; line-height: 32px; color: var(--color-text-body); white-space: nowrap; }
+.tw-cap b { color: var(--color-text-heading); }
+.tw-sync { display: flex; flex-direction: column; gap: var(--space-28); padding: 0 var(--space-20); }
+.tw-sync svg { width: 100%; height: auto; }
+.sync { stroke: var(--color-text-secondary); stroke-width: 2; stroke-dasharray: 8 6; }
+.sync-h { fill: none; stroke: var(--color-text-secondary); stroke-width: 2; }
+.copilot { position: absolute; right: 0; top: 0; bottom: 144px; width: 568px; justify-content: center; display: flex; flex-direction: column; gap: var(--space-20); }
+.cp-head { display: flex; align-items: center; gap: var(--space-16); }
+.cp-head h3 { font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 48px; letter-spacing: -0.4px; color: var(--color-text-heading); }
+.cp-sub { font-size: 32px; line-height: 40px; letter-spacing: -0.32px; font-weight: 700; color: var(--color-text-heading); }
+.cp-list { display: flex; flex-direction: column; gap: var(--space-16); }
+.cp-list li { display: flex; align-items: center; gap: var(--space-16); font-size: 32px; line-height: 40px; letter-spacing: -0.32px; padding: var(--space-24); border-radius: var(--radius-xl); background: var(--color-container-secondary); color: var(--color-text-heading); }
+.dot { width: 20px; height: 20px; border-radius: var(--radius-pill); flex: none; }
+.dot.pos { background: var(--color-green-400); }
+.dot.warn { background: var(--color-red-300); }
+.dot.neg { background: var(--color-red-500); }
+
+/* ---------- 12 · Loop ---------- */
+.s12 > * { position: absolute; }
+.loop { left: 0; top: 0; width: 1816px; height: 860px; }
+.track { fill: none; stroke: var(--color-brand-400); stroke-width: 2; stroke-dasharray: 12 10; }
+.arrowh { fill: none; stroke: var(--color-brand-300); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.ln { width: 480px; display: flex; align-items: flex-start; gap: var(--space-16); padding: var(--space-24); border-radius: var(--radius-3xl); background: var(--color-container-primary); border: var(--border-width-default) solid var(--color-border-container); }
+.ln-k { font-size: 24px; line-height: 32px; font-weight: 700; letter-spacing: 0.96px; color: var(--color-text-brand); }
+.ln-d { font-size: 24px; line-height: 32px; color: var(--color-text-heading); }
+.hub { left: 548px; top: 304px; width: 720px; height: 260px; border-radius: var(--radius-9xl); background: var(--color-container-brand); color: var(--color-text-on-brand); display: flex; align-items: center; justify-content: center; text-align: center; }
+.hub p { font-family: var(--font-heading); font-weight: 600; font-size: 48px; line-height: 56px; letter-spacing: -0.96px; }
+
+/* ---------- 13 · Range chart ---------- */
+.rchart { position: absolute; left: 0; top: 0; width: 1260px; display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-24) var(--space-32); background: var(--color-background-primary); border-color: var(--color-border-primary); }
+.rc-head { display: flex; justify-content: space-between; padding-bottom: var(--space-12); border-bottom: var(--border-width-default) solid var(--color-border-primary); font-size: 24px; line-height: 32px; font-weight: 500; letter-spacing: 0.96px; color: var(--color-text-eyebrow); }
+.rc-row { display: grid; grid-template-columns: 520px 1fr 230px; gap: var(--space-24); align-items: center; height: 88px; }
+.rc-l { display: flex; align-items: center; gap: var(--space-12); font-size: 24px; line-height: 32px; color: var(--color-text-heading); white-space: nowrap; }
+.rc-track { position: relative; height: 40px; }
+.rc-grid { position: absolute; inset: 0; background: var(--color-brand-050); border-radius: var(--radius-md); }
+.rc-fill { position: absolute; top: 0; bottom: 0; background: var(--color-brand-500); border-radius: var(--radius-md); }
+.rc-v { font-size: 24px; line-height: 32px; font-weight: 700; color: var(--color-text-heading); text-align: right; white-space: nowrap; }
+.total { position: absolute; right: 0; top: 0; width: 532px; height: 680px; border-radius: var(--radius-3xl); background: var(--color-container-brand); color: var(--color-text-on-brand); padding: var(--space-40); display: flex; flex-direction: column; justify-content: flex-end; gap: var(--space-16); }
+.total .isq { position: absolute; top: var(--space-40); left: var(--space-40); }
+.total-l { font-size: 32px; line-height: 40px; letter-spacing: -0.32px; }
+.total-v { font-family: var(--font-heading); font-weight: 700; font-size: 72px; line-height: 80px; letter-spacing: -1.44px; }
+.total-v span { color: var(--color-text-accent-on-brand); font-size: 40px; line-height: 48px; letter-spacing: -0.4px; }
+.s13 .bar.info { align-items: flex-start; }
+
+/* ---------- 14 · Phases ---------- */
+.phases { position: absolute; left: 0; right: 0; top: 0; bottom: 176px; display: grid; grid-template-columns: 1fr 48px 1fr 48px 1fr; gap: var(--space-16); align-items: end; }
+.ph-col { display: flex; flex-direction: column; gap: var(--space-16); align-items: flex-start; }
+.ph { width: 100%; border-radius: var(--radius-3xl); padding: var(--space-32); display: flex; flex-direction: column; gap: var(--space-24); background: var(--color-container-primary); border: var(--border-width-default) solid var(--color-border-container); }
+.ph h3 { font-family: var(--font-heading); font-weight: 700; font-size: 40px; line-height: 48px; letter-spacing: -0.4px; color: var(--color-text-heading); white-space: nowrap; }
+.ph ul { display: flex; flex-direction: column; gap: var(--space-16); }
+.ph li { display: flex; gap: var(--space-12); align-items: flex-start; font-size: 32px; line-height: 40px; letter-spacing: -0.32px; }
+.ph li .ic { margin-top: 4px; }
+.ph li b { color: var(--color-text-heading); }
+.p1 { background: var(--color-container-selected); border: var(--border-width-md) solid var(--color-border-brand); min-height: 520px; }
+.p2 { min-height: 584px; }
+.p3 { min-height: 648px; background: var(--color-container-secondary); }
+.ph-arrow { align-self: center; display: flex; justify-content: center; color: var(--color-text-brand); }
+
+/* ---------- 15 · Ask ---------- */
+.ask { position: absolute; left: 0; top: 0; width: 1060px; display: flex; flex-direction: column; gap: var(--space-32); }
+.flow { position: relative; display: flex; flex-direction: column; gap: var(--space-32); }
+.flow::before { content: ""; position: absolute; left: 27px; top: 48px; bottom: 48px; width: 2px; background: var(--color-border-strong); }
+.flow li { position: relative; display: flex; align-items: center; gap: var(--space-20); font-size: 32px; line-height: 40px; letter-spacing: -0.32px; }
+.num { flex: none; width: 56px; height: 56px; border-radius: var(--radius-xl); background: var(--color-container-brand); color: var(--color-text-on-brand); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 600; font-size: 32px; line-height: 40px; }
+.flow li p { flex: 1; padding: var(--space-28) var(--space-32); border-radius: var(--radius-3xl); background: var(--color-container-primary); border: var(--border-width-default) solid var(--color-border-container); color: var(--color-text-heading); }
+.deliver { position: absolute; right: 0; top: 80px; width: 708px; padding: var(--space-48); display: flex; flex-direction: column; gap: var(--space-24); }
+.deliver h3 { font-family: var(--font-heading); font-weight: 700; font-size: 40px; line-height: 48px; letter-spacing: -0.4px; }
+.deliver p { font-size: 40px; line-height: 48px; letter-spacing: -0.4px; }
+.deliver .isq { align-self: flex-start; }
+
+.s2 .bar, .s7 .bar { font-size: 32px; line-height: 40px; letter-spacing: -0.32px; }
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-indian-rupee" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M6 3h12" /> <path vector-effect="non-scaling-stroke" d="M6 8h12" /> <path vector-effect="non-scaling-stroke" d="m6 13 8.5 8" /> <path vector-effect="non-scaling-stroke" d="M6 13h3" /> <path vector-effect="non-scaling-stroke" d="M9 13c6.667 0 6.667-10 0-10" /></symbol><symbol id="i-users" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <circle vector-effect="non-scaling-stroke" cx="9" cy="7" r="4" /> <path vector-effect="non-scaling-stroke" d="M22 21v-2a4 4 0 0 0-3-3.87" /> <path vector-effect="non-scaling-stroke" d="M16 3.13a4 4 0 0 1 0 7.75" /></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="10" /> <path vector-effect="non-scaling-stroke" d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /> <path vector-effect="non-scaling-stroke" d="M2 12h20" /></symbol><symbol id="i-workflow" viewBox="0 0 24 24"><rect vector-effect="non-scaling-stroke" width="8" height="8" x="3" y="3" rx="2" /> <path vector-effect="non-scaling-stroke" d="M7 11v4a2 2 0 0 0 2 2h4" /> <rect vector-effect="non-scaling-stroke" width="8" height="8" x="13" y="13" rx="2" /></symbol><symbol id="i-syringe" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="m18 2 4 4" /> <path vector-effect="non-scaling-stroke" d="m17 7 3-3" /> <path vector-effect="non-scaling-stroke" d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5" /> <path vector-effect="non-scaling-stroke" d="m9 11 4 4" /> <path vector-effect="non-scaling-stroke" d="m5 19-3 3" /> <path vector-effect="non-scaling-stroke" d="m14 4 6 6" /></symbol><symbol id="i-flask-conical" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2" /> <path vector-effect="non-scaling-stroke" d="M8.5 2h7" /> <path vector-effect="non-scaling-stroke" d="M7 16h10" /></symbol><symbol id="i-gauge" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="m12 14 4-4" /> <path vector-effect="non-scaling-stroke" d="M3.34 19a10 10 0 1 1 17.32 0" /></symbol><symbol id="i-map-pin" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle vector-effect="non-scaling-stroke" cx="12" cy="10" r="3" /></symbol><symbol id="i-thermometer" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z" /></symbol><symbol id="i-air-vent" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M6 12H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /> <path vector-effect="non-scaling-stroke" d="M6 8h12" /> <path vector-effect="non-scaling-stroke" d="M18.3 17.7a2.5 2.5 0 0 1-3.16 3.83 2.53 2.53 0 0 1-1.14-2V12" /> <path vector-effect="non-scaling-stroke" d="M6.6 15.6A2 2 0 1 0 10 17v-5" /></symbol><symbol id="i-zap" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></symbol><symbol id="i-trending-up" viewBox="0 0 24 24"><polyline vector-effect="non-scaling-stroke" points="22 7 13.5 15.5 8.5 10.5 2 17" /> <polyline vector-effect="non-scaling-stroke" points="16 7 22 7 22 13" /></symbol><symbol id="i-sprout" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M7 20h10" /> <path vector-effect="non-scaling-stroke" d="M10 20c5.5-2.5.8-6.4 3-10" /> <path vector-effect="non-scaling-stroke" d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z" /> <path vector-effect="non-scaling-stroke" d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z" /></symbol><symbol id="i-recycle" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5" /> <path vector-effect="non-scaling-stroke" d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12" /> <path vector-effect="non-scaling-stroke" d="m14 16-3 3 3 3" /> <path vector-effect="non-scaling-stroke" d="M8.293 13.596 7.196 9.5 3.1 10.598" /> <path vector-effect="non-scaling-stroke" d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843" /> <path vector-effect="non-scaling-stroke" d="m13.378 9.633 4.096 1.098 1.097-4.096" /></symbol><symbol id="i-database" viewBox="0 0 24 24"><ellipse vector-effect="non-scaling-stroke" cx="12" cy="5" rx="9" ry="3" /> <path vector-effect="non-scaling-stroke" d="M3 5V19A9 3 0 0 0 21 19V5" /> <path vector-effect="non-scaling-stroke" d="M3 12A9 3 0 0 0 21 12" /></symbol><symbol id="i-monitor" viewBox="0 0 24 24"><rect vector-effect="non-scaling-stroke" width="20" height="14" x="2" y="3" rx="2" /> <line vector-effect="non-scaling-stroke" x1="8" x2="16" y1="21" y2="21" /> <line vector-effect="non-scaling-stroke" x1="12" x2="12" y1="17" y2="21" /></symbol><symbol id="i-cpu" viewBox="0 0 24 24"><rect vector-effect="non-scaling-stroke" width="16" height="16" x="4" y="4" rx="2" /> <rect vector-effect="non-scaling-stroke" width="6" height="6" x="9" y="9" rx="1" /> <path vector-effect="non-scaling-stroke" d="M15 2v2" /> <path vector-effect="non-scaling-stroke" d="M15 20v2" /> <path vector-effect="non-scaling-stroke" d="M2 15h2" /> <path vector-effect="non-scaling-stroke" d="M2 9h2" /> <path vector-effect="non-scaling-stroke" d="M20 15h2" /> <path vector-effect="non-scaling-stroke" d="M20 9h2" /> <path vector-effect="non-scaling-stroke" d="M9 2v2" /> <path vector-effect="non-scaling-stroke" d="M9 20v2" /></symbol><symbol id="i-unlink" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="m18.84 12.25 1.72-1.71h-.02a5.004 5.004 0 0 0-.12-7.07 5.006 5.006 0 0 0-6.95 0l-1.72 1.71" /> <path vector-effect="non-scaling-stroke" d="m5.17 11.75-1.71 1.71a5.004 5.004 0 0 0 .12 7.07 5.006 5.006 0 0 0 6.95 0l1.71-1.71" /> <line vector-effect="non-scaling-stroke" x1="8" x2="8" y1="2" y2="5" /> <line vector-effect="non-scaling-stroke" x1="2" x2="5" y1="8" y2="8" /> <line vector-effect="non-scaling-stroke" x1="16" x2="16" y1="19" y2="22" /> <line vector-effect="non-scaling-stroke" x1="19" x2="22" y1="16" y2="16" /></symbol><symbol id="i-building-2" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /> <path vector-effect="non-scaling-stroke" d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /> <path vector-effect="non-scaling-stroke" d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /> <path vector-effect="non-scaling-stroke" d="M10 6h4" /> <path vector-effect="non-scaling-stroke" d="M10 10h4" /> <path vector-effect="non-scaling-stroke" d="M10 14h4" /> <path vector-effect="non-scaling-stroke" d="M10 18h4" /></symbol><symbol id="i-clipboard-check" viewBox="0 0 24 24"><rect vector-effect="non-scaling-stroke" width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path vector-effect="non-scaling-stroke" d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path vector-effect="non-scaling-stroke" d="m9 14 2 2 4-4" /></symbol><symbol id="i-triangle-alert" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path vector-effect="non-scaling-stroke" d="M12 9v4" /> <path vector-effect="non-scaling-stroke" d="M12 17h.01" /></symbol><symbol id="i-layout-dashboard" viewBox="0 0 24 24"><rect vector-effect="non-scaling-stroke" width="7" height="9" x="3" y="3" rx="1" /> <rect vector-effect="non-scaling-stroke" width="7" height="5" x="14" y="3" rx="1" /> <rect vector-effect="non-scaling-stroke" width="7" height="9" x="14" y="12" rx="1" /> <rect vector-effect="non-scaling-stroke" width="7" height="5" x="3" y="16" rx="1" /></symbol><symbol id="i-layers" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" /> <path vector-effect="non-scaling-stroke" d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" /> <path vector-effect="non-scaling-stroke" d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" /></symbol><symbol id="i-factory" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /> <path vector-effect="non-scaling-stroke" d="M17 18h1" /> <path vector-effect="non-scaling-stroke" d="M12 18h1" /> <path vector-effect="non-scaling-stroke" d="M7 18h1" /></symbol><symbol id="i-shield-check" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path vector-effect="non-scaling-stroke" d="m9 12 2 2 4-4" /></symbol><symbol id="i-sliders-horizontal" viewBox="0 0 24 24"><line vector-effect="non-scaling-stroke" x1="21" x2="14" y1="4" y2="4" /> <line vector-effect="non-scaling-stroke" x1="10" x2="3" y1="4" y2="4" /> <line vector-effect="non-scaling-stroke" x1="21" x2="12" y1="12" y2="12" /> <line vector-effect="non-scaling-stroke" x1="8" x2="3" y1="12" y2="12" /> <line vector-effect="non-scaling-stroke" x1="21" x2="16" y1="20" y2="20" /> <line vector-effect="non-scaling-stroke" x1="12" x2="3" y1="20" y2="20" /> <line vector-effect="non-scaling-stroke" x1="14" x2="14" y1="2" y2="6" /> <line vector-effect="non-scaling-stroke" x1="8" x2="8" y1="10" y2="14" /> <line vector-effect="non-scaling-stroke" x1="16" x2="16" y1="18" y2="22" /></symbol><symbol id="i-telescope" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44" /> <path vector-effect="non-scaling-stroke" d="m13.56 11.747 4.332-.924" /> <path vector-effect="non-scaling-stroke" d="m16 21-3.105-6.21" /> <path vector-effect="non-scaling-stroke" d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455z" /> <path vector-effect="non-scaling-stroke" d="m6.158 8.633 1.114 4.456" /> <path vector-effect="non-scaling-stroke" d="m8 21 3.105-6.21" /> <circle vector-effect="non-scaling-stroke" cx="12" cy="13" r="2" /></symbol><symbol id="i-history" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /> <path vector-effect="non-scaling-stroke" d="M3 3v5h5" /> <path vector-effect="non-scaling-stroke" d="M12 7v5l4 2" /></symbol><symbol id="i-rotate-cw" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" /> <path vector-effect="non-scaling-stroke" d="M21 3v5h-5" /></symbol><symbol id="i-droplet" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z" /></symbol><symbol id="i-waves" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" /> <path vector-effect="non-scaling-stroke" d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" /> <path vector-effect="non-scaling-stroke" d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" /></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /> <circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="3" /></symbol><symbol id="i-chart-spline" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M3 3v16a2 2 0 0 0 2 2h16" /> <path vector-effect="non-scaling-stroke" d="M7 16c.5-2 1.5-7 4-7 2 0 2 3 4 3 2.5 0 4.5-5 5-7" /></symbol><symbol id="i-git-compare-arrows" viewBox="0 0 24 24"><circle vector-effect="non-scaling-stroke" cx="5" cy="6" r="3" /> <path vector-effect="non-scaling-stroke" d="M12 6h5a2 2 0 0 1 2 2v7" /> <path vector-effect="non-scaling-stroke" d="m15 9-3-3 3-3" /> <circle vector-effect="non-scaling-stroke" cx="19" cy="18" r="3" /> <path vector-effect="non-scaling-stroke" d="M12 18H7a2 2 0 0 1-2-2V9" /> <path vector-effect="non-scaling-stroke" d="m9 15 3 3-3 3" /></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="10" /> <circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="6" /> <circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="2" /></symbol><symbol id="i-snowflake" viewBox="0 0 24 24"><line vector-effect="non-scaling-stroke" x1="2" x2="22" y1="12" y2="12" /> <line vector-effect="non-scaling-stroke" x1="12" x2="12" y1="2" y2="22" /> <path vector-effect="non-scaling-stroke" d="m20 16-4-4 4-4" /> <path vector-effect="non-scaling-stroke" d="m4 8 4 4-4 4" /> <path vector-effect="non-scaling-stroke" d="m16 4-4 4-4-4" /> <path vector-effect="non-scaling-stroke" d="m8 20 4-4 4 4" /></symbol><symbol id="i-thermometer-snowflake" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M2 12h10" /> <path vector-effect="non-scaling-stroke" d="M9 4v16" /> <path vector-effect="non-scaling-stroke" d="m3 9 3 3-3 3" /> <path vector-effect="non-scaling-stroke" d="M12 6 9 9 6 6" /> <path vector-effect="non-scaling-stroke" d="m6 18 3-3 1.5 1.5" /> <path vector-effect="non-scaling-stroke" d="M20 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z" /></symbol><symbol id="i-wind" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M12.8 19.6A2 2 0 1 0 14 16H2" /> <path vector-effect="non-scaling-stroke" d="M17.5 8a2.5 2.5 0 1 1 2 4H2" /> <path vector-effect="non-scaling-stroke" d="M9.8 4.4A2 2 0 1 1 11 8H2" /></symbol><symbol id="i-hourglass" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M5 22h14" /> <path vector-effect="non-scaling-stroke" d="M5 2h14" /> <path vector-effect="non-scaling-stroke" d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" /> <path vector-effect="non-scaling-stroke" d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" /></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M5 12h14" /> <path vector-effect="non-scaling-stroke" d="m12 5 7 7-7 7" /></symbol><symbol id="i-wrench" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></symbol><symbol id="i-activity" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle vector-effect="non-scaling-stroke" cx="11" cy="11" r="8" /> <path vector-effect="non-scaling-stroke" d="m21 21-4.3-4.3" /></symbol><symbol id="i-settings" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" /> <circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="3" /></symbol><symbol id="i-refresh-cw" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /> <path vector-effect="non-scaling-stroke" d="M21 3v5h-5" /> <path vector-effect="non-scaling-stroke" d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /> <path vector-effect="non-scaling-stroke" d="M8 16H3v5" /></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="10" /> <path vector-effect="non-scaling-stroke" d="M12 16v-4" /> <path vector-effect="non-scaling-stroke" d="M12 8h.01" /></symbol><symbol id="i-scan" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M3 7V5a2 2 0 0 1 2-2h2" /> <path vector-effect="non-scaling-stroke" d="M17 3h2a2 2 0 0 1 2 2v2" /> <path vector-effect="non-scaling-stroke" d="M21 17v2a2 2 0 0 1-2 2h-2" /> <path vector-effect="non-scaling-stroke" d="M7 21H5a2 2 0 0 1-2-2v-2" /></symbol><symbol id="i-calendar-check" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M8 2v4" /> <path vector-effect="non-scaling-stroke" d="M16 2v4" /> <rect vector-effect="non-scaling-stroke" width="18" height="18" x="3" y="4" rx="2" /> <path vector-effect="non-scaling-stroke" d="M3 10h18" /> <path vector-effect="non-scaling-stroke" d="m9 16 2 2 4-4" /></symbol><symbol id="i-list-checks" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="m3 17 2 2 4-4" /> <path vector-effect="non-scaling-stroke" d="m3 7 2 2 4-4" /> <path vector-effect="non-scaling-stroke" d="M13 6h8" /> <path vector-effect="non-scaling-stroke" d="M13 12h8" /> <path vector-effect="non-scaling-stroke" d="M13 18h8" /></symbol><symbol id="i-file-check" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /> <path vector-effect="non-scaling-stroke" d="M14 2v4a2 2 0 0 0 2 2h4" /> <path vector-effect="non-scaling-stroke" d="m9 15 2 2 4-4" /></symbol></svg>
+<main class="deck">
+
+<section class="slide cover" data-theme="dark" aria-label="Slide 1: Symbiotec 4.0">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
+
+  <img class="cover-dots" src="https://faclon-brand-mcp.vercel.app/assets/design-elements/dot-particle-form.png" alt="Faclon dot-particle form">
+  <div class="cover-group">
+    <h1 class="cover-title">SYMBIOTEC 4.0</h1>
+    <p class="cover-sub">From Automated Plants to<br><span class="hl">AI-Driven Manufacturing Excellence</span></p>
+    <div class="card cover-card">
+      <p>Symbiotec has already automated its processes.</p>
+      <p>The next step is to make those processes intelligent.</p>
+      <p>A strategic 3-step digital transformation roadmap for the Rau and Pithampur facilities.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide "  aria-label="Slide 2: The Context">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+
+  <h2 class="title">The Context: Scale, Readiness, &amp; The Real Opportunity</h2>
+  <div class="body s2">
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-head"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-indian-rupee"/></svg></span><span class="stat-label">Financial Scale</span></div>
+        <div class="stat-value">~₹869 Cr <span class="stat-unit">FY2026 Revenue</span></div>
+        <div class="stat-note">(~₹241 Cr EBITDA / 28% margin)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-head"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-users"/></svg></span><span class="stat-label">Human Capital</span></div>
+        <div class="stat-value">1,700+ <span class="stat-unit">total workforce</span></div>
+        <div class="stat-note">(Including 138 scientists and engineers)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-head"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-globe"/></svg></span><span class="stat-label">Operational Footprint</span></div>
+        <div class="stat-value">60+ <span class="stat-unit">APIs</span></div>
+        <div class="stat-note">Exported to 40+ countries</div>
+      </div>
+    </div>
+    <div class="shifts">
+      <h3 class="panel-h">Current Strategic Shifts:</h3>
+      <div class="shift-grid">
+        <div class="shift"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-workflow"/></svg></span><p>Continuous-flow chemistry integration</p></div>
+        <div class="shift"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-syringe"/></svg></span><p>Advanced injectables &amp; complex CDMO</p></div>
+        <div class="shift"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-flask-conical"/></svg></span><p>Fermentation &amp; biotransformation scaling</p></div>
+        <div class="shift"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-gauge"/></svg></span><p>Rigorous process intensification</p></div>
+      </div>
+    </div>
+    <div class="bar inverse"><p><b class="hl-inv">Core Insight:</b> At ₹869 Cr in scale with highly complex chemistry, AI is no longer a technology experiment. It is a primary manufacturing profitability lever to drive cost reduction and process innovation.</p></div>
+  </div>
+</section>
+
+<section class="slide "  aria-label="Slide 3: The Dual-Plant AI Capability Matrix">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+
+  <h2 class="title">The Dual-Plant AI Capability Matrix</h2>
+  <div class="body s3">
+    <div class="ctable">
+      <div class="crow chead">
+        <div class="ccell clabel"></div>
+        <div class="ccell"><span class="plant"><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-map-pin"/></svg>Rau Facility (Indore)</span></div>
+        <div class="ccell"><span class="plant"><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-map-pin"/></svg>Pithampur SEZ</span></div>
+      </div>
+      <div class="crow">
+        <div class="ccell clabel">Operations</div>
+        <div class="ccell"><p>Dedicated sterile &amp; non-sterile corticosteroid APIs (92 MT capacity).</p></div>
+        <div class="ccell"><p>Steroid hormones, Chemical synthesis, Fermentation, Biotransformation.</p></div>
+      </div>
+      <div class="crow">
+        <div class="ccell clabel">Key Technologies</div>
+        <div class="ccell"><p>Aseptic filling, Lyophilization, Pure steam, CIP/SIP.</p></div>
+        <div class="ccell"><p>Glass-lined reactors, powder-transfer containment, EDI water.</p></div>
+      </div>
+      <div class="crow">
+        <div class="ccell clabel">Targeted AI Vectors</div>
+        <div class="ccell"><ul class="vlist">
+          <li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-thermometer"/></svg><span>Sterilization cycle optimization</span></li>
+          <li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-air-vent"/></svg><span>HVAC/clean environment energy modeling</span></li>
+          <li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-zap"/></svg><span>Utility consumption analytics</span></li>
+        </ul></div>
+        <div class="ccell"><ul class="vlist">
+          <li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-trending-up"/></svg><span>Reaction trajectory optimization</span></li>
+          <li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-sprout"/></svg><span>Biological yield prediction</span></li>
+          <li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-recycle"/></svg><span>Solvent recovery optimization</span></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="bar brand"><p>Two distinct manufacturing profiles. <span class="hl-brand">One unified digital KPI architecture.</span></p></div>
+  </div>
+</section>
+
+<section class="slide "  aria-label="Slide 4: The Core Problem">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+
+  <h2 class="title">The Core Problem: Automation ≠ Digitalization</h2>
+  <div class="body s4">
+    <div class="s4-split">
+      <div class="s4-left">
+        <p class="lead"><b>The Current State:</b> Strong process automation (e.g., DCS for solvent transfer) generates enormous volumes of time-series data.</p>
+        <div class="ot-stack">
+          <div class="ot l1"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-database"/></svg><span>Local Historians</span></div>
+          <div class="ot l2"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-monitor"/></svg><span>SCADA / HMI</span></div>
+          <div class="ot l3"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-cpu"/></svg><span>PLC / DCS</span></div>
+          <div class="ot l4"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-gauge"/></svg><span>Field Instruments</span></div>
+        </div>
+      </div>
+      <div class="s4-gap">
+        <svg class="bridge" viewBox="0 0 280 120" aria-hidden="true">
+          <line x1="0" y1="60" x2="104" y2="60" class="br-line"/>
+          <line x1="176" y1="60" x2="272" y2="60" class="br-line"/>
+          <polyline points="262,50 274,60 262,70" class="br-head"/>
+        </svg>
+        <span class="bridge-icon"><svg class="ic " width="40" height="40" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-unlink"/></svg></span>
+        <span class="bridge-label">Broken Bridge</span>
+      </div>
+      <div class="s4-right neg">
+        <p class="lead"><b>The Bottleneck:</b> Enterprise data remains disconnected, trapped in isolated systems, batch records, or spreadsheets.</p>
+        <div class="silos">
+          <div class="silo sA"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-flask-conical"/></svg><span>LIMS</span></div>
+          <div class="silo sB"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-building-2"/></svg><span>ERP</span></div>
+          <div class="silo sC"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-clipboard-check"/></svg><span>QMS</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="bar negative"><span class="isq neg"><svg class="ic " width="40" height="40" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-triangle-alert"/></svg></span><p>Your DCS effectively controls the solvent transfer, but it cannot tell management why the yield dropped yesterday or when the pump will fail tomorrow. Automation alone traps data in silos.</p></div>
+  </div>
+</section>
+
+<section class="slide " data-theme="dark" aria-label="Slide 5: The Solution">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
+
+  <h2 class="title">The Solution: The Faclon Intelligent Layer</h2>
+  <div class="body s5">
+    <svg class="stack" viewBox="0 0 640 860" aria-label="Exploded stack: Symbiotec Operational Technology at the base, Symbiotec Enterprise IT above it, the Faclon AI Platform on top, feeding the CEO Digital Cockpit">
+      <line x1="20" y1="110" x2="20" y2="320" class="pl-guide"/><line x1="20" y1="340" x2="20" y2="530" class="pl-guide"/><line x1="20" y1="550" x2="20" y2="740" class="pl-guide"/><line x1="320" y1="200" x2="320" y2="410" class="pl-guide"/><line x1="320" y1="430" x2="320" y2="620" class="pl-guide"/><line x1="320" y1="640" x2="320" y2="830" class="pl-guide"/><line x1="620" y1="110" x2="620" y2="320" class="pl-guide"/><line x1="620" y1="340" x2="620" y2="530" class="pl-guide"/><line x1="620" y1="550" x2="620" y2="740" class="pl-guide"/>
+      
+    <polygon points="20,720 320,810 320,830 20,740" fill="var(--color-neutral-light-1100)"/>
+    <polygon points="320,810 620,720 620,740 320,830" fill="var(--color-neutral-light-1100)" opacity="0.72"/>
+    <polygon points="320,630 620,720 320,810 20,720" fill="var(--color-neutral-light-1000)"/>
+      
+    <polygon points="20,510 320,600 320,620 20,530" fill="var(--color-brand-800)"/>
+    <polygon points="320,600 620,510 620,530 320,620" fill="var(--color-brand-800)" opacity="0.72"/>
+    <polygon points="320,420 620,510 320,600 20,510" fill="var(--color-brand-700)"/>
+      
+    <polygon points="20,300 320,390 320,410 20,320" fill="var(--color-brand-600)"/>
+    <polygon points="320,390 620,300 620,320 320,410" fill="var(--color-brand-600)" opacity="0.72"/>
+    <polygon points="320,210 620,300 320,390 20,300" fill="var(--color-brand-500)"/>
+      <polygon points="320,0 620,90 320,180 20,90" class="pl-dash"/>
+      <g class="chips">
+        <rect x="70" y="282" width="112" height="36" rx="4"/><text x="126" y="306">KPI AI</text>
+        <rect x="198" y="282" width="152" height="36" rx="4"/><text x="274" y="306">Predictive AI</text>
+        <rect x="366" y="282" width="190" height="36" rx="4"/><text x="461" y="306">Optimization AI</text>
+      </g>
+      <g class="up"><path d="M320 206 l-10 14 h20 z"/><path d="M320 416 l-10 14 h20 z"/><path d="M320 626 l-10 14 h20 z"/></g>
+    </svg>
+    <div class="layers">
+      <div class="layer ly0"><span class="isq on-dark"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-layout-dashboard"/></svg></span><div><h3>CEO Digital Cockpit</h3></div></div>
+      <div class="layer ly1"><span class="isq brandfill"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-layers"/></svg></span><div><h3>Faclon AI Platform</h3></div></div>
+      <div class="layer ly2"><span class="isq on-dark"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-building-2"/></svg></span><div><h3>Symbiotec Enterprise IT</h3><p>ERP, LIMS, QMS, Maintenance Systems</p></div></div>
+      <div class="layer ly3"><span class="isq on-dark"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-factory"/></svg></span><div><h3>Symbiotec Operational Technology</h3><p>Rau &amp; Pithampur DCS, PLCs, SCADA, Historians, Energy Meters</p></div></div>
+    </div>
+    <div class="card positive s5-card">
+      <span class="isq pos"><svg class="ic " width="40" height="40" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-shield-check"/></svg></span>
+      <h3>Strictly Non-Disruptive:</h3>
+      <p>No interference with validated control systems. Faclon operates purely as a read-only intelligence and analytics overlay.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide "  aria-label="Slide 6: The Symbiotec KPI Tree">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+
+  <h2 class="title">The Symbiotec KPI Tree: Connecting the Floor to the P&amp;L</h2>
+  <div class="body s6">
+    <svg class="tree-lines" viewBox="0 0 1816 860" aria-hidden="true">
+      <path d="M908 144 V224 M280 224 H1536 M280 224 V304 M908 224 V304 M1536 224 V304"/>
+      <path d="M280 440 V544 M908 440 V544 M1536 440 V544 M168 544 H1648 M168 544 V644 M538 544 V644 M908 544 V644 M1278 544 V644 M1648 544 V644"/>
+      <path class="act" d="M1188 72 H1316"/><polyline class="acth" points="1304,62 1318,72 1304,82"/>
+    </svg>
+    <div class="t-ceo"><h3>CEO KPIs</h3><p>Revenue | EBITDA | Cost/kg</p></div>
+    <div class="t-act"><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-sliders-horizontal"/></svg><p><b>Taking action:</b> What should the operator adjust to protect EBITDA?</p></div>
+    <div class="t-q q1"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-telescope"/></svg><p><b>Looking forward:</b> What will happen to the plant KPI next?</p></div>
+    <div class="t-l2 a">OEE &amp; Batch Cycle Time</div>
+    <div class="t-l2 b">Effective Yield &amp; Quality</div>
+    <div class="t-l2 c">Energy/kg &amp; Asset Downtime</div>
+    <div class="t-q q2"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-history"/></svg><p><b>Looking backward:</b> Why did this process KPI change?</p></div>
+    <div class="t-l3" style="left:0px"><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-thermometer"/></svg><span>Temperature</span></div><div class="t-l3" style="left:370px"><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-gauge"/></svg><span>Pressure</span></div><div class="t-l3" style="left:740px"><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-rotate-cw"/></svg><span>Agitation</span></div><div class="t-l3" style="left:1110px"><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-droplet"/></svg><span>pH Levels</span></div><div class="t-l3" style="left:1480px"><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-waves"/></svg><span>Flow Rates</span></div>
+  </div>
+</section>
+
+<section class="slide "  aria-label="Slide 7: The 3-Step Transformation Journey">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+
+  <h2 class="title">The 3-Step Transformation Journey</h2>
+  <div class="body s7">
+    <div class="stairs">
+      
+      <div class="st st1">
+        <div class="card st-card"><h3>Step 1: Low-Hanging Fruits</h3><p class="st-sub">(See / Measure / Control)</p><p>Focus: Plant KPI Digitalization, Unified Energy Monitoring, Asset Performance baselining.</p></div>
+        <div class="st-conn"></div>
+        <div class="st-bar"><svg class="ic " width="40" height="40" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-eye"/></svg></div>
+      </div>
+      
+      <div class="st st2">
+        <div class="card st-card"><h3>Step 2: Mid-Hanging Fruits</h3><p class="st-sub">(Predict / Optimize)</p><p>Focus: AI Batch Intelligence, Yield Trajectory Optimization, Quality by Prediction, Predictive Maintenance.</p></div>
+        <div class="st-conn"></div>
+        <div class="st-bar"><svg class="ic " width="40" height="40" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-chart-spline"/></svg></div>
+      </div>
+      
+      <div class="st st3">
+        <div class="card st-card"><h3>Step 3: Top-Hanging Fruits</h3><p class="st-sub">(Digital Twin / Semi-Autonomous)</p><p>Focus: AI Co-Pilot for Batch Execution, Optimal vs. Actual Trajectory modeling.</p></div>
+        <div class="st-conn"></div>
+        <div class="st-bar"><svg class="ic " width="40" height="40" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-git-compare-arrows"/></svg></div>
+      </div>
+    </div>
+    <div class="bar inverse"><p><b class="hl-inv">A phased approach to monetization:</b> We do not propose a massive enterprise AI rollout on day one. We start by extracting immediate financial value from existing operational data.</p></div>
+  </div>
+</section>
+
+<section class="slide "  aria-label="Slide 8: Step 1">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+
+  <h2 class="title">Step 1: Low-Hanging Fruits (Visibility &amp; Energy)</h2>
+  <div class="body s8">
+    <div class="s8-col">
+      <h3 class="col-h">Operational Visibility (OEE &amp; Batch Status)</h3>
+      <div class="card chart-card">
+        <span class="chart-eyebrow">BATCH PERFORMANCE (OEE)</span>
+        
+          <div class="hb-row"><span class="hb-l">Best Batch</span>
+            <div class="hb-track"><div class="hb-fill pos" style="width:88%"><span>88%</span></div></div>
+            <span class="badge b-pos">Optimal</span></div>
+        
+          <div class="hb-row"><span class="hb-l">Average Batch</span>
+            <div class="hb-track"><div class="hb-fill neu" style="width:75%"><span>75%</span></div></div>
+            <span class="badge b-neu">Standard</span></div>
+        
+          <div class="hb-row"><span class="hb-l">Current Batch</span>
+            <div class="hb-track"><div class="hb-fill pri" style="width:65%"><span>65%</span></div></div>
+            <span class="badge b-pri">Active</span></div>
+      </div>
+      <div class="card outcome">
+        <p><b>Action:</b> Baseline idle time, cycle-time variation, and Rau sterile line changeover losses.</p>
+        <div class="div"></div>
+        <p class="tgt"><svg class="ic pos" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-target"/></svg><span><b>Target Outcome:</b> 3–5% improvement in productive capacity without major equipment CapEx.</span></p>
+      </div>
+    </div>
+    <div class="s8-col">
+      <h3 class="col-h">Utility Energy Optimization</h3>
+      <div class="rd-grid">
+        
+          <div class="rd"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-snowflake"/></svg></span><div><span class="rd-l">Chiller Load: <span class="badge b-neg">(High)</span></span><span class="rd-v">65%</span></div></div>
+        
+          <div class="rd"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-zap"/></svg></span><div><span class="rd-l">HVAC Power:</span><span class="rd-v">450 <small>kW</small></span></div></div>
+        
+          <div class="rd"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-thermometer-snowflake"/></svg></span><div><span class="rd-l">Brine Temp:</span><span class="rd-v">-5°C</span></div></div>
+        
+          <div class="rd"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-wind"/></svg></span><div><span class="rd-l">Steam Flow:</span><span class="rd-v">120 <small>kg/hr</small></span></div></div>
+        
+          <div class="rd"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-zap"/></svg></span><div><span class="rd-l">HVAC Power:</span><span class="rd-v">-5°C</span></div></div>
+        
+          <div class="rd"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-gauge"/></svg></span><div><span class="rd-l">Energy Efficiency:</span><span class="rd-v">82%</span></div></div>
+      </div>
+      <div class="card outcome">
+        <p><b>Action:</b> Move beyond basic consumption tracking. AI models chillers, steam, HVAC, and brine systems to answer: “Why is energy high today?”</p>
+        <div class="div"></div>
+        <p class="tgt"><svg class="ic pos" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-target"/></svg><span><b>Target Outcome:</b> 5–8% reduction in controllable utility energy costs.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide " data-theme="dark" aria-label="Slide 9: Step 2: AI Yield">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
+
+  <h2 class="title">Step 2: Mid-Hanging Fruits (AI Yield &amp; Fermentation Intelligence)</h2>
+  <div class="body s9">
+    <svg class="lc" viewBox="0 0 1104 640" aria-label="Line chart of chemical or biological conversion over batch time: the current batch trajectory falls below the ideal benchmark trajectory after 36 hours">
+      <line x1="136" x2="1036" y1="544" y2="544" class="axis"/><text class="tick" x="120" y="550" text-anchor="end">0%</text><line x1="136" x2="1036" y1="440" y2="440" class="grid"/><text class="tick" x="120" y="446" text-anchor="end">20%</text><line x1="136" x2="1036" y1="336" y2="336" class="grid"/><text class="tick" x="120" y="342" text-anchor="end">40%</text><line x1="136" x2="1036" y1="232" y2="232" class="grid"/><text class="tick" x="120" y="238" text-anchor="end">60%</text><line x1="136" x2="1036" y1="128" y2="128" class="grid"/><text class="tick" x="120" y="134" text-anchor="end">80%</text><line x1="136" x2="1036" y1="24" y2="24" class="grid"/><text class="tick" x="120" y="30" text-anchor="end">100%</text>
+      <text class="tick" x="136" y="576" text-anchor="middle">0</text><text class="tick" x="286" y="576" text-anchor="middle">12</text><text class="tick" x="436" y="576" text-anchor="middle">24</text><text class="tick" x="586" y="576" text-anchor="middle">36</text><text class="tick" x="736" y="576" text-anchor="middle">48</text><text class="tick" x="886" y="576" text-anchor="middle">66</text><text class="tick" x="1036" y="576" text-anchor="middle">72</text>
+      <text class="axis-t" x="586" y="616" text-anchor="middle">Batch Time (Hours)</text>
+      <text class="axis-t" transform="translate(24 284) rotate(-90)" text-anchor="middle">Chemical/Biological Conversion (%)</text>
+      <path d="M136 544 L145 541 L156 537 L170 532 L185 528 L202 522 L219 516 L236 508 L254 500 L270 491 L286 482 L286 482 L301 470 L317 457 L333 442 L350 427 L366 411 L381 394 L397 378 L411 363 L424 349 L436 336 L436 336 L447 325 L456 314 L464 304 L471 295 L478 286 L485 277 L491 268 L497 260 L504 251 L511 242 L511 242 L519 233 L526 224 L534 215 L541 205 L549 196 L556 187 L564 178 L571 170 L579 162 L586 154 L586 154 L594 147 L601 140 L609 134 L616 128 L624 122 L631 116 L639 111 L646 106 L654 101 L661 97 L661 97 L669 93 L676 89 L684 85 L691 82 L699 79 L706 76 L714 73 L721 71 L729 68 L736 66 L736 66 L744 63 L751 61 L759 58 L766 56 L774 54 L781 52 L789 50 L796 48 L804 47 L811 45 L811 45 L819 43 L826 42 L833 40 L841 39 L849 37 L856 36 L864 35 L871 34 L879 33 L886 32 L886 32 L894 31 L901 30 L909 30 L916 29 L924 29 L931 28 L939 28 L946 27 L954 27 L961 27 L961 27 L969 26 L977 26 L986 26 L995 25 L1003 25 L1011 25 L1019 25 L1026 24 L1032 24 L1036 24 L1036 24" class="ln-ideal"/>
+      <path d="M136 544 L145 542 L156 539 L170 536 L185 533 L202 529 L219 525 L236 520 L254 513 L270 506 L286 497 L286 497 L301 487 L317 475 L333 461 L350 446 L366 431 L381 415 L397 399 L411 384 L424 370 L436 357 L436 357 L447 345 L456 333 L464 322 L471 312 L478 301 L485 291 L491 281 L497 272 L504 262 L511 253 L511 253 L519 243 L526 234 L534 225 L541 216 L549 207 L556 198 L564 190 L571 183 L579 176 L586 170 L586 170 L594 164 L601 159 L609 155 L616 151 L624 148 L631 145 L639 142 L646 140 L654 138 L661 136 L661 136 L669 135 L676 134 L684 134 L691 134 L699 135 L706 135 L714 136 L721 136 L729 136 L736 136 L736 136 L744 135 L751 133 L759 132 L766 130 L774 128 L781 125 L789 123 L796 121 L804 119 L811 118 L811 118 L819 116 L826 115 L833 113 L841 112 L849 110 L856 109 L864 108 L871 107 L879 106 L886 105 L886 105 L894 104 L901 103 L909 102 L916 102 L924 101 L931 101 L939 101 L946 100 L954 100 L961 99 L961 99 L969 99 L977 99 L986 98 L995 98 L1003 98 L1011 98 L1019 97 L1026 97 L1032 97 L1036 97 L1036 97" class="ln-cur"/>
+      <g class="legend">
+        <line x1="180" x2="228" y1="52" y2="52" class="ln-ideal"/><text x="244" y="58">Ideal Benchmark Batch Trajectory</text>
+        <line x1="180" x2="228" y1="92" y2="92" class="ln-cur"/><text x="244" y="98">Current Batch Trajectory</text>
+      </g>
+      <circle cx="586" cy="169.60000000000002" r="18" class="hot-ring"/>
+      <circle cx="586" cy="169.60000000000002" r="6" class="hot-dot"/>
+      <line x1="604" y1="169.60000000000002" x2="1104" y2="169.60000000000002" class="hot-line"/>
+    </svg>
+    <div class="card brandcard s9-card">
+      <span class="isq onbrand"><svg class="ic " width="40" height="40" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-target"/></svg></span>
+      <h3>The AI Intervention Point</h3>
+      <p>Current batch trajectory indicates an <b class="hl-brand">8.5% higher</b> cycle time and probable yield loss.</p>
+      <p>AI recommends adjusting the agitation and feed profile immediately to correct.</p>
+    </div>
+    <div class="bar card-bar"><p><b>Mechanism:</b> AI learns the non-linear relationship between raw materials and process conditions to predict batch outcomes. <b>Target Outcome:</b> <span class="hl-acc">1-2% effective yield improvement.</span></p></div>
+  </div>
+</section>
+
+<section class="slide " data-theme="dark" aria-label="Slide 10: Step 2: Quality and Maintenance">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
+
+  <h2 class="title">Step 2: Mid-Hanging Fruits (Quality &amp; Maintenance)</h2>
+  <div class="body s10">
+    <div class="ft-row">
+      <h3 class="ft-h">Quality Paradigm</h3>
+      <div class="ft from">
+        <div class="ft-top"><span class="isq neg"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-hourglass"/></svg></span><p class="ft-k"><b>From</b> (Current State)</p></div>
+        <h4>Quality by Inspection.</h4>
+        <p class="chain"><span class="ch">Wait for batch completion</span><svg class="ic chev" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-arrow-right"/></svg><span class="ch">Lab analysis</span><svg class="ic chev" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-arrow-right"/></svg><span class="ch">Yield known.</span></p>
+      </div>
+      <div class="ft-arrow"><svg class="ic " width="48" height="48" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-arrow-right"/></svg></div>
+      <div class="ft to">
+        <div class="ft-top"><span class="isq onbrand"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-target"/></svg></span><p class="ft-k"><b>To</b> (AI-Driven Future)</p></div>
+        <h4>Quality by Prediction.</h4>
+        <p class="chain"><span class="ch">Real-time process variables feed the AI model</span><svg class="ic chev" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-arrow-right"/></svg><span class="ch">Yield/Purity/Moisture predicted instantly</span><svg class="ic chev" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-arrow-right"/></svg><span class="ch">Early intervention.</span></p>
+      </div>
+    </div>
+    <div class="ft-row">
+      <h3 class="ft-h">Asset Reliability</h3>
+      <div class="ft from">
+        <div class="ft-top"><span class="isq neg"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-wrench"/></svg></span><p class="ft-k"><b>From</b> (Current State)</p></div>
+        <h4>Preventive Maintenance.</h4>
+        <p>Schedule-based interventions and unexpected breakdown reactions.</p>
+      </div>
+      <div class="ft-arrow"><svg class="ic " width="48" height="48" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-arrow-right"/></svg></div>
+      <div class="ft to">
+        <div class="ft-top"><span class="isq onbrand"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-activity"/></svg></span><p class="ft-k"><b>To</b> (AI-Driven Future)</p></div>
+        <h4>Predictive AI Health Index.</h4>
+        <p>Vibration, flow, and temp data generate a real-time health score (100 = Healthy, 30 = High Risk). Predict failure before production stops.</p>
+      </div>
+    </div>
+    <div class="bar positive"><span class="isq pos"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-trending-up"/></svg></span><p><b>Target Outcome:</b> 10–20% reduction in avoidable maintenance-related downtime.</p></div>
+  </div>
+</section>
+
+<section class="slide " data-theme="dark" aria-label="Slide 11: Step 3: The Digital Process Twin">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
+
+  <h2 class="title">Step 3: Top-Hanging Fruits (The Digital Process Twin)</h2>
+  <div class="body s11">
+    <div class="twin">
+      <div class="tw-panel">
+        <svg viewBox="0 0 360 410" class="rx" aria-label="Line drawing of the physical reactor"><g class="rx-solid">
+      <rect x="150" y="20" width="60" height="48" rx="4"/>
+      <line x1="180" y1="68" x2="180" y2="300"/>
+      <path d="M90 120 Q90 84 180 84 Q270 84 270 120 V300 Q270 340 180 340 Q90 340 90 300 Z"/>
+      <path d="M78 140 H90 M78 140 V290 H90 M270 150 H300 V100 H330 M270 280 H300 V380 H330"/>
+      <path d="M140 250 H220 M140 210 H220"/>
+      <path d="M130 340 V392 M230 340 V392 M100 392 H260"/>
+      <circle cx="44" cy="150" r="16"/><line x1="44" y1="166" x2="44" y2="200"/><path d="M44 200 H78"/>
+    </g></svg>
+        <p class="tw-cap"><b>Physical Asset</b> (Batch #1256)</p>
+      </div>
+      <div class="tw-sync">
+        <svg viewBox="0 0 160 24" aria-hidden="true"><line x1="8" y1="12" x2="140" y2="12" class="sync"/><polyline points="132,4 144,12 132,20" class="sync-h"/></svg><svg viewBox="0 0 160 24" aria-hidden="true"><line x1="20" y1="12" x2="152" y2="12" class="sync"/><polyline points="28,4 16,12 28,20" class="sync-h"/></svg><svg viewBox="0 0 160 24" aria-hidden="true"><line x1="8" y1="12" x2="140" y2="12" class="sync"/><polyline points="132,4 144,12 132,20" class="sync-h"/></svg><svg viewBox="0 0 160 24" aria-hidden="true"><line x1="20" y1="12" x2="152" y2="12" class="sync"/><polyline points="28,4 16,12 28,20" class="sync-h"/></svg>
+      </div>
+      <div class="tw-panel replica">
+        <svg viewBox="0 0 360 410" class="rx" aria-label="Dashed line drawing of the reactor replica, with a hotspot on the jacket"><g class="rx-dash">
+      <rect x="150" y="20" width="60" height="48" rx="4"/>
+      <line x1="180" y1="68" x2="180" y2="300"/>
+      <path d="M90 120 Q90 84 180 84 Q270 84 270 120 V300 Q270 340 180 340 Q90 340 90 300 Z"/>
+      <path d="M78 140 H90 M78 140 V290 H90 M270 150 H300 V100 H330 M270 280 H300 V380 H330"/>
+      <path d="M140 250 H220 M140 210 H220"/>
+      <path d="M130 340 V392 M230 340 V392 M100 392 H260"/>
+      <circle cx="44" cy="150" r="16"/><line x1="44" y1="166" x2="44" y2="200"/><path d="M44 200 H78"/>
+    </g>
+          <circle cx="270" cy="220" r="18" class="hs-ring"/><circle cx="270" cy="220" r="6" class="hs-dot"/>
+        </svg>
+        <p class="tw-cap"><b>AI Digital Replica</b> (Ideal Trajectory)</p>
+      </div>
+      <div class="tw-link"></div>
+    </div>
+    <div class="card copilot">
+      <div class="cp-head"><span class="isq onbrand"><svg class="ic " width="40" height="40" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-sliders-horizontal"/></svg></span><h3>AI Co-Pilot</h3></div>
+      <p class="cp-sub">Real-Time Trajectory Monitoring:</p>
+      <ul class="cp-list">
+        <li><span class="dot pos"></span>Base parameters on target</li>
+        <li><span class="dot warn"></span>Thermal deviation developing</li>
+        <li><span class="dot neg"></span>Corrective cooling action required</li>
+      </ul>
+    </div>
+    <div class="bar card-bar"><p><b>Strategic Alignment:</b> The ultimate enabler for Symbiotec’s R&amp;D push into continuous-flow chemistry and process intensification—creating a semi-autonomous manufacturing environment.</p></div>
+  </div>
+</section>
+
+<section class="slide " data-theme="dark" aria-label="Slide 12: Synthesis: The Complete Value Engine">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
+
+  <h2 class="title">Synthesis: The Complete Value Engine</h2>
+  <div class="body s12">
+    <svg class="loop" viewBox="0 0 1816 860" aria-hidden="true">
+      <rect x="268" y="96" width="1280" height="676" rx="24" class="track"/>
+      <polyline points="898,86 914,96 898,106" class="arrowh"/>
+      <polyline points="1538,290 1548,306 1558,290" class="arrowh"/>
+      <polyline points="1538,590 1548,606 1558,590" class="arrowh"/>
+      <polyline points="918,762 902,772 918,782" class="arrowh"/>
+      <polyline points="258,450 268,434 278,450" class="arrowh"/>
+    </svg>
+    
+    <div class="ln" style="left:248px;top:26px"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-database"/></svg></span><div><p class="ln-k">1 · DATA</p><p class="ln-d">(Connecting the DCS/PLC)</p></div></div>
+    
+    <div class="ln" style="left:1088px;top:26px"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-monitor"/></svg></span><div><p class="ln-k">2 · INFORMATION</p><p class="ln-d">(Seeing what is happening)</p></div></div>
+    
+    <div class="ln" style="left:1308px;top:370px"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-search"/></svg></span><div><p class="ln-k">3 · INSIGHT</p><p class="ln-d">(Knowing why performance changes)</p></div></div>
+    
+    <div class="ln" style="left:1088px;top:702px"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-trending-up"/></svg></span><div><p class="ln-k">4 · PREDICTION</p><p class="ln-d">(Anticipating what will happen next)</p></div></div>
+    
+    <div class="ln" style="left:248px;top:702px"><span class="isq "><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-settings"/></svg></span><div><p class="ln-k">5 · OPTIMIZATION</p><p class="ln-d">(Telling operators exactly what to do)</p></div></div>
+    <div class="hub"><p>Don’t replace your automation.<br><b class="hl-brand">Monetize it.</b></p></div>
+  </div>
+</section>
+
+<section class="slide "  aria-label="Slide 13: The Business Case">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+
+  <h2 class="title">The Business Case: Indicative Financial Opportunity</h2>
+  <div class="body s13">
+    <div class="card rchart">
+      <div class="rc-head"><span>Manufacturing AI Opportunity Vector</span><span>Indicative Annual Benefit</span></div>
+      
+      <div class="rc-row">
+        <span class="rc-l"><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-zap"/></svg>Utility Energy Optimization</span>
+        <div class="rc-track"><div class="rc-grid"></div><div class="rc-fill" style="left:37.5%;width:25%"></div></div>
+        <span class="rc-v">₹1.5 – 2.5 Cr</span>
+      </div>
+      <div class="rc-row">
+        <span class="rc-l"><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-trending-up"/></svg>Effective Yield Improvement</span>
+        <div class="rc-track"><div class="rc-grid"></div><div class="rc-fill" style="left:50%;width:50%"></div></div>
+        <span class="rc-v">₹2.0 – 4.0 Cr</span>
+      </div>
+      <div class="rc-row">
+        <span class="rc-l"><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-refresh-cw"/></svg>Batch-Cycle Reduction / Capacity</span>
+        <div class="rc-track"><div class="rc-grid"></div><div class="rc-fill" style="left:37.5%;width:37.5%"></div></div>
+        <span class="rc-v">₹1.5 – 3.0 Cr</span>
+      </div>
+      <div class="rc-row">
+        <span class="rc-l"><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-clipboard-check"/></svg>Deviation &amp; Rework Reduction</span>
+        <div class="rc-track"><div class="rc-grid"></div><div class="rc-fill" style="left:25%;width:25%"></div></div>
+        <span class="rc-v">₹1.0 – 2.0 Cr</span>
+      </div>
+      <div class="rc-row">
+        <span class="rc-l"><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-wrench"/></svg>Predictive Maintenance</span>
+        <div class="rc-track"><div class="rc-grid"></div><div class="rc-fill" style="left:18.75%;width:18.75%"></div></div>
+        <span class="rc-v">₹0.75 – 1.5 Cr</span>
+      </div>
+      <div class="rc-row">
+        <span class="rc-l"><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-users"/></svg>Asset Productivity / Manpower</span>
+        <div class="rc-track"><div class="rc-grid"></div><div class="rc-fill" style="left:12.5%;width:12.5%"></div></div>
+        <span class="rc-v">₹0.5 – 1.0 Cr</span>
+      </div>
+    </div>
+    <div class="total">
+      <span class="isq onbrand"><svg class="ic " width="40" height="40" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-indian-rupee"/></svg></span>
+      <p class="total-l">Total Potential Bottom-Line Value Creation</p>
+      <p class="total-v">₹7.25 – 14.0 Cr<br><span>/ year</span></p>
+    </div>
+    <div class="bar info"><svg class="ic " width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-info"/></svg><p><b>Disclaimer:</b> Business-case targets to be validated. These are indicative ranges based on current operational scale; final guaranteed values will be established strictly through the initial plant data diagnostic.</p></div>
+  </div>
+</section>
+
+<section class="slide "  aria-label="Slide 14: Investment Model and Expected ROI">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+
+  <h2 class="title">Investment Model &amp; Expected ROI</h2>
+  <div class="body s14">
+    <div class="phases">
+      <div class="ph-col c1"><span class="tag brandtag">Targeting &lt;12-month payback</span>
+      
+      <div class="ph p1">
+        <h3>PHASE 1: PILOT</h3>
+        <ul><li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-target"/></svg><span><b>Target:</b> 1 Plant / Selected Processes</span></li><li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-scan"/></svg><span><b>Scope:</b> KPI, Energy, Batch analytics</span></li><li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-indian-rupee"/></svg><span><b>Investment:</b> ₹30–40 Lakh</span></li></ul>
+      </div></div>
+      <div class="ph-arrow"><svg class="ic " width="48" height="48" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-arrow-right"/></svg></div>
+      <div class="ph-col c2">
+      <div class="ph p2">
+        <h3>PHASE 2: MULTI-PROCESS</h3>
+        <ul><li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-target"/></svg><span><b>Target:</b> Rau + Pithampur Integration</span></li><li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-scan"/></svg><span><b>Scope:</b> AI Yield, Quality, Maintenance</span></li><li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-indian-rupee"/></svg><span><b>Investment:</b> ₹75 L–1.25 Cr</span></li></ul>
+      </div></div>
+      <div class="ph-arrow"><svg class="ic " width="48" height="48" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-arrow-right"/></svg></div>
+      <div class="ph-col c3">
+      <div class="ph p3">
+        <h3>PHASE 3: ENTERPRISE AI</h3>
+        <ul><li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-target"/></svg><span><b>Target:</b> Full Digital Twin</span></li><li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-scan"/></svg><span><b>Scope:</b> Enterprise KPI integration</span></li><li><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-indian-rupee"/></svg><span><b>Investment:</b> ₹1.5–2.0 Cr</span></li></ul>
+      </div></div>
+    </div>
+    <div class="bar inverse col"><p class="b-strong">Commercial Strategy: Do not fund the ₹2.5–3.6 Cr enterprise program today.</p><p><span class="hl-inv">Fund the pilot.</span> Gate all future expansion strictly upon measured, validated financial benefits.</p></div>
+  </div>
+</section>
+
+<section class="slide "  aria-label="Slide 15: The Ask">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
+
+  <h2 class="title">The Ask: 4-6 Week Digital Manufacturing Diagnostic</h2>
+  <div class="body s15">
+    <div class="ask">
+      <h3 class="col-h">Diagnostic Scope &amp; Data Intake:</h3>
+      <ol class="flow">
+        <li><span class="num">1</span><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-calendar-check"/></svg><p>Approve a 4–6 week evaluation across Rau &amp; Pithampur.</p></li>
+        <li><span class="num">2</span><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-list-checks"/></svg><p>Select 5-10 critical process areas for evaluation.</p></li>
+        <li><span class="num">3</span><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-database"/></svg><p>Ingest historical batch data, DCS/PLC historian data, and <b>utility</b> data.</p></li>
+        <li><span class="num">4</span><svg class="ic brand" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-flask-conical"/></svg><p>Integrate LIMS and quality control records.</p></li>
+      </ol>
+    </div>
+    <div class="card brandcard deliver">
+      <span class="isq onbrand"><svg class="ic " width="40" height="40" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-file-check"/></svg></span>
+      <h3>THE DELIVERABLE:</h3>
+      <p>A validated financial business case identifying the first <b class="hl-brand">3–5 specific AI use cases</b> that will generate measurable ₹ returns for Symbiotec.</p>
+    </div>
+    <div class="bar inverse"><p class="b-big">We will prove financial value on one process and one KPI before scaling.</p></div>
+  </div>
+</section>
+</main>
+<script>
+  // Scale the 1920 x 1080 slides to the window width; the design size stays 1920 x 1080.
+  (function () {
+    function fit() {
+      var s = Math.min(1, (window.innerWidth - 32) / 1920);
+      document.documentElement.style.setProperty('--fit', s);
+    }
+    window.addEventListener('resize', fit); fit();
+  })();
+</script>
+</body>
+</html>
