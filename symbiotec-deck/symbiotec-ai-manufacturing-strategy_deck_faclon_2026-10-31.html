@@ -689,6 +689,30 @@ b { font-weight: 700; }
 .t-l2, .silo, .silo2, .isl { font-weight: 600; }
 .lcard.hi .lc-d { color: var(--color-text-on-brand); gap: var(--space-4); }
 
+/* ---------- 9 (v3) · Reference "IP licence": number-led card + statement card, green accent ---------- */
+.s9r { display: grid; grid-template-columns: 1fr 640px; gap: var(--gap-grid); }
+.nl, .wm { border-radius: var(--radius-3xl); background: var(--color-container-primary); border: var(--border-width-default) solid var(--color-border-container); padding: var(--space-40) var(--space-48); display: flex; flex-direction: column; }
+.nl { gap: var(--space-24); }
+.nl-mech { font-size: 24px; line-height: 32px; color: var(--color-text-body); }
+.nl-mech b { color: var(--color-text-heading); }
+.nl-row { display: flex; align-items: flex-end; gap: var(--space-32); }
+.nl-k { font-size: 24px; line-height: 32px; font-weight: 600; color: var(--color-text-accent); }
+.nl-big { font-family: var(--font-heading); font-weight: 700; font-size: 72px; line-height: 80px; letter-spacing: -1.44px; color: var(--color-text-heading); }
+.nl-t { font-size: 32px; line-height: 40px; letter-spacing: -0.32px; font-weight: 600; color: var(--color-text-heading); padding-bottom: var(--space-12); }
+.nl-div { height: 1px; background: var(--color-border-primary); }
+.lc2 { width: 100%; flex: 1; min-height: 0; }
+.lc2 .grid { stroke: var(--color-border-primary); stroke-width: 1; stroke-dasharray: 4 6; }
+.lc2 .axis { stroke: var(--color-border-strong); stroke-width: 2; }
+.lc2 .tick { font-family: var(--font-body); font-size: 18px; fill: var(--color-text-tertiary); }
+.lc2 .axis-t { font-family: var(--font-body); font-size: 18px; font-weight: 600; fill: var(--color-text-secondary); }
+.ln-cur2 { fill: none; stroke: var(--color-accent); stroke-width: 3; }
+.wm { gap: var(--space-20); }
+.ic.wm-ic { color: var(--color-text-brand); }
+.wm-k { margin-top: var(--space-12); font-size: 24px; line-height: 32px; font-weight: 600; letter-spacing: 0.96px; color: var(--color-text-eyebrow); }
+.wm-s { font-size: 40px; line-height: 48px; letter-spacing: -0.4px; font-weight: 600; color: var(--color-text-heading); }
+.wm-div { margin-top: auto; }
+.wm-q { font-size: 32px; line-height: 40px; letter-spacing: -0.32px; color: var(--color-text-accent); }
+
 </style>
 </head>
 <body>
@@ -952,30 +976,37 @@ b { font-weight: 700; }
 <section class="slide " data-theme="dark" aria-label="Slide 9: Step 2: AI Yield">
   <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
 
-  <h2 class="title">Step 2: Mid-Hanging Fruits (AI Yield &amp; Fermentation Intelligence)</h2>
-  <div class="body s9">
-    <svg class="lc" viewBox="0 0 1104 640" aria-label="Line chart of chemical or biological conversion over batch time: the current batch trajectory falls below the ideal benchmark trajectory after 36 hours">
-      <line x1="136" x2="1036" y1="544" y2="544" class="axis"/><text class="tick" x="120" y="550" text-anchor="end">0%</text><line x1="136" x2="1036" y1="440" y2="440" class="grid"/><text class="tick" x="120" y="446" text-anchor="end">20%</text><line x1="136" x2="1036" y1="336" y2="336" class="grid"/><text class="tick" x="120" y="342" text-anchor="end">40%</text><line x1="136" x2="1036" y1="232" y2="232" class="grid"/><text class="tick" x="120" y="238" text-anchor="end">60%</text><line x1="136" x2="1036" y1="128" y2="128" class="grid"/><text class="tick" x="120" y="134" text-anchor="end">80%</text><line x1="136" x2="1036" y1="24" y2="24" class="grid"/><text class="tick" x="120" y="30" text-anchor="end">100%</text>
-      <text class="tick" x="136" y="576" text-anchor="middle">0</text><text class="tick" x="286" y="576" text-anchor="middle">12</text><text class="tick" x="436" y="576" text-anchor="middle">24</text><text class="tick" x="586" y="576" text-anchor="middle">36</text><text class="tick" x="736" y="576" text-anchor="middle">48</text><text class="tick" x="886" y="576" text-anchor="middle">66</text><text class="tick" x="1036" y="576" text-anchor="middle">72</text>
-      <text class="axis-t" x="586" y="616" text-anchor="middle">Batch Time (Hours)</text>
-      <text class="axis-t" transform="translate(24 284) rotate(-90)" text-anchor="middle">Chemical/Biological Conversion (%)</text>
-      <path d="M136 544 L145 541 L156 537 L170 532 L185 528 L202 522 L219 516 L236 508 L254 500 L270 491 L286 482 L286 482 L301 470 L317 457 L333 442 L350 427 L366 411 L381 394 L397 378 L411 363 L424 349 L436 336 L436 336 L447 325 L456 314 L464 304 L471 295 L478 286 L485 277 L491 268 L497 260 L504 251 L511 242 L511 242 L519 233 L526 224 L534 215 L541 205 L549 196 L556 187 L564 178 L571 170 L579 162 L586 154 L586 154 L594 147 L601 140 L609 134 L616 128 L624 122 L631 116 L639 111 L646 106 L654 101 L661 97 L661 97 L669 93 L676 89 L684 85 L691 82 L699 79 L706 76 L714 73 L721 71 L729 68 L736 66 L736 66 L744 63 L751 61 L759 58 L766 56 L774 54 L781 52 L789 50 L796 48 L804 47 L811 45 L811 45 L819 43 L826 42 L833 40 L841 39 L849 37 L856 36 L864 35 L871 34 L879 33 L886 32 L886 32 L894 31 L901 30 L909 30 L916 29 L924 29 L931 28 L939 28 L946 27 L954 27 L961 27 L961 27 L969 26 L977 26 L986 26 L995 25 L1003 25 L1011 25 L1019 25 L1026 24 L1032 24 L1036 24 L1036 24" class="ln-ideal"/>
-      <path d="M136 544 L145 542 L156 539 L170 536 L185 533 L202 529 L219 525 L236 520 L254 513 L270 506 L286 497 L286 497 L301 487 L317 475 L333 461 L350 446 L366 431 L381 415 L397 399 L411 384 L424 370 L436 357 L436 357 L447 345 L456 333 L464 322 L471 312 L478 301 L485 291 L491 281 L497 272 L504 262 L511 253 L511 253 L519 243 L526 234 L534 225 L541 216 L549 207 L556 198 L564 190 L571 183 L579 176 L586 170 L586 170 L594 164 L601 159 L609 155 L616 151 L624 148 L631 145 L639 142 L646 140 L654 138 L661 136 L661 136 L669 135 L676 134 L684 134 L691 134 L699 135 L706 135 L714 136 L721 136 L729 136 L736 136 L736 136 L744 135 L751 133 L759 132 L766 130 L774 128 L781 125 L789 123 L796 121 L804 119 L811 118 L811 118 L819 116 L826 115 L833 113 L841 112 L849 110 L856 109 L864 108 L871 107 L879 106 L886 105 L886 105 L894 104 L901 103 L909 102 L916 102 L924 101 L931 101 L939 101 L946 100 L954 100 L961 99 L961 99 L969 99 L977 99 L986 98 L995 98 L1003 98 L1011 98 L1019 97 L1026 97 L1032 97 L1036 97 L1036 97" class="ln-cur"/>
-      <g class="legend">
-        <line x1="180" x2="228" y1="52" y2="52" class="ln-ideal"/><text x="244" y="58">Ideal Benchmark Batch Trajectory</text>
-        <line x1="180" x2="228" y1="92" y2="92" class="ln-cur"/><text x="244" y="98">Current Batch Trajectory</text>
-      </g>
-      <circle cx="586" cy="169.60000000000002" r="18" class="hot-ring"/>
-      <circle cx="586" cy="169.60000000000002" r="6" class="hot-dot"/>
-      <line x1="604" y1="169.60000000000002" x2="1104" y2="169.60000000000002" class="hot-line"/>
-    </svg>
-    <div class="card brandcard s9-card">
-      <span class="isq onbrand"><svg class="ic " width="40" height="40" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-target"/></svg></span>
-      <h3>The AI Intervention Point</h3>
-      <p>Current batch trajectory indicates an <b class="hl-brand">8.5% higher</b> cycle time and probable yield loss.</p>
-      <p>AI recommends adjusting the agitation and feed profile immediately to correct.</p>
+  <h2 class="title">Step 2: Mid-Hanging Fruits<br><span class="t-acc">(AI Yield &amp; Fermentation Intelligence)</span></h2>
+  <div class="body s9r">
+    <div class="nl">
+      <p class="nl-mech"><b>Mechanism:</b> AI learns the non-linear relationship between raw materials and process conditions to predict batch outcomes.</p>
+      <div class="nl-row">
+        <div><p class="nl-k">Target Outcome:</p><p class="nl-big">1-2%</p></div>
+        <p class="nl-t">effective yield improvement.</p>
+      </div>
+      <div class="nl-div"></div>
+      <svg class="lc2" viewBox="0 0 1040 380" aria-label="Line chart of chemical or biological conversion over batch time: the current batch trajectory falls below the ideal benchmark trajectory after 36 hours">
+        <line x1="96" x2="1016" y1="300" y2="300" class="axis"/><text class="tick" x="82" y="306" text-anchor="end">0%</text><line x1="96" x2="1016" y1="243.2" y2="243.2" class="grid"/><text class="tick" x="82" y="249.2" text-anchor="end">20%</text><line x1="96" x2="1016" y1="186.39999999999998" y2="186.39999999999998" class="grid"/><text class="tick" x="82" y="192.39999999999998" text-anchor="end">40%</text><line x1="96" x2="1016" y1="129.6" y2="129.6" class="grid"/><text class="tick" x="82" y="135.6" text-anchor="end">60%</text><line x1="96" x2="1016" y1="72.79999999999998" y2="72.79999999999998" class="grid"/><text class="tick" x="82" y="78.79999999999998" text-anchor="end">80%</text><line x1="96" x2="1016" y1="16" y2="16" class="grid"/><text class="tick" x="82" y="22" text-anchor="end">100%</text>
+        <text class="tick" x="96" y="330" text-anchor="middle">0</text><text class="tick" x="249.33333333333331" y="330" text-anchor="middle">12</text><text class="tick" x="402.66666666666663" y="330" text-anchor="middle">24</text><text class="tick" x="556" y="330" text-anchor="middle">36</text><text class="tick" x="709.3333333333333" y="330" text-anchor="middle">48</text><text class="tick" x="862.6666666666667" y="330" text-anchor="middle">66</text><text class="tick" x="1016" y="330" text-anchor="middle">72</text>
+        <text class="axis-t" x="556" y="364" text-anchor="middle">Batch Time (Hours)</text>
+        <text class="axis-t" transform="translate(18 158) rotate(-90)" text-anchor="middle">Chemical/Biological Conversion (%)</text>
+        <path d="M96 300 L105 298 L117 296 L131 294 L146 291 L163 288 L181 284 L199 281 L216 276 L233 271 L249 266 L249 266 L265 260 L281 252 L298 245 L314 236 L331 227 L347 218 L362 210 L377 201 L390 193 L403 186 L403 186 L413 180 L423 174 L431 169 L439 164 L446 159 L452 154 L459 150 L465 145 L472 140 L479 135 L479 135 L487 130 L495 125 L502 120 L510 115 L518 110 L525 105 L533 100 L541 96 L548 91 L556 87 L556 87 L564 83 L571 79 L579 76 L587 73 L594 69 L602 66 L610 64 L617 61 L625 58 L633 56 L633 56 L640 53 L648 51 L656 49 L663 48 L671 46 L679 44 L686 43 L694 42 L702 40 L709 39 L709 39 L717 37 L725 36 L732 35 L740 34 L748 32 L755 31 L763 30 L771 29 L778 28 L786 27 L786 27 L794 26 L801 26 L809 25 L817 24 L824 23 L832 23 L840 22 L847 21 L855 21 L863 20 L863 20 L870 20 L878 19 L886 19 L893 19 L901 18 L909 18 L916 18 L924 18 L932 18 L939 17 L939 17 L947 17 L956 17 L965 17 L974 17 L982 17 L991 16 L999 16 L1006 16 L1011 16 L1016 16 L1016 16" class="ln-ideal"/>
+        <path d="M96 300 L105 299 L117 297 L131 296 L146 294 L163 292 L181 290 L199 287 L216 283 L233 279 L249 274 L249 274 L265 269 L281 262 L298 255 L314 246 L331 238 L347 229 L362 221 L377 213 L390 205 L403 198 L403 198 L413 191 L423 185 L431 179 L439 173 L446 167 L452 162 L459 157 L465 151 L472 146 L479 141 L479 141 L487 136 L495 131 L502 126 L510 121 L518 116 L525 111 L533 107 L541 103 L548 99 L556 96 L556 96 L564 92 L571 90 L579 87 L587 85 L594 83 L602 82 L610 80 L617 79 L625 78 L633 77 L633 77 L640 76 L648 76 L656 76 L663 76 L671 77 L679 77 L686 77 L694 77 L702 77 L709 77 L709 77 L717 76 L725 76 L732 75 L740 74 L748 73 L755 71 L763 70 L771 69 L778 68 L786 67 L786 67 L794 66 L801 65 L809 65 L817 64 L824 63 L832 62 L840 62 L847 61 L855 61 L863 60 L863 60 L870 60 L878 59 L886 59 L893 59 L901 58 L909 58 L916 58 L924 58 L932 57 L939 57 L939 57 L947 57 L956 57 L965 57 L974 56 L982 56 L991 56 L999 56 L1006 56 L1011 56 L1016 56 L1016 56" class="ln-cur2"/>
+        <g class="legend">
+          <line x1="128" x2="168" y1="34" y2="34" class="ln-ideal"/><text x="180" y="40">Ideal Benchmark Batch Trajectory</text>
+          <line x1="128" x2="168" y1="66" y2="66" class="ln-cur2"/><text x="180" y="72">Current Batch Trajectory</text>
+        </g>
+        <circle cx="556" cy="95.52000000000001" r="16" class="hot-ring"/>
+        <circle cx="556" cy="95.52000000000001" r="6" class="hot-dot"/>
+      </svg>
     </div>
-    <div class="bar card-bar"><p><b>Mechanism:</b> AI learns the non-linear relationship between raw materials and process conditions to predict batch outcomes. <b>Target Outcome:</b> <span class="hl-acc">1-2% effective yield improvement.</span></p></div>
+    <div class="wm">
+      <svg class="ic wm-ic" width="40" height="40" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><use href="#i-target"/></svg>
+      <p class="wm-k">The AI Intervention Point</p>
+      <p class="wm-s">Current batch trajectory indicates an <span class="hl">8.5% higher</span> cycle time and probable yield loss.</p>
+      <div class="nl-div wm-div"></div>
+      <p class="wm-q">AI recommends adjusting the agitation and feed profile immediately to correct.</p>
+    </div>
   </div>
 </section>
 
