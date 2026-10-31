@@ -564,18 +564,18 @@ body { background: var(--color-background-tertiary); }
 /* 12 Day 4 flow (light): numbered nodes on a connector, a drop into each step card; cards hug their content */
 .num { flex: none; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-xl);
   background: var(--color-container-brand); color: var(--color-text-on-brand); font-family: var(--font-heading); font-size: 32px; line-height: 40px; font-weight: 600; }
-.flow4 { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: var(--gap-grid); align-items: start; }
-.fstep { display: flex; flex-direction: column; }
-.fhead { display: flex; align-items: center; }
-.fline { flex: 1; height: 2px; margin-left: var(--space-16); background: var(--color-border-brand); }
-.fchev { margin-left: calc(-1 * var(--space-12)); margin-right: calc(-1 * var(--space-16)); color: var(--color-text-brand); }
-.fdrop { width: 56px; display: flex; justify-content: center; }
-.fdrop span { width: 2px; height: 40px; background: var(--color-border-brand); }
-.fcard { display: flex; flex-direction: column; gap: var(--space-24); padding: var(--space-40); }
-.fcard .ilabel { gap: var(--space-16); }
-/* Icon squares on intent cards: the strong intent fills with text/on-strong */
+/* Timeline: the line runs behind the nodes at node centre (padding 32 + marker 56 + stem 24 + half node 28 = 140px) */
+.tl { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap-grid); }
+.tl-line { position: absolute; left: 0; right: 0; top: 139px; height: 2px; background: var(--color-border-brand); }
+.tl-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: var(--space-32) var(--space-24) var(--space-40); border-radius: var(--radius-3xl); }
+.tl-step.is-hl { background: var(--color-container-selected); }
+.tl-stem { width: 2px; height: 24px; background: var(--color-border-brand); }
+.tl-node { position: relative; z-index: 1; margin-bottom: var(--space-32); }
+.tl-step h3 { margin-bottom: var(--space-16); }
+.i48 { width: 48px; height: 48px; }
 .sq-neg { background: var(--color-container-error-strong); color: var(--color-text-on-strong); }
 .sq-pos { background: var(--color-container-success-strong); color: var(--color-text-on-strong); }
+.sq-brandfill { background: var(--color-container-brand); color: var(--color-text-on-brand); }
 
 /* 13 Autonomy ladder (light): axis chart with rising levels, governance as icon cards */
 .ladwrap { display: grid; grid-template-columns: 8fr 4fr; gap: var(--gap-grid); align-items: center; }
@@ -619,11 +619,13 @@ body { background: var(--color-background-tertiary); }
 .ref-closing__tag { background: var(--color-container-inverse); color: var(--color-text-inverse); border-radius: var(--radius-md); padding: var(--space-8) var(--space-12); font-family: var(--font-body); font-size: 20px; line-height: 32px; font-weight: 600; }
 .ref-closing__statement { margin: 0; color: var(--color-text-on-brand); font-family: var(--font-heading); font-size: 72px; line-height: 80px; letter-spacing: -1.44px; font-weight: 700; }
 .ref-closing__accent { color: var(--color-text-accent-on-brand); }
-/* Steps inside the closing text group */
-.nsteps { list-style: none; display: flex; flex-direction: column; align-self: stretch; color: var(--color-text-on-brand); }
-.nsteps li { display: flex; align-items: center; gap: var(--space-24); padding: var(--space-20) 0; }
-.nsteps li.rule { padding: 0; height: 1px; background: var(--color-border-inverse); opacity: var(--opacity-subtle); }
-.nsteps .no { width: 48px; color: var(--color-text-accent-on-brand); }
+/* 15 Next steps flow on brand */
+.nsflow { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-grid); }
+.ns-step { display: flex; flex-direction: column; gap: var(--space-32); color: var(--color-text-on-brand); padding-right: var(--space-24); }
+.ns-head { display: flex; align-items: center; gap: var(--space-24); }
+.ns-no { color: var(--color-text-accent-on-brand); }
+.ns-line { flex: 1; height: 2px; margin-right: calc(-1 * var(--space-32)); background: var(--color-border-inverse); opacity: var(--opacity-subtle); }
+.s-brand .pg { color: var(--color-text-on-brand); }
 
 @page { size: 1920px 1080px; margin: 0; }
 @media print { body { background: none; } .deck { gap: 0; padding: 0; } .deck { zoom: 1 !important; } }
@@ -904,31 +906,38 @@ body { background: var(--color-background-tertiary); }
   <footer class="ft"><p class="pg">11</p></footer>
 </section>
 
-<!-- 12 Example: Day 4 of a batch: light theme, sequence drawn as a flow (numbered nodes, connectors, a card per step sized to its content); colour follows meaning: Detect and Predict Negative, Prescribe brand, Verify Positive -->
+<!-- 12 Example: Day 4 of a batch: light theme, sequence drawn as a timeline (after the traction-timeline reference):
+     numbered markers above a brand line, an icon node per step on the line, text below; Prescribe highlighted on container/selected.
+     Colour follows meaning: Detect and Predict Negative, Prescribe brand, Verify Positive. -->
 <section class="slide" aria-label="Slide 12: Example, Day 4 of a batch">
   <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-blue.svg" alt="Faclon Labs">
   <header class="hd"><h2 class="title">Example: Day 4 of a batch</h2></header>
   <div class="bd">
-    <div class="flow4">
-      <div class="fstep">
-        <div class="fhead"><span class="num">1</span><span class="fline"></span><svg class="ic i32 fchev" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m9 18 6-6-6-6" /> </svg></div>
-        <div class="fdrop"><span></span></div>
-        <article class="card-neg fcard"><div class="ilabel"><span class="sq sq-48 sq-neg"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 7V5a2 2 0 0 1 2-2h2" /> <path d="M17 3h2a2 2 0 0 1 2 2v2" /> <path d="M21 17v2a2 2 0 0 1-2 2h-2" /> <path d="M7 21H5a2 2 0 0 1-2-2v-2" /> <circle cx="12" cy="12" r="3" /> <path d="m16 16-1.9-1.9" /> </svg></span><h3 class="t-dmd">Detect</h3></div><p class="t-b40">Oxygen uptake falls and pH drifts earlier than in golden batches.</p></article>
+    <div class="tl">
+      <span class="tl-line" aria-hidden="true"></span>
+      <div class="tl-step">
+        <span class="num">1</span><span class="tl-stem"></span>
+        <span class="sq sq-56 sq-neg tl-node"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 7V5a2 2 0 0 1 2-2h2" /> <path d="M17 3h2a2 2 0 0 1 2 2v2" /> <path d="M21 17v2a2 2 0 0 1-2 2h-2" /> <path d="M7 21H5a2 2 0 0 1-2-2v-2" /> <circle cx="12" cy="12" r="3" /> <path d="m16 16-1.9-1.9" /> </svg></span>
+        <h3 class="t-dmd c-err">Detect</h3>
+        <p class="t-b40 c-body">Oxygen uptake falls and pH drifts earlier than in golden batches.</p>
       </div>
-      <div class="fstep">
-        <div class="fhead"><span class="num">2</span><span class="fline"></span><svg class="ic i32 fchev" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m9 18 6-6-6-6" /> </svg></div>
-        <div class="fdrop"><span></span></div>
-        <article class="card-neg fcard"><div class="ilabel"><span class="sq sq-48 sq-neg"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" /> <polyline points="16 17 22 17 22 11" /> </svg></span><h3 class="t-dmd">Predict</h3></div><p class="t-b40">Forecast: 8% titer shortfall and an early by-product rise.</p></article>
+      <div class="tl-step">
+        <span class="num">2</span><span class="tl-stem"></span>
+        <span class="sq sq-56 sq-neg tl-node"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" /> <polyline points="16 17 22 17 22 11" /> </svg></span>
+        <h3 class="t-dmd c-err">Predict</h3>
+        <p class="t-b40 c-body">Forecast: 8% titer shortfall and an early by-product rise.</p>
       </div>
-      <div class="fstep">
-        <div class="fhead"><span class="num">3</span><span class="fline"></span><svg class="ic i32 fchev" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m9 18 6-6-6-6" /> </svg></div>
-        <div class="fdrop"><span></span></div>
-        <article class="card-brand fcard"><div class="ilabel"><span class="sq sq-48 sq-onbrand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <line x1="21" x2="14" y1="4" y2="4" /> <line x1="10" x2="3" y1="4" y2="4" /> <line x1="21" x2="12" y1="12" y2="12" /> <line x1="8" x2="3" y1="12" y2="12" /> <line x1="21" x2="16" y1="20" y2="20" /> <line x1="12" x2="3" y1="20" y2="20" /> <line x1="14" x2="14" y1="2" y2="6" /> <line x1="8" x2="8" y1="10" y2="14" /> <line x1="16" x2="16" y1="18" y2="22" /> </svg></span><h3 class="t-dmd">Prescribe</h3></div><p class="t-b40">Oxygen limitation ranked first. Bounded aeration change, simulated first.</p></article>
+      <div class="tl-step is-hl">
+        <span class="num">3</span><span class="tl-stem"></span>
+        <span class="sq sq-56 sq-brandfill tl-node"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <line x1="21" x2="14" y1="4" y2="4" /> <line x1="10" x2="3" y1="4" y2="4" /> <line x1="21" x2="12" y1="12" y2="12" /> <line x1="8" x2="3" y1="12" y2="12" /> <line x1="21" x2="16" y1="20" y2="20" /> <line x1="12" x2="3" y1="20" y2="20" /> <line x1="14" x2="14" y1="2" y2="6" /> <line x1="8" x2="8" y1="10" y2="14" /> <line x1="16" x2="16" y1="18" y2="22" /> </svg></span>
+        <h3 class="t-dmd c-brand">Prescribe</h3>
+        <p class="t-b40 c-body">Oxygen limitation ranked first. Bounded aeration change, simulated first.</p>
       </div>
-      <div class="fstep">
-        <div class="fhead"><span class="num">4</span></div>
-        <div class="fdrop"><span></span></div>
-        <article class="card-pos fcard"><div class="ilabel"><span class="sq sq-48 sq-pos"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="m9 12 2 2 4-4" /> </svg></span><h3 class="t-dmd">Verify</h3></div><p class="t-b40">Operator approves. Agent checks the response and sets the harvest window.</p></article>
+      <div class="tl-step">
+        <span class="num">4</span><span class="tl-stem"></span>
+        <span class="sq sq-56 sq-pos tl-node"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="m9 12 2 2 4-4" /> </svg></span>
+        <h3 class="t-dmd c-ok">Verify</h3>
+        <p class="t-b40 c-body">Operator approves. Agent checks the response and sets the harvest window.</p>
       </div>
     </div>
   </div>
@@ -990,21 +999,39 @@ body { background: var(--color-background-tertiary); }
   <footer class="ft"><p class="pg">14</p></footer>
 </section>
 
-<!-- 15 Next steps on the closing reference slide (Figma Design MCP › Layouts › "29 · Close", node 3058:22750), placed as shipped:
-     backdrop, white logo top-right on the 52px edge, text group at the reference's 134px edge. Tag slot: "Next steps";
-     statement slot: the closing line. The three steps sit in the text group between them, in the user's order. -->
-<section class="slide ref-closing" aria-label="Slide 15: Next steps">
+<!-- 15 Next steps: brand theme, the three steps as a numbered sequence with connectors -->
+<section class="slide s-brand" aria-label="Slide 15: Next steps">
+  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
+  <header class="hd"><h2 class="title c-onbrand">Next steps</h2></header>
+  <div class="bd">
+    <div class="nsflow">
+      <div class="ns-step">
+        <div class="ns-head"><span class="t-dxl ns-no">1</span><span class="ns-line"></span></div>
+        <span class="sq sq-56 sq-onbrand"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="8" r="5" /> <path d="M20 21a8 8 0 0 0-16 0" /> </svg></span>
+        <p class="t-dmd">Name a plant sponsor at Pithampur and Rau</p>
+      </div>
+      <div class="ns-step">
+        <div class="ns-head"><span class="t-dxl ns-no">2</span><span class="ns-line"></span></div>
+        <span class="sq sq-56 sq-onbrand"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /> </svg></span>
+        <p class="t-dmd">Share 20–30 historical batches for a backtest</p>
+      </div>
+      <div class="ns-step">
+        <div class="ns-head"><span class="t-dxl ns-no">3</span></div>
+        <span class="sq sq-56 sq-onbrand"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /> </svg></span>
+        <p class="t-dmd">Agree one KPI per site before the pilot starts</p>
+      </div>
+    </div>
+  </div>
+  <footer class="ft"><p class="pg">15</p></footer>
+</section>
+
+<!-- 16 Closing: the closing reference slide (Figma Design MCP › Layouts › "29 · Close", node 3058:22750), ready HTML as shipped;
+     only the two data-slot elements are filled. -->
+<section class="slide ref-closing" aria-label="Slide 16: Closing">
   <img class="ref-closing__backdrop" src="https://faclon-brand-mcp.vercel.app/templates/decks/reference/closing-backdrop.jpg" alt="Faclon dot-particle form and light streaks on brand blue">
   <img class="ref-closing__logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
   <div class="ref-closing__text">
-    <h2 class="ref-closing__tag" data-slot="tag">Next steps</h2>
-    <ol class="nsteps">
-        <li><span class="t-dmd no">1</span><span class="sq sq-48 sq-onbrand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="8" r="5" /> <path d="M20 21a8 8 0 0 0-16 0" /> </svg></span><p class="t-h1">Name a plant sponsor at Pithampur and Rau</p></li>
-        <li class="rule" aria-hidden="true"></li>
-        <li><span class="t-dmd no">2</span><span class="sq sq-48 sq-onbrand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /> </svg></span><p class="t-h1">Share 20–30 historical batches for a backtest</p></li>
-        <li class="rule" aria-hidden="true"></li>
-        <li><span class="t-dmd no">3</span><span class="sq sq-48 sq-onbrand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /> </svg></span><p class="t-h1">Agree one KPI per site before the pilot starts</p></li>
-    </ol>
+    <span class="ref-closing__tag" data-slot="tag">www.faclon.com</span>
     <p class="ref-closing__statement" data-slot="statement">Start <span class="ref-closing__accent">advisory-only.</span> Your validated setpoints stay untouched.</p>
   </div>
 </section>
