@@ -619,13 +619,11 @@ body { background: var(--color-background-tertiary); }
 .ref-closing__tag { background: var(--color-container-inverse); color: var(--color-text-inverse); border-radius: var(--radius-md); padding: var(--space-8) var(--space-12); font-family: var(--font-body); font-size: 20px; line-height: 32px; font-weight: 600; }
 .ref-closing__statement { margin: 0; color: var(--color-text-on-brand); font-family: var(--font-heading); font-size: 72px; line-height: 80px; letter-spacing: -1.44px; font-weight: 700; }
 .ref-closing__accent { color: var(--color-text-accent-on-brand); }
-/* 15 Next steps flow on brand */
-.nsflow { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-grid); }
-.ns-step { display: flex; flex-direction: column; gap: var(--space-32); color: var(--color-text-on-brand); padding-right: var(--space-24); }
-.ns-head { display: flex; align-items: center; gap: var(--space-24); }
-.ns-no { color: var(--color-text-accent-on-brand); }
-.ns-line { flex: 1; height: 2px; margin-right: calc(-1 * var(--space-32)); background: var(--color-border-inverse); opacity: var(--opacity-subtle); }
-.s-brand .pg { color: var(--color-text-on-brand); }
+/* Steps inside the closing text group */
+.nsteps { list-style: none; display: flex; flex-direction: column; align-self: stretch; color: var(--color-text-on-brand); }
+.nsteps li { display: flex; align-items: center; gap: var(--space-24); padding: var(--space-20) 0; }
+.nsteps li.rule { padding: 0; height: 1px; background: var(--color-border-inverse); opacity: var(--opacity-subtle); }
+.nsteps .no { width: 48px; color: var(--color-text-accent-on-brand); }
 
 @page { size: 1920px 1080px; margin: 0; }
 @media print { body { background: none; } .deck { gap: 0; padding: 0; } .deck { zoom: 1 !important; } }
@@ -999,39 +997,21 @@ body { background: var(--color-background-tertiary); }
   <footer class="ft"><p class="pg">14</p></footer>
 </section>
 
-<!-- 15 Next steps: brand theme, the three steps as a numbered sequence with connectors -->
-<section class="slide s-brand" aria-label="Slide 15: Next steps">
-  <img class="logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
-  <header class="hd"><h2 class="title c-onbrand">Next steps</h2></header>
-  <div class="bd">
-    <div class="nsflow">
-      <div class="ns-step">
-        <div class="ns-head"><span class="t-dxl ns-no">1</span><span class="ns-line"></span></div>
-        <span class="sq sq-56 sq-onbrand"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="8" r="5" /> <path d="M20 21a8 8 0 0 0-16 0" /> </svg></span>
-        <p class="t-dmd">Name a plant sponsor at Pithampur and Rau</p>
-      </div>
-      <div class="ns-step">
-        <div class="ns-head"><span class="t-dxl ns-no">2</span><span class="ns-line"></span></div>
-        <span class="sq sq-56 sq-onbrand"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /> </svg></span>
-        <p class="t-dmd">Share 20–30 historical batches for a backtest</p>
-      </div>
-      <div class="ns-step">
-        <div class="ns-head"><span class="t-dxl ns-no">3</span></div>
-        <span class="sq sq-56 sq-onbrand"><svg class="ic i40" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /> </svg></span>
-        <p class="t-dmd">Agree one KPI per site before the pilot starts</p>
-      </div>
-    </div>
-  </div>
-  <footer class="ft"><p class="pg">15</p></footer>
-</section>
-
-<!-- 16 Closing: the closing reference slide (Figma Design MCP › Layouts › "29 · Close", node 3058:22750), ready HTML as shipped;
-     only the two data-slot elements are filled. -->
-<section class="slide ref-closing" aria-label="Slide 16: Closing">
+<!-- 15 Next steps on the closing reference slide (Figma Design MCP › Layouts › "29 · Close", node 3058:22750), placed as shipped:
+     backdrop, white logo top-right on the 52px edge, text group at the reference's 134px edge. Tag slot: "Next steps";
+     statement slot: the closing line. The three steps sit in the text group between them, in the user's order. -->
+<section class="slide ref-closing" aria-label="Slide 15: Next steps">
   <img class="ref-closing__backdrop" src="https://faclon-brand-mcp.vercel.app/templates/decks/reference/closing-backdrop.jpg" alt="Faclon dot-particle form and light streaks on brand blue">
   <img class="ref-closing__logo" src="https://faclon-brand-mcp.vercel.app/assets/logos/faclon-labs-logo-white.svg" alt="Faclon Labs">
   <div class="ref-closing__text">
-    <span class="ref-closing__tag" data-slot="tag">www.faclon.com</span>
+    <h2 class="ref-closing__tag" data-slot="tag">Next steps</h2>
+    <ol class="nsteps">
+        <li><span class="t-dmd no">1</span><span class="sq sq-48 sq-onbrand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="8" r="5" /> <path d="M20 21a8 8 0 0 0-16 0" /> </svg></span><p class="t-h1">Name a plant sponsor at Pithampur and Rau</p></li>
+        <li class="rule" aria-hidden="true"></li>
+        <li><span class="t-dmd no">2</span><span class="sq sq-48 sq-onbrand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /> </svg></span><p class="t-h1">Share 20–30 historical batches for a backtest</p></li>
+        <li class="rule" aria-hidden="true"></li>
+        <li><span class="t-dmd no">3</span><span class="sq sq-48 sq-onbrand"><svg class="ic i32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /> </svg></span><p class="t-h1">Agree one KPI per site before the pilot starts</p></li>
+    </ol>
     <p class="ref-closing__statement" data-slot="statement">Start <span class="ref-closing__accent">advisory-only.</span> Your validated setpoints stay untouched.</p>
   </div>
 </section>
